@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("window"), require("fetch"), require("crypto"), require("TextEncoder"));
+		module.exports = factory(require("fetch"), require("window"), require("crypto"), require("TextEncoder"));
 	else if(typeof define === 'function' && define.amd)
-		define(["window", "fetch", "crypto", "TextEncoder"], factory);
+		define(["fetch", "window", "crypto", "TextEncoder"], factory);
 	else if(typeof exports === 'object')
-		exports["Mashlib"] = factory(require("window"), require("fetch"), require("crypto"), require("TextEncoder"));
+		exports["Mashlib"] = factory(require("fetch"), require("window"), require("crypto"), require("TextEncoder"));
 	else
-		root["Mashlib"] = factory(root["window"], root["fetch"], root["crypto"], root["TextEncoder"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_41__, __WEBPACK_EXTERNAL_MODULE_44__, __WEBPACK_EXTERNAL_MODULE_85__, __WEBPACK_EXTERNAL_MODULE_404__) {
+		root["Mashlib"] = factory(root["fetch"], root["window"], root["crypto"], root["TextEncoder"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_33__, __WEBPACK_EXTERNAL_MODULE_50__, __WEBPACK_EXTERNAL_MODULE_93__, __WEBPACK_EXTERNAL_MODULE_424__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 224);
+/******/ 	return __webpack_require__(__webpack_require__.s = 251);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -88,9 +88,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 
-var base64 = __webpack_require__(231)
-var ieee754 = __webpack_require__(232)
-var isArray = __webpack_require__(140)
+var base64 = __webpack_require__(258)
+var ieee754 = __webpack_require__(259)
+var isArray = __webpack_require__(154)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -1868,10 +1868,39 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+if (typeof Object.create === 'function') {
+  // implementation from standard node.js 'util' module
+  module.exports = function inherits(ctor, superCtor) {
+    ctor.super_ = superCtor
+    ctor.prototype = Object.create(superCtor.prototype, {
+      constructor: {
+        value: ctor,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+  };
+} else {
+  // old school shim for old browsers
+  module.exports = function inherits(ctor, superCtor) {
+    ctor.super_ = superCtor
+    var TempCtor = function () {}
+    TempCtor.prototype = superCtor.prototype
+    ctor.prototype = new TempCtor()
+    ctor.prototype.constructor = ctor
+  }
+}
+
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1914,61 +1943,100 @@ https://github.com/solid/solid
  * @static
  */
 
-var rdf = __webpack_require__(18); // pull in first avoid cross-refs
-var ns = __webpack_require__(7);
+var rdf = __webpack_require__(3); // pull in first avoid cross-refs
+var ns = __webpack_require__(14);
 
 var UI = {
   ns: ns,
   rdf: rdf,
-  acl: __webpack_require__(148),
-  aclControl: __webpack_require__(339),
-  authn: __webpack_require__(179),
-  create: __webpack_require__(423),
-  icons: __webpack_require__(20),
-  log: __webpack_require__(19),
-  matrix: __webpack_require__(424),
-  messageArea: __webpack_require__(425),
-  pad: __webpack_require__(426),
-  store: __webpack_require__(14),
-  table: __webpack_require__(427),
-  tabs: __webpack_require__(428),
-  utils: __webpack_require__(23),
-  widgets: __webpack_require__(21)
+  acl: __webpack_require__(245),
+  aclControl: __webpack_require__(451),
+  authn: __webpack_require__(247),
+  create: __webpack_require__(456),
+  icons: __webpack_require__(29),
+  log: __webpack_require__(24),
+  matrix: __webpack_require__(457),
+  messageArea: __webpack_require__(458),
+  pad: __webpack_require__(459),
+  store: __webpack_require__(22),
+  table: __webpack_require__(460),
+  tabs: __webpack_require__(461),
+  utils: __webpack_require__(31),
+  widgets: __webpack_require__(30)
 };
 
 module.exports = UI;
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports) {
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
 
-if (typeof Object.create === 'function') {
-  // implementation from standard node.js 'util' module
-  module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    ctor.prototype = Object.create(superCtor.prototype, {
-      constructor: {
-        value: ctor,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-  };
-} else {
-  // old school shim for old browsers
-  module.exports = function inherits(ctor, superCtor) {
-    ctor.super_ = superCtor
-    var TempCtor = function () {}
-    TempCtor.prototype = superCtor.prototype
-    ctor.prototype = new TempCtor()
-    ctor.prototype.constructor = ctor
-  }
-}
+"use strict";
 
+
+var _indexedFormula = __webpack_require__(71);
+
+var _indexedFormula2 = _interopRequireDefault(_indexedFormula);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var $rdf = {
+  BlankNode: __webpack_require__(41),
+  Collection: __webpack_require__(72),
+  convert: __webpack_require__(147),
+  DataFactory: __webpack_require__(77),
+  Empty: __webpack_require__(271),
+  Fetcher: __webpack_require__(109),
+  Formula: __webpack_require__(146),
+  IndexedFormula: _indexedFormula2.default,
+  jsonParser: __webpack_require__(272),
+  Literal: __webpack_require__(49),
+  log: __webpack_require__(42),
+  N3Parser: __webpack_require__(78),
+  NamedNode: __webpack_require__(10),
+  Namespace: __webpack_require__(58),
+  Node: __webpack_require__(16),
+  parse: __webpack_require__(159),
+  Query: __webpack_require__(76).Query,
+  queryToSPARQL: __webpack_require__(273),
+  RDFaProcessor: __webpack_require__(110),
+  RDFParser: __webpack_require__(111),
+  serialize: __webpack_require__(98),
+  Serializer: __webpack_require__(108),
+  SPARQLToQuery: __webpack_require__(274),
+  sparqlUpdateParser: __webpack_require__(160),
+  Statement: __webpack_require__(74),
+  term: __webpack_require__(16).fromValue,
+  UpdateManager: __webpack_require__(275),
+  UpdatesSocket: __webpack_require__(161).UpdatesSocket,
+  UpdatesVia: __webpack_require__(161).UpdatesVia,
+  uri: __webpack_require__(15),
+  Util: __webpack_require__(32),
+  Variable: __webpack_require__(75)
+};
+
+$rdf.NextId = $rdf.BlankNode.nextId;
+
+$rdf.fromNT = $rdf.Formula.prototype.fromNT;
+$rdf.fetcher = $rdf.DataFactory.fetcher;
+$rdf.graph = $rdf.DataFactory.graph;
+$rdf.lit = $rdf.DataFactory.lit;
+$rdf.st = $rdf.DataFactory.st;
+$rdf.sym = $rdf.DataFactory.namedNode;
+$rdf.variable = $rdf.DataFactory.variable;
+
+// RDFJS DataFactory interface
+$rdf.blankNode = $rdf.DataFactory.blankNode;
+$rdf.defaultGraph = $rdf.DataFactory.defaultGraph;
+$rdf.literal = $rdf.DataFactory.literal;
+$rdf.namedNode = $rdf.DataFactory.namedNode;
+$rdf.quad = $rdf.DataFactory.quad;
+$rdf.triple = $rdf.DataFactory.triple;
+
+module.exports = $rdf;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* eslint-disable node/no-deprecated-api */
@@ -2036,7 +2104,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 var g;
@@ -2063,7 +2131,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2071,19 +2139,98 @@ module.exports = g;
 
 var elliptic = exports;
 
-elliptic.version = __webpack_require__(292).version;
-elliptic.utils = __webpack_require__(293);
-elliptic.rand = __webpack_require__(164);
-elliptic.curve = __webpack_require__(73);
-elliptic.curves = __webpack_require__(299);
+elliptic.version = __webpack_require__(317).version;
+elliptic.utils = __webpack_require__(318);
+elliptic.rand = __webpack_require__(180);
+elliptic.curve = __webpack_require__(81);
+elliptic.curves = __webpack_require__(324);
 
 // Protocols
-elliptic.ec = __webpack_require__(307);
-elliptic.eddsa = __webpack_require__(311);
+elliptic.ec = __webpack_require__(332);
+elliptic.eddsa = __webpack_require__(336);
 
 
 /***/ }),
-/* 6 */
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(375);
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _promise = __webpack_require__(46);
+
+var _promise2 = _interopRequireDefault(_promise);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (fn) {
+  return function () {
+    var gen = fn.apply(this, arguments);
+    return new _promise2.default(function (resolve, reject) {
+      function step(key, arg) {
+        try {
+          var info = gen[key](arg);
+          var value = info.value;
+        } catch (error) {
+          reject(error);
+          return;
+        }
+
+        if (info.done) {
+          resolve(value);
+        } else {
+          return _promise2.default.resolve(value).then(function (value) {
+            step("next", value);
+          }, function (err) {
+            step("throw", err);
+          });
+        }
+      }
+
+      return step("next");
+    });
+  };
+};
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2097,8 +2244,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ClassOrder = __webpack_require__(39);
-var Node = __webpack_require__(12);
+var ClassOrder = __webpack_require__(48);
+var Node = __webpack_require__(16);
 
 /**
  * @class NamedNode
@@ -2220,7 +2367,7 @@ NamedNode.prototype.isVar = 0;
 module.exports = NamedNode;
 
 /***/ }),
-/* 7 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2234,7 +2381,7 @@ module.exports = thisModule;
 
 // tabulator.trace = thisModule // @@@@@@@@@@
 
-var $rdf = __webpack_require__(18);
+var $rdf = __webpack_require__(3);
 
 // This used to be a faw function (no ".expand" but that caused the module exports all to be dropped)
 thisModule.expand = function (prefixed) {
@@ -2284,7 +2431,7 @@ thisModule.xsd = $rdf.Namespace('http://www.w3.org/2001/XMLSchema#');
 //  ends
 
 /***/ }),
-/* 8 */
+/* 12 */
 /***/ (function(module, exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -2296,12 +2443,12 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
 
 /***/ }),
-/* 9 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var store = __webpack_require__(116)('wks');
-var uid = __webpack_require__(79);
-var Symbol = __webpack_require__(8).Symbol;
+var store = __webpack_require__(127)('wks');
+var uid = __webpack_require__(86);
+var Symbol = __webpack_require__(12).Symbol;
 var USE_SYMBOL = typeof Symbol == 'function';
 
 var $exports = module.exports = function (name) {
@@ -2313,35 +2460,71 @@ $exports.store = store;
 
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports) {
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
+"use strict";
+
+
+// thisModule = {}
+
+var thisModule = {};
+
+module.exports = thisModule;
+
+// tabulator.trace = thisModule // @@@@@@@@@@
+
+var $rdf = __webpack_require__(3);
+
+// This used to be a faw function (no ".expand" but that caused the module exports all to be dropped)
+thisModule.expand = function (prefixed) {
+  var pair = prefixed.split(':');
+  if (pair.length === 0) throw new Error('Prefixed name has no colon: ' + prefixed);
+  if (!(pair[0] in thisModule)) throw new Error('Unregistered namespace prefix in: ' + prefixed);
+  return thisModule[pair[0]](pair[1]);
 };
 
+thisModule.auth = $rdf.Namespace('http://www.w3.org/ns/auth/acl#'); // @@ obsolete - use acl:
+thisModule.acl = $rdf.Namespace('http://www.w3.org/ns/auth/acl#');
+thisModule.arg = $rdf.Namespace('http://www.w3.org/ns/pim/arg#');
+thisModule.cal = $rdf.Namespace('http://www.w3.org/2002/12/cal/ical#');
+thisModule.contact = $rdf.Namespace('http://www.w3.org/2000/10/swap/pim/contact#');
+thisModule.dc = $rdf.Namespace('http://purl.org/dc/elements/1.1/');
+thisModule.dct = $rdf.Namespace('http://purl.org/dc/terms/');
+thisModule.doap = $rdf.Namespace('http://usefulinc.com/ns/doap#');
+thisModule.foaf = $rdf.Namespace('http://xmlns.com/foaf/0.1/');
+thisModule.http = $rdf.Namespace('http://www.w3.org/2007/ont/http#');
+thisModule.httph = $rdf.Namespace('http://www.w3.org/2007/ont/httph#');
+thisModule.ical = $rdf.Namespace('http://www.w3.org/2002/12/cal/icaltzd#');
+thisModule.ldp = $rdf.Namespace('http://www.w3.org/ns/ldp#');
+thisModule.link = thisModule.tab = thisModule.tabont = $rdf.Namespace('http://www.w3.org/2007/ont/link#');
+thisModule.log = $rdf.Namespace('http://www.w3.org/2000/10/swap/log#');
+thisModule.meeting = $rdf.Namespace('http://www.w3.org/ns/pim/meeting#');
+thisModule.mo = $rdf.Namespace('http://purl.org/ontology/mo/');
+thisModule.owl = $rdf.Namespace('http://www.w3.org/2002/07/owl#');
+thisModule.pad = $rdf.Namespace('http://www.w3.org/ns/pim/pad#');
+thisModule.patch = $rdf.Namespace('http://www.w3.org/ns/pim/patch#');
+thisModule.qu = $rdf.Namespace('http://www.w3.org/2000/10/swap/pim/qif#');
+thisModule.trip = $rdf.Namespace('http://www.w3.org/ns/pim/trip#');
+thisModule.rdf = $rdf.Namespace('http://www.w3.org/1999/02/22-rdf-syntax-ns#');
+thisModule.rdfs = $rdf.Namespace('http://www.w3.org/2000/01/rdf-schema#');
+thisModule.rss = $rdf.Namespace('http://purl.org/rss/1.0/');
+thisModule.sched = $rdf.Namespace('http://www.w3.org/ns/pim/schedule#');
+thisModule.schema = $rdf.Namespace('http:/schema.org/'); // @@ beware confusion with documents no 303
+thisModule.sioc = $rdf.Namespace('http://rdfs.org/sioc/ns#');
+// was - thisModule.xsd = $rdf.Namespace('http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/#dt-')
+thisModule.solid = $rdf.Namespace('http://www.w3.org/ns/solid/terms#');
+thisModule.space = $rdf.Namespace('http://www.w3.org/ns/pim/space#');
+thisModule.stat = $rdf.Namespace('http://www.w3.org/ns/posix/stat#');
+thisModule.ui = $rdf.Namespace('http://www.w3.org/ns/ui#');
+thisModule.vcard = $rdf.Namespace('http://www.w3.org/2006/vcard/ns#');
+thisModule.wf = $rdf.Namespace('http://www.w3.org/2005/01/wf/flow#');
+thisModule.xsd = $rdf.Namespace('http://www.w3.org/2001/XMLSchema#');
+
+//  ends
 
 /***/ }),
-/* 11 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2366,7 +2549,7 @@ module.exports.join = join;
 module.exports.protocol = protocol;
 module.exports.refTo = refTo;
 
-var NamedNode = __webpack_require__(6);
+var NamedNode = __webpack_require__(10);
 
 function docpart(uri) {
   var i;
@@ -2533,7 +2716,7 @@ function refTo(base, uri) {
 }
 
 /***/ }),
-/* 12 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2625,9 +2808,9 @@ module.exports = Node;
  * @return {Node|Collection}
  */
 Node.fromValue = function fromValue(value) {
-  var Collection = __webpack_require__(64);
-  var Literal = __webpack_require__(40);
-  var NamedNode = __webpack_require__(6);
+  var Collection = __webpack_require__(72);
+  var Literal = __webpack_require__(49);
+  var NamedNode = __webpack_require__(10);
   if (typeof value === 'undefined' || value === null) {
     return value;
   }
@@ -2643,7 +2826,7 @@ Node.fromValue = function fromValue(value) {
 };
 
 /***/ }),
-/* 13 */
+/* 17 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -2833,7 +3016,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 14 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2842,7 +3025,7 @@ process.umask = function() { return 0; };
 // This module of solid-ui has a main quadstore for the app to use
 //
 
-var rdf = __webpack_require__(18);
+var rdf = __webpack_require__(3);
 var store = module.exports = rdf.graph(); // Make a Quad store
 var fetcher = rdf.fetcher(store); // Attach a web I/O module, store.fetcher
 var updater = new rdf.UpdateManager(store); // Add real-time live updates store.updater
@@ -2852,7 +3035,7 @@ console.log('Unique quadstore initialized.');
 //ends
 
 /***/ }),
-/* 15 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = assert;
@@ -2869,7 +3052,7 @@ assert.equal = function assertEqual(l, r, msg) {
 
 
 /***/ }),
-/* 16 */
+/* 20 */
 /***/ (function(module, exports) {
 
 var core = module.exports = { version: '2.5.1' };
@@ -2877,93 +3060,44 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
 /***/ }),
-/* 17 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = {
-  Formats: __webpack_require__(205),
-  Initializer: __webpack_require__(206),
-  JSONDocument: __webpack_require__(396),
-  JSONMapping: __webpack_require__(397),
-  JSONPatch: __webpack_require__(207),
-  JSONPointer: __webpack_require__(127),
-  JSONSchema: __webpack_require__(398),
-  Validator: __webpack_require__(208)
+  Formats: __webpack_require__(224),
+  Initializer: __webpack_require__(225),
+  JSONDocument: __webpack_require__(416),
+  JSONMapping: __webpack_require__(417),
+  JSONPatch: __webpack_require__(226),
+  JSONPointer: __webpack_require__(138),
+  JSONSchema: __webpack_require__(418),
+  Validator: __webpack_require__(227)
 };
 
 /***/ }),
-/* 18 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _indexedFormula = __webpack_require__(63);
+// This module of solid-ui has a main quadstore for the app to use
+//
 
-var _indexedFormula2 = _interopRequireDefault(_indexedFormula);
+var rdf = __webpack_require__(3);
+var store = module.exports = rdf.graph(); // Make a Quad store
+var fetcher = rdf.fetcher(store); // Attach a web I/O module, store.fetcher
+var updater = new rdf.UpdateManager(store); // Add real-time live updates store.updater
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+console.log('Unique quadstore initialized.');
 
-var $rdf = {
-  BlankNode: __webpack_require__(31),
-  Collection: __webpack_require__(64),
-  convert: __webpack_require__(133),
-  DataFactory: __webpack_require__(69),
-  Empty: __webpack_require__(244),
-  Fetcher: __webpack_require__(98),
-  Formula: __webpack_require__(132),
-  IndexedFormula: _indexedFormula2.default,
-  jsonParser: __webpack_require__(245),
-  Literal: __webpack_require__(40),
-  log: __webpack_require__(32),
-  N3Parser: __webpack_require__(70),
-  NamedNode: __webpack_require__(6),
-  Namespace: __webpack_require__(50),
-  Node: __webpack_require__(12),
-  parse: __webpack_require__(145),
-  Query: __webpack_require__(68).Query,
-  queryToSPARQL: __webpack_require__(246),
-  RDFaProcessor: __webpack_require__(99),
-  RDFParser: __webpack_require__(100),
-  serialize: __webpack_require__(87),
-  Serializer: __webpack_require__(97),
-  SPARQLToQuery: __webpack_require__(247),
-  sparqlUpdateParser: __webpack_require__(146),
-  Statement: __webpack_require__(66),
-  term: __webpack_require__(12).fromValue,
-  UpdateManager: __webpack_require__(248),
-  UpdatesSocket: __webpack_require__(147).UpdatesSocket,
-  UpdatesVia: __webpack_require__(147).UpdatesVia,
-  uri: __webpack_require__(11),
-  Util: __webpack_require__(24),
-  Variable: __webpack_require__(67)
-};
-
-$rdf.NextId = $rdf.BlankNode.nextId;
-
-$rdf.fromNT = $rdf.Formula.prototype.fromNT;
-$rdf.fetcher = $rdf.DataFactory.fetcher;
-$rdf.graph = $rdf.DataFactory.graph;
-$rdf.lit = $rdf.DataFactory.lit;
-$rdf.st = $rdf.DataFactory.st;
-$rdf.sym = $rdf.DataFactory.namedNode;
-$rdf.variable = $rdf.DataFactory.variable;
-
-// RDFJS DataFactory interface
-$rdf.blankNode = $rdf.DataFactory.blankNode;
-$rdf.defaultGraph = $rdf.DataFactory.defaultGraph;
-$rdf.literal = $rdf.DataFactory.literal;
-$rdf.namedNode = $rdf.DataFactory.namedNode;
-$rdf.quad = $rdf.DataFactory.quad;
-$rdf.triple = $rdf.DataFactory.triple;
-
-module.exports = $rdf;
+//ends
 
 /***/ }),
-/* 19 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3077,7 +3211,121 @@ var wrapper = function wrapper() {
 module.exports = wrapper();
 
 /***/ }),
-/* 20 */
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// Log of diagnostics -- node module version
+
+var wrapper = function wrapper() {
+  var logger = {};
+
+  // ///////////////////////  Logging
+  //
+  // bitmask levels
+  var TNONE = 0;
+  var TERROR = 1;
+  var TWARN = 2;
+  var TMESG = 4;
+  var TSUCCESS = 8;
+  var TINFO = 16;
+  var TDEBUG = 32;
+  var TALL = 63;
+
+  logger.level = TERROR + TWARN + TMESG;
+  logger.ascending = false;
+
+  logger.msg = function (str, type, typestr) {
+    if (!type) {
+      type = TMESG;
+      typestr = 'mesg';
+    }
+
+    if (!(logger.level & type)) return; // bitmask
+
+    if (typeof document !== 'undefined') {
+      // Not AJAX environment
+
+      var logArea = document.getElementById('status');
+      if (!logArea) return;
+
+      // Local version to reduce dependencies
+      var escapeForXML = function escapeForXML(str) {
+        // don't use library one in case ithasn't been loaded yet
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+      };
+
+      var addendum = document.createElement('span');
+      addendum.setAttribute('class', typestr);
+      var now = new Date();
+      addendum.innerHTML = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds() + ' [' + typestr + '] ' + escapeForXML(str) + '<br/>';
+      if (!logger.ascending) {
+        logArea.appendChild(addendum);
+      } else {
+        logArea.insertBefore(addendum, logArea.firstChild);
+      }
+    } else if (typeof console !== 'undefined') {
+      // node.js
+      console.log(str);
+    } else {
+      var f = dump; // || print
+      if (!f) throw new Error('log: No way to output message: ' + str);
+      f('Log: ' + str + '\n');
+    }
+  }; // logger.msg
+
+  logger.warn = function (msg) {
+    logger.msg(msg, TWARN, 'warn');
+  };
+  logger.debug = function (msg) {
+    logger.msg(msg, TDEBUG, 'dbug');
+  };
+  logger.info = function (msg) {
+    logger.msg(msg, TINFO, 'info');
+  };
+  logger.error = function (msg) {
+    logger.msg(msg, TERROR, 'eror');
+  };
+  logger.success = function (msg) {
+    logger.msg(msg, TSUCCESS, 'good');
+  };
+
+  if (typeof alert !== 'undefined') {
+    logger.alert = alert;
+  } else {
+    logger.alert = logger.warn;
+  }
+
+  /** clear the log window **/
+  logger.clear = function () {
+    var x = document.getElementById('status');
+    if (!x) return;
+    x.innerHTML = '';
+    // emptyNode(x);
+  }; // clearStatus
+
+  /** set the logging level **/
+  logger.setLevel = function (x) {
+    logger.level = TALL;
+    logger.debug('Log level is now ' + x);
+    logger.level = x;
+  };
+
+  logger.dumpHTML = function () {
+    var l = logger.level;
+    logger.level = TALL;
+    logger.debug(document.innerHTML);
+    logger.level = l;
+  };
+  return logger;
+}; // wrapper
+
+module.exports = wrapper();
+
+/***/ }),
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3102,10 +3350,10 @@ if (module.scriptURI) {
   }
 }
 console.log('   Icon base is: ' + module.exports.iconBase);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module)))
 
 /***/ }),
-/* 21 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3131,22 +3379,22 @@ console.log('   Icon base is: ' + module.exports.iconBase);
 //
 // (In order to avoid name collisions, it is safely assumed that modules don't
 // export widgets with the same name)
-var widgets = module.exports = Object.assign({}, __webpack_require__(249), // UI.widgets.PeoplePicker
-__webpack_require__(178), __webpack_require__(75), // UI.widgets.errorMessageBlock
+var widgets = module.exports = Object.assign({}, __webpack_require__(276), // UI.widgets.PeoplePicker
+__webpack_require__(194), __webpack_require__(83), // UI.widgets.errorMessageBlock
 {
   buildCheckboxForm: buildCheckboxForm,
   complain: complain
 });
 
 var UI = {
-  icons: __webpack_require__(20),
-  log: __webpack_require__(19),
-  ns: __webpack_require__(7),
-  store: __webpack_require__(14),
+  icons: __webpack_require__(25),
+  log: __webpack_require__(23),
+  ns: __webpack_require__(11),
+  store: __webpack_require__(18),
   widgets: widgets
 };
-var error = __webpack_require__(75);
-var utils = __webpack_require__(23);
+var error = __webpack_require__(83);
+var utils = __webpack_require__(28);
 
 function complain(context, err) {
   var ele = context.statusArea || context.div;
@@ -5097,14 +5345,14 @@ UI.widgets.isImage = function (file, kind) {
 // ends
 
 /***/ }),
-/* 22 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var assert = __webpack_require__(15);
-var inherits = __webpack_require__(2);
+var assert = __webpack_require__(19);
+var inherits = __webpack_require__(1);
 
 exports.inherits = inherits;
 
@@ -5357,7 +5605,7 @@ exports.shr64_lo = shr64_lo;
 
 
 /***/ }),
-/* 23 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5401,10 +5649,10 @@ module.exports = {
 };
 
 var UI = {
-  log: __webpack_require__(19),
-  ns: __webpack_require__(7),
-  rdf: __webpack_require__(18),
-  store: __webpack_require__(14)
+  log: __webpack_require__(23),
+  ns: __webpack_require__(11),
+  rdf: __webpack_require__(3),
+  store: __webpack_require__(18)
 };
 
 var nextVariable = 0;
@@ -6062,7 +6310,2733 @@ function makeQueryRow(q, tr, constraint) {
 } // makeQueryRow
 
 /***/ }),
-/* 24 */
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {
+
+// Works in FF extension - what about browserify??
+
+if (module.scriptURI) {
+  // FF extension
+  module.exports.iconBase = '' + module.scriptURI.slice(0, module.scriptURI.lastIndexOf('/')) + '/icons/';
+  module.exports.originalIconBase = '' + module.scriptURI.slice(0, module.scriptURI.lastIndexOf('/')) + '/originalIcons/';
+} else {
+  // Node or browserify
+  var iconsOnGithub = 'https://linkeddata.github.io/solid-ui/src';
+
+  if (typeof $SolidTestEnvironment !== 'undefined' && $SolidTestEnvironment.iconBase) {
+    module.exports.iconBase = $SolidTestEnvironment.iconBase;
+    module.exports.originalIconBase = $SolidTestEnvironment.originalIconBase;
+  } else {
+    module.exports.iconBase = iconsOnGithub + '/icons/';
+    module.exports.originalIconBase = iconsOnGithub + '/originalIcons/';
+  }
+}
+console.log('   Icon base is: ' + module.exports.iconBase);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module)))
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+* General purpose utility functions used in the panes
+* oshani@csail.mit.edu
+*
+* Includes form-oriented widgets  timbl@w3.org
+*
+* sign-in sign-up widgets are in signin.js
+*
+*  Note... For pointers to posssible text-editing code, see
+*  http://stackoverflow.com/questions/6756407/what-contenteditable-editors
+*/
+
+// var aclModule = require('./acl.js')
+
+// Each widget should ideally live in its own file.  In order to break up this
+// monolithic widget index over time, we should add new widgets to the
+// 'lib/widgets/' directory, and re-export them like so:
+//
+// (In order to avoid name collisions, it is safely assumed that modules don't
+// export widgets with the same name)
+
+var widgets = module.exports = Object.assign({}, __webpack_require__(450), // UI.widgets.PeoplePicker
+__webpack_require__(246), __webpack_require__(95), // UI.widgets.errorMessageBlock
+{
+  buildCheckboxForm: buildCheckboxForm,
+  complain: complain
+});
+
+var UI = {
+  icons: __webpack_require__(29),
+  log: __webpack_require__(24),
+  ns: __webpack_require__(14),
+  store: __webpack_require__(22),
+  widgets: widgets
+};
+var error = __webpack_require__(95);
+var utils = __webpack_require__(31);
+
+function complain(context, err) {
+  var ele = context.statusArea || context.div;
+  console.log('Complaint: ' + err);
+  return ele.appendChild(error.errorMessageBlock(context.dom, err));
+}
+
+// var UI.ns = require('./ns.js')
+// var utilsModule = require('./utils')
+// var aclControlModule = require('./acl-control')
+
+// paneUtils = {}
+UI.widgets.field = {}; // Form field functions by URI of field type.
+
+UI.widgets.clearElement = function (ele) {
+  while (ele.firstChild) {
+    ele.removeChild(ele.firstChild);
+  }
+  return ele;
+};
+
+UI.widgets.refreshTree = function (root) {
+  if (root.refresh) {
+    root.refresh();
+    return;
+  }
+  for (var i = 0; i < root.children.length; i++) {
+    UI.widgets.refreshTree(root.children[i]);
+  }
+};
+
+// To figure out the log URI from the full URI used to invoke the reasoner
+UI.widgets.extractLogURI = function (fullURI) {
+  var logPos = fullURI.search(/logFile=/);
+  var rulPos = fullURI.search(/&rulesFile=/);
+  return fullURI.substring(logPos + 8, rulPos);
+};
+
+// @@@ This needs to be changed to local timee
+UI.widgets.shortDate = function (str) {
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+  if (!str) return '???';
+  var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  try {
+    var now = new Date();
+    var nowZ = $rdf.term(now).value;
+    // var n = now.getTimezoneOffset() // Minutes
+    if (str.slice(0, 10) === nowZ.slice(0, 10)) return str.slice(11, 16);
+    if (str.slice(0, 4) === nowZ.slice(0, 4)) {
+      return month[parseInt(str.slice(5, 7), 10) - 1] + ' ' + parseInt(str.slice(8, 10), 10);
+    }
+    return str.slice(0, 10);
+  } catch (e) {
+    return 'shortdate:' + e;
+  }
+};
+
+UI.widgets.formatDateTime = function (date, format) {
+  return format.split('{').map(function (s) {
+    var k = s.split('}')[0];
+    var width = { 'Milliseconds': 3, 'FullYear': 4 };
+    var d = { 'Month': 1 };
+    return s ? ('000' + (date['get' + k]() + (d[k] || 0))).slice(-(width[k] || 2)) + s.split('}')[1] : '';
+  }).join('');
+};
+
+UI.widgets.timestamp = function () {
+  return UI.widgets.formatDateTime(new Date(), '{FullYear}-{Month}-{Date}T{Hours}:{Minutes}:{Seconds}.{Milliseconds}');
+};
+UI.widgets.shortTime = function () {
+  return UI.widgets.formatDateTime(new Date(), '{Hours}:{Minutes}:{Seconds}.{Milliseconds}');
+};
+
+UI.widgets.newThing = function (store) {
+  var now = new Date();
+  // http://www.w3schools.com/jsref/jsref_obj_date.asp
+  return $rdf.sym(store.uri + '#' + 'id' + ('' + now.getTime()));
+};
+
+// ///////////////////// Handy UX widgets
+
+// Sets the best name we have and looks up a better one
+//
+UI.widgets.setName = function (element, x) {
+  var kb = UI.store;
+  var ns = UI.ns;
+  var findName = function findName(x) {
+    var name = kb.any(x, ns.vcard('fn')) || kb.any(x, ns.foaf('name')) || kb.any(x, ns.vcard('organization-name'));
+    return name ? name.value : null;
+  };
+  var name = x.sameTerm(ns.foaf('Agent')) ? 'Everyone' : findName(x);
+  element.textContent = name || utils.label(x);
+  if (!name && x.uri) {
+    // Note this is only a fetch, not a lookUP of all sameAs etc
+    kb.fetcher.nowOrWhenFetched(x.doc(), undefined, function (ok) {
+      element.textContent = findName(x) || utils.label(x); // had: (ok ? '' : '? ') +
+    });
+  }
+};
+
+// Set of suitable images
+UI.widgets.imagesOf = function (x, kb) {
+  var ns = UI.ns;
+  return kb.each(x, ns.sioc('avatar')).concat(kb.each(x, ns.foaf('img'))).concat(kb.each(x, ns.vcard('logo'))).concat(kb.each(x, ns.vcard('photo'))).concat(kb.each(x, ns.foaf('depiction')));
+};
+// Best logo or avater or photo etc to represent someone or some group etc
+//
+
+UI.widgets.setImage = function (element, x) {
+  var kb = UI.store;
+  var ns = UI.ns;
+  var iconDir = UI.icons.iconBase;
+  var findImage = function findImage(x) {
+    if (x.sameTerm(ns.foaf('Agent')) || x.sameTerm(ns.rdf('Resource'))) {
+      return iconDir + 'noun_98053.svg'; // Globe
+    }
+    var image = kb.any(x, ns.sioc('avatar')) || kb.any(x, ns.foaf('img')) || kb.any(x, ns.vcard('logo')) || kb.any(x, ns.vcard('hasPhoto')) || kb.any(x, ns.vcard('photo')) || kb.any(x, ns.foaf('depiction'));
+    return image ? image.uri : null;
+  };
+
+  var findImageByClass = function findImageByClass(x) {
+    var types = kb.findTypeURIs(x);
+    if (ns.solid('AppProvider').uri in types) {
+      return iconDir + 'noun_15177.svg'; // App
+    }
+    if (x.uri) {
+      if (x.uri.split('/').length === 4 && !x.uri.split('/')[1] && !x.uri.split('/')[3]) {
+        return iconDir + 'noun_15177.svg'; // App -- this is an origin
+      }
+      // Non-HTTP URI types imply types
+      if (x.uri.startsWith('message:') || x.uri.startsWith('mid:')) {
+        // message: is aapple bug-- should be mid:
+        return iconDir + 'noun_480183.svg'; // envelope  noun_567486
+      }
+      if (x.uri.startsWith('mailto:')) {
+        return iconDir + 'noun_567486.svg'; // mailbox - an email desitination
+      }
+      // For HTTP(s) documents, we could look at the MIME type if we know it.
+      if (x.uri.startsWith('https:') && x.uri.indexOf('#') < 0) {
+        return x.site().uri + 'favicon.ico';
+        // Todo: make the docuent icon a fallback for if the favicon does not exist
+        // todo: pick up a possible favicon for the web page istelf from a link
+        // was: return iconDir + 'noun_681601.svg' // document - under solid assumptions
+      }
+    }
+    if (ns.solid('AppProviderClass').uri in types) {
+      return iconDir + 'noun_144.svg'; // App Whitelist @@@ ICON (three apps ?)
+    }
+    if (ns.vcard('Group').uri in types || ns.rdfs('Class').uri in types) {
+      return iconDir + 'noun_339237.svg'; // Group of people
+    }
+    if (ns.vcard('Organization').uri in types || ns.rdfs('Class').uri in types) {
+      return iconDir + 'noun_143899.svg'; // Org r or Com
+    }
+    if (ns.vcard('Individual').uri in types || ns.foaf('Person').uri in types) {
+      return iconDir + 'noun_15059.svg'; // Person
+    }
+    if (ns.vcard('AddressBook').uri in types) {
+      return iconDir + 'noun_15695.svg';
+    }
+    // http://www.w3.org/ns/pim/trip#Trip
+    if ('http://www.w3.org/ns/pim/trip#Trip' in types) {
+      return iconDir + 'noun_581629.svg'; // Plane taking off
+    }
+    if (ns.meeting('Meeting').uri in types) {
+      return iconDir + 'noun_66617.svg';
+    }
+    return iconDir + 'noun_10636_grey.svg'; // Circle -  some thing
+  };
+
+  var uri = findImage(x);
+  element.setAttribute('src', uri || findImageByClass(x));
+  if (!uri && x.uri) {
+    kb.fetcher.nowOrWhenFetched(x.doc(), undefined, function (ok) {
+      element.setAttribute('src', findImage(x) || findImageByClass(x));
+    });
+  }
+};
+
+// If a web page then a favicon with a fallback to
+// See eg http://stackoverflow.com/questions/980855/inputting-a-default-image
+var faviconOrDefault = function faviconOrDefault(dom, x) {
+  var image = dom.createElement('img');
+  var isOrigin = function isOrigin(x) {
+    if (!x.uri) return false;
+    var parts = x.uri.split('/');
+    return parts.length === 3 || parts.length === 4 && parts[3] === '';
+  };
+  image.setAttribute('src', UI.icons.iconBase + (isOrigin(x) ? 'noun_15177.svg' : 'noun_681601.svg'));
+  if (x.uri && x.uri.startsWith('https:') && x.uri.indexOf('#') < 0) {
+    var res = dom.createElement('object'); // favico with a fallback of a default image if no favicon
+    res.setAttribute('data', x.site().uri + 'favicon.ico');
+    res.setAttribute('type', 'image/x-icon');
+    res.appendChild(image); // fallback
+    return res;
+  } else {
+    UI.widgets.setImage(image, x);
+    return image;
+  }
+};
+
+// Delete button with a check you really mean it
+//
+//   @@ Supress check if command key held down?
+//
+UI.widgets.deleteButtonWithCheck = function (dom, container, noun, deleteFunction) {
+  var minusIconURI = UI.icons.iconBase + 'noun_2188_red.svg'; // white minus in red #cc0000 circle
+
+  // var delButton = dom.createElement('button')
+
+  var img = dom.createElement('img');
+  img.setAttribute('src', minusIconURI); //  plus sign
+  img.setAttribute('style', 'margin: 0.2em; width: 1em; height:1em');
+  img.title = 'Remove this ' + noun;
+  var delButton = img;
+
+  container.appendChild(delButton);
+  container.setAttribute('class', 'hoverControl'); // See tabbedtab.css (sigh global CSS)
+  delButton.setAttribute('class', 'hoverControlHide');
+  // delButton.setAttribute('style', 'color: red; margin-right: 0.3em; foat:right; text-align:right')
+  delButton.addEventListener('click', function (e) {
+    container.removeChild(delButton); // Ask -- are you sure?
+    var cancelButton = dom.createElement('button');
+    cancelButton.textContent = 'cancel';
+    container.appendChild(cancelButton).addEventListener('click', function (e) {
+      container.removeChild(sureButton);
+      container.removeChild(cancelButton);
+      container.appendChild(delButton);
+    }, false);
+    var sureButton = dom.createElement('button');
+    sureButton.textContent = 'Delete ' + noun;
+    container.appendChild(sureButton).addEventListener('click', function (e) {
+      container.removeChild(sureButton);
+      container.removeChild(cancelButton);
+      deleteFunction();
+    }, false);
+  }, false);
+  return delButton;
+};
+
+// ////////////////////////////////////// Grab a name for a new thing
+
+// Form to get the name of a new thing before we create it
+// Returns a promise of (a name or null if cancelled)
+UI.widgets.askName = function (dom, kb, container, predicate, klass) {
+  return new Promise(function (resolve, reject) {
+    var form = dom.createElement('div'); // form is broken as HTML behaviour can resurface on js error
+    // classLabel = utils.label(ns.vcard('Individual'))
+    predicate = predicate || UI.ns.foaf('name');
+    var prompt = klass ? utils.label(klass) + '  ' : '';
+    prompt += utils.label(predicate) + ': ';
+    form.appendChild(dom.createElement('p')).textContent = prompt;
+    var namefield = dom.createElement('input');
+    namefield.setAttribute('type', 'text');
+    namefield.setAttribute('size', '100');
+    namefield.setAttribute('maxLength', '2048'); // No arbitrary limits
+    namefield.select(); // focus next user input
+    form.appendChild(namefield);
+    container.appendChild(form);
+
+    var gotName = function gotName() {
+      // namefield.setAttribute('class', 'pendingedit')
+      // namefield.disabled = true
+      form.parentNode.removeChild(form);
+      resolve(namefield.value);
+    };
+
+    namefield.addEventListener('keyup', function (e) {
+      if (e.keyCode == 13) {
+        gotName();
+      }
+    }, false);
+
+    var br = form.appendChild(dom.createElement('br'));
+
+    var cancel = form.appendChild(dom.createElement('button'));
+    cancel.setAttribute('type', 'button');
+    cancel.innerHTML = 'Cancel';
+    cancel.addEventListener('click', function (e) {
+      form.parentNode.removeChild(form);
+      resolve(null);
+    }, false);
+
+    var b = form.appendChild(dom.createElement('button'));
+    b.setAttribute('type', 'button');
+    b.innerHTML = 'Continue';
+    b.addEventListener('click', function (e) {
+      gotName();
+    }, false);
+  }); // Promise
+};
+
+// ////////////////////////////////////////////////////////////////
+
+// A little link icon
+//
+//
+UI.widgets.linkIcon = function (dom, subject, iconURI) {
+  var anchor = dom.createElement('a');
+  anchor.setAttribute('href', subject.uri);
+  if (subject.uri.startsWith('http')) {
+    // If diff web page
+    anchor.setAttribute('target', '_blank'); // open in a new tab or window
+  } // as mailboxes and mail messages do not need new browser window
+  var img = anchor.appendChild(dom.createElement('img'));
+  img.setAttribute('src', iconURI || UI.icons.originalIconBase + 'go-to-this.png');
+  img.setAttribute('style', 'margin: 0.3em;');
+  return anchor;
+};
+
+// A TR to repreent a draggable person, etc in a list
+//
+// pred is unused param at the moment
+//
+UI.widgets.personTR = function (dom, pred, obj, options) {
+  var tr = dom.createElement('tr');
+  options = options || {};
+  // tr.predObj = [pred.uri, obj.uri]   moved to acl-control
+  var td1 = tr.appendChild(dom.createElement('td'));
+  var td2 = tr.appendChild(dom.createElement('td'));
+  var td3 = tr.appendChild(dom.createElement('td'));
+
+  // var image = td1.appendChild(dom.createElement('img'))
+  var image = faviconOrDefault(dom, obj);
+
+  td1.setAttribute('style', 'vertical-align: middle; width:2.5em; padding:0.5em; height: 2.5em;');
+  td2.setAttribute('style', 'vertical-align: middle; text-align:left;');
+  td3.setAttribute('style', 'vertical-align: middle; width:2em; padding:0.5em; height: 4em;');
+  image.setAttribute('style', 'width: 3em; height: 3em; margin: 0.1em; border-radius: 1em;');
+  td1.appendChild(image);
+  // UI.widgets.setImage(image, obj)
+
+  UI.widgets.setName(td2, obj);
+  if (options.deleteFunction) {
+    UI.widgets.deleteButtonWithCheck(dom, td3, options.noun || 'one', options.deleteFunction);
+  }
+  if (obj.uri) {
+    // blank nodes need not apply
+    if (options.link !== false) {
+      var anchor = td3.appendChild(UI.widgets.linkIcon(dom, obj));
+      anchor.classList.add('HoverControlHide');
+      td3.appendChild(dom.createElement('br'));
+    }
+    if (options.draggable !== false) {
+      // default is on
+      image.setAttribute('draggable', 'false'); // Stop the image being dragged instead - just the TR
+      UI.widgets.makeDraggable(tr, obj);
+    }
+  }
+  return tr;
+};
+
+// Refresh a DOM tree recursively
+
+UI.widgets.refreshTree = function refreshTree(root) {
+  if (root.refresh) {
+    root.refresh();
+    return;
+  }
+  for (var i = 0; i < root.children.length; i++) {
+    refreshTree(root.children[i]);
+  }
+};
+
+// List of attachments accepting drop
+
+UI.widgets.attachmentList = function (dom, subject, div, options) {
+  options = options || {};
+  var doc = options.doc || subject.doc();
+  if (options.modify === undefined) options.modify = true;
+  var modify = options.modify;
+  var promptIcon = options.promptIcon || UI.icons.iconBase + 'noun_748003.svg'; //    target
+  // var promptIcon = options.promptIcon || (UI.icons.iconBase + 'noun_25830.svg') //  paperclip
+  var predicate = options.predicate || UI.ns.wf('attachment');
+  var noun = options.noun || 'attachment';
+
+  var kb = UI.store;
+  var ns = UI.ns;
+  var attachmentOuter = div.appendChild(dom.createElement('table'));
+  attachmentOuter.setAttribute('style', 'margin-top: 1em; margin-bottom: 1em;');
+  var attachmentOne = attachmentOuter.appendChild(dom.createElement('tr'));
+  var attachmentLeft = attachmentOne.appendChild(dom.createElement('td'));
+  var attachmentRight = attachmentOne.appendChild(dom.createElement('td'));
+  var attachmentTable = attachmentRight.appendChild(dom.createElement('table'));
+  var attachmentTableTop = attachmentTable.appendChild(dom.createElement('tr'));
+
+  var deleteAttachment = function deleteAttachment(target) {
+    kb.updater.update($rdf.st(subject, predicate, target, doc), [], function (uri, ok, error_body, xhr) {
+      if (ok) {
+        refresh();
+      } else {
+        complain('Error deleting one: ' + error_body);
+      }
+    });
+  };
+  var createNewRow = function createNewRow(target) {
+    var theTarget = target;
+    var opt = { noun: noun };
+    if (modify) {
+      opt.deleteFunction = function () {
+        deleteAttachment(theTarget);
+      };
+    }
+    return UI.widgets.personTR(dom, predicate, target, opt);
+  };
+  var refresh = attachmentTable.refresh = function () {
+    var things = kb.each(subject, predicate);
+    things.sort();
+    utils.syncTableToArray(attachmentTable, things, createNewRow);
+  };
+  attachmentOuter.refresh = refresh; // Participate in downstream changes
+  refresh();
+
+  var droppedURIHandler = function droppedURIHandler(uris) {
+    var ins = [];
+    uris.map(function (u) {
+      var target = $rdf.sym(u); // Attachment needs text label to disinguish I think not icon.
+      console.log('Dropped on attachemnt ' + u); // icon was: UI.icons.iconBase + 'noun_25830.svg'
+      ins.push($rdf.st(subject, predicate, target, doc));
+    });
+    kb.updater.update([], ins, function (uri, ok, error_body, xhr) {
+      if (ok) {
+        refresh();
+      } else {
+        complain('Error adding one: ' + error_body);
+      }
+    });
+  };
+  if (modify) {
+    var paperclip = attachmentLeft.appendChild(dom.createElement('img'));
+    paperclip.setAttribute('src', promptIcon);
+    paperclip.setAttribute('style', 'width; 2em; height: 2em; margin: 0.5em;');
+    paperclip.setAttribute('draggable', 'false');
+
+    UI.widgets.makeDropTarget(attachmentLeft, droppedURIHandler);
+  }
+  return attachmentOuter;
+};
+
+// ///////////////////////////////////////////////////////////////////////
+
+/*                                  Form Field implementations
+**
+*/
+/*          Group of different fields
+**
+*/
+UI.widgets.field[UI.ns.ui('Form').uri] = UI.widgets.field[UI.ns.ui('Group').uri] = function (dom, container, already, subject, form, store, callback) {
+  var kb = UI.store;
+  var box = dom.createElement('div');
+  box.setAttribute('style', 'padding-left: 2em; border: 0.05em solid brown;'); // Indent a group
+  var ui = UI.ns.ui;
+  container.appendChild(box);
+
+  // Prevent loops
+  var key = subject.toNT() + '|' + form.toNT();
+  if (already[key]) {
+    // been there done that
+    box.appendChild(dom.createTextNode('Group: see above ' + key));
+    var plist = [$rdf.st(subject, UI.ns.owl('sameAs'), subject)]; // @@ need prev subject
+    UI.outline.appendPropertyTRs(box, plist);
+    return box;
+  }
+  // box.appendChild(dom.createTextNode('Group: first time, key: '+key))
+  var already2 = {};
+  for (var x in already) {
+    already2[x] = 1;
+  }already2[key] = 1;
+
+  var parts = kb.any(form, ui('parts'));
+  var p2;
+  if (parts) {
+    p2 = parts.elements;
+  } else {
+    var parts = kb.each(form, ui('part')); //  Warning: unordered
+    p2 = UI.widgets.sortBySequence(parts);
+  }
+  if (!parts) {
+    box.appendChild(UI.widgets.errorMessageBlock(dom, 'No parts to form! '));
+    return dom;
+  }
+  var eles = [];
+  var original = [];
+  for (var i = 0; i < p2.length; i++) {
+    var field = p2[i];
+    var t = UI.widgets.bottomURI(field); // Field type
+    if (t === ui('Options').uri) {
+      var dep = kb.any(field, ui('dependingOn'));
+      if (dep && kb.any(subject, dep)) original[i] = kb.any(subject, dep).toNT();
+    }
+
+    var fn = UI.widgets.fieldFunction(dom, field);
+
+    var itemChanged = function itemChanged(ok, body) {
+      if (ok) {
+        for (var j = 0; j < p2.length; j++) {
+          // This is really messy.
+          var field = p2[j];
+          var t = UI.widgets.bottomURI(field); // Field type
+          if (t === ui('Options').uri) {
+            var dep = kb.any(field, ui('dependingOn'));
+            //                       if (dep && kb.any(subject, dep) && (kb.any(subject, dep).toNT() != original[j])) { // changed
+            if (1) {
+              // assume changed
+              var newOne = fn(dom, box, already, subject, field, store, callback);
+              box.removeChild(newOne);
+              box.insertBefore(newOne, eles[j]);
+              box.removeChild(eles[j]);
+              original[j] = kb.any(subject, dep).toNT();
+              eles[j] = newOne;
+            }
+          }
+        }
+      }
+      callback(ok, body);
+    };
+    eles.push(fn(dom, box, already2, subject, field, store, itemChanged));
+  }
+  return box;
+};
+
+/*          Options: Select one or more cases
+**
+*/
+UI.widgets.field[UI.ns.ui('Options').uri] = function (dom, container, already, subject, form, store, callback) {
+  var kb = UI.store;
+  var box = dom.createElement('div');
+  // box.setAttribute('style', 'padding-left: 2em; border: 0.05em dotted purple;')  // Indent Options
+  var ui = UI.ns.ui;
+  container.appendChild(box);
+
+  var dependingOn = kb.any(form, ui('dependingOn'));
+  if (!dependingOn) {
+    dependingOn = UI.ns.rdf('type');
+  } // @@ default to type (do we want defaults?)
+  var cases = kb.each(form, ui('case'));
+  if (!cases) {
+    box.appendChild(UI.widgets.errorMessageBlock(dom, 'No cases to Options form. '));
+  }
+  var values;
+  if (dependingOn.sameTerm(UI.ns.rdf('type'))) {
+    values = kb.findTypeURIs(subject);
+  } else {
+    var value = kb.any(subject, dependingOn);
+    if (value === undefined) {
+      box.appendChild(UI.widgets.errorMessageBlock(dom, "Can't select subform as no value of: " + dependingOn));
+    } else {
+      values = {};
+      values[value.uri] = true;
+    }
+  }
+  // @@ Add box.refresh() to sync fields with values
+  for (var i = 0; i < cases.length; i++) {
+    var c = cases[i];
+    var tests = kb.each(c, ui('for')); // There can be multiple 'for'
+    for (var j = 0; j < tests.length; j++) {
+      if (values[tests[j].uri]) {
+        var field = kb.the(c, ui('use'));
+        if (!field) {
+          box.appendChild(UI.widgets.errorMessageBlock(dom, 'No "use" part for case in form ' + form));
+          return box;
+        } else {
+          UI.widgets.appendForm(dom, box, already, subject, field, store, callback);
+        }
+        break;
+      }
+    }
+  }
+  return box;
+};
+
+/*          Multiple similar fields (unordered)
+**
+*/
+UI.widgets.field[UI.ns.ui('Multiple').uri] = function (dom, container, already, subject, form, store, callback) {
+  // var plusIcon = UI.icons.originalIconBase + 'tango/22-list-add.png' // blue plus
+  var plusIconURI = UI.icons.iconBase + 'noun_19460_green.svg'; // white plus in green circle
+
+  var kb = UI.store;
+  kb.updater = kb.updater || new $rdf.UpdateManager(kb);
+  var box = dom.createElement('table');
+  // We don't indent multiple as it is a sort of a prefix o fthe next field and has contents of one.
+  // box.setAttribute('style', 'padding-left: 2em; border: 0.05em solid green;')  // Indent a multiple
+  var ui = UI.ns.ui;
+  var i;
+  container.appendChild(box);
+  var property = kb.any(form, ui('property'));
+  if (!property) {
+    box.appendChild(UI.widgets.errorMessageBlock(dom, 'No property to multiple: ' + form)); // used for arcs in the data
+    return box;
+  }
+  var min = kb.any(form, ui('min')); // This is the minimum number -- default 0
+  min = min ? min.value : 0;
+  var max = kb.any(form, ui('max')); // This is the minimum number
+  max = max ? max.value : 99999999;
+
+  var element = kb.any(form, ui('part')); // This is the form to use for each one
+  if (!element) {
+    box.appendChild(UI.widgets.errorMessageBlock(dom, 'No part to multiple: ' + form));
+    return box;
+  }
+
+  var count = 0;
+  // box.appendChild(dom.createElement('h3')).textContent = "Fields:".
+  var body = box.appendChild(dom.createElement('tr'));
+  var tail = box.appendChild(dom.createElement('tr'));
+  var img = tail.appendChild(dom.createElement('img'));
+  img.setAttribute('src', plusIconURI); //  plus sign
+  img.setAttribute('style', 'margin: 0.2em; width: 1em; height:1em');
+  img.title = 'Click to add one or more ' + utils.label(property);
+  var prompt = tail.appendChild(dom.createElement('span'));
+
+  var addItem = function addItem(e, object) {
+    UI.log.debug('Multiple add: ' + object);
+    ++count;
+    if (!object) object = UI.widgets.newThing(store);
+    var tr = box.insertBefore(dom.createElement('tr'), tail);
+    var itemDone = function itemDone(uri, ok, message) {
+      if (ok) {
+        // @@@ Check IT hasnt alreday been written in
+        if (!kb.holds(subject, property, object)) {
+          var ins = [$rdf.st(subject, property, object, store)];
+          kb.updater.update([], ins, linkDone);
+        }
+      } else {
+        tr.appendChild(UI.widgets.errorMessageBlock(dom, 'Multiple: item failed: ' + body));
+        callback(ok, message);
+      }
+    };
+    var linkDone = function linkDone(uri, ok, message) {
+      return callback(ok, message);
+    };
+
+    var fn = UI.widgets.fieldFunction(dom, element);
+    var subField = fn(dom, body, already, object, element, store, itemDone);
+
+    // delete button
+    var deleteItem = function deleteItem() {
+      if (kb.holds(subject, property, object)) {
+        var del = [$rdf.st(subject, property, object, store)];
+        kb.updater.update(del, [], function (uri, ok, message) {
+          if (ok) {
+            body.removeChild(subField);
+          } else {
+            body.appendChild(UI.widgets.errorMessageBlock(dom, 'Multiple: delete failed: ' + message));
+          }
+        });
+      }
+    };
+    UI.widgets.deleteButtonWithCheck(dom, subField, utils.label(property), deleteItem);
+  };
+
+  var values = kb.each(subject, property);
+  prompt.textContent = (values.length === 0 ? 'Add one or more ' : 'Add more ') + utils.label(property);
+
+  values.map(function (obj) {
+    addItem(null, obj);
+  });
+  var extra = min - values.length;
+  for (var j = 0; j < extra; j++) {
+    console.log('Adding extra: min ' + min);
+    addItem(); // Add blanks if less than minimum
+  }
+
+  tail.addEventListener('click', addItem, true); // img.addEventListener('click', addItem, true)
+  return box;
+};
+
+/*          Text field
+**
+*/
+// For possible date popups see e.g. http://www.dynamicdrive.com/dynamicindex7/jasoncalendar.htm
+// or use HTML5: http://www.w3.org/TR/2011/WD-html-markup-20110113/input.date.html
+//
+
+UI.widgets.fieldParams = {};
+
+UI.widgets.fieldParams[UI.ns.ui('ColorField').uri] = {
+  'size': 9, 'type': 'color', dt: 'color' // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color
+};UI.widgets.fieldParams[UI.ns.ui('ColorField').uri].pattern = /^\s*#[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]([0-9a-f][0-9a-f])?\s*$/;
+
+UI.widgets.fieldParams[UI.ns.ui('DateField').uri] = {
+  'size': 20, 'type': 'date', 'dt': 'date' };
+UI.widgets.fieldParams[UI.ns.ui('DateField').uri].pattern = /^\s*[0-9][0-9][0-9][0-9](-[0-1]?[0-9]-[0-3]?[0-9])?Z?\s*$/;
+
+UI.widgets.fieldParams[UI.ns.ui('DateTimeField').uri] = {
+  'size': 20, 'type': 'date', 'dt': 'dateTime' };
+UI.widgets.fieldParams[UI.ns.ui('DateTimeField').uri].pattern = /^\s*[0-9][0-9][0-9][0-9](-[0-1]?[0-9]-[0-3]?[0-9])?(T[0-2][0-9]:[0-5][0-9](:[0-5][0-9])?)?Z?\s*$/;
+
+UI.widgets.fieldParams[UI.ns.ui('TimeField').uri] = {
+  'size': 10, 'type': 'time', 'dt': 'time' };
+UI.widgets.fieldParams[UI.ns.ui('TimeField').uri].pattern = /^\s*([0-2]?[0-9]:[0-5][0-9](:[0-5][0-9])?)\s*$/;
+
+UI.widgets.fieldParams[UI.ns.ui('IntegerField').uri] = {
+  'size': 12, 'style': 'text-align: right', 'dt': 'integer' };
+UI.widgets.fieldParams[UI.ns.ui('IntegerField').uri].pattern = /^\s*-?[0-9]+\s*$/;
+
+UI.widgets.fieldParams[UI.ns.ui('DecimalField').uri] = {
+  'size': 12, 'style': 'text-align: right', 'dt': 'decimal' };
+UI.widgets.fieldParams[UI.ns.ui('DecimalField').uri].pattern = /^\s*-?[0-9]*(\.[0-9]*)?\s*$/;
+
+UI.widgets.fieldParams[UI.ns.ui('FloatField').uri] = {
+  'size': 12, 'style': 'text-align: right', 'dt': 'float' };
+UI.widgets.fieldParams[UI.ns.ui('FloatField').uri].pattern = /^\s*-?[0-9]*(\.[0-9]*)?((e|E)-?[0-9]*)?\s*$/;
+
+UI.widgets.fieldParams[UI.ns.ui('SingleLineTextField').uri] = {};
+UI.widgets.fieldParams[UI.ns.ui('NamedNodeURIField').uri] = { namedNode: true };
+UI.widgets.fieldParams[UI.ns.ui('TextField').uri] = {};
+
+UI.widgets.fieldParams[UI.ns.ui('PhoneField').uri] = { 'size': 20, 'uriPrefix': 'tel:' };
+UI.widgets.fieldParams[UI.ns.ui('PhoneField').uri].pattern = /^\s*\+?[ 0-9-]+[0-9]\s*$/;
+
+UI.widgets.fieldParams[UI.ns.ui('EmailField').uri] = { 'size': 30, 'uriPrefix': 'mailto:' };
+UI.widgets.fieldParams[UI.ns.ui('EmailField').uri].pattern = /^\s*.*@.*\..*\s*$/; // @@ Get the right regexp here
+
+UI.widgets.field[UI.ns.ui('PhoneField').uri] = UI.widgets.field[UI.ns.ui('EmailField').uri] = UI.widgets.field[UI.ns.ui('ColorField').uri] = UI.widgets.field[UI.ns.ui('DateField').uri] = UI.widgets.field[UI.ns.ui('DateTimeField').uri] = UI.widgets.field[UI.ns.ui('TimeField').uri] = UI.widgets.field[UI.ns.ui('NumericField').uri] = UI.widgets.field[UI.ns.ui('IntegerField').uri] = UI.widgets.field[UI.ns.ui('DecimalField').uri] = UI.widgets.field[UI.ns.ui('FloatField').uri] = UI.widgets.field[UI.ns.ui('TextField').uri] = UI.widgets.field[UI.ns.ui('SingleLineTextField').uri] = UI.widgets.field[UI.ns.ui('NamedNodeURIField').uri] = function (dom, container, already, subject, form, store, callback) {
+  var ui = UI.ns.ui;
+  var kb = UI.store;
+
+  var box = dom.createElement('tr');
+  container.appendChild(box);
+  var lhs = dom.createElement('td');
+  lhs.setAttribute('class', 'formFieldName');
+  lhs.setAttribute('style', '  vertical-align: middle;');
+  box.appendChild(lhs);
+  var rhs = dom.createElement('td');
+  rhs.setAttribute('class', 'formFieldValue');
+  box.appendChild(rhs);
+
+  var property = kb.any(form, ui('property'));
+  if (!property) {
+    box.appendChild(dom.createTextNode('Error: No property given for text field: ' + form));
+    return box;
+  }
+  lhs.appendChild(UI.widgets.fieldLabel(dom, property, form));
+  var uri = UI.widgets.bottomURI(form);
+  var params = UI.widgets.fieldParams[uri];
+  if (params === undefined) params = {}; // non-bottom field types can do this
+  var style = params.style || 'font-size: 100%; margin: 0.1em; padding: 0.1em;';
+  // box.appendChild(dom.createTextNode(' uri='+uri+', pattern='+ params.pattern))
+  var field = dom.createElement('input');
+  rhs.appendChild(field);
+  field.setAttribute('type', params.type ? params.type : 'text');
+
+  var size = kb.any(form, ui('size')); // Form has precedence
+  field.setAttribute('size', size ? '' + size : params.size ? '' + params.size : '20');
+  var maxLength = kb.any(form, ui('maxLength'));
+  field.setAttribute('maxLength', maxLength ? '' + maxLength : '4096');
+
+  store = store || UI.widgets.fieldStore(subject, property, store);
+
+  var obj = kb.any(subject, property, undefined, store);
+  if (!obj) {
+    obj = kb.any(form, ui('default'));
+    if (obj) kb.add(subject, property, obj, store);
+  }
+  if (obj && obj.uri && params.uriPrefix) {
+    // eg tel: or mailto:
+    field.value = decodeURIComponent(obj.uri.replace(params.uriPrefix, '')) // should have no spaces but in case
+    .replace(/ /g, '');
+  } else if (obj) {
+    field.value = obj.value || obj.uri;
+  }
+  field.setAttribute('style', style);
+  field.addEventListener('keyup', function (e) {
+    if (params.pattern) {
+      field.setAttribute('style', style + (field.value.match(params.pattern) ? 'color: green;' : 'color: red;'));
+    }
+  }, true);
+  field.addEventListener('change', function (e) {
+    // i.e. lose focus with changed data
+    if (params.pattern && !field.value.match(params.pattern)) return;
+    field.disabled = true; // See if this stops getting two dates from fumbling e.g the chrome datepicker.
+    field.setAttribute('style', style + 'color: gray;'); // pending
+    var ds = kb.statementsMatching(subject, property); // remove any multiple values
+    var result;
+    if (params.namedNode) {
+      result = kb.sym(field.value);
+    } else if (params.uriPrefix) {
+      result = encodeURIComponent(field.value.replace(/ /g, ''));
+      result = kb.sym(params.uriPrefix + field.value);
+    } else {
+      if (params.dt) {
+        result = new $rdf.Literal(field.value.trim(), undefined, UI.ns.xsd(params.dt));
+      } else {
+        result = new $rdf.Literal(field.value);
+      }
+    }
+    var is = $rdf.st(subject, property, result, store); // @@ Explicitly put the datatype in.
+    kb.updater.update(ds, is, function (uri, ok, body) {
+      if (ok) {
+        field.disabled = false;
+        field.setAttribute('style', style);
+      } else {
+        box.appendChild(UI.widgets.errorMessageBlock(dom, body));
+      }
+      callback(ok, body);
+    });
+  }, true);
+  return box;
+};
+
+/*          Multiline Text field
+**
+*/
+
+UI.widgets.field[UI.ns.ui('MultiLineTextField').uri] = function (dom, container, already, subject, form, store, callback) {
+  var ui = UI.ns.ui;
+  var kb = UI.store;
+  var property = kb.any(form, ui('property'));
+  if (!property) {
+    return UI.widgets.errorMessageBlock(dom, 'No property to text field: ' + form);
+  }
+  container.appendChild(UI.widgets.fieldLabel(dom, property, form));
+  store = UI.widgets.fieldStore(subject, property, store);
+  var box = UI.widgets.makeDescription(dom, kb, subject, property, store, callback);
+  // box.appendChild(dom.createTextNode('<-@@ subj:'+subject+', prop:'+property))
+  container.appendChild(box);
+  return box;
+};
+
+/*          Boolean field
+**
+*/
+
+UI.widgets.field[UI.ns.ui('BooleanField').uri] = function (dom, container, already, subject, form, store, callback) {
+  var ui = UI.ns.ui;
+  var kb = UI.store;
+  var property = kb.any(form, ui('property'));
+  if (!property) {
+    return container.appendChild(UI.widgets.errorMessageBlock(dom, 'No property to boolean field: ' + form));
+  }
+  var lab = kb.any(form, ui('label'));
+  if (!lab) lab = utils.label(property, true); // Init capital
+  store = UI.widgets.fieldStore(subject, property, store);
+  var state = kb.any(subject, property);
+  if (state === undefined) {
+    state = false;
+  } // @@ sure we want that -- or three-state?
+  // UI.log.debug('store is '+store)
+  var ins = $rdf.st(subject, property, true, store);
+  var del = $rdf.st(subject, property, false, store);
+  var box = buildCheckboxForm(dom, kb, lab, del, ins, form, store);
+  container.appendChild(box);
+  return box;
+};
+
+/*          Classifier field
+**
+**  Nested categories
+**
+** @@ To do: If a classification changes, then change any dependent Options fields.
+*/
+
+UI.widgets.field[UI.ns.ui('Classifier').uri] = function (dom, container, already, subject, form, store, callback) {
+  var kb = UI.store;
+  var ui = UI.ns.ui;
+  var category = kb.any(form, ui('category'));
+  if (!category) {
+    return UI.widgets.errorMessageBlock(dom, 'No category for classifier: ' + form);
+  }
+  UI.log.debug('Classifier: store=' + store);
+  var checkOptions = function checkOptions(ok, body) {
+    if (!ok) return callback(ok, body);
+
+    /*
+    var parent = kb.any(undefined, ui('part'), form)
+    if (!parent) return callback(ok, body)
+    var kids = kb.each(parent, ui('part')); // @@@@@@@@@ Garbage
+    kids = kids.filter(function(k){return kb.any(k, ns.rdf('type'), ui('Options'))})
+    if (kids.length) UI.log.debug('Yes, found related options: '+kids[0])
+    */
+    return callback(ok, body);
+  };
+  var box = UI.widgets.makeSelectForNestedCategory(dom, kb, subject, category, store, checkOptions);
+  container.appendChild(box);
+  return box;
+};
+
+/*          Choice field
+**
+**  Not nested.  Generates a link to something from a given class.
+**  Optional subform for the thing selected.
+**  Alternative implementatons caould be:
+** -- pop-up menu (as here)
+** -- radio buttons
+** -- auto-complete typing
+**
+** Todo: Deal with multiple.  Maybe merge with multiple code.
+*/
+
+UI.widgets.field[UI.ns.ui('Choice').uri] = function (dom, container, already, subject, form, store, callback) {
+  var ui = UI.ns.ui;
+  var ns = UI.ns;
+  var kb = UI.store;
+  var p;
+  var box = dom.createElement('tr');
+  container.appendChild(box);
+  var lhs = dom.createElement('td');
+  box.appendChild(lhs);
+  var rhs = dom.createElement('td');
+  box.appendChild(rhs);
+  var property = kb.any(form, ui('property'));
+  if (!property) {
+    return UI.widgets.errorMessageBlock(dom, 'No property for Choice: ' + form);
+  }
+  lhs.appendChild(UI.widgets.fieldLabel(dom, property, form));
+  var from = kb.any(form, ui('from'));
+  if (!from) {
+    return UI.widgets.errorMessageBlock(dom, "No 'from' for Choice: " + form);
+  }
+  var subForm = kb.any(form, ui('use')); // Optional
+  var possible = [];
+  var possibleProperties;
+  var opts = { 'multiple': multiple, 'nullLabel': np, 'disambiguate': false };
+  possible = kb.each(undefined, ns.rdf('type'), from);
+  for (var x in kb.findMembersNT(from)) {
+    possible.push(kb.fromNT(x));
+    // box.appendChild(dom.createTextNode("RDFS: adding "+x))
+  } // Use rdfs
+  // UI.log.debug("%%% Choice field: possible.length 1 = "+possible.length)
+  if (from.sameTerm(ns.rdfs('Class'))) {
+    for (p in UI.widgets.allClassURIs()) {
+      possible.push(kb.sym(p));
+    } // UI.log.debug("%%% Choice field: possible.length 2 = "+possible.length)
+  } else if (from.sameTerm(ns.rdf('Property'))) {
+    possibleProperties = UI.widgets.propertyTriage();
+    for (p in possibleProperties.op) {
+      possible.push(kb.fromNT(p));
+    }for (p in possibleProperties.dp) {
+      possible.push(kb.fromNT(p));
+    }opts.disambiguate = true; // This is a big class, and the labels won't be enough.
+  } else if (from.sameTerm(ns.owl('ObjectProperty'))) {
+    possibleProperties = UI.widgets.propertyTriage();
+    for (p in possibleProperties.op) {
+      possible.push(kb.fromNT(p));
+    }opts.disambiguate = true;
+  } else if (from.sameTerm(ns.owl('DatatypeProperty'))) {
+    possibleProperties = UI.widgets.propertyTriage();
+    for (p in possibleProperties.dp) {
+      possible.push(kb.fromNT(p));
+    }opts.disambiguate = true;
+  }
+  var object = kb.any(subject, property);
+  function addSubForm(ok, body) {
+    object = kb.any(subject, property);
+    UI.widgets.fieldFunction(dom, subForm)(dom, rhs, already, object, subForm, store, callback);
+  }
+  var multiple = false;
+  // box.appendChild(dom.createTextNode('Choice: subForm='+subForm))
+  var possible2 = UI.widgets.sortByLabel(possible);
+  var np = '--' + utils.label(property) + '-?';
+  if (kb.any(form, ui('canMintNew'))) {
+    opts['mint'] = '* New *'; // @@ could be better
+    opts['subForm'] = subForm;
+  }
+  var selector = UI.widgets.makeSelectForOptions(dom, kb, subject, property, possible2, opts, store, callback);
+  rhs.appendChild(selector);
+  if (object && subForm) addSubForm(true, '');
+  return box;
+};
+
+//          Documentation - non-interactive fields
+//
+
+UI.widgets.fieldParams[UI.ns.ui('Comment').uri] = {
+  'element': 'p',
+  'style': 'padding: 0.1em 1.5em; color: brown; white-space: pre-wrap;' };
+UI.widgets.fieldParams[UI.ns.ui('Heading').uri] = {
+  'element': 'h3', 'style': 'font-size: 110%; color: brown;' };
+
+UI.widgets.field[UI.ns.ui('Comment').uri] = UI.widgets.field[UI.ns.ui('Heading').uri] = function (dom, container, already, subject, form, store, callback) {
+  var ui = UI.ns.ui;
+  var kb = UI.store;
+  var contents = kb.any(form, ui('contents'));
+  if (!contents) contents = 'Error: No contents in comment field.';
+
+  var uri = UI.widgets.bottomURI(form);
+  var params = UI.widgets.fieldParams[uri];
+  if (params === undefined) {
+    params = {};
+  }; // non-bottom field types can do this
+
+  var box = dom.createElement('div');
+  container.appendChild(box);
+  var p = box.appendChild(dom.createElement(params['element']));
+  p.textContent = contents;
+
+  var style = kb.any(form, ui('style'));
+  if (style === undefined) {
+    style = params.style ? params.style : '';
+  }
+  if (style) p.setAttribute('style', style);
+
+  return box;
+};
+
+// /////////////////////////////////////////////////////////////////////////////
+
+// Event Handler for links within solid apps.
+//
+// Note that native links have consraints in Firefox, they
+// don't work with local files for instance (2011)
+//
+UI.widgets.openHrefInOutlineMode = function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+  var target = utils.getTarget(e);
+  var uri = target.getAttribute('href');
+  if (!uri) console.log('No href found \n');
+  // subject term, expand, pane, solo, referrer
+  // dump('click on link to:' +uri+'\n')
+  if (UI.outline) {
+    UI.outline.GotoSubject(UI.store.sym(uri), true, undefined, true, undefined);
+  } else if (window && window.UI && window.UI.outline) {
+    window.UI.outline.GotoSubject(UI.store.sym(uri), true, undefined, true, undefined);
+  } else {
+    console.log("ERROR: Can't access outline manager in this config");
+  }
+  // UI.outline.GotoSubject(UI.store.sym(uri), true, undefined, true, undefined)
+};
+
+// We make a URI in the annotation store out of the URI of the thing to be annotated.
+//
+// @@ Todo: make it a personal preference.
+//
+UI.widgets.defaultAnnotationStore = function (subject) {
+  if (subject.uri === undefined) return undefined;
+  var s = subject.uri;
+  if (s.slice(0, 7) !== 'http://') return undefined;
+  s = s.slice(7); // Remove
+  var hash = s.indexOf('#');
+  if (hash >= 0) s = s.slice(0, hash); // Strip trailing
+  else {
+      var slash = s.lastIndexOf('/');
+      if (slash < 0) return undefined;
+      s = s.slice(0, slash);
+    }
+  return UI.store.sym('http://tabulator.org/wiki/annnotation/' + s);
+};
+
+UI.widgets.fieldStore = function (subject, predicate, def) {
+  var sts = UI.store.statementsMatching(subject, predicate);
+  if (sts.length === 0) return def; // can used default as no data yet
+  if (sts.length > 0 && sts[0].why.uri && UI.store.updater.editable(sts[0].why.uri, UI.store)) {
+    return UI.store.sym(sts[0].why.uri);
+  }
+  return null; // Can't edit
+};
+
+UI.widgets.allClassURIs = function () {
+  var set = {};
+  UI.store.statementsMatching(undefined, UI.ns.rdf('type'), undefined).map(function (st) {
+    if (st.object.uri) set[st.object.uri] = true;
+  });
+  UI.store.statementsMatching(undefined, UI.ns.rdfs('subClassOf'), undefined).map(function (st) {
+    if (st.object.uri) set[st.object.uri] = true;
+    if (st.subject.uri) set[st.subject.uri] = true;
+  });
+  UI.store.each(undefined, UI.ns.rdf('type'), UI.ns.rdfs('Class')).map(function (c) {
+    if (c.uri) set[c.uri] = true;
+  });
+  return set;
+};
+
+//  Figuring which propertites could by be used
+//
+UI.widgets.propertyTriage = function () {
+  var possibleProperties = {};
+  // if (possibleProperties === undefined) possibleProperties = {}
+  var kb = UI.store;
+  var dp = {};
+  var op = {};
+  var no = 0;
+  var nd = 0;
+  var nu = 0;
+  var pi = kb.predicateIndex; // One entry for each pred
+  for (var p in pi) {
+    var object = pi[p][0].object;
+    if (object.termType === 'Literal') {
+      dp[p] = true;
+      nd++;
+    } else {
+      op[p] = true;
+      no++;
+    }
+  } // If nothing discovered, then could be either:
+  var ps = kb.each(undefined, UI.ns.rdf('type'), UI.ns.rdf('Property'));
+  for (var i = 0; i < ps.length; i++) {
+    p = ps[i].toNT();
+    UI.log.debug('propertyTriage: unknown: ' + p);
+    if (!op[p] && !dp[p]) {
+      dp[p] = true;op[p] = true;nu++;
+    }
+  }
+  possibleProperties.op = op;
+  possibleProperties.dp = dp;
+  UI.log.info('propertyTriage: ' + no + ' non-lit, ' + nd + ' literal. ' + nu + ' unknown.');
+  return possibleProperties;
+};
+
+UI.widgets.fieldLabel = function (dom, property, form) {
+  var lab = UI.store.any(form, UI.ns.ui('label'));
+  if (!lab) lab = utils.label(property, true); // Init capital
+  if (property === undefined) {
+    return dom.createTextNode('@@Internal error: undefined property');
+  }
+  var anchor = dom.createElement('a');
+  if (property.uri) anchor.setAttribute('href', property.uri);
+  anchor.setAttribute('style', 'color: #3B5998; text-decoration: none;'); // Not too blue and no underline
+  anchor.textContent = lab;
+  return anchor;
+};
+
+/*                      General purpose widgets
+**
+*/
+
+UI.widgets.bottomURI = function (x) {
+  var kb = UI.store;
+  var ft = kb.findTypeURIs(x);
+  var bot = kb.bottomTypeURIs(ft); // most specific
+  var bots = [];
+  for (var b in bot) {
+    bots.push(b);
+  } // if (bots.length > 1) throw "Didn't expect "+x+" to have multiple bottom types: "+bots
+  return bots[0];
+};
+
+UI.widgets.fieldFunction = function (dom, field) {
+  var uri = UI.widgets.bottomURI(field);
+  var fun = UI.widgets.field[uri];
+  UI.log.debug('paneUtils: Going to implement field ' + field + ' of type ' + uri);
+  if (!fun) {
+    return function () {
+      return UI.widgets.errorMessageBlock(dom, 'No handler for field ' + field + ' of type ' + uri);
+    };
+  }
+  return fun;
+};
+
+// A button for editing a form (in place, at the moment)
+//
+//  When editing forms, make it yellow, when editing thr form form, pink
+// Help people understand how many levels down they are.
+//
+UI.widgets.editFormButton = function (dom, container, form, store, callback) {
+  var b = dom.createElement('button');
+  b.setAttribute('type', 'button');
+  b.innerHTML = 'Edit ' + utils.label(UI.ns.ui('Form'));
+  b.addEventListener('click', function (e) {
+    var ff = UI.widgets.appendForm(dom, container, {}, form, UI.ns.ui('FormForm'), store, callback);
+    ff.setAttribute('style', UI.ns.ui('FormForm').sameTerm(form) ? 'background-color: #fee;' : 'background-color: #ffffe7;');
+    container.removeChild(b);
+  }, true);
+  return b;
+};
+
+// A button for jumping
+//
+UI.widgets.linkButton = function (dom, object) {
+  var b = dom.createElement('button');
+  b.setAttribute('type', 'button');
+  b.textContent = 'Goto ' + utils.label(object);
+  b.addEventListener('click', function (e) {
+    // b.parentNode.removeChild(b)
+    UI.outline.GotoSubject(object, true, undefined, true, undefined);
+  }, true);
+  return b;
+};
+
+UI.widgets.removeButton = function (dom, element) {
+  var b = dom.createElement('button');
+  b.setAttribute('type', 'button');
+  b.textContent = '✕'; // MULTIPLICATION X
+  b.addEventListener('click', function (e) {
+    element.parentNode.removeChild(element);
+  }, true);
+  return b;
+};
+
+UI.widgets.appendForm = function (dom, container, already, subject, form, store, itemDone) {
+  return UI.widgets.fieldFunction(dom, form)(dom, container, already, subject, form, store, itemDone);
+};
+
+//          Find list of properties for class
+//
+// Three possible sources: Those mentioned in schemas, which exludes many
+// those which occur in the data we already have, and those predicates we
+// have come across anywahere and which are not explicitly excluded from
+// being used with this class.
+//
+
+UI.widgets.propertiesForClass = function (kb, c) {
+  var ns = UI.ns;
+  var explicit = kb.each(undefined, ns.rdf('range'), c);[ns.rdfs('comment'), ns.dc('title'), // Generic things
+  ns.foaf('name'), ns.foaf('homepage')].map(function (x) {
+    explicit.push(x);
+  });
+  var members = kb.each(undefined, ns.rdf('type'), c);
+  if (members.length > 60) members = members.slice(0, 60); // Array supports slice?
+  var used = {};
+  for (var i = 0; i < (members.length > 60 ? 60 : members.length); i++) {
+    kb.statementsMatching(members[i], undefined, undefined).map(function (st) {
+      used[st.predicate.uri] = true;
+    });
+  }
+  explicit.map(function (p) {
+    used[p.uri] = true;
+  });
+  var result = [];
+  for (var uri in used) {
+    result.push(kb.sym(uri));
+  }
+  return result;
+};
+
+// @param cla - the URI of the class
+// @proap
+UI.widgets.findClosest = function findClosest(kb, cla, prop) {
+  var agenda = [kb.sym(cla)]; // ordered - this is breadth first search
+  while (agenda.length > 0) {
+    var c = agenda.shift(); // first
+    // if (c.uri && (c.uri == ns.owl('Thing').uri || c.uri == ns.rdf('Resource').uri )) continue
+    var lists = kb.each(c, prop);
+    UI.log.debug('Lists for ' + c + ', ' + prop + ': ' + lists.length);
+    if (lists.length !== 0) return lists;
+    var supers = kb.each(c, UI.ns.rdfs('subClassOf'));
+    for (var i = 0; i < supers.length; i++) {
+      agenda.push(supers[i]);
+      UI.log.debug('findClosest: add super: ' + supers[i]);
+    }
+  }
+  return [];
+};
+
+// Which forms apply to a given existing subject?
+
+UI.widgets.formsFor = function (subject) {
+  var ns = UI.ns;
+  var kb = UI.store;
+
+  UI.log.debug('formsFor: subject=' + subject);
+  var t = kb.findTypeURIs(subject);
+  var t1;
+  for (t1 in t) {
+    UI.log.debug('   type: ' + t1);
+  }
+  var bottom = kb.bottomTypeURIs(t); // most specific
+  var forms = [];
+  for (var b in bottom) {
+    // Find the most specific
+    UI.log.debug('formsFor: trying bottom type =' + b);
+    forms = forms.concat(UI.widgets.findClosest(kb, b, ns.ui('creationForm')));
+    forms = forms.concat(UI.widgets.findClosest(kb, b, ns.ui('annotationForm')));
+  }
+  UI.log.debug('formsFor: subject=' + subject + ', forms=');
+  return forms;
+};
+
+UI.widgets.sortBySequence = function (list) {
+  var p2 = list.map(function (p) {
+    var k = UI.store.any(p, UI.ns.ui('sequence'));
+    return [k || 9999, p];
+  });
+  p2.sort(function (a, b) {
+    return a[0] - b[0];
+  });
+  return p2.map(function (pair) {
+    return pair[1];
+  });
+};
+
+UI.widgets.sortByLabel = function (list) {
+  var p2 = list.map(function (p) {
+    return [utils.label(p).toLowerCase(), p];
+  });
+  p2.sort();
+  return p2.map(function (pair) {
+    return pair[1];
+  });
+};
+
+// Button to add a new whatever using a form
+//
+// @param form - optional form , else will look for one
+// @param store - optional store else will prompt for one (unimplemented)
+
+UI.widgets.newButton = function (dom, kb, subject, predicate, theClass, form, store, callback) {
+  var b = dom.createElement('button');
+  b.setAttribute('type', 'button');
+  b.innerHTML = 'New ' + utils.label(theClass);
+  b.addEventListener('click', function (e) {
+    b.parentNode.appendChild(UI.widgets.promptForNew(dom, kb, subject, predicate, theClass, form, store, callback));
+  }, false);
+  return b;
+};
+
+//      Prompt for new object of a given class
+//
+//
+// @param dom - the document DOM for the user interface
+// @param kb - the graph which is the knowledge base we are working with
+// @param subject - a term, Thing this should be linked to when made. Optional.
+// @param predicate - a term, the relationship for the subject link. Optional.
+// @param theClass - an RDFS class containng the object about which the new information is.
+// @param form  - the form to be used when a new one. null means please find one.
+// @param store - The web document being edited
+// @param callback - takes (boolean ok, string errorBody)
+// @returns a dom object with the form DOM
+
+UI.widgets.promptForNew = function (dom, kb, subject, predicate, theClass, form, store, callback) {
+  var ns = UI.ns;
+  var box = dom.createElement('form');
+
+  if (!form) {
+    var lists = UI.widgets.findClosest(kb, theClass.uri, ns.ui('creationForm'));
+    if (lists.length === 0) {
+      var p = box.appendChild(dom.createElement('p'));
+      p.textContent = 'I am sorry, you need to provide information about a ' + utils.label(theClass) + " but I don't know enough information about those to ask you.";
+      var b = box.appendChild(dom.createElement('button'));
+      b.setAttribute('type', 'button');
+      b.setAttribute('style', 'float: right;');
+      b.innerHTML = 'Goto ' + utils.label(theClass);
+      b.addEventListener('click', function (e) {
+        UI.outline.GotoSubject(theClass, true, undefined, true, undefined);
+      }, false);
+      return box;
+    }
+    UI.log.debug('lists[0] is ' + lists[0]);
+    form = lists[0]; // Pick any one
+  }
+  UI.log.debug('form is ' + form);
+  box.setAttribute('style', 'border: 0.05em solid brown; color: brown');
+  box.innerHTML = '<h3>New ' + utils.label(theClass) + '</h3>';
+
+  var formFunction = UI.widgets.fieldFunction(dom, form);
+  var object = UI.widgets.newThing(store);
+  var gotButton = false;
+  var itemDone = function itemDone(ok, body) {
+    if (!ok) return callback(ok, body);
+    var insertMe = [];
+    if (subject && !kb.holds(subject, predicate, object, store)) {
+      insertMe.push($rdf.st(subject, predicate, object, store));
+    }
+    if (subject && !kb.holds(object, ns.rdf('type'), theClass, store)) {
+      insertMe.push($rdf.st(object, ns.rdf('type'), theClass, store));
+    }
+    if (insertMe.length) {
+      UI.store.updater.update([], insertMe, linkDone);
+    } else {
+      callback(true, body);
+    }
+    if (!gotButton) {
+      gotButton = box.appendChild(UI.widgets.linkButton(dom, object));
+    }
+    // tabulator.outline.GotoSubject(object, true, undefined, true, undefined)
+  };
+  var linkDone = function linkDone(uri, ok, body) {
+    return callback(ok, body);
+  };
+  UI.log.info('paneUtils Object is ' + object);
+  var f = formFunction(dom, box, {}, object, form, store, itemDone);
+  var rb = UI.widgets.removeButton(dom, f);
+  rb.setAttribute('style', 'float: right;');
+  box.AJAR_subject = object;
+  return box;
+};
+
+//      Description text area
+//
+// Make a box to demand a description or display existing one
+//
+// @param dom - the document DOM for the user interface
+// @param kb - the graph which is the knowledge base we are working with
+// @param subject - a term, the subject of the statement(s) being edited.
+// @param predicate - a term, the predicate of the statement(s) being edited
+// @param store - The web document being edited
+// @param callback - takes (boolean ok, string errorBody)
+
+UI.widgets.makeDescription = function (dom, kb, subject, predicate, store, callback) {
+  var group = dom.createElement('div');
+
+  var sts = kb.statementsMatching(subject, predicate, undefined); // Only one please
+  if (sts.length > 1) {
+    return UI.widgets.errorMessageBlock(dom, 'Should not be ' + sts.length + ' i.e. >1 ' + predicate + ' of ' + subject);
+  }
+  var desc = sts.length ? sts[0].object.value : undefined;
+
+  var field = dom.createElement('textarea');
+  group.appendChild(field);
+  field.rows = desc ? desc.split('\n').length + 2 : 2;
+  field.cols = 80;
+  var style = 'font-size:100%; white-space: pre-wrap; background-color: white;' + ' border: 0.07em solid gray; padding: 1em 0.5em; margin: 1em 1em;';
+  field.setAttribute('style', style);
+  if (sts.length) {
+    field.value = desc;
+  } else {
+    // Unless you can make the predicate label disappear with the first click then this is over-cute
+    // field.value = utils.label(predicate); // Was"enter a description here"
+    field.select(); // Select it ready for user input -- doesn't work
+  }
+
+  group.refresh = function () {
+    var v = kb.any(subject, predicate);
+    if (v && v.value !== field.value) {
+      field.value = v.value; // don't touch widget if no change
+      // @@ this is the place to color the field from the user who chanaged it
+    }
+  };
+
+  var br = dom.createElement('br');
+  group.appendChild(br);
+  var submit = dom.createElement('input');
+  submit.setAttribute('type', 'submit');
+  submit.disabled = true; // until the filled has been modified
+  submit.setAttribute('style', 'visibility: hidden; float: right;'); // Keep UI clean
+  submit.value = 'Save ' + utils.label(predicate); // @@ I18n
+  group.appendChild(submit);
+
+  var saveChange = function saveChange(e) {
+    submit.disabled = true;
+    submit.setAttribute('style', 'visibility: hidden; float: right;'); // Keep UI clean
+    field.disabled = true;
+    field.setAttribute('style', style + 'color: gray;'); // pending
+    var ds = kb.statementsMatching(subject, predicate);
+    var is = $rdf.st(subject, predicate, field.value, store);
+    UI.store.updater.update(ds, is, function (uri, ok, body) {
+      if (ok) {
+        field.setAttribute('style', style + 'color: black;');
+        field.disabled = false;
+      } else {
+        group.appendChild(UI.widgets.errorMessageBlock(dom, 'Error (while saving change to ' + store.uri + '): ' + body));
+      }
+      if (callback) {
+        callback(ok, body);
+      }
+    });
+  };
+
+  field.addEventListener('keyup', function (e) {
+    // Green means has been changed, not saved yet
+    field.setAttribute('style', style + 'color: green;');
+    if (submit) {
+      submit.disabled = false;
+      submit.setAttribute('style', 'float: right;'); // Remove visibility: hidden
+    }
+  }, true);
+
+  field.addEventListener('change', saveChange, true);
+
+  submit.addEventListener('click', saveChange, false);
+
+  return group;
+};
+
+// Make SELECT element to select options
+//
+// @param subject - a term, the subject of the statement(s) being edited.
+// @param predicate - a term, the predicate of the statement(s) being edited
+// @param possible - a list of terms, the possible value the object can take
+// @param options.multiple - Boolean - Whether more than one at a time is allowed
+// @param options.nullLabel - a string to be displayed as the
+//                        option for none selected (for non multiple)
+// @param options.mint - User may create thing if this sent to the prompt string eg "New foo"
+// @param options.subForm - If mint, then the form to be used for minting the new thing
+// @param store - The web document being edited
+// @param callback - takes (boolean ok, string errorBody)
+
+UI.widgets.makeSelectForOptions = function (dom, kb, subject, predicate, possible, options, store, callback) {
+  UI.log.debug('Select list length now ' + possible.length);
+  var n = 0;
+  var uris = {}; // Count them
+  for (var i = 0; i < possible.length; i++) {
+    var sub = possible[i];
+    // UI.log.debug('Select element: '+ sub)
+    if (sub.uri in uris) continue;
+    uris[sub.uri] = true;n++;
+  } // uris is now the set of possible options
+  if (n === 0 && !options.mint) {
+    return UI.widgets.errorMessageBlock(dom, "Can't do selector with no options, subject= " + subject + ' property = ' + predicate + '.');
+  }
+  UI.log.debug('makeSelectForOptions: store=' + store);
+
+  var getActual = function getActual() {
+    actual = {};
+    if (predicate.sameTerm(UI.ns.rdf('type'))) {
+      actual = kb.findTypeURIs(subject);
+    } else {
+      kb.each(subject, predicate).map(function (x) {
+        actual[x.uri] = true;
+      });
+    }
+    return actual;
+  };
+  var actual = getActual();
+
+  // var newObject = null
+
+  var onChange = function onChange(e) {
+    select.disabled = true; // until data written back - gives user feedback too
+    var ds = [];
+    var is = [];
+    var removeValue = function removeValue(t) {
+      if (kb.holds(subject, predicate, t, store)) {
+        ds.push($rdf.st(subject, predicate, t, store));
+      }
+    };
+    for (var i = 0; i < select.options.length; i++) {
+      var opt = select.options[i];
+      if (opt.selected && opt.AJAR_mint) {
+        var newObject;
+        if (options.mintClass) {
+          var thisForm = UI.widgets.promptForNew(dom, kb, subject, predicate, options.mintClass, null, store, function (ok, body) {
+            if (!ok) {
+              callback(ok, body); // @@ if ok, need some form of refresh of the select for the new thing
+            }
+          });
+          select.parentNode.appendChild(thisForm);
+          newObject = thisForm.AJAR_subject;
+        } else {
+          newObject = UI.widgets.newThing(store);
+        }
+        is.push($rdf.st(subject, predicate, newObject, store));
+        if (options.mintStatementsFun) is = is.concat(options.mintStatementsFun(newObject));
+      }
+      if (!opt.AJAR_uri) continue; // a prompt or mint
+      if (opt.selected && !(opt.AJAR_uri in actual)) {
+        // new class
+        is.push($rdf.st(subject, predicate, kb.sym(opt.AJAR_uri), store));
+      }
+      if (!opt.selected && opt.AJAR_uri in actual) {
+        // old class
+        removeValue(kb.sym(opt.AJAR_uri));
+        // ds.push($rdf.st(subject, predicate, kb.sym(opt.AJAR_uri), store ))
+      }
+      if (opt.selected) select.currentURI = opt.AJAR_uri;
+    }
+    var sel = select.subSelect; // All subclasses must also go
+    while (sel && sel.currentURI) {
+      removeValue(kb.sym(sel.currentURI));
+      sel = sel.subSelect;
+    }
+    sel = select.superSelect; // All superclasses are redundant
+    while (sel && sel.currentURI) {
+      removeValue(kb.sym(sel.currentURI));
+      sel = sel.superSelect;
+    }
+    function doneNew(ok, body) {
+      callback(ok, body);
+    }
+    UI.log.info('selectForOptions: stote = ' + store);
+    UI.store.updater.update(ds, is, function (uri, ok, body) {
+      actual = getActual(); // refresh
+      // kb.each(subject, predicate).map(function(x){actual[x.uri] = true})
+      if (ok) {
+        select.disabled = false; // data written back
+        if (newObject) {
+          var fn = UI.widgets.fieldFunction(dom, options.subForm);
+          fn(dom, select.parentNode, {}, newObject, options.subForm, store, doneNew);
+        }
+      }
+      if (callback) callback(ok, body);
+    });
+  };
+
+  var select = dom.createElement('select');
+  select.setAttribute('style', 'margin: 0.6em 1.5em;');
+  if (options.multiple) select.setAttribute('multiple', 'true');
+  select.currentURI = null;
+
+  select.refresh = function () {
+    actual = getActual(); // refresh
+    for (var i = 0; i < select.children.length; i++) {
+      var option = select.children[i];
+      if (option.AJAR_uri) {
+        option.selected = option.AJAR_uri in actual;
+      }
+    }
+    select.disabled = false; // unlocked any conflict we had got into
+  };
+
+  for (var uri in uris) {
+    var c = kb.sym(uri);
+    var option = dom.createElement('option');
+    if (options.disambiguate) {
+      option.appendChild(dom.createTextNode(utils.labelWithOntology(c, true))); // Init. cap
+    } else {
+      option.appendChild(dom.createTextNode(utils.label(c, true))); // Init.
+    }
+    var backgroundColor = kb.any(c, kb.sym('http://www.w3.org/ns/ui#backgroundColor'));
+    if (backgroundColor) option.setAttribute('style', 'background-color: ' + backgroundColor.value + '; ');
+    option.AJAR_uri = uri;
+    if (uri in actual) {
+      option.setAttribute('selected', 'true');
+      select.currentURI = uri;
+      // dump("Already in class: "+ uri+"\n")
+    }
+    select.appendChild(option);
+  }
+  if (options.mint) {
+    var mint = dom.createElement('option');
+    mint.appendChild(dom.createTextNode(options.mint));
+    mint.AJAR_mint = true; // Flag it
+    select.insertBefore(mint, select.firstChild);
+  }
+  if (select.currentURI == null && !options.multiple) {
+    var prompt = dom.createElement('option');
+    prompt.appendChild(dom.createTextNode(options.nullLabel));
+    select.insertBefore(prompt, select.firstChild);
+    prompt.selected = true;
+  }
+  select.addEventListener('change', onChange, false);
+  return select;
+}; // makeSelectForOptions
+
+// Make SELECT element to select subclasses
+//
+// If there is any disjoint union it will so a mutually exclusive dropdown
+// Failing that it will do a multiple selection of subclasses.
+// Callback takes (boolean ok, string errorBody)
+
+UI.widgets.makeSelectForCategory = function (dom, kb, subject, category, store, callback) {
+  var log = UI.log;
+  var du = kb.any(category, UI.ns.owl('disjointUnionOf'));
+  var subs;
+  var multiple = false;
+  if (!du) {
+    subs = kb.each(undefined, UI.ns.rdfs('subClassOf'), category);
+    multiple = true;
+  } else {
+    subs = du.elements;
+  }
+  log.debug('Select list length ' + subs.length);
+  if (subs.length === 0) {
+    return UI.widgets.errorMessageBlock(dom, "Can't do " + (multiple ? 'multiple ' : '') + 'selector with no subclasses of category: ' + category);
+  }
+  if (subs.length === 1) {
+    return UI.widgets.errorMessageBlock(dom, "Can't do " + (multiple ? 'multiple ' : '') + 'selector with only 1 subclass of category: ' + category + ':' + subs[1]);
+  }
+  return UI.widgets.makeSelectForOptions(dom, kb, subject, UI.ns.rdf('type'), subs, { 'multiple': multiple, 'nullPrompt': '--classify--' }, store, callback);
+};
+
+// Make SELECT element to select subclasses recurively
+//
+// It will so a mutually exclusive dropdown, with another if there are nested
+// disjoint unions.
+// Callback takes (boolean ok, string errorBody)
+
+UI.widgets.makeSelectForNestedCategory = function (dom, kb, subject, category, store, callback) {
+  var container = dom.createElement('span'); // Container
+  var child = null;
+  var select;
+  var onChange = function onChange(ok, body) {
+    if (ok) update();
+    callback(ok, body);
+  };
+  select = UI.widgets.makeSelectForCategory(dom, kb, subject, category, store, onChange);
+  container.appendChild(select);
+  var update = function update() {
+    // UI.log.info("Selected is now: "+select.currentURI)
+    if (child) {
+      container.removeChild(child);
+      child = null;
+    }
+    if (select.currentURI && kb.any(kb.sym(select.currentURI), UI.ns.owl('disjointUnionOf'))) {
+      child = UI.widgets.makeSelectForNestedCategory(dom, kb, subject, kb.sym(select.currentURI), store, callback);
+      select.subSelect = child.firstChild;
+      select.subSelect.superSelect = select;
+      container.appendChild(child);
+    }
+  };
+  update();
+  return container;
+};
+
+/*  Build a checkbox from a given statement(s)
+**
+**  If the source document is editable, make the checkbox editable
+**
+**  ins and sel are either statements *or arrays of statements* which should be
+**  made if the checkbox is checed and unchecked respectively.
+*/
+function buildCheckboxForm(dom, kb, lab, del, ins, form, store) {
+  var box = dom.createElement('div');
+  var tx = dom.createTextNode(lab);
+  var editable = UI.store.updater.editable(store.uri);
+  tx.style = 'colour: black; font-size: 100%; padding-left: 0.5 em; padding-right: 0.5 em;';
+  box.appendChild(tx);
+  var input = dom.createElement('input');
+  box.appendChild(input);
+  input.setAttribute('type', 'checkbox');
+  input.setAttribute('style', 'margin: 0.7em');
+
+  if (ins && ins.object && !ins.why) {
+    // back-compatible
+    ins.why = store;
+  }
+  if (del && del.object && !del.why) {
+    // back-compatible
+    del.why = store;
+  }
+
+  var state = kb.holds(ins);
+  if (del) {
+    var negation = kb.holds(del);
+    if (state && negation) {
+      box.appendChild(UI.widgets.errorMessageBlock(dom, 'Inconsistent data in store!\n' + ins + ' and\n' + del));
+      return box;
+    }
+    if (!state && !negation) {
+      state = !!kb.any(form, UI.ns.ui('default'));
+    }
+  }
+
+  input.checked = state;
+  if (!editable) return box;
+
+  var boxHandler = function boxHandler(e) {
+    tx.style = 'color: #bbb;';
+    var toInsert, toDelete;
+    if (this.checked) {
+      toInsert = ins;
+      toDelete = del && negation ? del : [];
+      UI.store.updater.update(toDelete, toInsert, function (uri, success, error_body) {
+        if (!success) {
+          tx.style = 'color: #black; background-color: #fee;';
+          box.appendChild(UI.widgets.errorMessageBlock(dom, 'Error updating store (setting boolean, checked) :\n\n' + error_body));
+          input.checked = false; // rollback UI
+          return;
+        } else {
+          tx.style = 'color: #black;';
+          state = true;
+          negation = false;
+        }
+      });
+    } else {
+      // unchecked
+      toInsert = del;
+      toDelete = ins; // kb.statementsMatching(ins.subject, ins.predicate, ins.object, store)
+      UI.store.updater.update(toDelete, toInsert, function (uri, success, error_body) {
+        tx.className = 'question';
+        if (!success) {
+          tx.style = 'color: #black; background-color: #fee;';
+          box.appendChild(UI.widgets.errorMessageBlock(dom, 'Error updating store (unchecked):\n\n' + error_body));
+          input.checked = true; // rollback UI
+          return;
+        } else {
+          tx.style = 'color: #black;';
+          state = false;
+          negation = !!del;
+        }
+      });
+    }
+  };
+  input.addEventListener('click', boxHandler, false);
+  return box;
+}
+
+// /////////////////////////////////////// Random I/O widgets /////////////
+
+// ////              Column Header Buttons
+//
+//  These are for selecting different modes, sources,styles, etc.
+//
+/*
+UI.widgets.headerButtons = function (dom, kb, name, words) {
+    var box = dom.createElement('table')
+    var i, word, s = '<tr>'
+    box.setAttribute('style', 'width: 90%; height: 1.5em')
+    for (i=0; i<words.length; i++) {
+        s += '<td><input type="radio" name="' + name + '" id="' + words[i] + '" value='
+    }
+    box.innerHTML = s + '</tr>'
+
+}
+*/
+// ////////////////////////////////////////////////////////////
+//
+//     selectorPanel
+//
+//  A vertical panel for selecting connections to left or right.
+//
+//   @param inverse means this is the object rather than the subject
+//
+UI.widgets.selectorPanel = function (dom, kb, type, predicate, inverse, possible, options, callback, linkCallback) {
+  return UI.widgets.selectorPanelRefresh(dom.createElement('div'), dom, kb, type, predicate, inverse, possible, options, callback, linkCallback);
+};
+
+UI.widgets.selectorPanelRefresh = function (list, dom, kb, type, predicate, inverse, possible, options, callback, linkCallback) {
+  var style0 = 'border: 0.1em solid #ddd; border-bottom: none; width: 95%; height: 2em; padding: 0.5em;';
+  var selected = null;
+  list.innerHTML = '';
+
+  var refreshItem = function refreshItem(box, x) {
+    // Scope to hold item and x
+    var item, image;
+
+    var setStyle = function setStyle() {
+      var already = inverse ? kb.each(undefined, predicate, x) : kb.each(x, predicate);
+      iconDiv.setAttribute('class', already.length === 0 ? 'hideTillHover' : ''); // See tabbedtab.css
+      image.setAttribute('src', options.connectIcon || UI.icons.iconBase + 'noun_25830.svg');
+      image.setAttribute('title', already.length ? already.length : 'attach');
+    };
+    var f = UI.widgets.index.twoLine.widgetForClass(type);
+    item = f(dom, x);
+    item.setAttribute('style', style0);
+
+    var nav = dom.createElement('div');
+    nav.setAttribute('class', 'hideTillHover'); // See tabbedtab.css
+    nav.setAttribute('style', 'float:right; width:10%');
+
+    var a = dom.createElement('a');
+    a.setAttribute('href', x.uri);
+    a.setAttribute('style', 'float:right');
+    nav.appendChild(a).textContent = '>';
+    box.appendChild(nav);
+
+    var iconDiv = dom.createElement('div');
+    iconDiv.setAttribute('style', (inverse ? 'float:left;' : 'float:right;') + ' width:30px;');
+    image = dom.createElement('img');
+    setStyle();
+    iconDiv.appendChild(image);
+    box.appendChild(iconDiv);
+
+    item.addEventListener('click', function (event) {
+      if (selected === item) {
+        // deselect
+        item.setAttribute('style', style0);
+        selected = null;
+      } else {
+        if (selected) selected.setAttribute('style', style0);
+        item.setAttribute('style', style0 + 'background-color: #ccc; color:black;');
+        selected = item;
+      }
+      callback(x, event, selected === item);
+      setStyle();
+    }, false);
+
+    image.addEventListener('click', function (event) {
+      linkCallback(x, event, inverse, setStyle);
+    }, false);
+
+    box.appendChild(item);
+    return box;
+  };
+
+  for (var i = 0; i < possible.length; i++) {
+    var box = dom.createElement('div');
+    list.appendChild(box);
+    refreshItem(box, possible[i]);
+  }
+  return list;
+};
+
+// ###########################################################################
+//
+//      Small compact views of things
+//
+UI.widgets.index = {};
+UI.widgets.index.line = {}; // Approx 80em
+UI.widgets.index.twoLine = {}; // Approx 40em * 2.4em
+
+// ///////////////////////////////////////////////////////////////////////////
+// We need these for anything which is a subject of an attachment.
+//
+// These should be moved to type-dependeent UI code. Related panes maybe
+
+UI.widgets.index.twoLine[''] = function (dom, x) {
+  // Default
+  var box = dom.createElement('div');
+  box.textContent = utils.label(x);
+  return box;
+};
+
+UI.widgets.index.twoLine.widgetForClass = function (c) {
+  var widget = UI.widgets.index.twoLine[c.uri];
+  var kb = UI.store;
+  if (widget) return widget;
+  var sup = kb.findSuperClassesNT(c);
+  for (var cl in sup) {
+    widget = UI.widgets.index.twoLine[kb.fromNT(cl).uri];
+    if (widget) return widget;
+  }
+  return UI.widgets.index.twoLine[''];
+};
+
+UI.widgets.index.twoLine['http://www.w3.org/2000/10/swap/pim/qif#Transaction'] = function (dom, x) {
+  var failed = '';
+  var enc = function enc(p) {
+    var y = UI.store.any(x, UI.ns.qu(p));
+    if (!y) failed += '@@ No value for ' + p + '! ';
+    return y ? utils.escapeForXML(y.value) : '?'; // @@@@
+  };
+  var box = dom.createElement('table');
+  box.innerHTML = '<tr><td colspan="2">' + enc('payee') + '</td></tr>\n<tr><td><td>' + enc('date').slice(0, 10) + '</td><td style="text-align: right;">' + enc('amount') + '</td></tr>';
+  if (failed) {
+    box.innerHTML = '<tr><td><a href="' + utils.escapeForXML(x.uri) + '">' + utils.escapeForXML(failed) + '</a></td></tr>';
+  }
+  return box;
+};
+
+UI.widgets.index.twoLine['http://www.w3.org/ns/pim/trip#Trip'] = function (dom, x) {
+  var enc = function enc(p) {
+    var y = UI.store.any(x, p);
+    return y ? utils.escapeForXML(y.value) : '?';
+  };
+  var box = dom.createElement('table');
+  box.innerHTML = '<tr><td colspan="2">' + enc(UI.ns.dc('title')) + '</td></tr>\n<tr style="color: #777"><td><td>' + enc(UI.ns.cal('dtstart')) + '</td><td>' + enc(UI.ns.cal('dtend')) + '</td></tr>';
+  return box;
+};
+
+// Stick a stylesheet link the document if not already there
+UI.widgets.addStyleSheet = function (dom, href) {
+  var links = dom.querySelectorAll('link');
+  for (var i = 0; i < links.length; i++) {
+    if ((links[i].getAttribute('rel') || '') === 'stylesheet' && (links[i].getAttribute('href') || '') === href) return;
+  }
+  var link = dom.createElement('link');
+  link.setAttribute('rel', 'stylesheet');
+  link.setAttribute('type', 'text/css');
+  link.setAttribute('href', href);
+  dom.getElementsByTagName('head')[0].appendChild(link);
+};
+
+// Figure (or guess) whether this is an image, etc
+//
+UI.widgets.isAudio = function (file) {
+  return UI.widgets.isImage(file, 'audio');
+};
+UI.widgets.isVideo = function (file) {
+  return UI.widgets.isImage(file, 'video');
+};
+UI.widgets.isImage = function (file, kind) {
+  var dcCLasses = { 'audio': 'http://purl.org/dc/dcmitype/Sound',
+    'image': 'http://purl.org/dc/dcmitype/Image',
+    'video': 'http://purl.org/dc/dcmitype/MovingImage'
+  };
+  var what = kind || 'image';
+  var typeURIs = UI.store.findTypeURIs(file);
+  var prefix = $rdf.Util.mediaTypeClass(what + '/*').uri.split('*')[0];
+  for (var t in typeURIs) {
+    if (t.startsWith(prefix)) return true;
+  }
+  if (dcCLasses[what] in typeURIs) return true;
+  return false;
+};
+// ends
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//                  Solid-UI general Utilities
+//                  ==========================
+//
+// This must load AFTER the rdflib.js and log-ext.js (or log.js).
+//
+
+module.exports = {
+  addLoadEvent: addLoadEvent, // not used anywhere
+  AJARImage: AJARImage,
+  ancestor: ancestor,
+  beep: beep,
+  clearVariableNames: clearVariableNames,
+  emptyNode: emptyNode,
+  escapeForXML: escapeForXML,
+  findPos: findPos,
+  genUuid: genUuid,
+  getAbout: getAbout,
+  getEyeFocus: getEyeFocus,
+  getTarget: getTarget,
+  getTerm: getTerm,
+  hashColor: hashColor,
+  include: include,
+  label: label,
+  labelForXML: labelForXML,
+  labelWithOntology: labelWithOntology,
+  makeQueryRow: makeQueryRow,
+  newVariableName: newVariableName,
+  ontologyLabel: ontologyLabel,
+  predicateLabelForXML: predicateLabelForXML,
+  predParentOf: predParentOf,
+  RDFComparePredicateObject: RDFComparePredicateObject,
+  RDFComparePredicateSubject: RDFComparePredicateSubject,
+  shortName: shortName,
+  stackString: stackString,
+  syncTableToArray: syncTableToArray
+};
+
+var UI = {
+  log: __webpack_require__(24),
+  ns: __webpack_require__(14),
+  rdf: __webpack_require__(3),
+  store: __webpack_require__(22)
+};
+
+var nextVariable = 0;
+
+function newVariableName() {
+  return 'v' + nextVariable++;
+}
+
+function clearVariableNames() {
+  nextVariable = 0;
+}
+
+// http://stackoverflow.com/questions/879152/how-do-i-make-javascript-beep
+// http://www.tsheffler.com/blog/2013/05/14/audiocontext-noteonnoteoff-and-time-units/
+
+var audioContext;
+
+if (typeof AudioContext !== 'undefined') {
+  audioContext = AudioContext;
+} else if (typeof window !== 'undefined') {
+  audioContext = window.AudioContext || window.webkitAudioContext;
+}
+
+function beep() {
+  if (!audioContext) {
+    return;
+  } // Safari 2015
+
+  var ContextClass = audioContext;
+  var ctx = new ContextClass();
+
+  return function (duration, frequency, type, finishedCallback) {
+    duration = +(duration || 0.3);
+
+    // Only 0-4 are valid types.
+    type = type || 'sine'; // sine, square, sawtooth, triangle
+
+    if (typeof finishedCallback !== 'function') {
+      finishedCallback = function finishedCallback() {};
+    }
+
+    var osc = ctx.createOscillator();
+
+    osc.type = type;
+    osc.frequency.value = frequency || 256;
+
+    osc.connect(ctx.destination);
+    osc.start(0);
+    osc.stop(duration);
+  };
+}
+
+// Make pseudorandom color from a uri
+// NOT USED ANYWHERE
+function hashColor(who) {
+  who = who.uri || who;
+  var hash = function hash(x) {
+    return x.split('').reduce(function (a, b) {
+      a = (a << 5) - a + b.charCodeAt(0);return a & a;
+    }, 0);
+  };
+  return '#' + (hash(who) & 0xffffff | 0xc0c0c0).toString(16); // c0c0c0 or 808080 forces pale
+}
+
+function genUuid() {
+  // http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = Math.random() * 16 | 0;
+    var v = c === 'x' ? r : r & 0x3 | 0x8;
+    return v.toString(16);
+  });
+}
+
+// Sync a DOM table with an array of things
+//
+// table - will have a tr for each thing
+// things - ORDERED array of NamedNode objects
+// createNewRow(thing) returns a TR table row for that thing
+//
+// Tolerates out of order elements but puts new ones in order.
+//
+function syncTableToArray(table, things, createNewRow) {
+  var foundOne = void 0;
+  var row = void 0;
+  var i = void 0;
+
+  for (i = 0; i < table.children.length; i++) {
+    row = table.children[i];
+    row.trashMe = true;
+  }
+
+  for (var g = 0; g < things.length; g++) {
+    var thing = things[g];
+    foundOne = false;
+
+    for (i = 0; i < table.children.length; i++) {
+      row = table.children[i];
+      if (row.subject && row.subject.sameTerm(thing)) {
+        row.trashMe = false;
+        foundOne = true;
+        break;
+      }
+    }
+    if (!foundOne) {
+      var newRow = createNewRow(thing);
+      // Insert new row in position g in the table to match array
+      if (g >= things.length) {
+        table.appendChild(newRow);
+      } else {
+        var ele = table.children[g];
+        table.insertBefore(newRow, ele);
+      }
+      newRow.subject = thing;
+    } // if not foundOne
+  } // loop g
+
+  for (i = 0; i < table.children.length; i++) {
+    row = table.children[i];
+    if (row.trashMe) {
+      table.removeChild(row);
+    }
+  }
+} // syncTableToArray
+
+/* Error stack to string for better diagnotsics
+**
+** See  http://snippets.dzone.com/posts/show/6632
+*/
+function stackString(e) {
+  var str = '' + e + '\n';
+  var i = void 0;
+  if (!e.stack) {
+    return str + 'No stack available.\n';
+  }
+  var lines = e.stack.toString().split('\n');
+  var toPrint = [];
+  for (i = 0; i < lines.length; i++) {
+    var line = lines[i];
+    if (line.indexOf('ecmaunit.js') > -1) {
+      // remove useless bit of traceback
+      break;
+    }
+    if (line.charAt(0) === '(') {
+      line = 'function' + line;
+    }
+    var chunks = line.split('@');
+    toPrint.push(chunks);
+  }
+  // toPrint.reverse();  No - I prefer the latest at the top by the error message -tbl
+
+  for (i = 0; i < toPrint.length; i++) {
+    str += '  ' + toPrint[i][1] + '\n    ' + toPrint[i][0];
+  }
+  return str;
+}
+
+function emptyNode(node) {
+  var nodes = node.childNodes;
+  var len = nodes.length;
+  var i = void 0;
+  for (i = len - 1; i >= 0; i--) {
+    node.removeChild(nodes[i]);
+  }return node;
+}
+
+function getTarget(e) {
+  var target;
+  e = e || window.event;
+  if (e.target) target = e.target;else if (e.srcElement) target = e.srcElement;
+  if (target.nodeType === 3) {
+    // defeat Safari bug [sic]
+    target = target.parentNode;
+  }
+  // UI.log.debug("Click on: " + target.tagName)
+  return target;
+}
+
+function ancestor(target, tagName) {
+  var level;
+  for (level = target; level; level = level.parentNode) {
+    // UI.log.debug("looking for "+tagName+" Level: "+level+" "+level.tagName)
+    try {
+      if (level.tagName === tagName) return level;
+    } catch (e) {
+      // can hit "TypeError: can't access dead object" in ffox
+      return undefined;
+    }
+  }
+  return undefined;
+}
+
+function getAbout(kb, target) {
+  var level, aa;
+  for (level = target; level && level.nodeType === 1; level = level.parentNode) {
+    // UI.log.debug("Level "+level + ' '+level.nodeType + ': '+level.tagName)
+    aa = level.getAttribute('about');
+    if (aa) {
+      // UI.log.debug("kb.fromNT(aa) = " + kb.fromNT(aa))
+      return kb.fromNT(aa);
+      //        } else {
+      //            if (level.tagName=='TR') return undefined//this is to prevent literals passing through
+    }
+  }
+  UI.log.debug('getAbout: No about found');
+  return undefined;
+}
+
+function getTerm(target) {
+  var statementTr = target.parentNode;
+  var st = statementTr ? statementTr.AJAR_statement : undefined;
+
+  var className = st ? target.className : ''; // if no st then it's necessary to use getAbout
+  switch (className) {
+    case 'pred':
+    case 'pred selected':
+      return st.predicate;
+    case 'obj':
+    case 'obj selected':
+      if (!statementTr.AJAR_inverse) {
+        return st.object;
+      } else {
+        return st.subject;
+      }
+    case '':
+    case 'selected':
+      // header TD
+      return getAbout(UI.store, target); // kb to be changed
+    case 'undetermined selected':
+      return target.nextSibling ? st.predicate : !statementTr.AJAR_inverse ? st.object : st.subject;
+  }
+}
+
+function include(document, linkstr) {
+  var lnk = document.createElement('script');
+  lnk.setAttribute('type', 'text/javascript');
+  lnk.setAttribute('src', linkstr);
+  // TODO:This needs to be fixed or no longer used.
+  // document.getElementsByTagName('head')[0].appendChild(lnk)
+  return lnk;
+}
+
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload !== 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function () {
+      oldonload();
+      func();
+    };
+  }
+} // addLoadEvent
+
+// Find the position of an object relative to the window
+function findPos(obj) {
+  // C&P from http://www.quirksmode.org/js/findpos.html
+  var myDocument = obj.ownerDocument;
+  var DocBox = myDocument.documentElement.getBoundingClientRect();
+  var box = obj.getBoundingClientRect();
+  return [box.left - DocBox.left, box.top - DocBox.top];
+}
+
+function getEyeFocus(element, instantly, isBottom, myWindow) {
+  if (!myWindow) myWindow = window;
+  var elementPosY = findPos(element)[1];
+  var totalScroll = elementPosY - 52 - myWindow.scrollY; // magic number 52 for web-based version
+  if (instantly) {
+    if (isBottom) {
+      myWindow.scrollBy(0, elementPosY + element.clientHeight - (myWindow.scrollY + myWindow.innerHeight));
+      return;
+    }
+    myWindow.scrollBy(0, totalScroll);
+    return;
+  }
+  var id = myWindow.setInterval(scrollAmount, 50);
+  var times = 0;
+  function scrollAmount() {
+    myWindow.scrollBy(0, totalScroll / 10);
+    times++;
+    if (times === 10) {
+      myWindow.clearInterval(id);
+    }
+  }
+}
+
+function AJARImage(src, alt, tt, doc) {
+  if (!doc) {
+    doc = document;
+  }
+  // if (!tt && tabulator.Icon.tooltips[src])    tooltip system discontinued 2016
+  //  tt = tabulator.Icon.tooltips[src]
+  var image = doc.createElement('img');
+  image.setAttribute('src', src);
+  image.addEventListener('copy', function (e) {
+    e.clipboardData.setData('text/plain', '');
+    e.clipboardData.setData('text/html', '');
+    e.preventDefault(); // We want no title data to be written to the clipboard
+  });
+  //    if (typeof alt != 'undefined')      // Messes up cut-and-paste of text
+  //        image.setAttribute('alt', alt)
+  if (typeof tt !== 'undefined') {
+    image.setAttribute('title', tt);
+  }
+  return image;
+}
+
+//  Make short name for ontology
+
+function shortName(uri) {
+  var p = uri;
+  if ('#/'.indexOf(p[p.length - 1]) >= 0) p = p.slice(0, -1);
+  var namespaces = [];
+  for (var ns in this.prefixes) {
+    namespaces[this.prefixes[ns]] = ns; // reverse index
+  }
+  var pok = void 0;
+  var canUse = function canUse(pp) {
+    // if (!__Serializer.prototype.validPrefix.test(pp)) return false; // bad format
+    if (pp === 'ns') return false; // boring
+    // if (pp in this.namespaces) return false; // already used
+    // this.prefixes[uri] = pp;
+    // this.namespaces[pp] = uri;
+    pok = pp;
+    return true;
+  };
+
+  var i = void 0;
+  var hash = p.lastIndexOf('#');
+  if (hash >= 0) p = p.slice(hash - 1); // lop off localid
+  for (;;) {
+    var slash = p.lastIndexOf('/');
+    if (slash >= 0) p = p.slice(slash + 1);
+    i = 0;
+    while (i < p.length) {
+      if (this.prefixchars.indexOf(p[i])) i++;else break;
+    }
+    p = p.slice(0, i);
+    if (p.length < 6 && canUse(p)) return pok; // exact i sbest
+    if (canUse(p.slice(0, 3))) return pok;
+    if (canUse(p.slice(0, 2))) return pok;
+    if (canUse(p.slice(0, 4))) return pok;
+    if (canUse(p.slice(0, 1))) return pok;
+    if (canUse(p.slice(0, 5))) return pok;
+    for (i = 0;; i++) {
+      if (canUse(p.slice(0, 3) + i)) return pok;
+    }
+  }
+}
+
+// Short name for an ontology
+function ontologyLabel(term) {
+  if (term.uri === undefined) return '??';
+  var s = term.uri;
+  var namespaces = [];
+  var i = s.lastIndexOf('#');
+  var part;
+  if (i >= 0) {
+    s = s.slice(0, i + 1);
+  } else {
+    i = s.lastIndexOf('/');
+    if (i >= 0) {
+      s = s.slice(0, i + 1);
+    } else {
+      return term.uri + '?!'; // strange should have # or /
+    }
+  }
+  for (var ns in UI.ns) {
+    namespaces[UI.ns[ns]] = ns; // reverse index
+  }
+  try {
+    return namespaces[s];
+  } catch (e) {}
+
+  s = s.slice(0, -1); // Chop off delimiter ... now have just
+
+  while (s) {
+    i = s.lastIndexOf('/');
+    if (i >= 0) {
+      part = s.slice(i + 1);
+      s = s.slice(0, i);
+      if (part !== 'ns' && '0123456789'.indexOf(part[0]) < 0) {
+        return part;
+      }
+    } else {
+      return term.uri + '!?'; // strange should have a nice part
+    }
+  }
+}
+
+function labelWithOntology(x, initialCap) {
+  var t = UI.store.findTypeURIs(x);
+  if (t[UI.ns.rdf('Predicate').uri] || t[UI.ns.rdfs('Class').uri]) {
+    return label(x, initialCap) + ' (' + ontologyLabel(x) + ')';
+  }
+  return label(x, initialCap);
+}
+
+// This ubiquitous function returns the best label for a thing
+//
+//  The hacks in this code make a major difference to the usability
+//
+// @returns string
+//
+function label(x, initialCap) {
+  // x is an object
+  function doCap(s) {
+    // s = s.toString()
+    if (initialCap) return s.slice(0, 1).toUpperCase() + s.slice(1);
+    return s;
+  }
+  function cleanUp(s1) {
+    var s2 = '';
+    if (s1.slice(-1) === '/') s1 = s1.slice(0, -1); // chop trailing slash
+    for (var i = 0; i < s1.length; i++) {
+      if (s1[i] === '_' || s1[i] === '-') {
+        s2 += ' ';
+        continue;
+      }
+      s2 += s1[i];
+      if (i + 1 < s1.length && s1[i].toUpperCase() !== s1[i] && s1[i + 1].toLowerCase() !== s1[i + 1]) {
+        s2 += ' ';
+      }
+    }
+    if (s2.slice(0, 4) === 'has ') s2 = s2.slice(4);
+    return doCap(s2);
+  }
+
+  // The tabulator labeler is more sophisticated if it exists
+  // Todo: move it to a solid-ui option.
+  var lab;
+  if (typeof tabulator !== 'undefined' && tabulator.lb) {
+    lab = tabulator.lb.label(x);
+    if (lab) {
+      return doCap(lab.value);
+    }
+  }
+
+  // Hard coded known label predicates
+  //  @@ TBD: Add subproperties of rdfs:label
+
+  var kb = UI.store;
+  var lab1 = kb.any(x, UI.ns.link('message')) || kb.any(x, UI.ns.vcard('fn')) || kb.any(x, UI.ns.foaf('name')) || kb.any(x, UI.ns.dct('title')) || kb.any(x, UI.ns.dc('title')) || kb.any(x, UI.ns.rss('title')) || kb.any(x, UI.ns.contact('fullName')) || kb.any(x, kb.sym('http://www.w3.org/2001/04/roadmap/org#name')) || kb.any(x, UI.ns.cal('summary')) || kb.any(x, UI.ns.foaf('nick')) || kb.any(x, UI.ns.rdfs('label'));
+
+  if (lab1) {
+    return doCap(lab1.value);
+  }
+
+  // Default to label just generated from the URI
+
+  if (x.termType === 'BlankNode') {
+    return '...';
+  }
+  if (x.termType === 'Collection') {
+    return '(' + x.elements.length + ')';
+  }
+  var s = x.uri;
+  if (typeof s === 'undefined') return x.toString(); // can't be a symbol
+  // s = decodeURI(s) // This can crash is random valid @ signs are presentation
+  // The idea was to clean up eg URIs encoded in query strings
+  // Also encoded character in what was filenames like @ [] {}
+  try {
+    s = s.split('/').map(decodeURIComponent).join('/'); // If it is properly encoded
+  } catch (e) {
+    // try individual decoding of ASCII code points
+    for (var i = s.length - 3; i > 0; i--) {
+      var hex = '0123456789abcefABCDEF'; // The while upacks multiple layers of encoding
+      while (s[i] === '%' && hex.indexOf(s[i + 1]) >= 0 && hex.indexOf(s[i + 2]) >= 0) {
+        s = s.slice(0, i) + String.fromCharCode(parseInt(s.slice(i + 1, i + 3), 16)) + s.slice(i + 3);
+      }
+    }
+  }
+  if (s.slice(-5) === '#this') s = s.slice(0, -5);else if (s.slice(-3) === '#me') s = s.slice(0, -3);
+
+  var hash = s.indexOf('#');
+  if (hash >= 0) return cleanUp(s.slice(hash + 1));
+
+  if (s.slice(-9) === '/foaf.rdf') s = s.slice(0, -9);else if (s.slice(-5) === '/foaf') s = s.slice(0, -5);
+
+  // Eh? Why not do this? e.g. dc:title needs it only trim URIs, not rdfs:labels
+  var slash = s.lastIndexOf('/', s.length - 2); // (len-2) excludes trailing slash
+  if (slash >= 0 && slash < x.uri.length) return cleanUp(s.slice(slash + 1));
+
+  return doCap(decodeURIComponent(x.uri));
+}
+
+function escapeForXML(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+}
+
+//  As above but escaped for XML and chopped of contains a slash
+function labelForXML(x) {
+  return escapeForXML(label(x));
+}
+
+// As above but for predicate, possibly inverse
+function predicateLabelForXML(p, inverse) {
+  var lab;
+  if (inverse) {
+    // If we know an inverse predicate, use its label
+    var ip = UI.store.any(p, UI.ns.owl('inverseOf'));
+    if (!ip) ip = UI.store.any(undefined, UI.ns.owl('inverseOf'), p);
+    if (ip) return labelForXML(ip);
+  }
+
+  lab = labelForXML(p);
+  if (inverse) {
+    if (lab === 'type') return '...'; // Not "is type of"
+    return 'is ' + lab + ' of';
+  }
+  return lab;
+}
+
+// Not a method. For use in sorts
+function RDFComparePredicateObject(self, other) {
+  var x = self.predicate.compareTerm(other.predicate);
+  if (x !== 0) return x;
+  return self.object.compareTerm(other.object);
+}
+
+function RDFComparePredicateSubject(self, other) {
+  var x = self.predicate.compareTerm(other.predicate);
+  if (x !== 0) return x;
+  return self.subject.compareTerm(other.subject);
+}
+// ends
+
+function predParentOf(node) {
+  var n = node;
+  while (true) {
+    if (n.getAttribute('predTR')) {
+      return n;
+    } else if (n.previousSibling && n.previousSibling.nodeName === 'TR') {
+      n = n.previousSibling;
+    } else {
+      UI.log.error('Could not find predParent');return node;
+    }
+  }
+}
+
+var optionalSubqueriesIndex = [];
+
+// TODO: Move to outline code !
+function makeQueryRow(q, tr, constraint) {
+  var kb = UI.store;
+  // predtr = predParentOf(tr)
+  // var nodes = tr.childNodes
+  // var n = tr.childNodes.length
+  var inverse = tr.AJAR_inverse;
+  // var hasVar = 0
+  var pattern = void 0,
+      v = void 0,
+      parentVar = void 0,
+      level = void 0,
+      pat = void 0;
+
+  function makeRDFStatement(freeVar, parent) {
+    if (inverse) {
+      return new UI.rdf.Statement(freeVar, st.predicate, parent);
+    } else {
+      return new UI.rdf.Statement(parent, st.predicate, freeVar);
+    }
+  }
+
+  var optionalSubqueryIndex = null;
+
+  for (level = tr.parentNode; level; level = level.parentNode) {
+    if (typeof level.AJAR_statement !== 'undefined') {
+      // level.AJAR_statement
+      level.setAttribute('bla', level.AJAR_statement); // @@? -timbl
+      // UI.log.debug("Parent TR statement="+level.AJAR_statement + ", var=" + level.AJAR_variable)
+      /* for(let c=0;c<level.parentNode.childNodes.length;c++) //This makes sure the same variable is used for a subject
+      if(level.parentNode.childNodes[c].AJAR_variable)
+        level.AJAR_variable = level.parentNode.childNodes[c].AJAR_variable; */
+      if (!level.AJAR_variable) {
+        makeQueryRow(q, level);
+      }
+      parentVar = level.AJAR_variable;
+      var predLevel = predParentOf(level);
+      if (predLevel.getAttribute('optionalSubqueriesIndex')) {
+        optionalSubqueryIndex = predLevel.getAttribute('optionalSubqueriesIndex');
+        pat = optionalSubqueriesIndex[optionalSubqueryIndex];
+      }
+      break;
+    }
+  }
+
+  if (!pat) {
+    pat = q.pat;
+  }
+
+  var predtr = predParentOf(tr);
+  // /////OPTIONAL KLUDGE///////////
+  var opt = predtr.getAttribute('optional');
+  if (!opt) {
+    if (optionalSubqueryIndex) {
+      predtr.setAttribute('optionalSubqueriesIndex', optionalSubqueryIndex);
+    } else {
+      predtr.removeAttribute('optionalSubqueriesIndex');
+    }
+  }
+  if (opt) {
+    var optForm = kb.formula();
+    optionalSubqueriesIndex.push(optForm);
+    predtr.setAttribute('optionalSubqueriesIndex', optionalSubqueriesIndex.length - 1);
+    pat.optional.push(optForm);
+    pat = optForm;
+  }
+
+  // //////////////////////////////
+
+  var st = tr.AJAR_statement;
+
+  var constraintVar = tr.AJAR_inverse ? st.subject : st.object; // this is only used for constraints
+  var hasParent = true;
+  if (constraintVar.isBlank && constraint) {
+    window.alert('You cannot constrain a query with a blank node. No constraint will be added.');
+  }
+  if (!parentVar) {
+    hasParent = false;
+    parentVar = inverse ? st.object : st.subject; // if there is no parents, uses the sub/obj
+  }
+  // UI.log.debug('Initial variable: '+tr.AJAR_variable)
+  v = tr.AJAR_variable ? tr.AJAR_variable : kb.variable(newVariableName());
+  q.vars.push(v);
+  v.label = hasParent ? parentVar.label : label(parentVar);
+  v.label += ' ' + predicateLabelForXML(st.predicate, inverse);
+  pattern = makeRDFStatement(v, parentVar);
+  // alert(pattern)
+  v.label = v.label.slice(0, 1).toUpperCase() + v.label.slice(1); // init cap
+
+  // See ../rdf/sparql.js
+  // This should only work on literals but doesn't.
+  function ConstraintEqualTo(value) {
+    this.describe = function (varstr) {
+      return varstr + ' = ' + value.toNT();
+    };
+    this.test = function (term) {
+      return value.sameTerm(term);
+    };
+    return this;
+  }
+
+  if (constraint) {
+    // binds the constrained variable to its selected value
+    pat.constraints[v] = new ConstraintEqualTo(constraintVar);
+  }
+  UI.log.info('Pattern: ' + pattern);
+  pattern.tr = tr;
+  tr.AJAR_pattern = pattern; // Cross-link UI and query line
+  tr.AJAR_variable = v;
+  // UI.log.debug('Final variable: '+tr.AJAR_variable)
+  UI.log.debug('Query pattern: ' + pattern);
+  pat.statements.push(pattern);
+  return v;
+} // makeQueryRow
+
+/***/ }),
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6072,9 +9046,9 @@ function makeQueryRow(q, tr, constraint) {
  * Utility functions for $rdf
  * @module util
  */
-var docpart = __webpack_require__(11).docpart;
-var log = __webpack_require__(32);
-var NamedNode = __webpack_require__(6);
+var docpart = __webpack_require__(15).docpart;
+var log = __webpack_require__(42);
+var NamedNode = __webpack_require__(10);
 
 module.exports.AJAR_handleNewTerm = ajarHandleNewTerm;
 module.exports.ArrayIndexOf = arrayIndexOf;
@@ -6092,7 +9066,7 @@ module.exports.stackString = stackString;
 module.exports.string_startswith = stringStartsWith;
 module.exports.string = {};
 module.exports.string.template = stringTemplate;
-module.exports.uri = __webpack_require__(11); // TODO: Remove this mixed usage
+module.exports.uri = __webpack_require__(15); // TODO: Remove this mixed usage
 module.exports.log = log;
 
 module.exports.mediaTypeClass = function (mediaType) {
@@ -6399,7 +9373,7 @@ function parseXML(str, options) {
     // var jsdom = require('jsdom');   2012-01 though 2015-08 no worky with new Node
     // var dom = jsdom.jsdom(str, undefined, {} );// html, level, options
 
-    var DOMParser = __webpack_require__(41).DOMParser; // 2015-08 on https://github.com/jindw/xmldom
+    var DOMParser = __webpack_require__(50).DOMParser; // 2015-08 on https://github.com/jindw/xmldom
     var dom = new DOMParser().parseFromString(str, options.contentType || 'application/xhtml+xml');
     return dom;
   } else {
@@ -6474,10 +9448,16 @@ function stackString(e) {
   }
   return str;
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module)))
 
 /***/ }),
-/* 25 */
+/* 33 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_33__;
+
+/***/ }),
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {(function (module, exports) {
@@ -6532,7 +9512,7 @@ function stackString(e) {
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(294).Buffer;
+    Buffer = __webpack_require__(319).Buffer;
   } catch (e) {
   }
 
@@ -9908,18 +12888,18 @@ function stackString(e) {
   };
 })(typeof module === 'undefined' || module, this);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module)))
 
 /***/ }),
-/* 26 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(29);
-var IE8_DOM_DEFINE = __webpack_require__(181);
-var toPrimitive = __webpack_require__(111);
+var anObject = __webpack_require__(39);
+var IE8_DOM_DEFINE = __webpack_require__(198);
+var toPrimitive = __webpack_require__(122);
 var dP = Object.defineProperty;
 
-exports.f = __webpack_require__(30) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+exports.f = __webpack_require__(40) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
@@ -9933,13 +12913,13 @@ exports.f = __webpack_require__(30) ? Object.defineProperty : function definePro
 
 
 /***/ }),
-/* 27 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(3).Buffer
-var Transform = __webpack_require__(43).Transform
-var StringDecoder = __webpack_require__(94).StringDecoder
-var inherits = __webpack_require__(2)
+var Buffer = __webpack_require__(4).Buffer
+var Transform = __webpack_require__(52).Transform
+var StringDecoder = __webpack_require__(105).StringDecoder
+var inherits = __webpack_require__(1)
 
 function CipherBase (hashMode) {
   Transform.call(this)
@@ -10038,13 +13018,42 @@ module.exports = CipherBase
 
 
 /***/ }),
-/* 28 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(8);
-var core = __webpack_require__(16);
-var ctx = __webpack_require__(57);
-var hide = __webpack_require__(34);
+"use strict";
+
+
+exports.__esModule = true;
+
+var _assign = __webpack_require__(369);
+
+var _assign2 = _interopRequireDefault(_assign);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _assign2.default || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__(12);
+var core = __webpack_require__(20);
+var ctx = __webpack_require__(65);
+var hide = __webpack_require__(44);
 var PROTOTYPE = 'prototype';
 
 var $export = function (type, name, source) {
@@ -10105,10 +13114,10 @@ module.exports = $export;
 
 
 /***/ }),
-/* 29 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(46);
+var isObject = __webpack_require__(54);
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
@@ -10116,17 +13125,17 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 30 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(58)(function () {
+module.exports = !__webpack_require__(66)(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
 
 
 /***/ }),
-/* 31 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10140,8 +13149,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ClassOrder = __webpack_require__(39);
-var Node = __webpack_require__(12);
+var ClassOrder = __webpack_require__(48);
+var Node = __webpack_require__(16);
 
 var BlankNode = function (_Node) {
   _inherits(BlankNode, _Node);
@@ -10223,7 +13232,7 @@ BlankNode.prototype.isVar = 1;
 module.exports = BlankNode;
 
 /***/ }),
-/* 32 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10255,7 +13264,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 33 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10289,7 +13298,7 @@ module.exports = {
 
 /*<replacement>*/
 
-var processNextTick = __webpack_require__(65);
+var processNextTick = __webpack_require__(73);
 /*</replacement>*/
 
 /*<replacement>*/
@@ -10304,12 +13313,12 @@ var objectKeys = Object.keys || function (obj) {
 module.exports = Duplex;
 
 /*<replacement>*/
-var util = __webpack_require__(49);
-util.inherits = __webpack_require__(2);
+var util = __webpack_require__(57);
+util.inherits = __webpack_require__(1);
 /*</replacement>*/
 
-var Readable = __webpack_require__(139);
-var Writable = __webpack_require__(93);
+var Readable = __webpack_require__(153);
+var Writable = __webpack_require__(104);
 
 util.inherits(Duplex, Readable);
 
@@ -10385,12 +13394,12 @@ function forEach(xs, f) {
 }
 
 /***/ }),
-/* 34 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(26);
-var createDesc = __webpack_require__(59);
-module.exports = __webpack_require__(30) ? function (object, key, value) {
+var dP = __webpack_require__(35);
+var createDesc = __webpack_require__(67);
+module.exports = __webpack_require__(40) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
   object[key] = value;
@@ -10399,7 +13408,7 @@ module.exports = __webpack_require__(30) ? function (object, key, value) {
 
 
 /***/ }),
-/* 35 */
+/* 45 */
 /***/ (function(module, exports) {
 
 var hasOwnProperty = {}.hasOwnProperty;
@@ -10409,66 +13418,21 @@ module.exports = function (it, key) {
 
 
 /***/ }),
-/* 36 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(351);
-
+module.exports = { "default": __webpack_require__(377), __esModule: true };
 
 /***/ }),
-/* 37 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-exports.__esModule = true;
-
-var _promise = __webpack_require__(81);
-
-var _promise2 = _interopRequireDefault(_promise);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (fn) {
-  return function () {
-    var gen = fn.apply(this, arguments);
-    return new _promise2.default(function (resolve, reject) {
-      function step(key, arg) {
-        try {
-          var info = gen[key](arg);
-          var value = info.value;
-        } catch (error) {
-          reject(error);
-          return;
-        }
-
-        if (info.done) {
-          resolve(value);
-        } else {
-          return _promise2.default.resolve(value).then(function (value) {
-            step("next", value);
-          }, function (err) {
-            step("throw", err);
-          });
-        }
-      }
-
-      return step("next");
-    });
-  };
-};
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(399).default;
+module.exports = __webpack_require__(419).default;
 module.exports.default = module.exports;
 
 
 /***/ }),
-/* 39 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10486,7 +13450,7 @@ var ClassOrder = {
 module.exports = ClassOrder;
 
 /***/ }),
-/* 40 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10502,10 +13466,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ClassOrder = __webpack_require__(39);
-var NamedNode = __webpack_require__(6);
-var Node = __webpack_require__(12);
-var XSD = __webpack_require__(131);
+var ClassOrder = __webpack_require__(48);
+var NamedNode = __webpack_require__(10);
+var Node = __webpack_require__(16);
+var XSD = __webpack_require__(145);
 
 var Literal = function (_Node) {
   _inherits(Literal, _Node);
@@ -10674,19 +13638,19 @@ Literal.prototype.isVar = 0;
 module.exports = Literal;
 
 /***/ }),
-/* 41 */
+/* 50 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_41__;
+module.exports = __WEBPACK_EXTERNAL_MODULE_50__;
 
 /***/ }),
-/* 42 */
+/* 51 */
 /***/ (function(module, exports) {
 
 // Ignore module for browserify (see package.json)
 
 /***/ }),
-/* 43 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -10712,15 +13676,15 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_41__;
 
 module.exports = Stream;
 
-var EE = __webpack_require__(91).EventEmitter;
-var inherits = __webpack_require__(2);
+var EE = __webpack_require__(102).EventEmitter;
+var inherits = __webpack_require__(1);
 
 inherits(Stream, EE);
-Stream.Readable = __webpack_require__(92);
-Stream.Writable = __webpack_require__(237);
-Stream.Duplex = __webpack_require__(238);
-Stream.Transform = __webpack_require__(239);
-Stream.PassThrough = __webpack_require__(240);
+Stream.Readable = __webpack_require__(103);
+Stream.Writable = __webpack_require__(264);
+Stream.Duplex = __webpack_require__(265);
+Stream.Transform = __webpack_require__(266);
+Stream.PassThrough = __webpack_require__(267);
 
 // Backwards-compat with node 0.4.x
 Stream.Stream = Stream;
@@ -10819,13 +13783,7 @@ Stream.prototype.pipe = function(dest, options) {
 
 
 /***/ }),
-/* 44 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_44__;
-
-/***/ }),
-/* 45 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {// prototype class for hash functions
@@ -10901,7 +13859,7 @@ module.exports = Hash
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 46 */
+/* 54 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -10910,19 +13868,19 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 47 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(183);
-var defined = __webpack_require__(112);
+var IObject = __webpack_require__(200);
+var defined = __webpack_require__(123);
 module.exports = function (it) {
   return IObject(defined(it));
 };
 
 
 /***/ }),
-/* 48 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -10975,13 +13933,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(227);
+__webpack_require__(254);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 49 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {// Copyright Joyent, Inc. and other Node contributors.
@@ -11095,13 +14053,13 @@ function objectToString(o) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 50 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var NamedNode = __webpack_require__(6);
+var NamedNode = __webpack_require__(10);
 
 function Namespace(nsuri) {
   return function (ln) {
@@ -11112,7 +14070,7 @@ function Namespace(nsuri) {
 module.exports = Namespace;
 
 /***/ }),
-/* 51 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11122,7 +14080,7 @@ function oldBrowser () {
   throw new Error('secure random number generation not supported by this browser\nuse chrome, FireFox or Internet Explorer 11')
 }
 
-var Buffer = __webpack_require__(3).Buffer
+var Buffer = __webpack_require__(4).Buffer
 var crypto = global.crypto || global.msCrypto
 
 if (crypto && crypto.getRandomValues) {
@@ -11155,20 +14113,20 @@ function randomBytes (size, cb) {
   return bytes
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(13)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(17)))
 
 /***/ }),
-/* 52 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Buffer) {
-var inherits = __webpack_require__(2)
-var md5 = __webpack_require__(101)
-var RIPEMD160 = __webpack_require__(102)
-var sha = __webpack_require__(103)
+var inherits = __webpack_require__(1)
+var md5 = __webpack_require__(112)
+var RIPEMD160 = __webpack_require__(113)
+var sha = __webpack_require__(114)
 
-var Base = __webpack_require__(27)
+var Base = __webpack_require__(36)
 
 function HashNoConstructor (hash) {
   Base.call(this, 'digest')
@@ -11218,7 +14176,7 @@ module.exports = function createHash (alg) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 53 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {module.exports = function xor (a, b) {
@@ -11235,14 +14193,14 @@ module.exports = function createHash (alg) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 54 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(22);
-var assert = __webpack_require__(15);
+var utils = __webpack_require__(27);
+var assert = __webpack_require__(19);
 
 function BlockHash() {
   this.pending = null;
@@ -11334,38 +14292,38 @@ BlockHash.prototype._pad = function pad() {
 
 
 /***/ }),
-/* 55 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var asn1 = exports;
 
-asn1.bignum = __webpack_require__(316);
+asn1.bignum = __webpack_require__(341);
 
-asn1.define = __webpack_require__(318).define;
-asn1.base = __webpack_require__(56);
-asn1.constants = __webpack_require__(171);
-asn1.decoders = __webpack_require__(324);
-asn1.encoders = __webpack_require__(326);
+asn1.define = __webpack_require__(343).define;
+asn1.base = __webpack_require__(64);
+asn1.constants = __webpack_require__(187);
+asn1.decoders = __webpack_require__(349);
+asn1.encoders = __webpack_require__(351);
 
 
 /***/ }),
-/* 56 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var base = exports;
 
-base.Reporter = __webpack_require__(321).Reporter;
-base.DecoderBuffer = __webpack_require__(170).DecoderBuffer;
-base.EncoderBuffer = __webpack_require__(170).EncoderBuffer;
-base.Node = __webpack_require__(322);
+base.Reporter = __webpack_require__(346).Reporter;
+base.DecoderBuffer = __webpack_require__(186).DecoderBuffer;
+base.EncoderBuffer = __webpack_require__(186).EncoderBuffer;
+base.Node = __webpack_require__(347);
 
 
 /***/ }),
-/* 57 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
-var aFunction = __webpack_require__(77);
+var aFunction = __webpack_require__(84);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -11387,7 +14345,7 @@ module.exports = function (fn, that, length) {
 
 
 /***/ }),
-/* 58 */
+/* 66 */
 /***/ (function(module, exports) {
 
 module.exports = function (exec) {
@@ -11400,7 +14358,7 @@ module.exports = function (exec) {
 
 
 /***/ }),
-/* 59 */
+/* 67 */
 /***/ (function(module, exports) {
 
 module.exports = function (bitmap, value) {
@@ -11414,7 +14372,7 @@ module.exports = function (bitmap, value) {
 
 
 /***/ }),
-/* 60 */
+/* 68 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -11425,14 +14383,14 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 61 */
+/* 69 */
 /***/ (function(module, exports) {
 
 module.exports = {};
 
 
 /***/ }),
-/* 62 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11441,17 +14399,17 @@ module.exports = {};
 /**
  * @module JSON Object Signing and Encryption (JOSE)
  */
-var JWA = __webpack_require__(128);
-var JWK = __webpack_require__(213);
-var JWKSet = __webpack_require__(408);
-var JWT = __webpack_require__(409);
-var JWS = __webpack_require__(219);
-var Base64URLSchema = __webpack_require__(216);
-var JOSEHeaderSchema = __webpack_require__(218);
-var JWKSchema = __webpack_require__(86);
-var JWKSetSchema = __webpack_require__(214);
-var JWTClaimsSetSchema = __webpack_require__(217);
-var JWTSchema = __webpack_require__(215
+var JWA = __webpack_require__(139);
+var JWK = __webpack_require__(232);
+var JWKSet = __webpack_require__(428);
+var JWT = __webpack_require__(429);
+var JWS = __webpack_require__(238);
+var Base64URLSchema = __webpack_require__(235);
+var JOSEHeaderSchema = __webpack_require__(237);
+var JWKSchema = __webpack_require__(94);
+var JWKSetSchema = __webpack_require__(233);
+var JWTClaimsSetSchema = __webpack_require__(236);
+var JWTSchema = __webpack_require__(234
 
 /**
  * Export
@@ -11471,7 +14429,7 @@ var JWTSchema = __webpack_require__(215
 };
 
 /***/ }),
-/* 63 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11504,13 +14462,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 //
 //
 /* jsl:option explicit */
-var ArrayIndexOf = __webpack_require__(24).ArrayIndexOf;
-var Formula = __webpack_require__(132);
+var ArrayIndexOf = __webpack_require__(32).ArrayIndexOf;
+var Formula = __webpack_require__(146);
 // const log = require('./log')
-var RDFArrayRemove = __webpack_require__(24).RDFArrayRemove;
-var Statement = __webpack_require__(66);
-var Node = __webpack_require__(12);
-var Variable = __webpack_require__(67);
+var RDFArrayRemove = __webpack_require__(32).RDFArrayRemove;
+var Statement = __webpack_require__(74);
+var Node = __webpack_require__(16);
+var Variable = __webpack_require__(75);
 
 var owl_ns = 'http://www.w3.org/2002/07/owl#';
 // var link_ns = 'http://www.w3.org/2007/ont/link#'
@@ -11597,7 +14555,7 @@ var IndexedFormula = function (_Formula) {
     key: 'applyPatch',
     value: function applyPatch(patch, target, patchCallback) {
       // patchCallback(err)
-      var Query = __webpack_require__(68).Query;
+      var Query = __webpack_require__(76).Query;
       var targetKB = this;
       var ds;
       var binding = null;
@@ -12067,7 +15025,7 @@ var IndexedFormula = function (_Formula) {
   }, {
     key: 'query',
     value: function query(myQuery, callback, fetcher, onDone) {
-      var indexedFormulaQuery = __webpack_require__(68).indexedFormulaQuery;
+      var indexedFormulaQuery = __webpack_require__(76).indexedFormulaQuery;
       return indexedFormulaQuery.call(this, myQuery, callback, fetcher, onDone);
     }
 
@@ -12384,7 +15342,7 @@ exports.default = IndexedFormula;
 IndexedFormula.handleRDFType = handleRDFType;
 
 /***/ }),
-/* 64 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12398,9 +15356,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var BlankNode = __webpack_require__(31);
-var ClassOrder = __webpack_require__(39);
-var Node = __webpack_require__(12);
+var BlankNode = __webpack_require__(41);
+var ClassOrder = __webpack_require__(48);
+var Node = __webpack_require__(16);
 
 var Collection = function (_Node) {
   _inherits(Collection, _Node);
@@ -12474,7 +15432,7 @@ Collection.prototype.isVar = 0;
 module.exports = Collection;
 
 /***/ }),
-/* 65 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12522,10 +15480,10 @@ function nextTick(fn, arg1, arg2, arg3) {
   }
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
 
 /***/ }),
-/* 66 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12535,7 +15493,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Node = __webpack_require__(12);
+var Node = __webpack_require__(16);
 
 var Statement = function () {
   function Statement(subject, predicate, object, graph) {
@@ -12594,7 +15552,7 @@ var Statement = function () {
 module.exports = Statement;
 
 /***/ }),
-/* 67 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12608,9 +15566,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ClassOrder = __webpack_require__(39);
-var Node = __webpack_require__(12);
-var Uri = __webpack_require__(11);
+var ClassOrder = __webpack_require__(48);
+var Node = __webpack_require__(16);
+var Uri = __webpack_require__(15);
 
 /**
  * Variables are placeholders used in patterns to be matched.
@@ -12677,13 +15635,13 @@ Variable.prototype.isVar = 1;
 module.exports = Variable;
 
 /***/ }),
-/* 68 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _indexedFormula = __webpack_require__(63);
+var _indexedFormula = __webpack_require__(71);
 
 var _indexedFormula2 = _interopRequireDefault(_indexedFormula);
 
@@ -12708,8 +15666,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 // Also, users name variables and want the same name back when stuff is printed
 /* jsl:option explicit*/ // Turn on JavaScriptLint variable declaration checking
 
-var log = __webpack_require__(32);
-var docpart = __webpack_require__(11).docpart;
+var log = __webpack_require__(42);
+var docpart = __webpack_require__(15).docpart;
 
 /**
  * Query class, for tracking queries the user has in the UI.
@@ -13241,27 +16199,27 @@ module.exports.Query = Query;
 module.exports.indexedFormulaQuery = indexedFormulaQuery;
 
 /***/ }),
-/* 69 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _indexedFormula = __webpack_require__(63);
+var _indexedFormula = __webpack_require__(71);
 
 var _indexedFormula2 = _interopRequireDefault(_indexedFormula);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var BlankNode = __webpack_require__(31);
-var Collection = __webpack_require__(64);
-var DefaultGraph = __webpack_require__(243);
-var Fetcher = __webpack_require__(98);
+var BlankNode = __webpack_require__(41);
+var Collection = __webpack_require__(72);
+var DefaultGraph = __webpack_require__(270);
+var Fetcher = __webpack_require__(109);
 
-var Literal = __webpack_require__(40);
-var NamedNode = __webpack_require__(6);
-var Statement = __webpack_require__(66);
-var Variable = __webpack_require__(67);
+var Literal = __webpack_require__(49);
+var NamedNode = __webpack_require__(10);
+var Statement = __webpack_require__(74);
+var Variable = __webpack_require__(75);
 
 function blankNode(value) {
   return new BlankNode(value);
@@ -13326,7 +16284,7 @@ module.exports.lit = lit;
 module.exports.st = st;
 
 /***/ }),
-/* 70 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13340,8 +16298,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 *  http://www.webtoolkit.info/
 *
 **/
-var Uri = __webpack_require__(11);
-var ArrayIndexOf = __webpack_require__(24).ArrayIndexOf;
+var Uri = __webpack_require__(15);
+var ArrayIndexOf = __webpack_require__(32).ArrayIndexOf;
 
 var N3Parser = function () {
 
@@ -14825,11 +17783,11 @@ var N3Parser = function () {
 module.exports = N3Parser;
 
 /***/ }),
-/* 71 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(3).Buffer
-var MD5 = __webpack_require__(263)
+var Buffer = __webpack_require__(4).Buffer
+var MD5 = __webpack_require__(288)
 
 /* eslint-disable camelcase */
 function EVP_BytesToKey (password, salt, keyBits, ivLen) {
@@ -14876,7 +17834,7 @@ module.exports = EVP_BytesToKey
 
 
 /***/ }),
-/* 72 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // based on the aes implimentation in triple sec
@@ -14884,7 +17842,7 @@ module.exports = EVP_BytesToKey
 // which is in turn based on the one from crypto-js
 // https://code.google.com/p/crypto-js/
 
-var Buffer = __webpack_require__(3).Buffer
+var Buffer = __webpack_require__(4).Buffer
 
 function asUInt32Array (buf) {
   if (!Buffer.isBuffer(buf)) buf = Buffer.from(buf)
@@ -15110,7 +18068,7 @@ module.exports.AES = AES
 
 
 /***/ }),
-/* 73 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15118,21 +18076,21 @@ module.exports.AES = AES
 
 var curve = exports;
 
-curve.base = __webpack_require__(295);
-curve.short = __webpack_require__(296);
-curve.mont = __webpack_require__(297);
-curve.edwards = __webpack_require__(298);
+curve.base = __webpack_require__(320);
+curve.short = __webpack_require__(321);
+curve.mont = __webpack_require__(322);
+curve.edwards = __webpack_require__(323);
 
 
 /***/ }),
-/* 74 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var asn1 = __webpack_require__(315)
-var aesid = __webpack_require__(329)
-var fixProc = __webpack_require__(330)
-var ciphers = __webpack_require__(104)
-var compat = __webpack_require__(153)
+/* WEBPACK VAR INJECTION */(function(Buffer) {var asn1 = __webpack_require__(340)
+var aesid = __webpack_require__(354)
+var fixProc = __webpack_require__(355)
+var ciphers = __webpack_require__(115)
+var compat = __webpack_require__(169)
 module.exports = parseKeys
 
 function parseKeys (buffer) {
@@ -15238,7 +18196,7 @@ function decrypt (data, password) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 75 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15254,36 +18212,7 @@ function errorMessageBlock(dom, msg, backgroundColor) {
 }
 
 /***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var _assign = __webpack_require__(345);
-
-var _assign2 = _interopRequireDefault(_assign);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _assign2.default || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
-/***/ }),
-/* 77 */
+/* 84 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -15293,12 +18222,12 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 78 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(182);
-var enumBugKeys = __webpack_require__(117);
+var $keys = __webpack_require__(199);
+var enumBugKeys = __webpack_require__(128);
 
 module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
@@ -15306,7 +18235,7 @@ module.exports = Object.keys || function keys(O) {
 
 
 /***/ }),
-/* 79 */
+/* 86 */
 /***/ (function(module, exports) {
 
 var id = 0;
@@ -15317,32 +18246,26 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 80 */
+/* 87 */
 /***/ (function(module, exports) {
 
 exports.f = {}.propertyIsEnumerable;
 
 
 /***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(353), __esModule: true };
-
-/***/ }),
-/* 82 */
+/* 88 */
 /***/ (function(module, exports) {
 
 module.exports = true;
 
 
 /***/ }),
-/* 83 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var def = __webpack_require__(26).f;
-var has = __webpack_require__(35);
-var TAG = __webpack_require__(9)('toStringTag');
+var def = __webpack_require__(35).f;
+var has = __webpack_require__(45);
+var TAG = __webpack_require__(13)('toStringTag');
 
 module.exports = function (it, tag, stat) {
   if (it && !has(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
@@ -15350,7 +18273,37 @@ module.exports = function (it, tag, stat) {
 
 
 /***/ }),
-/* 84 */
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _defineProperty = __webpack_require__(396);
+
+var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (obj, key, value) {
+  if (key in obj) {
+    (0, _defineProperty2.default)(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+};
+
+/***/ }),
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15361,19 +18314,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.postMessageStorage = exports.memStorage = exports.updateStorage = exports.getData = exports.defaultStorage = exports.NAMESPACE = undefined;
 
-var _promise = __webpack_require__(81);
+var _promise = __webpack_require__(46);
 
 var _promise2 = _interopRequireDefault(_promise);
 
-var _stringify = __webpack_require__(375);
+var _stringify = __webpack_require__(216);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _regenerator = __webpack_require__(36);
+var _regenerator = __webpack_require__(7);
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _asyncToGenerator2 = __webpack_require__(37);
+var _asyncToGenerator2 = __webpack_require__(8);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
@@ -15468,7 +18421,7 @@ var updateStorage = exports.updateStorage = function () {
 
 exports.asyncStorage = asyncStorage;
 
-var _ipc = __webpack_require__(200);
+var _ipc = __webpack_require__(217);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15567,13 +18520,39 @@ var postMessageStorage = exports.postMessageStorage = function postMessageStorag
 };
 
 /***/ }),
-/* 85 */
-/***/ (function(module, exports) {
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_85__;
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.parse = exports.format = undefined;
+
+var _format = __webpack_require__(414);
+
+var _format2 = _interopRequireDefault(_format);
+
+var _parse = __webpack_require__(415);
+
+var _parse2 = _interopRequireDefault(_parse);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.format = _format2.default;
+exports.parse = _parse2.default;
+//# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 86 */
+/* 93 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_93__;
+
+/***/ }),
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15584,10 +18563,10 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_85__;
  * @ignore
  */
 
-var _require = __webpack_require__(17),
+var _require = __webpack_require__(21),
     JSONSchema = _require.JSONSchema;
 
-var _require2 = __webpack_require__(407
+var _require2 = __webpack_require__(427
 
 /**
  * JWK Schema
@@ -15657,7 +18636,306 @@ var JWKSchema = new JSONSchema({
 module.exports = JWKSchema;
 
 /***/ }),
-/* 87 */
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports.errorMessageBlock = errorMessageBlock;
+
+function errorMessageBlock(dom, msg, backgroundColor) {
+  var div = dom.createElement('div');
+  div.setAttribute('style', 'margin: 0.1em; padding: 0.5em; border: 0.05em solid gray; background-color: ' + (backgroundColor || '#fee') + '; color:black;');
+  div.textContent = msg;
+  return div;
+}
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.postMessageStorage = exports.memStorage = exports.updateStorage = exports.getData = exports.defaultStorage = exports.NAMESPACE = undefined;
+
+var _promise = __webpack_require__(46);
+
+var _promise2 = _interopRequireDefault(_promise);
+
+var _stringify = __webpack_require__(216);
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
+var _regenerator = __webpack_require__(7);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(8);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+/**
+ * Gets the deserialized stored data
+ */
+var getData = exports.getData = function () {
+  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(store) {
+    var serialized, data;
+    return _regenerator2.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            serialized = void 0;
+            data = void 0;
+            _context.prev = 2;
+            _context.next = 5;
+            return store.getItem(NAMESPACE);
+
+          case 5:
+            serialized = _context.sent;
+
+            data = JSON.parse(serialized || '{}');
+            _context.next = 14;
+            break;
+
+          case 9:
+            _context.prev = 9;
+            _context.t0 = _context['catch'](2);
+
+            console.warn('Could not deserialize data:', serialized);
+            console.error(_context.t0);
+            data = {};
+
+          case 14:
+            return _context.abrupt('return', data);
+
+          case 15:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, this, [[2, 9]]);
+  }));
+
+  return function getData(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+/**
+ * Updates a Storage object without mutating its intermediate representation.
+ */
+
+
+var updateStorage = exports.updateStorage = function () {
+  var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(store, update) {
+    var currentData, newData;
+    return _regenerator2.default.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return getData(store);
+
+          case 2:
+            currentData = _context2.sent;
+            newData = update(currentData);
+
+            store.setItem(NAMESPACE, (0, _stringify2.default)(newData));
+            return _context2.abrupt('return', newData);
+
+          case 6:
+          case 'end':
+            return _context2.stop();
+        }
+      }
+    }, _callee2, this);
+  }));
+
+  return function updateStorage(_x2, _x3) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+/**
+ * Takes a synchronous storage interface and wraps it with an async interface.
+ */
+
+
+exports.asyncStorage = asyncStorage;
+
+var _ipc = __webpack_require__(249);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var NAMESPACE = exports.NAMESPACE = 'solid-auth-client';
+var defaultStorage = exports.defaultStorage = function defaultStorage() {
+  try {
+    if (window && window.localStorage) {
+      return asyncStorage(window.localStorage);
+    }
+  } catch (e) {
+    if (!(e instanceof ReferenceError)) {
+      throw e;
+    }
+  }
+  console.warn('\'window.localStorage\' unavailable.  ' + 'Creating a (not very useful) in-memory storage object as the default storage interface.');
+  return asyncStorage(memStorage());
+};function asyncStorage(storage) {
+  return {
+    getItem: function getItem(key) {
+      return _promise2.default.resolve(storage.getItem(key));
+    },
+
+    setItem: function setItem(key, val) {
+      return _promise2.default.resolve(storage.setItem(key, val));
+    },
+
+    removeItem: function removeItem(key) {
+      return _promise2.default.resolve(storage.removeItem(key));
+    }
+  };
+}
+
+var memStorage = exports.memStorage = function memStorage() {
+  var store = {};
+  return {
+    getItem: function getItem(key) {
+      if (typeof store[key] === 'undefined') return null;
+      return store[key];
+    },
+    setItem: function setItem(key, val) {
+      store[key] = val;
+    },
+    removeItem: function removeItem(key) {
+      delete store[key];
+    }
+  };
+};
+
+var postMessageStorage = exports.postMessageStorage = function postMessageStorage(storageWindow, storageOrigin) {
+  var request = (0, _ipc.client)(storageWindow, storageOrigin);
+  return {
+    getItem: function () {
+      var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(key) {
+        var ret;
+        return _regenerator2.default.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return request({ method: 'storage/getItem', args: [key] });
+
+              case 2:
+                ret = _context3.sent;
+
+                if (!(typeof ret !== 'string')) {
+                  _context3.next = 5;
+                  break;
+                }
+
+                throw new Error('expected postMessage call for \'storage/getItem\' to return a string, but got value ' + ret);
+
+              case 5:
+                return _context3.abrupt('return', ret);
+
+              case 6:
+              case 'end':
+                return _context3.stop();
+            }
+          }
+        }, _callee3, undefined);
+      }));
+
+      return function getItem(_x4) {
+        return _ref3.apply(this, arguments);
+      };
+    }(),
+
+    setItem: function setItem(key, val) {
+      return request({ method: 'storage/setItem', args: [key, val] });
+    },
+
+    removeItem: function removeItem(key) {
+      return request({ method: 'storage/removeItem', args: [key] });
+    }
+  };
+};
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*
+The MIT License (MIT)
+
+Copyright (c) 2015-2016 Solid
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+If you would like to know more about the solid Solid project, please see
+https://github.com/solid/solid
+*/
+
+/**
+ * Provides a Solid client helper object (which exposes various static modules).
+ * @module solidUi.js
+ * @main solidUi.js
+ */
+
+/**
+ * @class SolidUi
+ * @static
+ */
+
+var rdf = __webpack_require__(3); // pull in first avoid cross-refs
+var ns = __webpack_require__(11);
+
+var UI = {
+  ns: ns,
+  rdf: rdf,
+  acl: __webpack_require__(162),
+  aclControl: __webpack_require__(364),
+  authn: __webpack_require__(195),
+  create: __webpack_require__(441),
+  icons: __webpack_require__(25),
+  log: __webpack_require__(23),
+  matrix: __webpack_require__(442),
+  messageArea: __webpack_require__(443),
+  pad: __webpack_require__(444),
+  store: __webpack_require__(18),
+  table: __webpack_require__(445),
+  tabs: __webpack_require__(446),
+  utils: __webpack_require__(28),
+  widgets: __webpack_require__(26)
+};
+
+module.exports = UI;
+
+/***/ }),
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15665,8 +18943,8 @@ module.exports = JWKSchema;
 
 module.exports = serialize;
 
-var convert = __webpack_require__(133);
-var Serializer = __webpack_require__(97);
+var convert = __webpack_require__(147);
+var Serializer = __webpack_require__(108);
 
 /**
  * Serialize to the appropriate format
@@ -15740,7 +19018,7 @@ function serialize(target, kb, base, contentType, callback, options) {
 }
 
 /***/ }),
-/* 88 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(setImmediate) {// **N3Lexer** tokenizes N3 documents.
@@ -16103,14 +19381,14 @@ N3Lexer.prototype = {
 // Export the `N3Lexer` class as a whole.
 module.exports = N3Lexer;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(48).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(56).setImmediate))
 
 /***/ }),
-/* 89 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // **N3Parser** parses N3 documents.
-var N3Lexer = __webpack_require__(88);
+var N3Lexer = __webpack_require__(99);
 
 var RDF_PREFIX = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
     RDF_NIL    = RDF_PREFIX + 'nil',
@@ -16812,7 +20090,7 @@ module.exports = N3Parser;
 
 
 /***/ }),
-/* 90 */
+/* 101 */
 /***/ (function(module, exports) {
 
 // **N3Util** provides N3 utility functions
@@ -16934,7 +20212,7 @@ module.exports = addN3Util(addN3Util);
 
 
 /***/ }),
-/* 91 */
+/* 102 */
 /***/ (function(module, exports) {
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -17242,20 +20520,20 @@ function isUndefined(arg) {
 
 
 /***/ }),
-/* 92 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(139);
+exports = module.exports = __webpack_require__(153);
 exports.Stream = exports;
 exports.Readable = exports;
-exports.Writable = __webpack_require__(93);
-exports.Duplex = __webpack_require__(33);
-exports.Transform = __webpack_require__(143);
-exports.PassThrough = __webpack_require__(236);
+exports.Writable = __webpack_require__(104);
+exports.Duplex = __webpack_require__(43);
+exports.Transform = __webpack_require__(157);
+exports.PassThrough = __webpack_require__(263);
 
 
 /***/ }),
-/* 93 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17288,7 +20566,7 @@ exports.PassThrough = __webpack_require__(236);
 
 /*<replacement>*/
 
-var processNextTick = __webpack_require__(65);
+var processNextTick = __webpack_require__(73);
 /*</replacement>*/
 
 module.exports = Writable;
@@ -17325,22 +20603,22 @@ var Duplex;
 Writable.WritableState = WritableState;
 
 /*<replacement>*/
-var util = __webpack_require__(49);
-util.inherits = __webpack_require__(2);
+var util = __webpack_require__(57);
+util.inherits = __webpack_require__(1);
 /*</replacement>*/
 
 /*<replacement>*/
 var internalUtil = {
-  deprecate: __webpack_require__(235)
+  deprecate: __webpack_require__(262)
 };
 /*</replacement>*/
 
 /*<replacement>*/
-var Stream = __webpack_require__(141);
+var Stream = __webpack_require__(155);
 /*</replacement>*/
 
 /*<replacement>*/
-var Buffer = __webpack_require__(3).Buffer;
+var Buffer = __webpack_require__(4).Buffer;
 var OurUint8Array = global.Uint8Array || function () {};
 function _uint8ArrayToBuffer(chunk) {
   return Buffer.from(chunk);
@@ -17350,14 +20628,14 @@ function _isUint8Array(obj) {
 }
 /*</replacement>*/
 
-var destroyImpl = __webpack_require__(142);
+var destroyImpl = __webpack_require__(156);
 
 util.inherits(Writable, Stream);
 
 function nop() {}
 
 function WritableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(33);
+  Duplex = Duplex || __webpack_require__(43);
 
   options = options || {};
 
@@ -17497,7 +20775,7 @@ if (typeof Symbol === 'function' && Symbol.hasInstance && typeof Function.protot
 }
 
 function Writable(options) {
-  Duplex = Duplex || __webpack_require__(33);
+  Duplex = Duplex || __webpack_require__(43);
 
   // Writable ctor is applied to Duplexes, too.
   // `realHasInstance` is necessary because using plain `instanceof`
@@ -17923,10 +21201,10 @@ Writable.prototype._destroy = function (err, cb) {
   this.end();
   cb(err);
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13), __webpack_require__(48).setImmediate, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17), __webpack_require__(56).setImmediate, __webpack_require__(5)))
 
 /***/ }),
-/* 94 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -18153,7 +21431,7 @@ function base64DetectIncompleteChar(buffer) {
 
 
 /***/ }),
-/* 95 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -18681,7 +21959,7 @@ function isPrimitive(arg) {
 }
 exports.isPrimitive = isPrimitive;
 
-exports.isBuffer = __webpack_require__(241);
+exports.isBuffer = __webpack_require__(268);
 
 function objectToString(o) {
   return Object.prototype.toString.call(o);
@@ -18725,7 +22003,7 @@ exports.log = function() {
  *     prototype.
  * @param {function} superCtor Constructor function to inherit prototype from.
  */
-exports.inherits = __webpack_require__(242);
+exports.inherits = __webpack_require__(269);
 
 exports._extend = function(origin, add) {
   // Don't do anything if add isn't an object
@@ -18743,10 +22021,10 @@ function hasOwnProperty(obj, prop) {
   return Object.prototype.hasOwnProperty.call(obj, prop);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(13)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(17)))
 
 /***/ }),
-/* 96 */
+/* 107 */
 /***/ (function(module, exports) {
 
 // **N3Writer** writes N3 documents.
@@ -19080,7 +22358,7 @@ module.exports = N3Writer;
 
 
 /***/ }),
-/* 97 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19093,11 +22371,11 @@ module.exports = N3Writer;
 ** This is or was https://github.com/linkeddata/rdflib.js/blob/master/src/serializer.js
 ** Licence: MIT
 */
-var NamedNode = __webpack_require__(6);
-var BlankNode = __webpack_require__(31);
-var Uri = __webpack_require__(11);
-var Util = __webpack_require__(24);
-var XSD = __webpack_require__(131);
+var NamedNode = __webpack_require__(10);
+var BlankNode = __webpack_require__(41);
+var Uri = __webpack_require__(15);
+var Util = __webpack_require__(32);
+var XSD = __webpack_require__(145);
 
 var Serializer = function () {
   var __Serializer = function __Serializer(store) {
@@ -20040,7 +23318,7 @@ var Serializer = function () {
 module.exports = Serializer;
 
 /***/ }),
-/* 98 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20077,16 +23355,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * To do:
  * Firing up a mail client for mid:  (message:) URLs
  */
-var log = __webpack_require__(32);
-var N3Parser = __webpack_require__(70);
-var NamedNode = __webpack_require__(6);
-var Namespace = __webpack_require__(50);
-var rdfParse = __webpack_require__(145);
-var parseRDFaDOM = __webpack_require__(99).parseRDFaDOM;
-var RDFParser = __webpack_require__(100);
-var Uri = __webpack_require__(11);
-var Util = __webpack_require__(24);
-var serialize = __webpack_require__(87);
+var log = __webpack_require__(42);
+var N3Parser = __webpack_require__(78);
+var NamedNode = __webpack_require__(10);
+var Namespace = __webpack_require__(58);
+var rdfParse = __webpack_require__(159);
+var parseRDFaDOM = __webpack_require__(110).parseRDFaDOM;
+var RDFParser = __webpack_require__(111);
+var Uri = __webpack_require__(15);
+var Util = __webpack_require__(32);
+var serialize = __webpack_require__(98);
 
 var Parsable = {
   'text/n3': true,
@@ -20557,7 +23835,7 @@ var Fetcher = function () {
       if (typeof window !== 'undefined') {
         this._fetch = window.fetch.bind(window);
       } else {
-        this._fetch = __webpack_require__(44);
+        this._fetch = __webpack_require__(33);
       }
     }
 
@@ -21825,7 +25103,7 @@ module.exports.HANDLERS = HANDLERS;
 module.exports.CONTENT_TYPE_BY_EXT = CONTENT_TYPE_BY_EXT;
 
 /***/ }),
-/* 99 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21849,12 +25127,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 // options.base = base URI    not really an option, shopuld always be set.
 //
 
-var BlankNode = __webpack_require__(31);
-var Literal = __webpack_require__(40);
-var rdf = __webpack_require__(69);
-var NamedNode = __webpack_require__(6);
-var Uri = __webpack_require__(11);
-var Util = __webpack_require__(24);
+var BlankNode = __webpack_require__(41);
+var Literal = __webpack_require__(49);
+var rdf = __webpack_require__(77);
+var NamedNode = __webpack_require__(10);
+var Uri = __webpack_require__(15);
+var Util = __webpack_require__(32);
 
 if (typeof Node === 'undefined') {
   //  @@@@@@ Global. Interface to xmldom.
@@ -22783,7 +26061,7 @@ RDFaProcessor.dateTimeTypes = [{ pattern: /-?P(?:[0-9]+Y)?(?:[0-9]+M)?(?:[0-9]+D
 module.exports = RDFaProcessor;
 
 /***/ }),
-/* 100 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22851,7 +26129,7 @@ module.exports = RDFaProcessor;
  * @constructor
  * @param {RDFStore} store An RDFStore object
  */
-var uriUtil = __webpack_require__(11);
+var uriUtil = __webpack_require__(15);
 
 var RDFParser = function RDFParser(store) {
   var RDFParser = {};
@@ -23237,7 +26515,7 @@ var RDFParser = function RDFParser(store) {
 module.exports = RDFParser;
 
 /***/ }),
-/* 101 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23251,7 +26529,7 @@ module.exports = RDFParser;
  * See http://pajhome.org.uk/crypt/md5 for more info.
  */
 
-var makeHash = __webpack_require__(253)
+var makeHash = __webpack_require__(278)
 
 /*
  * Calculate the MD5 of an array of little-endian words, and a bit length
@@ -23395,13 +26673,13 @@ module.exports = function md5 (buf) {
 
 
 /***/ }),
-/* 102 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Buffer) {
-var inherits = __webpack_require__(2)
-var HashBase = __webpack_require__(254)
+var inherits = __webpack_require__(1)
+var HashBase = __webpack_require__(279)
 
 function RIPEMD160 () {
   HashBase.call(this, 64)
@@ -23694,7 +26972,7 @@ module.exports = RIPEMD160
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 103 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var exports = module.exports = function SHA (algorithm) {
@@ -23706,21 +26984,21 @@ var exports = module.exports = function SHA (algorithm) {
   return new Algorithm()
 }
 
-exports.sha = __webpack_require__(255)
-exports.sha1 = __webpack_require__(256)
-exports.sha224 = __webpack_require__(257)
-exports.sha256 = __webpack_require__(149)
-exports.sha384 = __webpack_require__(258)
-exports.sha512 = __webpack_require__(150)
+exports.sha = __webpack_require__(280)
+exports.sha1 = __webpack_require__(281)
+exports.sha224 = __webpack_require__(282)
+exports.sha256 = __webpack_require__(165)
+exports.sha384 = __webpack_require__(283)
+exports.sha512 = __webpack_require__(166)
 
 
 /***/ }),
-/* 104 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ciphers = __webpack_require__(265)
-var deciphers = __webpack_require__(273)
-var modes = __webpack_require__(158)
+var ciphers = __webpack_require__(290)
+var deciphers = __webpack_require__(298)
+var modes = __webpack_require__(174)
 
 function getCiphers () {
   return Object.keys(modes)
@@ -23734,21 +27012,21 @@ exports.listCiphers = exports.getCiphers = getCiphers
 
 
 /***/ }),
-/* 105 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var modeModules = {
-  ECB: __webpack_require__(266),
-  CBC: __webpack_require__(267),
-  CFB: __webpack_require__(268),
-  CFB8: __webpack_require__(269),
-  CFB1: __webpack_require__(270),
-  OFB: __webpack_require__(271),
-  CTR: __webpack_require__(157),
-  GCM: __webpack_require__(157)
+  ECB: __webpack_require__(291),
+  CBC: __webpack_require__(292),
+  CFB: __webpack_require__(293),
+  CFB8: __webpack_require__(294),
+  CFB1: __webpack_require__(295),
+  OFB: __webpack_require__(296),
+  CTR: __webpack_require__(173),
+  GCM: __webpack_require__(173)
 }
 
-var modes = __webpack_require__(158)
+var modes = __webpack_require__(174)
 
 for (var key in modes) {
   modes[key].module = modeModules[modes[key].mode]
@@ -23758,25 +27036,25 @@ module.exports = modes
 
 
 /***/ }),
-/* 106 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-exports.utils = __webpack_require__(275);
-exports.Cipher = __webpack_require__(276);
-exports.DES = __webpack_require__(277);
-exports.CBC = __webpack_require__(278);
-exports.EDE = __webpack_require__(279);
+exports.utils = __webpack_require__(300);
+exports.Cipher = __webpack_require__(301);
+exports.DES = __webpack_require__(302);
+exports.CBC = __webpack_require__(303);
+exports.EDE = __webpack_require__(304);
 
 
 /***/ }),
-/* 107 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var bn = __webpack_require__(290);
-var randomBytes = __webpack_require__(51);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var bn = __webpack_require__(315);
+var randomBytes = __webpack_require__(59);
 module.exports = crt;
 function blind(priv) {
   var r = getr(priv);
@@ -23819,16 +27097,16 @@ function getr(priv) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 108 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var hash = exports;
 
-hash.utils = __webpack_require__(22);
-hash.common = __webpack_require__(54);
-hash.sha = __webpack_require__(300);
-hash.ripemd = __webpack_require__(304);
-hash.hmac = __webpack_require__(305);
+hash.utils = __webpack_require__(27);
+hash.common = __webpack_require__(62);
+hash.sha = __webpack_require__(325);
+hash.ripemd = __webpack_require__(329);
+hash.hmac = __webpack_require__(330);
 
 // Proxy hash functions to the main object
 hash.sha1 = hash.sha.sha1;
@@ -23840,7 +27118,7 @@ hash.ripemd160 = hash.ripemd.ripemd160;
 
 
 /***/ }),
-/* 109 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {(function (module, exports) {
@@ -23895,7 +27173,7 @@ hash.ripemd160 = hash.ripemd.ripemd160;
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(337).Buffer;
+    Buffer = __webpack_require__(362).Buffer;
   } catch (e) {
   }
 
@@ -27271,14 +30549,14 @@ hash.ripemd160 = hash.ripemd.ripemd160;
   };
 })(typeof module === 'undefined' || module, this);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module)))
 
 /***/ }),
-/* 110 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(46);
-var document = __webpack_require__(8).document;
+var isObject = __webpack_require__(54);
+var document = __webpack_require__(12).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
 module.exports = function (it) {
@@ -27287,11 +30565,11 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 111 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(46);
+var isObject = __webpack_require__(54);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
@@ -27305,7 +30583,7 @@ module.exports = function (it, S) {
 
 
 /***/ }),
-/* 112 */
+/* 123 */
 /***/ (function(module, exports) {
 
 // 7.2.1 RequireObjectCoercible(argument)
@@ -27316,11 +30594,11 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 113 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(114);
+var toInteger = __webpack_require__(125);
 var min = Math.min;
 module.exports = function (it) {
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
@@ -27328,7 +30606,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 114 */
+/* 125 */
 /***/ (function(module, exports) {
 
 // 7.1.4 ToInteger
@@ -27340,21 +30618,21 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 115 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(116)('keys');
-var uid = __webpack_require__(79);
+var shared = __webpack_require__(127)('keys');
+var uid = __webpack_require__(86);
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
 
 
 /***/ }),
-/* 116 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(8);
+var global = __webpack_require__(12);
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || (global[SHARED] = {});
 module.exports = function (key) {
@@ -27363,7 +30641,7 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 117 */
+/* 128 */
 /***/ (function(module, exports) {
 
 // IE 8- don't enum bug keys
@@ -27373,33 +30651,33 @@ module.exports = (
 
 
 /***/ }),
-/* 118 */
+/* 129 */
 /***/ (function(module, exports) {
 
 exports.f = Object.getOwnPropertySymbols;
 
 
 /***/ }),
-/* 119 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(112);
+var defined = __webpack_require__(123);
 module.exports = function (it) {
   return Object(defined(it));
 };
 
 
 /***/ }),
-/* 120 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $at = __webpack_require__(354)(true);
+var $at = __webpack_require__(378)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(185)(String, 'String', function (iterated) {
+__webpack_require__(202)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0;                // next index
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -27415,13 +30693,13 @@ __webpack_require__(185)(String, 'String', function (iterated) {
 
 
 /***/ }),
-/* 121 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // 25.4.1.5 NewPromiseCapability(C)
-var aFunction = __webpack_require__(77);
+var aFunction = __webpack_require__(84);
 
 function PromiseCapability(C) {
   var resolve, reject;
@@ -27440,7 +30718,7 @@ module.exports.f = function (C) {
 
 
 /***/ }),
-/* 122 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27451,15 +30729,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.clearSession = exports.getSession = undefined;
 
-var _extends2 = __webpack_require__(76);
+var _extends2 = __webpack_require__(37);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _regenerator = __webpack_require__(36);
+var _regenerator = __webpack_require__(7);
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _asyncToGenerator2 = __webpack_require__(37);
+var _asyncToGenerator2 = __webpack_require__(8);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
@@ -27516,7 +30794,7 @@ var clearSession = exports.clearSession = function () {
 
 exports.saveSession = saveSession;
 
-var _storage = __webpack_require__(84);
+var _storage = __webpack_require__(91);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27554,21 +30832,21 @@ function saveSession(storage) {
 }
 
 /***/ }),
-/* 123 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(9);
+exports.f = __webpack_require__(13);
 
 
 /***/ }),
-/* 124 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(8);
-var core = __webpack_require__(16);
-var LIBRARY = __webpack_require__(82);
-var wksExt = __webpack_require__(123);
-var defineProperty = __webpack_require__(26).f;
+var global = __webpack_require__(12);
+var core = __webpack_require__(20);
+var LIBRARY = __webpack_require__(88);
+var wksExt = __webpack_require__(134);
+var defineProperty = __webpack_require__(35).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
@@ -27576,7 +30854,7 @@ module.exports = function (name) {
 
 
 /***/ }),
-/* 125 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27587,15 +30865,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.fetchWithCredentials = exports.requiresAuth = exports.getRegisteredRp = exports.logout = exports.currentSession = exports.login = undefined;
 
-var _extends2 = __webpack_require__(76);
+var _extends2 = __webpack_require__(37);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _regenerator = __webpack_require__(36);
+var _regenerator = __webpack_require__(7);
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _asyncToGenerator2 = __webpack_require__(37);
+var _asyncToGenerator2 = __webpack_require__(8);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
@@ -27666,23 +30944,23 @@ var storeRp = function () {
   };
 }();
 
-__webpack_require__(44);
+__webpack_require__(33);
 
-var _authHeader = __webpack_require__(202);
+var _authHeader = __webpack_require__(92);
 
 var authorization = _interopRequireWildcard(_authHeader);
 
-var _oidcRp = __webpack_require__(395);
+var _oidcRp = __webpack_require__(222);
 
 var _oidcRp2 = _interopRequireDefault(_oidcRp);
 
-var _PoPToken = __webpack_require__(416);
+var _PoPToken = __webpack_require__(241);
 
 var _PoPToken2 = _interopRequireDefault(_PoPToken);
 
-var _urlUtil = __webpack_require__(129);
+var _urlUtil = __webpack_require__(140);
 
-var _storage = __webpack_require__(84);
+var _storage = __webpack_require__(91);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -27973,7 +31251,7 @@ var fetchWithCredentials = exports.fetchWithCredentials = function fetchWithCred
 };
 
 /***/ }),
-/* 126 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28045,7 +31323,7 @@ function isBuffer(b) {
 // ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-var util = __webpack_require__(95);
+var util = __webpack_require__(106);
 var hasOwn = Object.prototype.hasOwnProperty;
 var pSlice = Array.prototype.slice;
 var functionsHaveNames = (function () {
@@ -28468,10 +31746,10 @@ var objectKeys = Object.keys || function (obj) {
   return keys;
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 127 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28774,7 +32052,7 @@ var JSONPointer = function () {
 module.exports = JSONPointer;
 
 /***/ }),
-/* 128 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28790,10 +32068,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * TODO
  * - switch between Node.js webcrypto package and browser implementation
  */
-var base64url = __webpack_require__(38);
-var supportedAlgorithms = __webpack_require__(401);
+var base64url = __webpack_require__(47);
+var supportedAlgorithms = __webpack_require__(421);
 
-var _require = __webpack_require__(211
+var _require = __webpack_require__(230
 
 /**
  * JWA
@@ -28905,7 +32183,7 @@ var JWA = function () {
 module.exports = JWA;
 
 /***/ }),
-/* 129 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28934,7 +32212,547 @@ var originOf = exports.originOf = function originOf(url) {
 };
 
 /***/ }),
-/* 130 */
+/* 141 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.clearSession = exports.getSession = undefined;
+
+var _extends2 = __webpack_require__(37);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _regenerator = __webpack_require__(7);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(8);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var getSession = exports.getSession = function () {
+  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(storage) {
+    var data;
+    return _regenerator2.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return (0, _storage.getData)(storage);
+
+          case 2:
+            data = _context.sent;
+            return _context.abrupt('return', data.session || null);
+
+          case 4:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, this);
+  }));
+
+  return function getSession(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var clearSession = exports.clearSession = function () {
+  var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(storage) {
+    return _regenerator2.default.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return (0, _storage.updateStorage)(storage, function (data) {
+              return (0, _extends3.default)({}, data, { session: null });
+            });
+
+          case 2:
+          case 'end':
+            return _context3.stop();
+        }
+      }
+    }, _callee3, this);
+  }));
+
+  return function clearSession(_x3) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+exports.saveSession = saveSession;
+
+var _storage = __webpack_require__(96);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function saveSession(storage) {
+  var _this = this;
+
+  return function () {
+    var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(session) {
+      var data;
+      return _regenerator2.default.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return (0, _storage.updateStorage)(storage, function (data) {
+                return (0, _extends3.default)({}, data, { session: session });
+              });
+
+            case 2:
+              data = _context2.sent;
+              return _context2.abrupt('return', data.session);
+
+            case 4:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, _this);
+    }));
+
+    return function (_x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+}
+
+/***/ }),
+/* 142 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchWithCredentials = exports.requiresAuth = exports.getRegisteredRp = exports.logout = exports.currentSession = exports.login = undefined;
+
+var _extends2 = __webpack_require__(37);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _regenerator = __webpack_require__(7);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(8);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var getStoredRp = function () {
+  var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(storage) {
+    var data, rpConfig;
+    return _regenerator2.default.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return (0, _storage.getData)(storage);
+
+          case 2:
+            data = _context3.sent;
+            rpConfig = data.rpConfig;
+
+            if (!rpConfig) {
+              _context3.next = 9;
+              break;
+            }
+
+            rpConfig.store = storage;
+            return _context3.abrupt('return', _oidcRp2.default.from(rpConfig));
+
+          case 9:
+            return _context3.abrupt('return', null);
+
+          case 10:
+          case 'end':
+            return _context3.stop();
+        }
+      }
+    }, _callee3, this);
+  }));
+
+  return function getStoredRp(_x4) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+var storeRp = function () {
+  var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4(storage, idp, rp) {
+    return _regenerator2.default.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return (0, _storage.updateStorage)(storage, function (data) {
+              return (0, _extends3.default)({}, data, {
+                rpConfig: rp
+              });
+            });
+
+          case 2:
+            return _context4.abrupt('return', rp);
+
+          case 3:
+          case 'end':
+            return _context4.stop();
+        }
+      }
+    }, _callee4, this);
+  }));
+
+  return function storeRp(_x5, _x6, _x7) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+
+__webpack_require__(33);
+
+var _authHeader = __webpack_require__(92);
+
+var authorization = _interopRequireWildcard(_authHeader);
+
+var _oidcRp = __webpack_require__(222);
+
+var _oidcRp2 = _interopRequireDefault(_oidcRp);
+
+var _PoPToken = __webpack_require__(241);
+
+var _PoPToken2 = _interopRequireDefault(_PoPToken);
+
+var _urlUtil = __webpack_require__(143);
+
+var _storage = __webpack_require__(96);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* global fetch, RequestInfo, Response */
+var login = exports.login = function () {
+  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(idp, options) {
+    var rp;
+    return _regenerator2.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            _context.next = 3;
+            return getRegisteredRp(idp, options);
+
+          case 3:
+            rp = _context.sent;
+            _context.next = 6;
+            return saveAppHashFragment(options.storage);
+
+          case 6:
+            return _context.abrupt('return', function () {
+              return sendAuthRequest(rp, options);
+            });
+
+          case 9:
+            _context.prev = 9;
+            _context.t0 = _context['catch'](0);
+
+            console.warn('Error logging in with WebID-OIDC');
+            console.error(_context.t0);
+            return _context.abrupt('return', null);
+
+          case 14:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, undefined, [[0, 9]]);
+  }));
+
+  return function login(_x, _x2) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var currentSession = exports.currentSession = function () {
+  var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
+    var storage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _storage.defaultStorage)();
+    var rp, url, storeData, resp, idp, idToken, accessToken, clientId, sessionKey;
+    return _regenerator2.default.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            _context2.next = 3;
+            return getStoredRp(storage);
+
+          case 3:
+            rp = _context2.sent;
+
+            if (rp) {
+              _context2.next = 6;
+              break;
+            }
+
+            return _context2.abrupt('return', null);
+
+          case 6:
+            url = (0, _urlUtil.currentUrl)();
+
+            if (!(!url || !url.includes('#'))) {
+              _context2.next = 9;
+              break;
+            }
+
+            return _context2.abrupt('return', null);
+
+          case 9:
+            _context2.next = 11;
+            return (0, _storage.getData)(storage);
+
+          case 11:
+            storeData = _context2.sent;
+            _context2.next = 14;
+            return rp.validateResponse(url, storeData);
+
+          case 14:
+            resp = _context2.sent;
+
+            if (resp) {
+              _context2.next = 17;
+              break;
+            }
+
+            return _context2.abrupt('return', null);
+
+          case 17:
+            _context2.next = 19;
+            return restoreAppHashFragment(storage);
+
+          case 19:
+            idp = resp.idp, idToken = resp.idToken, accessToken = resp.accessToken, clientId = resp.clientId, sessionKey = resp.sessionKey;
+            return _context2.abrupt('return', {
+              authType: 'WebID-OIDC',
+              webId: resp.decoded.payload.sub,
+              idp: idp,
+              idToken: idToken,
+              accessToken: accessToken,
+              clientId: clientId,
+              sessionKey: sessionKey
+            });
+
+          case 23:
+            _context2.prev = 23;
+            _context2.t0 = _context2['catch'](0);
+
+            console.warn('Error finding a WebID-OIDC session');
+            console.error(_context2.t0);
+            return _context2.abrupt('return', null);
+
+          case 28:
+          case 'end':
+            return _context2.stop();
+        }
+      }
+    }, _callee2, undefined, [[0, 23]]);
+  }));
+
+  return function currentSession() {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+var logout = exports.logout = function logout(storage) {
+  return getStoredRp(storage).then(function (rp) {
+    return rp ? rp.logout() : undefined;
+  }).catch(function (err) {
+    console.warn('Error logging out of the WebID-OIDC session');
+    console.error(err);
+  });
+};
+
+var getRegisteredRp = exports.getRegisteredRp = function getRegisteredRp(idp, options) {
+  return getStoredRp(options.storage).then(function (rp) {
+    if (rp && rp.provider.url === idp) {
+      return rp;
+    }
+    return registerRp(idp, options).then(function (rp) {
+      return storeRp(options.storage, idp, rp);
+    });
+  });
+};
+
+var registerRp = function registerRp(idp, _ref5) {
+  var storage = _ref5.storage,
+      callbackUri = _ref5.callbackUri;
+
+  var responseType = 'id_token token';
+  var registration = {
+    issuer: idp,
+    grant_types: ['implicit'],
+    redirect_uris: [callbackUri],
+    response_types: [responseType],
+    scope: 'openid profile'
+  };
+  var options = {
+    defaults: {
+      authenticate: {
+        redirect_uri: callbackUri,
+        response_type: responseType
+      }
+    },
+    store: storage
+  };
+  return _oidcRp2.default.register(idp, registration, options);
+};
+
+var sendAuthRequest = function () {
+  var _ref6 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5(rp, _ref7) {
+    var callbackUri = _ref7.callbackUri,
+        storage = _ref7.storage;
+    var data, url;
+    return _regenerator2.default.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return (0, _storage.getData)(storage);
+
+          case 2:
+            data = _context5.sent;
+            _context5.next = 5;
+            return rp.createRequest({ redirect_uri: callbackUri }, data);
+
+          case 5:
+            url = _context5.sent;
+            _context5.next = 8;
+            return (0, _storage.updateStorage)(storage, function () {
+              return data;
+            });
+
+          case 8:
+            return _context5.abrupt('return', (0, _urlUtil.navigateTo)(url));
+
+          case 9:
+          case 'end':
+            return _context5.stop();
+        }
+      }
+    }, _callee5, undefined);
+  }));
+
+  return function sendAuthRequest(_x8, _x9) {
+    return _ref6.apply(this, arguments);
+  };
+}();
+
+var saveAppHashFragment = function saveAppHashFragment(store) {
+  return (0, _storage.updateStorage)(store, function (data) {
+    return (0, _extends3.default)({}, data, {
+      appHashFragment: window.location.hash
+    });
+  });
+};
+
+var restoreAppHashFragment = function restoreAppHashFragment(store) {
+  return (0, _storage.updateStorage)(store, function (data) {
+    window.location.hash = data.appHashFragment;
+    delete data.appHashFragment;
+    return data;
+  });
+};
+
+/**
+ * Answers whether a HTTP response requires WebID-OIDC authentication.
+ */
+var requiresAuth = exports.requiresAuth = function requiresAuth(resp) {
+  if (resp.status !== 401) {
+    return false;
+  }
+  var wwwAuthHeader = resp.headers.get('www-authenticate');
+  if (!wwwAuthHeader) {
+    return false;
+  }
+  var auth = authorization.parse(wwwAuthHeader);
+  return auth.scheme === 'Bearer' && auth.params && auth.params.scope === 'openid webid';
+};
+
+/**
+ * Fetches a resource, providing the WebID-OIDC ID Token as authentication.
+ * Assumes that the resource has requested those tokens in a previous response.
+ */
+var fetchWithCredentials = exports.fetchWithCredentials = function fetchWithCredentials(session) {
+  return function () {
+    var _ref8 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(url, options) {
+      var popToken, authenticatedOptions;
+      return _regenerator2.default.wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              _context6.next = 2;
+              return _PoPToken2.default.issueFor(url, session);
+
+            case 2:
+              popToken = _context6.sent;
+              authenticatedOptions = (0, _extends3.default)({}, options, {
+                headers: (0, _extends3.default)({}, options && options.headers ? options.headers : {}, {
+                  authorization: 'Bearer ' + popToken
+                })
+              });
+              return _context6.abrupt('return', fetch(url, authenticatedOptions));
+
+            case 5:
+            case 'end':
+              return _context6.stop();
+          }
+        }
+      }, _callee6, undefined);
+    }));
+
+    return function (_x10, _x11) {
+      return _ref8.apply(this, arguments);
+    };
+  }();
+};
+
+/***/ }),
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/* eslint-env browser */
+
+var currentUrl = exports.currentUrl = function currentUrl() {
+  return window.location.href;
+};
+
+var currentUrlNoParams = exports.currentUrlNoParams = function currentUrlNoParams() {
+  return window.location.origin + window.location.pathname;
+};
+
+var navigateTo = exports.navigateTo = function navigateTo(url) {
+  window.location.href = url;
+};
+
+var originOf = exports.originOf = function originOf(url) {
+  return new URL(url).origin;
+};
+
+/***/ }),
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28952,8 +32770,8 @@ var originOf = exports.originOf = function originOf(url) {
  * @private
  */
 
-var db = __webpack_require__(435)
-var extname = __webpack_require__(437).extname
+var db = __webpack_require__(465)
+var extname = __webpack_require__(467).extname
 
 /**
  * Module variables.
@@ -29129,7 +32947,7 @@ function populateMaps (extensions, types) {
 
 
 /***/ }),
-/* 131 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29137,7 +32955,7 @@ function populateMaps (extensions, types) {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var NamedNode = __webpack_require__(6);
+var NamedNode = __webpack_require__(10);
 
 var XSD = function XSD() {
   _classCallCheck(this, XSD);
@@ -29154,7 +32972,7 @@ XSD.string = new NamedNode('http://www.w3.org/2001/XMLSchema#string');
 module.exports = XSD;
 
 /***/ }),
-/* 132 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29168,16 +32986,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var BlankNode = __webpack_require__(31);
-var ClassOrder = __webpack_require__(39);
-var Collection = __webpack_require__(64);
-var Literal = __webpack_require__(40);
-var log = __webpack_require__(32);
-var NamedNode = __webpack_require__(6);
-var Node = __webpack_require__(12);
-var Serializer = __webpack_require__(87);
-var Statement = __webpack_require__(66);
-var Variable = __webpack_require__(67);
+var BlankNode = __webpack_require__(41);
+var ClassOrder = __webpack_require__(48);
+var Collection = __webpack_require__(72);
+var Literal = __webpack_require__(49);
+var log = __webpack_require__(42);
+var NamedNode = __webpack_require__(10);
+var Node = __webpack_require__(16);
+var Serializer = __webpack_require__(98);
+var Statement = __webpack_require__(74);
+var Variable = __webpack_require__(75);
 
 var Formula = function (_Node) {
   _inherits(Formula, _Node);
@@ -29774,7 +33592,7 @@ Formula.termType = 'Graph';
 Formula.prototype.classOrder = ClassOrder['Graph'];
 Formula.prototype.isVar = 0;
 
-Formula.prototype.ns = __webpack_require__(50);
+Formula.prototype.ns = __webpack_require__(58);
 Formula.prototype.variable = function (name) {
   return new Variable(name);
 };
@@ -29782,7 +33600,7 @@ Formula.prototype.variable = function (name) {
 module.exports = Formula;
 
 /***/ }),
-/* 133 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29791,9 +33609,9 @@ module.exports = Formula;
 module.exports.convertToJson = convertToJson;
 module.exports.convertToNQuads = convertToNQuads;
 
-var asyncLib = __webpack_require__(226); // @@ Goal: remove this dependency
-var jsonld = __webpack_require__(134);
-var N3 = __webpack_require__(136); // @@ Goal: remove this dependency
+var asyncLib = __webpack_require__(253); // @@ Goal: remove this dependency
+var jsonld = __webpack_require__(148);
+var N3 = __webpack_require__(150); // @@ Goal: remove this dependency
 
 function convertToJson(n3String, jsonCallback) {
   var jsonString;
@@ -29850,7 +33668,7 @@ function convertToNQuads(n3String, nquadCallback) {
 }
 
 /***/ }),
-/* 134 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process, global, setImmediate, __dirname) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -31206,7 +35024,7 @@ jsonld.promises = function(options) {
   }
 
   try {
-    jsonld.Promise = global.Promise || __webpack_require__(135).Promise;
+    jsonld.Promise = global.Promise || __webpack_require__(149).Promise;
   } catch(e) {
     var f = function() {
       throw new Error('Unable to find a Promise implementation.');
@@ -31229,7 +35047,7 @@ jsonld.promises = function(options) {
 jsonld.promisify = function(op) {
   if(!jsonld.Promise) {
     try {
-      jsonld.Promise = global.Promise || __webpack_require__(135).Promise;
+      jsonld.Promise = global.Promise || __webpack_require__(149).Promise;
     } catch(e) {
       throw new Error('Unable to find a Promise implementation.');
     }
@@ -31613,9 +35431,9 @@ jsonld.documentLoaders.node = function(options) {
   options = options || {};
   var strictSSL = ('strictSSL' in options) ? options.strictSSL : true;
   var maxRedirects = ('maxRedirects' in options) ? options.maxRedirects : -1;
-  var request = ('request' in options) ? options.request : __webpack_require__(42);
+  var request = ('request' in options) ? options.request : __webpack_require__(51);
   var acceptHeader = 'application/ld+json, application/json';
-  var http = __webpack_require__(42);
+  var http = __webpack_require__(51);
   // TODO: disable cache until HTTP caching implemented
   //var cache = new jsonld.DocumentCache();
 
@@ -32242,7 +36060,7 @@ var JsonLdError = function(msg, type, details) {
   this.details = details || {};
 };
 if(_nodejs) {
-  __webpack_require__(42).inherits(JsonLdError, Error);
+  __webpack_require__(51).inherits(JsonLdError, Error);
 } else if(typeof Error !== 'undefined') {
   JsonLdError.prototype = new Error();
 }
@@ -37266,7 +41084,7 @@ NormalizeHash.hashNQuads = function(algorithm, nquads) {
 
 if(_nodejs) {
   // define NormalizeHash using native crypto lib
-  var crypto = __webpack_require__(42);
+  var crypto = __webpack_require__(51);
   NormalizeHash._init = function(algorithm) {
     if(algorithm === 'URDNA2015') {
       algorithm = 'sha256';
@@ -37900,7 +41718,7 @@ sha256._init = function() {
 if(!XMLSerializer) {
 
 var _defineXMLSerializer = function() {
-  XMLSerializer = __webpack_require__(41).XMLSerializer;
+  XMLSerializer = __webpack_require__(50).XMLSerializer;
 };
 
 } // end _defineXMLSerializer
@@ -37986,7 +41804,7 @@ if(_nodejs) {
       // TODO: Deprecated as of 0.4.0. Remove at some point.
       case 'request':
         // use node JSON-LD request extension
-        jsonld.request = __webpack_require__(42);
+        jsonld.request = __webpack_require__(51);
         break;
       default:
         throw new JsonLdError(
@@ -37997,7 +41815,7 @@ if(_nodejs) {
 
   // expose version
   var _module = {exports: {}, filename: __dirname};
-  __webpack_require__(42)(_module, 'version');
+  __webpack_require__(51)(_module, 'version');
   jsonld.version = _module.exports.version;
 }
 
@@ -38014,7 +41832,7 @@ var factory = function() {
   });
 };
 
-if(!_nodejs && ("function" === 'function' && __webpack_require__(229))) {
+if(!_nodejs && ("function" === 'function' && __webpack_require__(256))) {
   // export AMD API
   !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
     // now that module is defined, wrap main jsonld API instance
@@ -38046,10 +41864,10 @@ return factory;
 
 })();
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13), __webpack_require__(4), __webpack_require__(48).setImmediate, "/"))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17), __webpack_require__(5), __webpack_require__(56).setImmediate, "/"))
 
 /***/ }),
-/* 135 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process, setImmediate, global) {var require;var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -38188,7 +42006,7 @@ return factory;
     function lib$es6$promise$asap$$attemptVertex() {
       try {
         var r = require;
-        var vertx = __webpack_require__(228);
+        var vertx = __webpack_require__(255);
         lib$es6$promise$asap$$vertxNext = vertx.runOnLoop || vertx.runOnContext;
         return lib$es6$promise$asap$$useVertxTimer();
       } catch(e) {
@@ -39026,10 +42844,10 @@ return factory;
 }).call(this);
 
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13), __webpack_require__(48).setImmediate, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17), __webpack_require__(56).setImmediate, __webpack_require__(5)))
 
 /***/ }),
-/* 136 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var require;var require;// Replace local require by a lazy loader
@@ -39054,19 +42872,19 @@ Object.keys(exports).forEach(function (submodule) {
     enumerable: true,
     get: function () {
       delete exports[submodule];
-      return exports[submodule] = __webpack_require__(230)("./N3" + submodule);
+      return exports[submodule] = __webpack_require__(257)("./N3" + submodule);
     },
   });
 });
 
 
 /***/ }),
-/* 137 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // **N3Store** objects store N3 triples by graph in memory.
 
-var expandPrefixedName = __webpack_require__(90).expandPrefixedName;
+var expandPrefixedName = __webpack_require__(101).expandPrefixedName;
 
 // ## Constructor
 function N3Store(triples, options) {
@@ -39424,13 +43242,13 @@ module.exports = N3Store;
 
 
 /***/ }),
-/* 138 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // **N3StreamParser** parses an N3 stream into a triple stream
-var Transform = __webpack_require__(43).Transform,
-    util = __webpack_require__(95),
-    N3Parser = __webpack_require__(89);
+var Transform = __webpack_require__(52).Transform,
+    util = __webpack_require__(106),
+    N3Parser = __webpack_require__(100);
 
 // ## Constructor
 function N3StreamParser(options) {
@@ -39464,7 +43282,7 @@ module.exports = N3StreamParser;
 
 
 /***/ }),
-/* 139 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39493,13 +43311,13 @@ module.exports = N3StreamParser;
 
 /*<replacement>*/
 
-var processNextTick = __webpack_require__(65);
+var processNextTick = __webpack_require__(73);
 /*</replacement>*/
 
 module.exports = Readable;
 
 /*<replacement>*/
-var isArray = __webpack_require__(140);
+var isArray = __webpack_require__(154);
 /*</replacement>*/
 
 /*<replacement>*/
@@ -39509,7 +43327,7 @@ var Duplex;
 Readable.ReadableState = ReadableState;
 
 /*<replacement>*/
-var EE = __webpack_require__(91).EventEmitter;
+var EE = __webpack_require__(102).EventEmitter;
 
 var EElistenerCount = function (emitter, type) {
   return emitter.listeners(type).length;
@@ -39517,13 +43335,13 @@ var EElistenerCount = function (emitter, type) {
 /*</replacement>*/
 
 /*<replacement>*/
-var Stream = __webpack_require__(141);
+var Stream = __webpack_require__(155);
 /*</replacement>*/
 
 // TODO(bmeurer): Change this back to const once hole checks are
 // properly optimized away early in Ignition+TurboFan.
 /*<replacement>*/
-var Buffer = __webpack_require__(3).Buffer;
+var Buffer = __webpack_require__(4).Buffer;
 var OurUint8Array = global.Uint8Array || function () {};
 function _uint8ArrayToBuffer(chunk) {
   return Buffer.from(chunk);
@@ -39534,12 +43352,12 @@ function _isUint8Array(obj) {
 /*</replacement>*/
 
 /*<replacement>*/
-var util = __webpack_require__(49);
-util.inherits = __webpack_require__(2);
+var util = __webpack_require__(57);
+util.inherits = __webpack_require__(1);
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(233);
+var debugUtil = __webpack_require__(260);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -39548,8 +43366,8 @@ if (debugUtil && debugUtil.debuglog) {
 }
 /*</replacement>*/
 
-var BufferList = __webpack_require__(234);
-var destroyImpl = __webpack_require__(142);
+var BufferList = __webpack_require__(261);
+var destroyImpl = __webpack_require__(156);
 var StringDecoder;
 
 util.inherits(Readable, Stream);
@@ -39571,7 +43389,7 @@ function prependListener(emitter, event, fn) {
 }
 
 function ReadableState(options, stream) {
-  Duplex = Duplex || __webpack_require__(33);
+  Duplex = Duplex || __webpack_require__(43);
 
   options = options || {};
 
@@ -39632,14 +43450,14 @@ function ReadableState(options, stream) {
   this.decoder = null;
   this.encoding = null;
   if (options.encoding) {
-    if (!StringDecoder) StringDecoder = __webpack_require__(94).StringDecoder;
+    if (!StringDecoder) StringDecoder = __webpack_require__(105).StringDecoder;
     this.decoder = new StringDecoder(options.encoding);
     this.encoding = options.encoding;
   }
 }
 
 function Readable(options) {
-  Duplex = Duplex || __webpack_require__(33);
+  Duplex = Duplex || __webpack_require__(43);
 
   if (!(this instanceof Readable)) return new Readable(options);
 
@@ -39788,7 +43606,7 @@ Readable.prototype.isPaused = function () {
 
 // backwards compatibility.
 Readable.prototype.setEncoding = function (enc) {
-  if (!StringDecoder) StringDecoder = __webpack_require__(94).StringDecoder;
+  if (!StringDecoder) StringDecoder = __webpack_require__(105).StringDecoder;
   this._readableState.decoder = new StringDecoder(enc);
   this._readableState.encoding = enc;
   return this;
@@ -40475,10 +44293,10 @@ function indexOf(xs, x) {
   }
   return -1;
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(13)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(17)))
 
 /***/ }),
-/* 140 */
+/* 154 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -40489,14 +44307,14 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 141 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(91).EventEmitter;
+module.exports = __webpack_require__(102).EventEmitter;
 
 
 /***/ }),
-/* 142 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40504,7 +44322,7 @@ module.exports = __webpack_require__(91).EventEmitter;
 
 /*<replacement>*/
 
-var processNextTick = __webpack_require__(65);
+var processNextTick = __webpack_require__(73);
 /*</replacement>*/
 
 // undocumented cb() API, needed for core, not for public API
@@ -40574,7 +44392,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 143 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40645,11 +44463,11 @@ module.exports = {
 
 module.exports = Transform;
 
-var Duplex = __webpack_require__(33);
+var Duplex = __webpack_require__(43);
 
 /*<replacement>*/
-var util = __webpack_require__(49);
-util.inherits = __webpack_require__(2);
+var util = __webpack_require__(57);
+util.inherits = __webpack_require__(1);
 /*</replacement>*/
 
 util.inherits(Transform, Duplex);
@@ -40794,13 +44612,13 @@ function done(stream, er, data) {
 }
 
 /***/ }),
-/* 144 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // **N3StreamWriter** serializes a triple stream into an N3 stream
-var Transform = __webpack_require__(43).Transform,
-    util = __webpack_require__(95),
-    N3Writer = __webpack_require__(96);
+var Transform = __webpack_require__(52).Transform,
+    util = __webpack_require__(106),
+    N3Writer = __webpack_require__(107);
 
 // ## Constructor
 function N3StreamWriter(options) {
@@ -40830,7 +44648,7 @@ module.exports = N3StreamWriter;
 
 
 /***/ }),
-/* 145 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40838,16 +44656,16 @@ module.exports = N3StreamWriter;
 
 module.exports = parse;
 
-var BlankNode = __webpack_require__(31);
-var jsonld = __webpack_require__(134);
-var Literal = __webpack_require__(40);
-var N3 = __webpack_require__(136); // @@ Goal: remove this dependency
-var N3Parser = __webpack_require__(70);
-var NamedNode = __webpack_require__(6);
-var parseRDFaDOM = __webpack_require__(99).parseRDFaDOM;
-var RDFParser = __webpack_require__(100);
-var sparqlUpdateParser = __webpack_require__(146);
-var Util = __webpack_require__(24);
+var BlankNode = __webpack_require__(41);
+var jsonld = __webpack_require__(148);
+var Literal = __webpack_require__(49);
+var N3 = __webpack_require__(150); // @@ Goal: remove this dependency
+var N3Parser = __webpack_require__(78);
+var NamedNode = __webpack_require__(10);
+var parseRDFaDOM = __webpack_require__(110).parseRDFaDOM;
+var RDFParser = __webpack_require__(111);
+var sparqlUpdateParser = __webpack_require__(160);
+var Util = __webpack_require__(32);
 
 /**
  * Parse a string and put the result into the graph kb.
@@ -40980,7 +44798,7 @@ function parse(str, kb, base, contentType, callback) {
 }
 
 /***/ }),
-/* 146 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40995,8 +44813,8 @@ function parse(str, kb, base, contentType, callback) {
 //   <#query> patch:where {xxx}; patch:delete {yyy}; patch:insert {zzz}.
 module.exports = sparqlUpdateParser;
 
-var N3Parser = __webpack_require__(70);
-var Namespace = __webpack_require__(50);
+var N3Parser = __webpack_require__(78);
+var Namespace = __webpack_require__(58);
 
 function sparqlUpdateParser(str, kb, base) {
   var i, j, k;
@@ -41081,7 +44899,7 @@ function sparqlUpdateParser(str, kb, base) {
 }
 
 /***/ }),
-/* 147 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41094,7 +44912,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /*
  * Updates-Via
  */
-var namedNode = __webpack_require__(69).namedNode;
+var namedNode = __webpack_require__(77).namedNode;
 
 var UpdatesSocket = function () {
   function UpdatesSocket(parent, via) {
@@ -41272,7 +45090,7 @@ module.exports.UpdatesSocket = UpdatesSocket;
 module.exports.UpdatesVia = UpdatesVia;
 
 /***/ }),
-/* 148 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41285,14 +45103,14 @@ var acl = module.exports = {};
 
 var UI = {
   acl: acl,
-  icons: __webpack_require__(20),
-  log: __webpack_require__(19),
-  ns: __webpack_require__(7),
-  store: __webpack_require__(14),
-  widgets: __webpack_require__(21)
+  icons: __webpack_require__(25),
+  log: __webpack_require__(23),
+  ns: __webpack_require__(11),
+  store: __webpack_require__(18),
+  widgets: __webpack_require__(26)
 };
 
-var utils = __webpack_require__(23);
+var utils = __webpack_require__(28);
 var kb = UI.store;
 
 // //////////////////////////////////// Solid ACL non-UI functions
@@ -41712,7 +45530,372 @@ UI.acl.getACL = function (doc, callback) {
 // /////////////////////////////////////////  End of ACL stuff
 
 /***/ }),
-/* 149 */
+/* 163 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * escape-html
+ * Copyright(c) 2012-2013 TJ Holowaychuk
+ * Copyright(c) 2015 Andreas Lubbe
+ * Copyright(c) 2015 Tiancheng "Timothy" Gu
+ * MIT Licensed
+ */
+
+
+
+/**
+ * Module variables.
+ * @private
+ */
+
+var matchHtmlRegExp = /["'&<>]/;
+
+/**
+ * Module exports.
+ * @public
+ */
+
+module.exports = escapeHtml;
+
+/**
+ * Escape special characters in the given string of html.
+ *
+ * @param  {string} string The string to escape for inserting into HTML
+ * @return {string}
+ * @public
+ */
+
+function escapeHtml(string) {
+  var str = '' + string;
+  var match = matchHtmlRegExp.exec(str);
+
+  if (!match) {
+    return str;
+  }
+
+  var escape;
+  var html = '';
+  var index = 0;
+  var lastIndex = 0;
+
+  for (index = match.index; index < str.length; index++) {
+    switch (str.charCodeAt(index)) {
+      case 34: // "
+        escape = '&quot;';
+        break;
+      case 38: // &
+        escape = '&amp;';
+        break;
+      case 39: // '
+        escape = '&#39;';
+        break;
+      case 60: // <
+        escape = '&lt;';
+        break;
+      case 62: // >
+        escape = '&gt;';
+        break;
+      default:
+        continue;
+    }
+
+    if (lastIndex !== index) {
+      html += str.substring(lastIndex, index);
+    }
+
+    lastIndex = index + 1;
+    html += escape;
+  }
+
+  return lastIndex !== index
+    ? html + str.substring(lastIndex, index)
+    : html;
+}
+
+
+/***/ }),
+/* 164 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(Buffer) {var __WEBPACK_AMD_DEFINE_RESULT__;//     uuid.js
+//
+//     Copyright (c) 2010-2012 Robert Kieffer
+//     MIT License - http://opensource.org/licenses/mit-license.php
+
+/*global window, require, define */
+(function(_window) {
+  'use strict';
+
+  // Unique ID creation requires a high quality random # generator.  We feature
+  // detect to determine the best RNG source, normalizing to a function that
+  // returns 128-bits of randomness, since that's what's usually required
+  var _rng, _mathRNG, _nodeRNG, _whatwgRNG, _previousRoot;
+
+  function setupBrowser() {
+    // Allow for MSIE11 msCrypto
+    var _crypto = _window.crypto || _window.msCrypto;
+
+    if (!_rng && _crypto && _crypto.getRandomValues) {
+      // WHATWG crypto-based RNG - http://wiki.whatwg.org/wiki/Crypto
+      //
+      // Moderately fast, high quality
+      try {
+        var _rnds8 = new Uint8Array(16);
+        _whatwgRNG = _rng = function whatwgRNG() {
+          _crypto.getRandomValues(_rnds8);
+          return _rnds8;
+        };
+        _rng();
+      } catch(e) {}
+    }
+
+    if (!_rng) {
+      // Math.random()-based (RNG)
+      //
+      // If all else fails, use Math.random().  It's fast, but is of unspecified
+      // quality.
+      var  _rnds = new Array(16);
+      _mathRNG = _rng = function() {
+        for (var i = 0, r; i < 16; i++) {
+          if ((i & 0x03) === 0) { r = Math.random() * 0x100000000; }
+          _rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
+        }
+
+        return _rnds;
+      };
+      if ('undefined' !== typeof console && console.warn) {
+        console.warn("[SECURITY] node-uuid: crypto not usable, falling back to insecure Math.random()");
+      }
+    }
+  }
+
+  function setupNode() {
+    // Node.js crypto-based RNG - http://nodejs.org/docs/v0.6.2/api/crypto.html
+    //
+    // Moderately fast, high quality
+    if (true) {
+      try {
+        var _rb = __webpack_require__(277).randomBytes;
+        _nodeRNG = _rng = _rb && function() {return _rb(16);};
+        _rng();
+      } catch(e) {}
+    }
+  }
+
+  if (_window) {
+    setupBrowser();
+  } else {
+    setupNode();
+  }
+
+  // Buffer class to use
+  var BufferClass = ('function' === typeof Buffer) ? Buffer : Array;
+
+  // Maps for number <-> hex string conversion
+  var _byteToHex = [];
+  var _hexToByte = {};
+  for (var i = 0; i < 256; i++) {
+    _byteToHex[i] = (i + 0x100).toString(16).substr(1);
+    _hexToByte[_byteToHex[i]] = i;
+  }
+
+  // **`parse()` - Parse a UUID into it's component bytes**
+  function parse(s, buf, offset) {
+    var i = (buf && offset) || 0, ii = 0;
+
+    buf = buf || [];
+    s.toLowerCase().replace(/[0-9a-f]{2}/g, function(oct) {
+      if (ii < 16) { // Don't overflow!
+        buf[i + ii++] = _hexToByte[oct];
+      }
+    });
+
+    // Zero out remaining bytes if string was short
+    while (ii < 16) {
+      buf[i + ii++] = 0;
+    }
+
+    return buf;
+  }
+
+  // **`unparse()` - Convert UUID byte array (ala parse()) into a string**
+  function unparse(buf, offset) {
+    var i = offset || 0, bth = _byteToHex;
+    return  bth[buf[i++]] + bth[buf[i++]] +
+            bth[buf[i++]] + bth[buf[i++]] + '-' +
+            bth[buf[i++]] + bth[buf[i++]] + '-' +
+            bth[buf[i++]] + bth[buf[i++]] + '-' +
+            bth[buf[i++]] + bth[buf[i++]] + '-' +
+            bth[buf[i++]] + bth[buf[i++]] +
+            bth[buf[i++]] + bth[buf[i++]] +
+            bth[buf[i++]] + bth[buf[i++]];
+  }
+
+  // **`v1()` - Generate time-based UUID**
+  //
+  // Inspired by https://github.com/LiosK/UUID.js
+  // and http://docs.python.org/library/uuid.html
+
+  // random #'s we need to init node and clockseq
+  var _seedBytes = _rng();
+
+  // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+  var _nodeId = [
+    _seedBytes[0] | 0x01,
+    _seedBytes[1], _seedBytes[2], _seedBytes[3], _seedBytes[4], _seedBytes[5]
+  ];
+
+  // Per 4.2.2, randomize (14 bit) clockseq
+  var _clockseq = (_seedBytes[6] << 8 | _seedBytes[7]) & 0x3fff;
+
+  // Previous uuid creation time
+  var _lastMSecs = 0, _lastNSecs = 0;
+
+  // See https://github.com/broofa/node-uuid for API details
+  function v1(options, buf, offset) {
+    var i = buf && offset || 0;
+    var b = buf || [];
+
+    options = options || {};
+
+    var clockseq = (options.clockseq != null) ? options.clockseq : _clockseq;
+
+    // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+    // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+    // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+    // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+    var msecs = (options.msecs != null) ? options.msecs : new Date().getTime();
+
+    // Per 4.2.1.2, use count of uuid's generated during the current clock
+    // cycle to simulate higher resolution clock
+    var nsecs = (options.nsecs != null) ? options.nsecs : _lastNSecs + 1;
+
+    // Time since last uuid creation (in msecs)
+    var dt = (msecs - _lastMSecs) + (nsecs - _lastNSecs)/10000;
+
+    // Per 4.2.1.2, Bump clockseq on clock regression
+    if (dt < 0 && options.clockseq == null) {
+      clockseq = clockseq + 1 & 0x3fff;
+    }
+
+    // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+    // time interval
+    if ((dt < 0 || msecs > _lastMSecs) && options.nsecs == null) {
+      nsecs = 0;
+    }
+
+    // Per 4.2.1.2 Throw error if too many uuids are requested
+    if (nsecs >= 10000) {
+      throw new Error('uuid.v1(): Can\'t create more than 10M uuids/sec');
+    }
+
+    _lastMSecs = msecs;
+    _lastNSecs = nsecs;
+    _clockseq = clockseq;
+
+    // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+    msecs += 12219292800000;
+
+    // `time_low`
+    var tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+    b[i++] = tl >>> 24 & 0xff;
+    b[i++] = tl >>> 16 & 0xff;
+    b[i++] = tl >>> 8 & 0xff;
+    b[i++] = tl & 0xff;
+
+    // `time_mid`
+    var tmh = (msecs / 0x100000000 * 10000) & 0xfffffff;
+    b[i++] = tmh >>> 8 & 0xff;
+    b[i++] = tmh & 0xff;
+
+    // `time_high_and_version`
+    b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+    b[i++] = tmh >>> 16 & 0xff;
+
+    // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+    b[i++] = clockseq >>> 8 | 0x80;
+
+    // `clock_seq_low`
+    b[i++] = clockseq & 0xff;
+
+    // `node`
+    var node = options.node || _nodeId;
+    for (var n = 0; n < 6; n++) {
+      b[i + n] = node[n];
+    }
+
+    return buf ? buf : unparse(b);
+  }
+
+  // **`v4()` - Generate random UUID**
+
+  // See https://github.com/broofa/node-uuid for API details
+  function v4(options, buf, offset) {
+    // Deprecated - 'format' argument, as supported in v1.2
+    var i = buf && offset || 0;
+
+    if (typeof(options) === 'string') {
+      buf = (options === 'binary') ? new BufferClass(16) : null;
+      options = null;
+    }
+    options = options || {};
+
+    var rnds = options.random || (options.rng || _rng)();
+
+    // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+    rnds[6] = (rnds[6] & 0x0f) | 0x40;
+    rnds[8] = (rnds[8] & 0x3f) | 0x80;
+
+    // Copy bytes to buffer, if provided
+    if (buf) {
+      for (var ii = 0; ii < 16; ii++) {
+        buf[i + ii] = rnds[ii];
+      }
+    }
+
+    return buf || unparse(rnds);
+  }
+
+  // Export public API
+  var uuid = v4;
+  uuid.v1 = v1;
+  uuid.v4 = v4;
+  uuid.parse = parse;
+  uuid.unparse = unparse;
+  uuid.BufferClass = BufferClass;
+  uuid._rng = _rng;
+  uuid._mathRNG = _mathRNG;
+  uuid._nodeRNG = _nodeRNG;
+  uuid._whatwgRNG = _whatwgRNG;
+
+  if (('undefined' !== typeof module) && module.exports) {
+    // Publish as node.js module
+    module.exports = uuid;
+  } else if (true) {
+    // Publish as AMD module
+    !(__WEBPACK_AMD_DEFINE_RESULT__ = function() {return uuid;}.call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+  } else {
+    // Publish as global (in browsers)
+    _previousRoot = _window.uuid;
+
+    // **`noConflict()` - (browser only) to reset global 'uuid' var**
+    uuid.noConflict = function() {
+      _window.uuid = _previousRoot;
+      return uuid;
+    };
+
+    _window.uuid = uuid;
+  }
+})('undefined' !== typeof window ? window : null);
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
+
+/***/ }),
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {/**
@@ -41723,8 +45906,8 @@ UI.acl.getACL = function (doc, callback) {
  *
  */
 
-var inherits = __webpack_require__(2)
-var Hash = __webpack_require__(45)
+var inherits = __webpack_require__(1)
+var Hash = __webpack_require__(53)
 
 var K = [
   0x428A2F98, 0x71374491, 0xB5C0FBCF, 0xE9B5DBA5,
@@ -41853,11 +46036,11 @@ module.exports = Sha256
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 150 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var inherits = __webpack_require__(2)
-var Hash = __webpack_require__(45)
+/* WEBPACK VAR INJECTION */(function(Buffer) {var inherits = __webpack_require__(1)
+var Hash = __webpack_require__(53)
 
 var K = [
   0x428a2f98, 0xd728ae22, 0x71374491, 0x23ef65cd,
@@ -42119,19 +46302,19 @@ module.exports = Sha512
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 151 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var inherits = __webpack_require__(2)
-var Legacy = __webpack_require__(259)
-var Base = __webpack_require__(27)
-var Buffer = __webpack_require__(3).Buffer
-var md5 = __webpack_require__(101)
-var RIPEMD160 = __webpack_require__(102)
+var inherits = __webpack_require__(1)
+var Legacy = __webpack_require__(284)
+var Base = __webpack_require__(36)
+var Buffer = __webpack_require__(4).Buffer
+var md5 = __webpack_require__(112)
+var RIPEMD160 = __webpack_require__(113)
 
-var sha = __webpack_require__(103)
+var sha = __webpack_require__(114)
 
 var ZEROS = Buffer.alloc(128)
 
@@ -42188,23 +46371,23 @@ module.exports = function createHmac (alg, key) {
 
 
 /***/ }),
-/* 152 */
+/* 168 */
 /***/ (function(module, exports) {
 
 module.exports = {"sha224WithRSAEncryption":{"sign":"rsa","hash":"sha224","id":"302d300d06096086480165030402040500041c"},"RSA-SHA224":{"sign":"ecdsa/rsa","hash":"sha224","id":"302d300d06096086480165030402040500041c"},"sha256WithRSAEncryption":{"sign":"rsa","hash":"sha256","id":"3031300d060960864801650304020105000420"},"RSA-SHA256":{"sign":"ecdsa/rsa","hash":"sha256","id":"3031300d060960864801650304020105000420"},"sha384WithRSAEncryption":{"sign":"rsa","hash":"sha384","id":"3041300d060960864801650304020205000430"},"RSA-SHA384":{"sign":"ecdsa/rsa","hash":"sha384","id":"3041300d060960864801650304020205000430"},"sha512WithRSAEncryption":{"sign":"rsa","hash":"sha512","id":"3051300d060960864801650304020305000440"},"RSA-SHA512":{"sign":"ecdsa/rsa","hash":"sha512","id":"3051300d060960864801650304020305000440"},"RSA-SHA1":{"sign":"rsa","hash":"sha1","id":"3021300906052b0e03021a05000414"},"ecdsa-with-SHA1":{"sign":"ecdsa","hash":"sha1","id":""},"sha256":{"sign":"ecdsa","hash":"sha256","id":""},"sha224":{"sign":"ecdsa","hash":"sha224","id":""},"sha384":{"sign":"ecdsa","hash":"sha384","id":""},"sha512":{"sign":"ecdsa","hash":"sha512","id":""},"DSA-SHA":{"sign":"dsa","hash":"sha1","id":""},"DSA-SHA1":{"sign":"dsa","hash":"sha1","id":""},"DSA":{"sign":"dsa","hash":"sha1","id":""},"DSA-WITH-SHA224":{"sign":"dsa","hash":"sha224","id":""},"DSA-SHA224":{"sign":"dsa","hash":"sha224","id":""},"DSA-WITH-SHA256":{"sign":"dsa","hash":"sha256","id":""},"DSA-SHA256":{"sign":"dsa","hash":"sha256","id":""},"DSA-WITH-SHA384":{"sign":"dsa","hash":"sha384","id":""},"DSA-SHA384":{"sign":"dsa","hash":"sha384","id":""},"DSA-WITH-SHA512":{"sign":"dsa","hash":"sha512","id":""},"DSA-SHA512":{"sign":"dsa","hash":"sha512","id":""},"DSA-RIPEMD160":{"sign":"dsa","hash":"rmd160","id":""},"ripemd160WithRSA":{"sign":"rsa","hash":"rmd160","id":"3021300906052b2403020105000414"},"RSA-RIPEMD160":{"sign":"rsa","hash":"rmd160","id":"3021300906052b2403020105000414"},"md5WithRSAEncryption":{"sign":"rsa","hash":"md5","id":"3020300c06082a864886f70d020505000410"},"RSA-MD5":{"sign":"rsa","hash":"md5","id":"3020300c06082a864886f70d020505000410"}}
 
 /***/ }),
-/* 153 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-exports.pbkdf2 = __webpack_require__(261)
+exports.pbkdf2 = __webpack_require__(286)
 
-exports.pbkdf2Sync = __webpack_require__(156)
+exports.pbkdf2Sync = __webpack_require__(172)
 
 
 /***/ }),
-/* 154 */
+/* 170 */
 /***/ (function(module, exports) {
 
 var MAX_ALLOC = Math.pow(2, 30) - 1 // default in iojs
@@ -42228,7 +46411,7 @@ module.exports = function (iterations, keylen) {
 
 
 /***/ }),
-/* 155 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {var defaultEncoding
@@ -42242,19 +46425,19 @@ if (process.browser) {
 }
 module.exports = defaultEncoding
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
 
 /***/ }),
-/* 156 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var md5 = __webpack_require__(101)
-var rmd160 = __webpack_require__(102)
-var sha = __webpack_require__(103)
+var md5 = __webpack_require__(112)
+var rmd160 = __webpack_require__(113)
+var sha = __webpack_require__(114)
 
-var checkParameters = __webpack_require__(154)
-var defaultEncoding = __webpack_require__(155)
-var Buffer = __webpack_require__(3).Buffer
+var checkParameters = __webpack_require__(170)
+var defaultEncoding = __webpack_require__(171)
+var Buffer = __webpack_require__(4).Buffer
 var ZEROS = Buffer.alloc(128)
 var sizes = {
   md5: 16,
@@ -42352,10 +46535,10 @@ module.exports = pbkdf2
 
 
 /***/ }),
-/* 157 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var xor = __webpack_require__(53)
+/* WEBPACK VAR INJECTION */(function(Buffer) {var xor = __webpack_require__(61)
 
 function incr32 (iv) {
   var len = iv.length
@@ -42402,21 +46585,21 @@ exports.encrypt = function (self, chunk) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 158 */
+/* 174 */
 /***/ (function(module, exports) {
 
 module.exports = {"aes-128-ecb":{"cipher":"AES","key":128,"iv":0,"mode":"ECB","type":"block"},"aes-192-ecb":{"cipher":"AES","key":192,"iv":0,"mode":"ECB","type":"block"},"aes-256-ecb":{"cipher":"AES","key":256,"iv":0,"mode":"ECB","type":"block"},"aes-128-cbc":{"cipher":"AES","key":128,"iv":16,"mode":"CBC","type":"block"},"aes-192-cbc":{"cipher":"AES","key":192,"iv":16,"mode":"CBC","type":"block"},"aes-256-cbc":{"cipher":"AES","key":256,"iv":16,"mode":"CBC","type":"block"},"aes128":{"cipher":"AES","key":128,"iv":16,"mode":"CBC","type":"block"},"aes192":{"cipher":"AES","key":192,"iv":16,"mode":"CBC","type":"block"},"aes256":{"cipher":"AES","key":256,"iv":16,"mode":"CBC","type":"block"},"aes-128-cfb":{"cipher":"AES","key":128,"iv":16,"mode":"CFB","type":"stream"},"aes-192-cfb":{"cipher":"AES","key":192,"iv":16,"mode":"CFB","type":"stream"},"aes-256-cfb":{"cipher":"AES","key":256,"iv":16,"mode":"CFB","type":"stream"},"aes-128-cfb8":{"cipher":"AES","key":128,"iv":16,"mode":"CFB8","type":"stream"},"aes-192-cfb8":{"cipher":"AES","key":192,"iv":16,"mode":"CFB8","type":"stream"},"aes-256-cfb8":{"cipher":"AES","key":256,"iv":16,"mode":"CFB8","type":"stream"},"aes-128-cfb1":{"cipher":"AES","key":128,"iv":16,"mode":"CFB1","type":"stream"},"aes-192-cfb1":{"cipher":"AES","key":192,"iv":16,"mode":"CFB1","type":"stream"},"aes-256-cfb1":{"cipher":"AES","key":256,"iv":16,"mode":"CFB1","type":"stream"},"aes-128-ofb":{"cipher":"AES","key":128,"iv":16,"mode":"OFB","type":"stream"},"aes-192-ofb":{"cipher":"AES","key":192,"iv":16,"mode":"OFB","type":"stream"},"aes-256-ofb":{"cipher":"AES","key":256,"iv":16,"mode":"OFB","type":"stream"},"aes-128-ctr":{"cipher":"AES","key":128,"iv":16,"mode":"CTR","type":"stream"},"aes-192-ctr":{"cipher":"AES","key":192,"iv":16,"mode":"CTR","type":"stream"},"aes-256-ctr":{"cipher":"AES","key":256,"iv":16,"mode":"CTR","type":"stream"},"aes-128-gcm":{"cipher":"AES","key":128,"iv":12,"mode":"GCM","type":"auth"},"aes-192-gcm":{"cipher":"AES","key":192,"iv":12,"mode":"GCM","type":"auth"},"aes-256-gcm":{"cipher":"AES","key":256,"iv":12,"mode":"GCM","type":"auth"}}
 
 /***/ }),
-/* 159 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var aes = __webpack_require__(72)
-var Buffer = __webpack_require__(3).Buffer
-var Transform = __webpack_require__(27)
-var inherits = __webpack_require__(2)
-var GHASH = __webpack_require__(272)
-var xor = __webpack_require__(53)
+var aes = __webpack_require__(80)
+var Buffer = __webpack_require__(4).Buffer
+var Transform = __webpack_require__(36)
+var inherits = __webpack_require__(1)
+var GHASH = __webpack_require__(297)
+var xor = __webpack_require__(61)
 
 function xorTest (a, b) {
   var out = 0
@@ -42506,13 +46689,13 @@ module.exports = StreamCipher
 
 
 /***/ }),
-/* 160 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var aes = __webpack_require__(72)
-var Buffer = __webpack_require__(3).Buffer
-var Transform = __webpack_require__(27)
-var inherits = __webpack_require__(2)
+var aes = __webpack_require__(80)
+var Buffer = __webpack_require__(4).Buffer
+var Transform = __webpack_require__(36)
+var inherits = __webpack_require__(1)
 
 function StreamCipher (mode, key, iv, decrypt) {
   Transform.call(this)
@@ -42539,16 +46722,16 @@ module.exports = StreamCipher
 
 
 /***/ }),
-/* 161 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var randomBytes = __webpack_require__(51);
+var randomBytes = __webpack_require__(59);
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
 findPrime.fermatTest = fermatTest;
-var BN = __webpack_require__(162);
+var BN = __webpack_require__(178);
 var TWENTYFOUR = new BN(24);
-var MillerRabin = __webpack_require__(163);
+var MillerRabin = __webpack_require__(179);
 var millerRabin = new MillerRabin();
 var ONE = new BN(1);
 var TWO = new BN(2);
@@ -42650,7 +46833,7 @@ function findPrime(bits, gen) {
 
 
 /***/ }),
-/* 162 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {(function (module, exports) {
@@ -42705,7 +46888,7 @@ function findPrime(bits, gen) {
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(282).Buffer;
+    Buffer = __webpack_require__(307).Buffer;
   } catch (e) {
   }
 
@@ -46081,14 +50264,14 @@ function findPrime(bits, gen) {
   };
 })(typeof module === 'undefined' || module, this);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module)))
 
 /***/ }),
-/* 163 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var bn = __webpack_require__(283);
-var brorand = __webpack_require__(164);
+var bn = __webpack_require__(308);
+var brorand = __webpack_require__(180);
 
 function MillerRabin(rand) {
   this.rand = rand || new brorand.Rand();
@@ -46203,7 +50386,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
 
 
 /***/ }),
-/* 164 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var r;
@@ -46261,7 +50444,7 @@ if (typeof self === 'object') {
 } else {
   // Node.js or Web worker with no crypto support
   try {
-    var crypto = __webpack_require__(285);
+    var crypto = __webpack_require__(310);
     if (typeof crypto.randomBytes !== 'function')
       throw new Error('Not supported');
 
@@ -46274,7 +50457,7 @@ if (typeof self === 'object') {
 
 
 /***/ }),
-/* 165 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46339,13 +50522,13 @@ utils.encode = function encode(arr, enc) {
 
 
 /***/ }),
-/* 166 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(22);
+var utils = __webpack_require__(27);
 var rotr32 = utils.rotr32;
 
 function ft_1(s, x, y, z) {
@@ -46395,16 +50578,16 @@ exports.g1_256 = g1_256;
 
 
 /***/ }),
-/* 167 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(22);
-var common = __webpack_require__(54);
-var shaCommon = __webpack_require__(166);
-var assert = __webpack_require__(15);
+var utils = __webpack_require__(27);
+var common = __webpack_require__(62);
+var shaCommon = __webpack_require__(182);
+var assert = __webpack_require__(19);
 
 var sum32 = utils.sum32;
 var sum32_4 = utils.sum32_4;
@@ -46507,15 +50690,15 @@ SHA256.prototype._digest = function digest(enc) {
 
 
 /***/ }),
-/* 168 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(22);
-var common = __webpack_require__(54);
-var assert = __webpack_require__(15);
+var utils = __webpack_require__(27);
+var common = __webpack_require__(62);
+var assert = __webpack_require__(19);
 
 var rotr64_hi = utils.rotr64_hi;
 var rotr64_lo = utils.rotr64_lo;
@@ -46844,7 +51027,7 @@ function g1_512_lo(xh, xl) {
 
 
 /***/ }),
-/* 169 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {(function (module, exports) {
@@ -46899,7 +51082,7 @@ function g1_512_lo(xh, xl) {
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(314).Buffer;
+    Buffer = __webpack_require__(339).Buffer;
   } catch (e) {
   }
 
@@ -50275,14 +54458,14 @@ function g1_512_lo(xh, xl) {
   };
 })(typeof module === 'undefined' || module, this);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module)))
 
 /***/ }),
-/* 170 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var inherits = __webpack_require__(2);
-var Reporter = __webpack_require__(56).Reporter;
+var inherits = __webpack_require__(1);
+var Reporter = __webpack_require__(64).Reporter;
 var Buffer = __webpack_require__(0).Buffer;
 
 function DecoderBuffer(base, options) {
@@ -50400,7 +54583,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
 
 
 /***/ }),
-/* 171 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var constants = exports;
@@ -50421,16 +54604,16 @@ constants._reverse = function reverse(map) {
   return res;
 };
 
-constants.der = __webpack_require__(323);
+constants.der = __webpack_require__(348);
 
 
 /***/ }),
-/* 172 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var inherits = __webpack_require__(2);
+var inherits = __webpack_require__(1);
 
-var asn1 = __webpack_require__(55);
+var asn1 = __webpack_require__(63);
 var base = asn1.base;
 var bignum = asn1.bignum;
 
@@ -50755,13 +54938,13 @@ function derDecodeLen(buf, primitive, fail) {
 
 
 /***/ }),
-/* 173 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var inherits = __webpack_require__(2);
+var inherits = __webpack_require__(1);
 var Buffer = __webpack_require__(0).Buffer;
 
-var asn1 = __webpack_require__(55);
+var asn1 = __webpack_require__(63);
 var base = asn1.base;
 
 // Import DER constants
@@ -51056,16 +55239,16 @@ function encodeTag(tag, primitive, cls, reporter) {
 
 
 /***/ }),
-/* 174 */
+/* 190 */
 /***/ (function(module, exports) {
 
 module.exports = {"1.3.132.0.10":"secp256k1","1.3.132.0.33":"p224","1.2.840.10045.3.1.1":"p192","1.2.840.10045.3.1.7":"p256","1.3.132.0.34":"p384","1.3.132.0.35":"p521"}
 
 /***/ }),
-/* 175 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(52);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(60);
 module.exports = function (seed, len) {
   var t = new Buffer('');
   var  i = 0, c;
@@ -51084,7 +55267,7 @@ function i2ops(c) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 176 */
+/* 192 */
 /***/ (function(module, exports) {
 
 module.exports = function xor(a, b) {
@@ -51097,10 +55280,10 @@ module.exports = function xor(a, b) {
 };
 
 /***/ }),
-/* 177 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var bn = __webpack_require__(109);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var bn = __webpack_require__(120);
 function withPublic(paddedMsg, key) {
   return new Buffer(paddedMsg
     .toRed(bn.mont(key.modulus))
@@ -51113,7 +55296,7 @@ module.exports = withPublic;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 178 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51226,7 +55409,7 @@ function makeDraggable(tr, obj) {
 }
 
 /***/ }),
-/* 179 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51238,17 +55421,17 @@ function makeDraggable(tr, obj) {
  * Signing in, signing up, workspace selection, app spawning
  */
 // const Solid = require('solid-client')
-var SolidTls = __webpack_require__(340);
-var $rdf = __webpack_require__(18);
-var error = __webpack_require__(75);
-var widgets = __webpack_require__(21);
+var SolidTls = __webpack_require__(196);
+var $rdf = __webpack_require__(3);
+var error = __webpack_require__(83);
+var widgets = __webpack_require__(26);
 // const utils = require('./utils')
-var solidAuthClient = __webpack_require__(343);
+var solidAuthClient = __webpack_require__(367);
 
 var UI = {
-  log: __webpack_require__(19),
-  ns: __webpack_require__(7),
-  store: __webpack_require__(14)
+  log: __webpack_require__(23),
+  ns: __webpack_require__(11),
+  store: __webpack_require__(18)
 };
 
 var config = $SOLID_GLOBAL_config;
@@ -52302,7 +56485,58 @@ function newAppInstance(dom, appDetails, callback) {
 }
 
 /***/ }),
-/* 180 */
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*
+ The MIT License (MIT)
+
+ Copyright (c) 2015-2016 Solid
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+ solid-client is a Javascript library for Solid applications. This library
+ currently depends on rdflib.js. Please make sure to load the rdflib.js script
+ before loading solid-client
+
+ If you would like to know more about the solid Solid project, please see
+ https://github.com/solid/
+ */
+
+
+/**
+ * Provides methods for WebID authentication and signup in Solid
+ * @see {@link https://github.com/solid/}
+ * @module solid-auth-tls
+ */
+
+var auth = __webpack_require__(365);
+
+module.exports = {
+  Signup: __webpack_require__(366),
+  login: auth.login,
+  currentUser: auth.currentUser
+};
+
+/***/ }),
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52351,22 +56585,22 @@ module.exports = {
 };
 
 /***/ }),
-/* 181 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(30) && !__webpack_require__(58)(function () {
-  return Object.defineProperty(__webpack_require__(110)('div'), 'a', { get: function () { return 7; } }).a != 7;
+module.exports = !__webpack_require__(40) && !__webpack_require__(66)(function () {
+  return Object.defineProperty(__webpack_require__(121)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
 
 /***/ }),
-/* 182 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__(35);
-var toIObject = __webpack_require__(47);
-var arrayIndexOf = __webpack_require__(349)(false);
-var IE_PROTO = __webpack_require__(115)('IE_PROTO');
+var has = __webpack_require__(45);
+var toIObject = __webpack_require__(55);
+var arrayIndexOf = __webpack_require__(373)(false);
+var IE_PROTO = __webpack_require__(126)('IE_PROTO');
 
 module.exports = function (object, names) {
   var O = toIObject(object);
@@ -52383,11 +56617,11 @@ module.exports = function (object, names) {
 
 
 /***/ }),
-/* 183 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(60);
+var cof = __webpack_require__(68);
 // eslint-disable-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
@@ -52395,27 +56629,27 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
 
 
 /***/ }),
-/* 184 */
+/* 201 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 185 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var LIBRARY = __webpack_require__(82);
-var $export = __webpack_require__(28);
-var redefine = __webpack_require__(186);
-var hide = __webpack_require__(34);
-var has = __webpack_require__(35);
-var Iterators = __webpack_require__(61);
-var $iterCreate = __webpack_require__(355);
-var setToStringTag = __webpack_require__(83);
-var getPrototypeOf = __webpack_require__(357);
-var ITERATOR = __webpack_require__(9)('iterator');
+var LIBRARY = __webpack_require__(88);
+var $export = __webpack_require__(38);
+var redefine = __webpack_require__(203);
+var hide = __webpack_require__(44);
+var has = __webpack_require__(45);
+var Iterators = __webpack_require__(69);
+var $iterCreate = __webpack_require__(379);
+var setToStringTag = __webpack_require__(89);
+var getPrototypeOf = __webpack_require__(381);
+var ITERATOR = __webpack_require__(13)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
 var KEYS = 'keys';
@@ -52478,34 +56712,34 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 
 
 /***/ }),
-/* 186 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(34);
+module.exports = __webpack_require__(44);
 
 
 /***/ }),
-/* 187 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(29);
-var dPs = __webpack_require__(356);
-var enumBugKeys = __webpack_require__(117);
-var IE_PROTO = __webpack_require__(115)('IE_PROTO');
+var anObject = __webpack_require__(39);
+var dPs = __webpack_require__(380);
+var enumBugKeys = __webpack_require__(128);
+var IE_PROTO = __webpack_require__(126)('IE_PROTO');
 var Empty = function () { /* empty */ };
 var PROTOTYPE = 'prototype';
 
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var createDict = function () {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(110)('iframe');
+  var iframe = __webpack_require__(121)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(188).appendChild(iframe);
+  __webpack_require__(205).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -52532,22 +56766,22 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 /***/ }),
-/* 188 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var document = __webpack_require__(8).document;
+var document = __webpack_require__(12).document;
 module.exports = document && document.documentElement;
 
 
 /***/ }),
-/* 189 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(358);
-var global = __webpack_require__(8);
-var hide = __webpack_require__(34);
-var Iterators = __webpack_require__(61);
-var TO_STRING_TAG = __webpack_require__(9)('toStringTag');
+__webpack_require__(382);
+var global = __webpack_require__(12);
+var hide = __webpack_require__(44);
+var Iterators = __webpack_require__(69);
+var TO_STRING_TAG = __webpack_require__(13)('toStringTag');
 
 var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' +
   'DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,' +
@@ -52565,12 +56799,12 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 
 /***/ }),
-/* 190 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
-var cof = __webpack_require__(60);
-var TAG = __webpack_require__(9)('toStringTag');
+var cof = __webpack_require__(68);
+var TAG = __webpack_require__(13)('toStringTag');
 // ES3 wrong here
 var ARG = cof(function () { return arguments; }()) == 'Arguments';
 
@@ -52594,11 +56828,11 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 191 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
-var anObject = __webpack_require__(29);
+var anObject = __webpack_require__(39);
 module.exports = function (iterator, fn, value, entries) {
   try {
     return entries ? fn(anObject(value)[0], value[1]) : fn(value);
@@ -52612,12 +56846,12 @@ module.exports = function (iterator, fn, value, entries) {
 
 
 /***/ }),
-/* 192 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
-var Iterators = __webpack_require__(61);
-var ITERATOR = __webpack_require__(9)('iterator');
+var Iterators = __webpack_require__(69);
+var ITERATOR = __webpack_require__(13)('iterator');
 var ArrayProto = Array.prototype;
 
 module.exports = function (it) {
@@ -52626,13 +56860,13 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 193 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__(190);
-var ITERATOR = __webpack_require__(9)('iterator');
-var Iterators = __webpack_require__(61);
-module.exports = __webpack_require__(16).getIteratorMethod = function (it) {
+var classof = __webpack_require__(207);
+var ITERATOR = __webpack_require__(13)('iterator');
+var Iterators = __webpack_require__(69);
+module.exports = __webpack_require__(20).getIteratorMethod = function (it) {
   if (it != undefined) return it[ITERATOR]
     || it['@@iterator']
     || Iterators[classof(it)];
@@ -52640,13 +56874,13 @@ module.exports = __webpack_require__(16).getIteratorMethod = function (it) {
 
 
 /***/ }),
-/* 194 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
-var anObject = __webpack_require__(29);
-var aFunction = __webpack_require__(77);
-var SPECIES = __webpack_require__(9)('species');
+var anObject = __webpack_require__(39);
+var aFunction = __webpack_require__(84);
+var SPECIES = __webpack_require__(13)('species');
 module.exports = function (O, D) {
   var C = anObject(O).constructor;
   var S;
@@ -52655,14 +56889,14 @@ module.exports = function (O, D) {
 
 
 /***/ }),
-/* 195 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ctx = __webpack_require__(57);
-var invoke = __webpack_require__(364);
-var html = __webpack_require__(188);
-var cel = __webpack_require__(110);
-var global = __webpack_require__(8);
+var ctx = __webpack_require__(65);
+var invoke = __webpack_require__(388);
+var html = __webpack_require__(205);
+var cel = __webpack_require__(121);
+var global = __webpack_require__(12);
 var process = global.process;
 var setTask = global.setImmediate;
 var clearTask = global.clearImmediate;
@@ -52701,7 +56935,7 @@ if (!setTask || !clearTask) {
     delete queue[id];
   };
   // Node.js 0.8-
-  if (__webpack_require__(60)(process) == 'process') {
+  if (__webpack_require__(68)(process) == 'process') {
     defer = function (id) {
       process.nextTick(ctx(run, id, 1));
     };
@@ -52745,7 +56979,7 @@ module.exports = {
 
 
 /***/ }),
-/* 196 */
+/* 213 */
 /***/ (function(module, exports) {
 
 module.exports = function (exec) {
@@ -52758,12 +56992,12 @@ module.exports = function (exec) {
 
 
 /***/ }),
-/* 197 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(29);
-var isObject = __webpack_require__(46);
-var newPromiseCapability = __webpack_require__(121);
+var anObject = __webpack_require__(39);
+var isObject = __webpack_require__(54);
+var newPromiseCapability = __webpack_require__(132);
 
 module.exports = function (C, x) {
   anObject(C);
@@ -52776,10 +57010,10 @@ module.exports = function (C, x) {
 
 
 /***/ }),
-/* 198 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ITERATOR = __webpack_require__(9)('iterator');
+var ITERATOR = __webpack_require__(13)('iterator');
 var SAFE_CLOSING = false;
 
 try {
@@ -52804,37 +57038,13 @@ module.exports = function (exec, skipClosing) {
 
 
 /***/ }),
-/* 199 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-exports.__esModule = true;
-
-var _defineProperty = __webpack_require__(372);
-
-var _defineProperty2 = _interopRequireDefault(_defineProperty);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (obj, key, value) {
-  if (key in obj) {
-    (0, _defineProperty2.default)(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-};
+module.exports = { "default": __webpack_require__(399), __esModule: true };
 
 /***/ }),
-/* 200 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52845,27 +57055,27 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.combineHandlers = exports.server = exports.client = undefined;
 
-var _regenerator = __webpack_require__(36);
+var _regenerator = __webpack_require__(7);
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _asyncToGenerator2 = __webpack_require__(37);
+var _asyncToGenerator2 = __webpack_require__(8);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _promise = __webpack_require__(81);
+var _promise = __webpack_require__(46);
 
 var _promise2 = _interopRequireDefault(_promise);
 
-var _typeof2 = __webpack_require__(377);
+var _typeof2 = __webpack_require__(218);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
-var _defineProperty2 = __webpack_require__(199);
+var _defineProperty2 = __webpack_require__(90);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _v = __webpack_require__(390);
+var _v = __webpack_require__(220);
 
 var _v2 = _interopRequireDefault(_v);
 
@@ -53044,12 +57254,39 @@ var combineHandlers = exports.combineHandlers = function combineHandlers() {
 };
 
 /***/ }),
-/* 201 */
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _iterator = __webpack_require__(400);
+
+var _iterator2 = _interopRequireDefault(_iterator);
+
+var _symbol = __webpack_require__(402);
+
+var _symbol2 = _interopRequireDefault(_symbol);
+
+var _typeof = typeof _symbol2.default === "function" && typeof _iterator2.default === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj; };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.default) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof(obj);
+} : function (obj) {
+  return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof(obj);
+};
+
+/***/ }),
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(182);
-var hiddenKeys = __webpack_require__(117).concat('length', 'prototype');
+var $keys = __webpack_require__(199);
+var hiddenKeys = __webpack_require__(128).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
@@ -53057,33 +57294,42 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 
 /***/ }),
-/* 202 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+var rng = __webpack_require__(412);
+var bytesToUuid = __webpack_require__(413);
 
+function v4(options, buf, offset) {
+  var i = buf && offset || 0;
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.parse = exports.format = undefined;
+  if (typeof(options) == 'string') {
+    buf = options == 'binary' ? new Array(16) : null;
+    options = null;
+  }
+  options = options || {};
 
-var _format = __webpack_require__(393);
+  var rnds = options.random || (options.rng || rng)();
 
-var _format2 = _interopRequireDefault(_format);
+  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+  rnds[6] = (rnds[6] & 0x0f) | 0x40;
+  rnds[8] = (rnds[8] & 0x3f) | 0x80;
 
-var _parse = __webpack_require__(394);
+  // Copy bytes to buffer, if provided
+  if (buf) {
+    for (var ii = 0; ii < 16; ++ii) {
+      buf[i + ii] = rnds[ii];
+    }
+  }
 
-var _parse2 = _interopRequireDefault(_parse);
+  return buf || bytesToUuid(rnds);
+}
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+module.exports = v4;
 
-exports.format = _format2.default;
-exports.parse = _parse2.default;
-//# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 203 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53107,22 +57353,32 @@ var unquote = exports.unquote = function unquote(str) {
 //# sourceMappingURL=util.js.map
 
 /***/ }),
-/* 204 */
+/* 222 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(223)
+
+
+/***/ }),
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
  * Dependencies
  */
-const assert = __webpack_require__(126)
-const fetch = __webpack_require__(44)
-const { URL } = __webpack_require__(41)
+const assert = __webpack_require__(137)
+const fetch = __webpack_require__(33)
+const { URL } = __webpack_require__(50)
 const Headers = fetch.Headers ? fetch.Headers : global.Headers
-const {JSONDocument} = __webpack_require__(17)
-const {JWKSet} = __webpack_require__(62)
-const AuthenticationRequest = __webpack_require__(410)
-const AuthenticationResponse = __webpack_require__(411)
-const RelyingPartySchema = __webpack_require__(415)
-const onHttpError = __webpack_require__(221)
+const {JSONDocument} = __webpack_require__(21)
+const {JWKSet} = __webpack_require__(70)
+const AuthenticationRequest = __webpack_require__(430)
+const AuthenticationResponse = __webpack_require__(431)
+const RelyingPartySchema = __webpack_require__(435)
+const onHttpError = __webpack_require__(240)
 
 /**
  * RelyingParty
@@ -53454,10 +57710,10 @@ RelyingParty.SESSION_PRIVATE_KEY = SESSION_PRIVATE_KEY
 
 module.exports = RelyingParty
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 205 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53599,7 +57855,7 @@ var Formats = function () {
 module.exports = Formats.initialize();
 
 /***/ }),
-/* 206 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53923,7 +58179,7 @@ var Initializer = function () {
 module.exports = Initializer;
 
 /***/ }),
-/* 207 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53940,7 +58196,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var JSONPointer = __webpack_require__(127);
+var JSONPointer = __webpack_require__(138);
 
 /**
  * Modes
@@ -54150,7 +58406,7 @@ var JSONPatch = function () {
 module.exports = JSONPatch;
 
 /***/ }),
-/* 208 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54167,7 +58423,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var formats = __webpack_require__(205);
+var formats = __webpack_require__(224);
 
 /**
  * For variable iterator counter
@@ -55383,19 +59639,19 @@ var Validator = function () {
 module.exports = Validator;
 
 /***/ }),
-/* 209 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
 var TextEncoder = global.TextEncoder ? global.TextEncoder // browser
-: __webpack_require__(404).TextEncoder; // node shim
+: __webpack_require__(424).TextEncoder; // node shim
 module.exports = TextEncoder;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 210 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55433,19 +59689,19 @@ var NotSupportedError = function (_Error) {
 module.exports = NotSupportedError;
 
 /***/ }),
-/* 211 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = {
-  DataError: __webpack_require__(212),
-  NotSupportedError: __webpack_require__(210)
+  DataError: __webpack_require__(231),
+  NotSupportedError: __webpack_require__(229)
 };
 
 /***/ }),
-/* 212 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55480,7 +59736,7 @@ var DataError = function (_Error) {
 module.exports = DataError;
 
 /***/ }),
-/* 213 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55499,11 +59755,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(17),
+var _require = __webpack_require__(21),
     JSONDocument = _require.JSONDocument;
 
-var JWKSchema = __webpack_require__(86);
-var JWA = __webpack_require__(128
+var JWKSchema = __webpack_require__(94);
+var JWA = __webpack_require__(139
 
 /**
  * JWK Class
@@ -55554,7 +59810,7 @@ var JWK = function (_JSONDocument) {
 module.exports = JWK;
 
 /***/ }),
-/* 214 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55564,10 +59820,10 @@ module.exports = JWK;
  * Dependencies
  */
 
-var _require = __webpack_require__(17),
+var _require = __webpack_require__(21),
     JSONSchema = _require.JSONSchema;
 
-var JWKSchema = __webpack_require__(86
+var JWKSchema = __webpack_require__(94
 
 /**
  * JWKSetSchema
@@ -55588,7 +59844,7 @@ var JWKSchema = __webpack_require__(86
 module.exports = JWKSetSchema;
 
 /***/ }),
-/* 215 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55597,11 +59853,11 @@ module.exports = JWKSetSchema;
 /**
  * Dependencies
  */
-var Base64URLSchema = __webpack_require__(216);
-var JWTClaimsSetSchema = __webpack_require__(217);
-var JOSEHeaderSchema = __webpack_require__(218);
+var Base64URLSchema = __webpack_require__(235);
+var JWTClaimsSetSchema = __webpack_require__(236);
+var JOSEHeaderSchema = __webpack_require__(237);
 
-var _require = __webpack_require__(17
+var _require = __webpack_require__(21
 
 /**
  * JWTSchema
@@ -55741,7 +59997,7 @@ var JWTSchema = new JSONSchema({
 module.exports = JWTSchema;
 
 /***/ }),
-/* 216 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55750,7 +60006,7 @@ module.exports = JWTSchema;
 /**
  * Dependencies
  */
-var _require = __webpack_require__(17
+var _require = __webpack_require__(21
 
 /**
  * Base64URLSchema
@@ -55769,7 +60025,7 @@ var Base64URLSchema = new JSONSchema({
 module.exports = Base64URLSchema;
 
 /***/ }),
-/* 217 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55778,7 +60034,7 @@ module.exports = Base64URLSchema;
 /**
  * Dependencies
  */
-var _require = __webpack_require__(17
+var _require = __webpack_require__(21
 
 /**
  * JWTClaimsSetSchema
@@ -55985,7 +60241,7 @@ var JWTClaimsSetSchema = new JSONSchema({
 module.exports = JWTClaimsSetSchema;
 
 /***/ }),
-/* 218 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55994,9 +60250,9 @@ module.exports = JWTClaimsSetSchema;
 /**
  * Dependencies
  */
-var JWKSchema = __webpack_require__(86);
+var JWKSchema = __webpack_require__(94);
 
-var _require = __webpack_require__(17
+var _require = __webpack_require__(21
 
 /**
  * JOSEHeaderSchema
@@ -56570,7 +60826,7 @@ var JOSEHeaderSchema = new JSONSchema({
 module.exports = JOSEHeaderSchema;
 
 /***/ }),
-/* 219 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56585,10 +60841,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Dependencies
  */
-var base64url = __webpack_require__(38);
-var JWA = __webpack_require__(128);
+var base64url = __webpack_require__(47);
+var JWA = __webpack_require__(139);
 
-var _require = __webpack_require__(211
+var _require = __webpack_require__(230
 
 /**
  * JWS
@@ -56702,7 +60958,7 @@ var JWS = function () {
 module.exports = JWS;
 
 /***/ }),
-/* 220 */
+/* 239 */
 /***/ (function(module, exports) {
 
 /**
@@ -56764,7 +61020,7 @@ module.exports = FormUrlEncoded
 
 
 /***/ }),
-/* 221 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56810,7 +61066,129 @@ module.exports = onHttpError
 
 
 /***/ }),
-/* 222 */
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _require = __webpack_require__(50),
+    URL = _require.URL;
+
+var _require2 = __webpack_require__(70),
+    JWT = _require2.JWT,
+    JWK = _require2.JWK;
+
+var DEFAULT_MAX_AGE = 3600; // Default token expiration, in seconds
+
+var PoPToken = function (_JWT) {
+  _inherits(PoPToken, _JWT);
+
+  function PoPToken() {
+    _classCallCheck(this, PoPToken);
+
+    return _possibleConstructorReturn(this, (PoPToken.__proto__ || Object.getPrototypeOf(PoPToken)).apply(this, arguments));
+  }
+
+  _createClass(PoPToken, null, [{
+    key: 'issueFor',
+
+    /**
+     * @param resourceServerUri {string} RS URI for which this token is intended
+     *
+     * @param session {Session}
+     * @param session.clientId {string}
+     * @param session.idToken {string}
+     * @param session.sessionKey {string}
+     *
+     * @returns {Promise<string>} PoPToken, encoded as compact JWT
+     */
+    value: function issueFor(resourceServerUri, session) {
+      if (!resourceServerUri) {
+        throw new Error('Cannot issue PoPToken - missing resource server URI');
+      }
+
+      if (!session.sessionKey) {
+        throw new Error('Cannot issue PoPToken - missing session key');
+      }
+
+      if (!session.idToken) {
+        throw new Error('Cannot issue PoPToken - missing id token');
+      }
+
+      var jwk = JSON.parse(session.sessionKey);
+
+      return JWK.importKey(jwk).then(function (importedSessionJwk) {
+        var options = {
+          aud: new URL(resourceServerUri).origin,
+          key: importedSessionJwk,
+          iss: session.clientId,
+          id_token: session.idToken
+        };
+
+        return PoPToken.issue(options);
+      }).then(function (jwt) {
+        return jwt.encode();
+      });
+    }
+
+    /**
+     * issue
+     *
+     * @param options {Object}
+     * @param options.iss {string} Token issuer (RP client_id)
+     * @param options.aud {string|Array<string>} Audience for the token
+     *   (such as the Resource Server url)
+     * @param options.key {JWK} Proof of Possession (private) signing key, see
+     *   https://tools.ietf.org/html/rfc7800#section-3.1
+     *
+     * @param options.id_token {string} JWT compact encoded ID Token
+     *
+     * Optional:
+     * @param [options.iat] {number} Issued at timestamp (in seconds)
+     * @param [options.max] {number} Max token lifetime in seconds
+     *
+     * @returns {PoPToken} Proof of Possession Token (JWT instance)
+     */
+
+  }, {
+    key: 'issue',
+    value: function issue(options) {
+      var aud = options.aud,
+          iss = options.iss,
+          key = options.key;
+
+
+      var alg = key.alg;
+      var iat = options.iat || Math.floor(Date.now() / 1000);
+      var max = options.max || DEFAULT_MAX_AGE;
+
+      var exp = iat + max; // token expiration
+
+      var header = { alg: alg };
+      var payload = { iss: iss, aud: aud, exp: exp, iat: iat, id_token: options.id_token, token_type: 'pop' };
+
+      var jwt = new PoPToken({ header: header, payload: payload, key: key.cryptoKey }, { filter: false });
+
+      return jwt;
+    }
+  }]);
+
+  return PoPToken;
+}(JWT);
+
+module.exports = PoPToken;
+
+/***/ }),
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56821,9 +61199,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.requiresAuth = exports.login = undefined;
 
-__webpack_require__(44);
+__webpack_require__(33);
 
-var _authHeader = __webpack_require__(202);
+var _authHeader = __webpack_require__(92);
 
 var authorization = _interopRequireWildcard(_authHeader);
 
@@ -56851,7 +61229,34 @@ var requiresAuth = exports.requiresAuth = function requiresAuth(resp) {
 };
 
 /***/ }),
-/* 223 */
+/* 243 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _from = __webpack_require__(437);
+
+var _from2 = _interopRequireDefault(_from);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+
+    return arr2;
+  } else {
+    return (0, _from2.default)(arr);
+  }
+};
+
+/***/ }),
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56860,10 +61265,10 @@ var requiresAuth = exports.requiresAuth = function requiresAuth(resp) {
 /* -*- coding: utf-8-dos -*-
    Outline Mode Manager
 */
-var YAHOO = __webpack_require__(430);
-var outlineIcons = __webpack_require__(431);
-var UserInput = __webpack_require__(432);
-var UI = __webpack_require__(1);
+var YAHOO = __webpack_require__(448);
+var outlineIcons = __webpack_require__(449);
+var UserInput = __webpack_require__(462);
+var UI = __webpack_require__(2);
 /* global Components, alert XPathResult sourceWidget */
 // XPathResult?
 
@@ -58922,17 +63327,1944 @@ module.exports = function (doc) {
 
   return this;
 }; //END OF OUTLINE
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 224 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(225);
+"use strict";
+
+
+// var UI.acl = require('./acl.js')
+//var UI.ns = require('./ns.js')
+
+var acl = module.exports = {};
+
+var UI = {
+  acl: acl,
+  icons: __webpack_require__(29),
+  log: __webpack_require__(24),
+  ns: __webpack_require__(14),
+  store: __webpack_require__(22),
+  widgets: __webpack_require__(30)
+};
+
+var utils = __webpack_require__(31);
+var kb = UI.store;
+
+// //////////////////////////////////// Solid ACL non-UI functions
+//
+
+// Take the "defaltForNew" ACL and convert it into the equivlent ACL
+// which the resource would have had.  Return it as a new separate store.
+
+UI.acl.adoptACLDefault = function (doc, aclDoc, defaultResource, defaultACLdoc) {
+  var kb = UI.store;
+  var ACL = UI.ns.acl;
+  var ns = UI.ns;
+  var isContainer = doc.uri.slice(-1) === '/'; // Give default for all directories
+  var defaults = kb.each(undefined, ACL('defaultForNew'), defaultResource, defaultACLdoc);
+  var proposed = [];
+  defaults.map(function (da) {
+    proposed = proposed.concat(kb.statementsMatching(da, ACL('agent'), undefined, defaultACLdoc)).concat(kb.statementsMatching(da, ACL('agentClass'), undefined, defaultACLdoc)).concat(kb.statementsMatching(da, ACL('agentGroup'), undefined, defaultACLdoc)).concat(kb.statementsMatching(da, ACL('origin'), undefined, defaultACLdoc)).concat(kb.statementsMatching(da, ACL('originClass'), undefined, defaultACLdoc)).concat(kb.statementsMatching(da, ACL('mode'), undefined, defaultACLdoc));
+    proposed.push($rdf.st(da, ACL('accessTo'), doc, defaultACLdoc)); // Suppose
+    if (isContainer) {
+      // By default, make this apply to folder contents too
+      proposed.push($rdf.st(da, ACL('defaultForNew'), doc, defaultACLdoc));
+    }
+  });
+  var kb2 = $rdf.graph(); // Potential - derived is kept apart
+  proposed.map(function (st) {
+    var move = function move(sym) {
+      var y = defaultACLdoc.uri.length; // The default ACL file
+      return $rdf.sym(sym.uri.slice(0, y) == defaultACLdoc.uri ? aclDoc.uri + sym.uri.slice(y) : sym.uri);
+    };
+    kb2.add(move(st.subject), move(st.predicate), move(st.object), $rdf.sym(aclDoc.uri));
+  });
+
+  //   @@@@@ ADD TRIPLES TO ACCES CONTROL ACL FILE -- until servers fixed @@@@@
+
+  /*
+  var ccc = kb2.each(undefined, ACL('accessTo'), doc)
+    .filter(function (au) { return kb2.holds(au, ACL('mode'), ACL('Control'))})
+  ccc.map(function (au) {
+    var au2 = kb2.sym(au.uri + '__ACLACL')
+    kb2.add(au2, ns.rdf('type'), ACL('Authorization'), aclDoc)
+    kb2.add(au2, ACL('accessTo'), aclDoc, aclDoc)
+    kb2.add(au2, ACL('mode'), ACL('Read'), aclDoc)
+    kb2.add(au2, ACL('mode'), ACL('Write'), aclDoc)
+    kb2.each(au, ACL('agent')).map(function (who) {
+      kb2.add(au2, ACL('agent'), who, aclDoc)
+    })
+    kb2.each(au, ACL('agentClass')).map(function (who) {
+      kb2.add(au2, ACL('agentClass'), who, aclDoc)
+    })
+    kb2.each(au, ACL('agentGroup')).map(function (who) {
+      kb2.add(au2, ACL('agentGroup'), who, aclDoc)
+    })
+  })
+  */
+
+  return kb2;
+};
+
+// Read and canonicalize the ACL for x in aclDoc
+//
+// Accumulate the access rights which each agent or class has
+//
+UI.acl.readACL = function (x, aclDoc, kb, getDefaults) {
+  var kb = kb || UI.store;
+  var ns = UI.ns;
+  var predicate = getDefaults ? ns.acl('defaultForNew') : ns.acl('accessTo');
+  var ACL = UI.ns.acl;
+  var ac = { 'agent': [], 'agentClass': [], 'agentGroup': [], 'origin': [], 'originClass': [] };
+  var auths = kb.each(undefined, predicate, x);
+  for (var pred in { 'agent': true, 'agentClass': true, 'agentGroup': true, 'origin': true, 'originClass': true }) {
+    auths.map(function (a) {
+      kb.each(a, ACL('mode')).map(function (mode) {
+        kb.each(a, ACL(pred)).map(function (agent) {
+          if (!ac[pred][agent.uri]) ac[pred][agent.uri] = [];
+          ac[pred][agent.uri][mode.uri] = a; // could be "true" but leave pointer just in case
+        });
+      });
+    });
+  }
+  return ac;
+};
+
+// Compare two ACLs
+UI.acl.sameACL = function (a, b) {
+  var contains = function contains(a, b) {
+    for (var pred in { 'agent': true, 'agentClass': true, 'agentGroup': true, 'origin': true, 'originClass': true }) {
+      if (a[pred]) {
+        for (var agent in a[pred]) {
+          for (var mode in a[pred][agent]) {
+            if (!b[pred][agent] || !b[pred][agent][mode]) {
+              return false;
+            }
+          }
+        }
+      }
+    }
+    return true;
+  };
+  return contains(a, b) && contains(b, a);
+};
+
+// Union N ACLs
+UI.acl.ACLunion = function (list) {
+  var b = list[0],
+      a,
+      ag;
+  for (var k = 1; k < list.length; k++) {
+    ['agent', 'agentClass', 'agentGroup', 'origin', 'originClass'].map(function (pred) {
+      a = list[k];
+      if (a[pred]) {
+        for (ag in a[pred]) {
+          for (var mode in a[pred][ag]) {
+            if (!b[pred][ag]) b[pred][ag] = [];
+            b[pred][ag][mode] = true;
+          }
+        }
+      }
+    });
+  }
+  return b;
+};
+
+// Merge ACLs lists from things to form union
+
+UI.acl.loadUnionACL = function (subjectList, callback) {
+  var aclList = [];
+  var doList = function doList(list) {
+    if (list.length) {
+      var doc = list.shift().doc();
+      UI.acl.getACLorDefault(doc, function (ok, p2, targetDoc, targetACLDoc, defaultHolder, defaultACLDoc) {
+        var defa = !p2;
+        if (!ok) return callback(ok, targetACLDoc);
+        aclList.push(defa ? UI.widgets.readACL(defaultHolder, defaultACLDoc) : UI.widgets.readACL(targetDoc, targetACLDoc));
+        doList(list.slice(1));
+      });
+    } else {
+      // all gone
+      callback(true, UI.widgets.ACLunion(aclList));
+    }
+  };
+  doList(subjectList);
+};
+
+// Represents these as a RDF graph by combination of modes
+//
+// Each agent can only be in one place in this model, one combination of modes.
+// Combos are like full control, read append, read only etc.
+//
+UI.acl.ACLbyCombination = function (ac) {
+  var byCombo = [];
+  ['agent', 'agentClass', 'agentGroup', 'origin', 'originClass'].map(function (pred) {
+    for (var agent in ac[pred]) {
+      var combo = [];
+      for (var mode in ac[pred][agent]) {
+        combo.push(mode);
+      }
+      combo.sort();
+      combo = combo.join('\n');
+      if (!byCombo[combo]) byCombo[combo] = [];
+      byCombo[combo].push([pred, agent]);
+    }
+  });
+  return byCombo;
+};
+
+//    Write ACL graph to store from AC
+//
+UI.acl.makeACLGraph = function (kb, x, ac, aclDoc) {
+  var byCombo = UI.acl.ACLbyCombination(ac);
+  return UI.acl.makeACLGraphbyCombo(kb, x, byCombo, aclDoc);
+};
+
+//    Write ACL graph to store from combo
+//
+UI.acl.makeACLGraphbyCombo = function (kb, x, byCombo, aclDoc, main, defa) {
+  var ACL = UI.ns.acl;
+  for (var combo in byCombo) {
+    var modeURIs = combo.split('\n');
+    var short = modeURIs.map(function (u) {
+      return u.split('#')[1];
+    }).join('');
+    if (defa && !main) short += 'Default'; // don't muddle authorizations
+    var a = kb.sym(aclDoc.uri + '#' + short);
+    kb.add(a, UI.ns.rdf('type'), ACL('Authorization'), aclDoc);
+    if (main) {
+      kb.add(a, ACL('accessTo'), x, aclDoc);
+    }
+    if (defa) {
+      kb.add(a, ACL('defaultForNew'), x, aclDoc);
+    }
+    for (var i = 0; i < modeURIs.length; i++) {
+      kb.add(a, ACL('mode'), kb.sym(modeURIs[i]), aclDoc);
+    }
+    var pairs = byCombo[combo];
+    for (i = 0; i < pairs.length; i++) {
+      var pred = pairs[i][0],
+          ag = pairs[i][1];
+      kb.add(a, ACL(pred), kb.sym(ag), aclDoc);
+    }
+  }
+};
+
+//    Debugguing short strings for dumping ACL
+//  and who knows maybe in the UI
+//
+UI.acl.ACLToString = function (ac) {
+  return UI.widgets.comboToString(UI.widgets.ACLbyCombination(ac));
+};
+UI.acl.comboToString = function (byCombo) {
+  var str = '';
+  for (var combo in byCombo) {
+    var modeURIs = combo.split('\n');
+    var initials = modeURIs.map(function (u) {
+      return u.split('#')[1][0];
+    }).join('');
+    str += initials + ':';
+    var pairs = byCombo[combo];
+    for (var i = 0; i < pairs.length; i++) {
+      var pred = pairs[i][0],
+          ag = $rdf.sym(pairs[i][1]);
+      str += pred === 'agent' ? '@' : '';
+      str += ag.sameTerm(UI.ns.foaf('Agent')) ? '*' : utils.label(ag);
+      if (i < pairs.length - 1) str += ',';
+    }
+    str += ';';
+  }
+  return '{' + str.slice(0, -1) + '}'; // drop extra semicolon
+};
+
+//    Write ACL graph to string
+//
+UI.acl.makeACLString = function (x, ac, aclDoc) {
+  var kb = $rdf.graph();
+  UI.widgets.makeACLGraph(kb, x, ac, aclDoc);
+  return $rdf.serialize(aclDoc, kb, aclDoc.uri, 'text/turtle');
+};
+
+//    Write ACL graph to web
+//
+UI.acl.putACLObject = function (kb, x, ac, aclDoc, callback) {
+  var byCombo = UI.widgets.ACLbyCombination(ac);
+  return UI.widgets.putACLbyCombo(kb, x, byCombo, aclDoc, callback);
+};
+
+//    Write ACL graph to web from combo
+//
+UI.acl.putACLbyCombo = function (kb, x, byCombo, aclDoc, callback) {
+  var kb2 = $rdf.graph();
+  UI.widgets.makeACLGraphbyCombo(kb2, x, byCombo, aclDoc, true);
+
+  // var str = UI.widgets.makeACLString = function(x, ac, aclDoc)
+  kb.updater.put(aclDoc, kb2.statementsMatching(undefined, undefined, undefined, aclDoc), 'text/turtle', function (uri, ok, message) {
+    if (!ok) {
+      callback(ok, message);
+    } else {
+      kb.fetcher.unload(aclDoc);
+      UI.widgets.makeACLGraphbyCombo(kb, x, byCombo, aclDoc, true);
+      kb.fetcher.requested[aclDoc.uri] = 'done'; // missing: save headers
+      callback(ok);
+    }
+  });
+};
+
+// Fix the ACl for an individual card as a function of the groups it is in
+//
+// All group files must be loaded first
+//
+
+UI.acl.fixIndividualCardACL = function (person, log, callback) {
+  var groups = UI.store.each(undefined, UI.ns.vcard('hasMember'), person);
+  var doc = person.doc();
+  if (groups) {
+    UI.widgets.fixIndividualACL(person, groups, log, callback);
+  } else {
+    log('This card is in no groups');
+    callback(true); // fine, no requirements to access. default should be ok
+  }
+  // @@ if no groups, then use default for People container or the book top container.?
+};
+
+UI.acl.fixIndividualACL = function (item, subjects, log, callback) {
+  log = log || console.log;
+  var doc = item.doc();
+  UI.acl.getACLorDefault(doc, function (ok, exists, targetDoc, targetACLDoc, defaultHolder, defaultACLDoc) {
+    if (!ok) return callback(false, targetACLDoc); // ie message
+    var ac = exists ? UI.widgets.readACL(targetDoc, targetACLDoc) : UI.widgets.readACL(defaultHolder, defaultACLDoc);
+    UI.widgets.loadUnionACL(subjects, function (ok, union) {
+      if (!ok) return callback(false, union);
+      if (UI.widgets.sameACL(union, ac)) {
+        log('Nice - same ACL. no change ' + utils.label(item) + ' ' + doc);
+      } else {
+        log('Group ACLs differ for ' + utils.label(item) + ' ' + doc);
+
+        // log("Group ACLs: " + UI.widgets.makeACLString(targetDoc, union, targetACLDoc))
+        // log((exists ? "Previous set" : "Default") + " ACLs: " +
+        // UI.widgets.makeACLString(targetDoc, ac, targetACLDoc))
+
+        UI.widgets.putACLObject(UI.store, targetDoc, union, targetACLDoc, callback);
+      }
+    });
+  });
+};
+
+UI.acl.setACL = function (docURI, aclText, callback) {
+  var aclDoc = kb.any(kb.sym(docURI), kb.sym('http://www.iana.org/assignments/link-relations/acl')); // @@ check that this get set by web.js
+  if (aclDoc) {
+    // Great we already know where it is
+    kb.fetcher.webOperation('PUT', aclDoc.uri, { data: aclText, contentType: 'text/turtle' }).then(callback); // @@@ check params
+  } else {
+    fetcher.nowOrWhenFetched(docURI, undefined, function (ok, body) {
+      if (!ok) return callback(ok, 'Gettting headers for ACL: ' + body);
+      var aclDoc = kb.any(kb.sym(docURI), kb.sym('http://www.iana.org/assignments/link-relations/acl')); // @@ check that this get set by web.js
+      if (!aclDoc) {
+        // complainIfBad(false, "No Link rel=ACL header for " + docURI)
+        callback(false, 'No Link rel=ACL header for ' + docURI);
+      } else {
+        kb.fetcher.webOperation('PUT', aclDoc.uri, { data: aclText, contentType: 'text/turtle' }).then(callback);
+      }
+    });
+  }
+};
+
+//  Get ACL file or default if necessary
+//
+// callback(true, true, doc, aclDoc)   The ACL did exist
+// callback(true, false, doc, aclDoc, defaultHolder, defaultACLDoc)   ACL file did not exist but a default did
+// callback(false, false, status, message)  error getting original
+// callback(false, true, status, message)  error getting defualt
+
+UI.acl.getACLorDefault = function (doc, callback) {
+  UI.acl.getACL(doc, function (ok, status, aclDoc, message) {
+    var i, row, left, right, a;
+    var kb = UI.store;
+    var ACL = UI.ns.acl;
+    if (!ok) return callback(false, false, status, message);
+
+    // Recursively search for the ACL file which gives default access
+    var tryParent = function tryParent(uri) {
+      if (uri.slice(-1) === '/') {
+        uri = uri.slice(0, -1);
+      }
+      var right = uri.lastIndexOf('/');
+      var left = uri.indexOf('/', uri.indexOf('//') + 2);
+      uri = uri.slice(0, right + 1);
+      var doc2 = $rdf.sym(uri);
+      UI.acl.getACL(doc2, function (ok, status, defaultACLDoc) {
+        if (!ok) {
+          return callback(false, true, status, '( No ACL pointer ' + uri + ' ' + status + ')' + defaultACLDoc);
+        } else if (status === 403) {
+          return callback(false, true, status, '( default ACL file FORBIDDEN. Stop.' + uri + ')');
+        } else if (status === 404) {
+          if (left >= right) {
+            return callback(false, true, 499, 'Nothing to hold a default');
+          } else {
+            tryParent(uri);
+          }
+        } else if (status !== 200) {
+          return callback(false, true, status, "Error status '" + status + "' searching for default for " + doc2);
+        } else {
+          // 200
+          // statusBlock.textContent += (" ACCESS set at " + uri + ". End search.")
+          var defaults = kb.each(undefined, ACL('defaultForNew'), kb.sym(uri), defaultACLDoc);
+          if (!defaults.length) {
+            tryParent(uri); // Keep searching
+          } else {
+            var defaultHolder = kb.sym(uri);
+            callback(true, false, doc, aclDoc, defaultHolder, defaultACLDoc);
+          }
+        }
+      });
+    }; // tryParent
+
+    if (!ok) {
+      return callback(false, false, status, 'Error accessing Access Control information for ' + doc + ') ' + message);
+    } else if (status === 404) {
+      tryParent(doc.uri); //  @@ construct default one - the server should do that
+    } else if (status === 403) {
+      return callback(false, false, status, '(Sharing not available to you)' + message);
+    } else if (status !== 200) {
+      return callback(false, false, status, 'Error ' + status + ' accessing Access Control information for ' + doc + ': ' + message);
+    } else {
+      // 200
+      return callback(true, true, doc, aclDoc);
+    }
+  }); // Call to getACL
+}; // getACLorDefault
+
+//    Calls back (ok, status, acldoc, message)
+//
+//   (false, 900, errormessage)        no link header
+//   (true, 403, documentSymbol, fileaccesserror) not authorized
+//   (true, 404, documentSymbol, fileaccesserror) if does not exist
+//   (true, 200, documentSymbol)   if file exitss and read OK
+//
+UI.acl.getACL = function (doc, callback) {
+  UI.store.fetcher.nowOrWhenFetched(doc, undefined, function (ok, body) {
+    if (!ok) return callback(ok, "Can't get headers to find ACL for " + doc + ': ' + body);
+    var kb = UI.store;
+    var aclDoc = kb.any(doc, kb.sym('http://www.iana.org/assignments/link-relations/acl')); // @@ check that this get set by web.js
+    if (!aclDoc) {
+      callback(false, 900, 'No Link rel=ACL header for ' + doc);
+    } else {
+      if (UI.store.fetcher.nonexistent[aclDoc.uri]) {
+        return callback(true, 404, aclDoc, 'ACL file ' + aclDoc + ' does not exist.');
+      }
+      UI.store.fetcher.nowOrWhenFetched(aclDoc, undefined, function (ok, message, xhr) {
+        if (!ok) {
+          callback(true, xhr.status, aclDoc, "Can't read Access Control File " + aclDoc + ': ' + message);
+        } else {
+          callback(true, 200, aclDoc);
+        }
+      });
+    }
+  });
+};
+
+// /////////////////////////////////////////  End of ACL stuff
+
+/***/ }),
+/* 246 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+  makeDropTarget: makeDropTarget,
+  makeDraggable: makeDraggable
+};
+
+function makeDropTarget(ele, droppedURIHandler, droppedFileHandler) {
+
+  var dragoverListener = function dragoverListener(e) {
+    e.preventDefault(); // Neeed else drop does not work [sic]
+    e.dataTransfer.dropEffect = 'copy';
+  };
+
+  var dragenterListener = function dragenterListener(e) {
+    console.log('dragenter event dropEffect: ' + e.dataTransfer.dropEffect);
+    this.style.backgroundColor = '#ccc';
+    e.dataTransfer.dropEffect = 'link';
+    console.log('dragenter event dropEffect 2: ' + e.dataTransfer.dropEffect);
+  };
+  var dragleaveListener = function dragleaveListener(e) {
+    console.log('dragleave event dropEffect: ' + e.dataTransfer.dropEffect);
+    this.style.backgroundColor = 'white';
+  };
+
+  var dropListener = function dropListener(e) {
+    if (e.preventDefault) e.preventDefault(); // stops the browser from redirecting off to the text.
+    console.log('Drop event. dropEffect: ' + e.dataTransfer.dropEffect);
+    console.log('Drop event. types: ' + (e.dataTransfer.types ? e.dataTransfer.types.join(', ') : 'NOPE'));
+
+    var uris = null;
+    var text;
+    var thisEle = this;
+    if (e.dataTransfer.types) {
+      for (var t = 0; t < e.dataTransfer.types.length; t++) {
+        var type = e.dataTransfer.types[t];
+        if (type === 'text/uri-list') {
+          uris = e.dataTransfer.getData(type).split('\n'); // @ ignore those starting with #
+          console.log('Dropped text/uri-list: ' + uris);
+        } else if (type === 'text/plain') {
+          text = e.dataTransfer.getData(type);
+        } else if (type === 'Files' && droppedFileHandler) {
+          var files = e.dataTransfer.files; // FileList object.
+          for (var i = 0, f; f = files[i]; i++) {
+            console.log("Filename: " + f.name + ", type: " + (f.type || 'n/a') + " size: " + f.size + ' bytes, last modified: ' + (f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a'));
+          }
+          droppedFileHandler(files);
+        }
+      }
+      if (uris === null && text && text.slice(0, 4) === 'http') {
+        uris = text;
+        console.log("Waring: Poor man's drop: using text for URI"); // chrome disables text/uri-list??
+      }
+    } else {
+      // ... however, if we're IE, we don't have the .types property, so we'll just get the Text value
+      uris = [e.dataTransfer.getData('Text')];
+      console.log('WARNING non-standard drop event: ' + uris[0]);
+    }
+    console.log('Dropped URI list (2): ' + uris);
+    if (uris) {
+      droppedURIHandler(uris);
+    }
+    this.style.backgroundColor = 'white'; // restore style
+    return false;
+  }; // dropListener
+
+  var addTargetListeners = function addTargetListeners(ele) {
+    if (!ele) {
+      console.log("@@@ addTargetListeners: ele " + ele);
+    }
+    ele.addEventListener('dragover', dragoverListener);
+    ele.addEventListener('dragenter', dragenterListener);
+    ele.addEventListener('dragleave', dragleaveListener);
+    ele.addEventListener('drop', dropListener);
+  };
+  addTargetListeners(ele, droppedURIHandler);
+} // listen for dropped URIs
+
+
+// Make an HTML element draggable as a URI-identified thing
+//
+// Possibly later set the drag image too?
+//
+function makeDraggable(tr, obj) {
+
+  tr.setAttribute('draggable', 'true'); // Stop the image being dragged instead - just the TR
+
+  tr.addEventListener('dragstart', function (e) {
+    tr.style.fontWeight = 'bold';
+    e.dataTransfer.setData('text/uri-list', obj.uri);
+    e.dataTransfer.setData('text/plain', obj.uri);
+    e.dataTransfer.setData('text/html', tr.outerHTML);
+    console.log('Dragstart: ' + tr + ' -> ' + obj + 'de: ' + e.dataTransfer.dropEffect);
+  }, false);
+
+  tr.addEventListener('drag', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    // console.log('Drag: dropEffect: ' + e.dataTransfer.dropEffect)
+  }, false);
+
+  tr.addEventListener('dragend', function (e) {
+    tr.style.fontWeight = 'normal';
+    console.log('Dragend dropeffect: ' + e.dataTransfer.dropEffect);
+    console.log('Dragend: ' + tr + ' -> ' + obj);
+  }, false);
+}
+
+/***/ }),
+/* 247 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * signin.js
+ *
+ * Signing in, signing up, workspace selection, app spawning
+ */
+// const Solid = require('solid-client')
+
+var SolidTls = __webpack_require__(196);
+var $rdf = __webpack_require__(3);
+var error = __webpack_require__(95);
+var widgets = __webpack_require__(30);
+// const utils = require('./utils')
+var solidAuthClient = __webpack_require__(248);
+
+var UI = {
+  log: __webpack_require__(24),
+  ns: __webpack_require__(14),
+  store: __webpack_require__(22)
+};
+
+var config = $SOLID_GLOBAL_config;
+
+module.exports = {
+  checkCurrentUser: checkCurrentUser,
+  checkUser: checkUser,
+  currentUser: currentUser,
+  findAppInstances: findAppInstances,
+  findOriginOwner: findOriginOwner,
+  loadTypeIndexes: loadTypeIndexes,
+  logIn: logIn,
+  loginStatusBox: loginStatusBox,
+  newAppInstance: newAppInstance,
+  offlineTestID: offlineTestID,
+  registrationControl: registrationControl,
+  registrationList: registrationList,
+  selectWorkspace: selectWorkspace,
+  setACLUserPublic: setACLUserPublic,
+  saveUser: saveUser,
+  solidAuthClient: solidAuthClient
+
+  // const userCheckSite = 'https://databox.me/'
+
+  // Look for and load the User who has control over it
+};function findOriginOwner(doc, callback) {
+  var uri = doc.uri || doc;
+  var i = uri.indexOf('://');
+  if (i < 0) return false;
+  var j = uri.indexOf('/', i + 3);
+  if (j < 0) return false;
+  var origin = uri.slice(0, j + 1); // @@ TBC
+  return origin;
+}
+
+// Promises versions
+//
+// These pass a context object which hold various RDF symbols
+// as they become available
+//
+//  me               RDF symbol for the users' webid
+//  publicProfile    The user's public profile, iff loaded
+//  preferencesFile  The user's personal preferences file, iff loaded
+//  index.public     The user's public type index file
+//  index.private     The user's private type index file
+//   not RDF symbols:
+//  noun              A string in english for the type of thing -- like "address book"
+//  instance          An array of nodes which are existing instances
+//  containers        An array of nodes of containers of instances
+//  div               A DOM element where UI can be displayed
+//  statusArea        A DOM element (opt) progress stuff can be displayed, or error messages
+
+/**
+ * @param webId {NamedNode}
+ * @param context {Object}
+ *
+ * @returns {NamedNode|null} Returns the Web ID, after setting it
+ */
+function saveUser(webId, context) {
+  if (context) {
+    context.me = $rdf.namedNode(webId);
+  }
+
+  var webIdUri = void 0;
+
+  if (webId) {
+    webIdUri = webId.uri || webId;
+  }
+
+  tabulator.preferences.set('me', webIdUri || '');
+
+  return webIdUri ? $rdf.namedNode(webIdUri) : null;
+}
+
+/**
+ * @returns {NamedNode|null}
+ */
+function currentUser() {
+  // Check for offline override
+  var offlineId = offlineTestID();
+
+  if (offlineId) {
+    return offlineId;
+  }
+
+  var webId = tabulator.preferences.get('me');
+
+  return webId ? $rdf.sym(webId) : null;
+}
+
+/**
+ * Resolves with the logged in user's Web ID
+ *
+ * @param context
+ *
+ * @returns {Promise<NamedNode|null>}
+ */
+function logIn(context) {
+  var webId = currentUser(); // webId is a NamedNode or null
+
+  if (webId) {
+    return Promise.resolve({ me: webId });
+  }
+
+  return new Promise(function (resolve) {
+    var box = loginStatusBox(context.dom, function (webIdUri) {
+      resolve({ me: saveUser(webIdUri, context) });
+    });
+
+    context.div.appendChild(box);
+  });
+}
+
+/**
+ * Logs the user in and loads their WebID profile document into the store
+ *
+ * @private
+ *
+ * @param context {Object}
+ *
+ * @returns {Promise<Object>} Resolves with the context after login / fetch
+ */
+function logInLoadProfile(context) {
+  if (context.publicProfile) {
+    return Promise.resolve(context);
+  } // already done
+
+  var fetcher = UI.store.fetcher;
+  var profileDocument = void 0;
+
+  return logIn(context).then(function (context) {
+    var webID = context.me;
+    if (!webID) {
+      throw new Error('Could not log in');
+    }
+
+    profileDocument = webID.doc();
+
+    // Load the profile into the knowledge base (fetcher.store)
+    return fetcher.fetch(profileDocument);
+  }).then(function (result) {
+    if (!result.ok) {
+      throw new Error(result.error);
+    }
+
+    context.publicProfile = profileDocument;
+    return context;
+  }).catch(function (err) {
+    var message = 'Cannot load profile ' + profileDocument + ' : ' + err;
+    context.div.appendChild(error.errorMessageBlock(context.dom, message));
+    return context;
+  });
+}
+
+/**
+ * Loads preferences file
+ * Do this after having done log in and load profile
+ *
+ * @private
+ *
+ * @param context
+ *
+ * @returns {Promise<context>}
+ */
+function loadPreferences(context) {
+  if (context.preferencesFile) return Promise.resolve(context); // already done
+
+  var kb = UI.store;
+  var box = context.statusArea || context.div || null;
+  var preferencesFile = kb.any(context.me, UI.ns.space('preferencesFile'));
+  var pending = void 0;
+
+  return Promise.resolve().then(function () {
+    if (!preferencesFile) {
+      var message = "Can't find a preferences file for user: " + context.me;
+      error.errorMessageBlock(context.dom, message);
+      throw new Error(message);
+    }
+
+    context.preferencesFile = preferencesFile;
+    if (box) {
+      pending = error.errorMessageBlock(context.dom, '(loading preferences ' + preferencesFile + ')', 'straw');
+      box.appendChild(pending);
+    }
+
+    return kb.fetcher.fetch(preferencesFile);
+  }).then(function () {
+    if (pending) {
+      pending.parentNode.removeChild(pending);
+    }
+
+    return context;
+  }).catch(function (err) {
+    throw new Error('Error loading preferences file. ' + err);
+  });
+}
+
+/**
+ * Resolves with the same context, outputting
+ * output: index.public, index.private
+ *
+ * @see https://github.com/solid/solid/blob/master/proposals/data-discovery.md#discoverability
+ *
+ * @param context
+ *
+ * @returns {Promise<context>}
+ */
+function loadTypeIndexes(context) {
+  var ns = UI.ns;
+  var kb = UI.store;
+
+  return logInLoadProfile(context).then(loadPreferences).then(function (context) {
+    var me = context.me;
+    context.index = context.index || {};
+    context.index.private = kb.each(me, ns.solid('privateTypeIndex'), undefined, context.preferencesFile);
+    context.index.public = kb.each(me, ns.solid('publicTypeIndex'), undefined, context.publicProfile);
+
+    var ix = context.index.private.concat(context.index.public);
+    if (ix.length === 0) {
+      return context;
+    } else {
+      return kb.fetcher.load(ix);
+    }
+  }).then(function () {
+    return context;
+  }).catch(function (e) {
+    widgets.complain(context, e);
+    throw new Error('Error loading type indexes: ' + e);
+  });
+}
+
+/**
+ * Resolves with the same context, outputting
+ * @see https://github.com/solid/solid/blob/master/proposals/data-discovery.md#discoverability
+ *
+ * @private
+ *
+ * @param context {Object}
+ * @param context.me
+ * @param context.preferencesFile
+ * @param context.publicProfile
+ * @param context.index
+ *
+ * @returns {Promise}
+ */
+function ensureTypeIndexes(context) {
+  return new Promise(function (resolve, reject) {
+    return loadTypeIndexes(context).then(function (context) {
+      var ns = UI.ns;
+      var kb = UI.store;
+      var me = context.me;
+      var newIndex;
+
+      var makeIndex = function makeIndex(context, visibility) {
+        return new Promise(function (resolve, reject) {
+          var relevant = { 'private': context.preferencesFile, 'public': context.publicProfile }[visibility];
+
+          if (context.index[visibility].length === 0) {
+            newIndex = $rdf.sym(context.preferencesFile.dir().uri + visibility + 'TypeIndex.ttl');
+            console.log('Linking to new fresh type index ' + newIndex);
+            var addMe = [$rdf.st(me, ns.solid(visibility + 'TypeIndex'), newIndex, relevant)];
+
+            UI.store.updater.update([], addMe, function (uri, ok, body) {
+              if (!ok) {
+                return reject(new Error('Error saving type index link saving back ' + uri + ': ' + body));
+              } else {
+                context.index[visibility].push(newIndex);
+                console.log('Creating new fresh type index ' + newIndex);
+                if (!window.confirm('Creating new list of things  ' + newIndex)) {
+                  return reject(new Error('Cancelled by user: writing of ' + newIndex));
+                }
+
+                kb.fetcher.webOperation('PUT', newIndex, { data: '# ' + new Date() + ' Blank initial Type index\n' }).then(function (xhr) {
+                  resolve(context);
+                }).catch(function (e) {
+                  reject(new Error('Creating new index file ' + e));
+                });
+              }
+            });
+          } else {
+            resolve(context); // exists
+          }
+        }); // promise
+      }; // makeIndex
+
+      var ps = [makeIndex(context, 'private'), makeIndex(context, 'public')];
+
+      return Promise.all(ps).then(function () {
+        resolve(context);
+      });
+    }); // .then
+  }); // Promise
+}
+
+/**
+ * Returns promise of context with arrays of symbols
+ *
+ * 2016-12-11 change to include forClass arc a la
+ * https://github.com/solid/solid/blob/master/proposals/data-discovery.md
+ *
+ * @param context
+ * @param context.instances
+ * @param context.containers
+ * @param klass
+ * @returns {Promise}
+ */
+function findAppInstances(context, klass) {
+  var kb = UI.store;
+  var ns = UI.ns;
+  var fetcher = UI.store.fetcher;
+  var registrations = kb.each(undefined, ns.solid('forClass'), klass);
+  var instances = [];
+  var containers = [];
+
+  return loadTypeIndexes(context).then(function (indexes) {
+    // var ix = context.index.private.concat(context.index.public)
+
+    for (var r = 0; r < registrations.length; r++) {
+      instances = instances.concat(kb.each(klass, ns.solid('instance')));
+      containers = containers.concat(kb.each(klass, ns.solid('instanceContainer')));
+    }
+
+    if (!containers.length) {
+      return;
+    }
+
+    return fetcher.load(containers).then(function () {
+      for (var i = 0; i < containers.length; i++) {
+        var cont = containers[i];
+        instances = instances.concat(kb.each(cont, ns.ldp('contains')));
+      }
+    });
+  }).then(function () {
+    context.instances = instances;
+    context.containers = containers;
+
+    return context;
+  }).catch(function (e) {
+    throw new Error('Error looking for instances of ' + klass + ': ' + e);
+  });
+}
+
+/**
+ * UI to control registration of instance
+ *
+ * @param context
+ * @param instance
+ * @param klass
+ *
+ * @returns {Promise}
+ */
+function registrationControl(context, instance, klass) {
+  var kb = UI.store;
+  var ns = UI.ns;
+  var dom = context.dom;
+
+  var box = dom.createElement('div');
+  context.div.appendChild(box);
+
+  return ensureTypeIndexes(context).then(function (context) {
+    box.innerHTML = '<table><tbody><tr></tr><tr></tr></tbody></table>'; // tbody will be inserted anyway
+    box.setAttribute('style', 'font-size: 120%; text-align: right; padding: 1em; border: solid gray 0.05em;');
+    var tbody = box.children[0].children[0];
+    var form = kb.bnode(); // @@ say for now
+
+    var registrationStatements = function registrationStatements(index) {
+      var registrations = kb.each(undefined, ns.solid('instance'), instance).filter(function (r) {
+        return kb.holds(r, ns.solid('forClass'), klass);
+      });
+      var reg = registrations.length ? registrations[0] : widgets.newThing(index);
+      return [$rdf.st(reg, ns.solid('instance'), instance, index), $rdf.st(reg, ns.solid('forClass'), klass, index)];
+    };
+
+    var index, statements;
+
+    if (context.index.public && context.index.public.length > 0) {
+      index = context.index.public[0];
+      statements = registrationStatements(index);
+      tbody.children[0].appendChild(widgets.buildCheckboxForm(context.dom, UI.store, 'Public link to this ' + context.noun, null, statements, form, index));
+    }
+
+    if (context.index.private && context.index.private.length > 0) {
+      index = context.index.private[0];
+      statements = registrationStatements(index);
+      tbody.children[1].appendChild(widgets.buildCheckboxForm(context.dom, UI.store, 'Personal note of this ' + context.noun, null, statements, form, index));
+    }
+
+    // widgets.buildCheckboxForm(dom, kb, lab, del, ins, form, store)
+    return context;
+  });
+}
+
+/**
+ * UI to List at all registered things
+ * @param context
+ * @param options
+ *
+ * @returns {Promise}
+ */
+function registrationList(context, options) {
+  var kb = UI.store;
+  var ns = UI.ns;
+  var dom = context.dom;
+
+  var box = dom.createElement('div');
+  context.div.appendChild(box);
+
+  return ensureTypeIndexes(context).then(function (indexes) {
+    box.innerHTML = '<table><tbody></tbody></table>'; // tbody will be inserted anyway
+    box.setAttribute('style', 'font-size: 120%; text-align: right; padding: 1em; border: solid #eee 0.5em;');
+    var table = box.firstChild;
+
+    var ix = [];
+    var sts = [];
+    var vs = ['private', 'public'];
+    vs.forEach(function (visibility) {
+      if (options[visibility]) {
+        ix = ix.concat(context.index[visibility][0]);
+        sts = sts.concat(kb.statementsMatching(undefined, ns.solid('instance'), undefined, context.index[visibility][0]));
+      }
+    });
+
+    for (var i = 0; i < sts.length; i++) {
+      var statement = sts[i];
+      // var cla = statement.subject
+      var inst = statement.object;
+      // if (false) {
+      //   var tr = table.appendChild(dom.createElement('tr'))
+      //   var anchor = tr.appendChild(dom.createElement('a'))
+      //   anchor.setAttribute('href', inst.uri)
+      //   anchor.textContent = utils.label(inst)
+      // } else {
+      // }
+
+      var deleteInstance = function deleteInstance(x) {
+        kb.updater.update([statement], [], function (uri, ok, errorBody) {
+          if (ok) {
+            console.log('Removed from index: ' + statement.subject);
+          } else {
+            console.log('Error: Cannot delete ' + statement + ': ' + errorBody);
+          }
+        });
+      };
+      var opts = { deleteFunction: deleteInstance };
+      var tr = widgets.personTR(dom, ns.solid('instance'), inst, opts);
+      table.appendChild(tr);
+    }
+
+    /*
+     //var containers = kb.each(klass, ns.solid('instanceContainer'));
+     if (containers.length) {
+     fetcher.load(containers).then(function(xhrs){
+     for (var i=0; i<containers.length; i++) {
+     var cont = containers[i];
+     instances = instances.concat(kb.each(cont, ns.ldp('contains')));
+     }
+     });
+     }
+     */
+
+    return context;
+  });
+}
+
+/**
+ * Simple Access Control
+ *
+ * This function sets up a simple default ACL for a resource, with
+ * RWC for the owner, and a specified access (default none) for the public.
+ * In all cases owner has read write control.
+ * Parameter lists modes allowed to public
+ *
+ * @param docURI
+ * @param me {NamedNode} WebID of user
+ * @param options
+ * @param options.public {Array<string>} eg ['Read', 'Write']
+ *
+ * @returns {Promise<NamedNode>} Resolves with aclDoc uri on successful write
+ */
+function setACLUserPublic(docURI, me, options) {
+  var kb = UI.store;
+  var aclDoc = kb.any(kb.sym(docURI), kb.sym('http://www.iana.org/assignments/link-relations/acl'));
+
+  return Promise.resolve().then(function () {
+    if (aclDoc) {
+      return aclDoc;
+    }
+
+    return fetchACLRel(docURI).catch(function (err) {
+      throw new Error('Error fetching rel=ACL header for ' + docURI + ': ' + err);
+    });
+  }).then(function (aclDoc) {
+    var aclText = genACLText(docURI, me, aclDoc.uri, options);
+
+    return kb.fetcher.webOperation('PUT', aclDoc.uri, { data: aclText, contentType: 'text/turtle' }).then(function (result) {
+      if (!result.ok) {
+        throw new Error('Error writing ACL text: ' + result.error);
+      }
+
+      return aclDoc;
+    });
+  });
+}
+
+/**
+ * @param docURI {string}
+ * @returns {Promise<NamedNode|null>}
+ */
+function fetchACLRel(docURI) {
+  var kb = UI.store;
+  var fetcher = kb.fetcher;
+
+  return fetcher.fetch(docURI).then(function (result) {
+    if (!result.ok) {
+      throw new Error('While fetching:' + result.error);
+    }
+
+    var aclDoc = kb.any(kb.sym(docURI), kb.sym('http://www.iana.org/assignments/link-relations/acl'));
+
+    if (!aclDoc) {
+      throw new Error('No Link rel=ACL header for ' + docURI);
+    }
+
+    return aclDoc;
+  });
+}
+
+/**
+ * @param docURI {string}
+ * @param me {NamedNode}
+ * @param aclURI {string}
+ * @param options {Object}
+ *
+ * @returns {string} Serialized ACL
+ */
+function genACLText(docURI, me, aclURI) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+  var optPublic = options.public || [];
+  var g = $rdf.graph();
+  var auth = $rdf.Namespace('http://www.w3.org/ns/auth/acl#');
+  var a = g.sym(aclURI + '#a1');
+  var acl = g.sym(aclURI);
+  var doc = g.sym(docURI);
+  g.add(a, UI.ns.rdf('type'), auth('Authorization'), acl);
+  g.add(a, auth('accessTo'), doc, acl);
+  if (options.defaultForNew) {
+    g.add(a, auth('defaultForNew'), doc, acl);
+  }
+  g.add(a, auth('agent'), me, acl);
+  g.add(a, auth('mode'), auth('Read'), acl);
+  g.add(a, auth('mode'), auth('Write'), acl);
+  g.add(a, auth('mode'), auth('Control'), acl);
+
+  if (optPublic.length) {
+    a = g.sym(aclURI + '#a2');
+    g.add(a, UI.ns.rdf('type'), auth('Authorization'), acl);
+    g.add(a, auth('accessTo'), doc, acl);
+    g.add(a, auth('agentClass'), UI.ns.foaf('Agent'), acl);
+    for (var p = 0; p < optPublic.length; p++) {
+      g.add(a, auth('mode'), auth(optPublic[p]), acl); // Like 'Read' etc
+    }
+  }
+  return $rdf.serialize(acl, g, aclURI, 'text/turtle');
+}
+
+/**
+ * @returns {NamedNode|null}
+ */
+function offlineTestID() {
+  if (typeof $SolidTestEnvironment !== 'undefined' && $SolidTestEnvironment.username) {
+    // Test setup
+    console.log('Assuming the user is ' + $SolidTestEnvironment.username);
+    return $rdf.sym($SolidTestEnvironment.username);
+  }
+
+  if (tabulator.mode === 'webapp' && typeof document !== 'undefined' && document.location && ('' + document.location).slice(0, 16) === 'http://localhost') {
+    var div = document.getElementById('appTarget');
+    if (!div) return null;
+    var id = div.getAttribute('testID');
+    if (!id) return null;
+    /* me = kb.any(subject, UI.ns.acl('owner')); // when testing on plane with no webid
+    */
+    console.log('Assuming user is ' + id);
+    return $rdf.sym(id);
+  }
+  return null;
+}
+
+/**
+ * Bootstrapping identity
+ * (Called by `loginStatusBox()`)
+ * @private
+ *
+ * @param myDocument
+ * @param setUserCallback(user: object)
+ *
+ * @returns {Element}
+ */
+function signInOrSignUpBox(myDocument, setUserCallback) {
+  var box = myDocument.createElement('div');
+  var p = myDocument.createElement('p');
+  box.appendChild(p);
+  box.className = 'mildNotice';
+  p.innerHTML = 'Enter your Web ID or pod uri';
+  console.log('widgets.signInOrSignUpBox');
+
+  // Provider uri textbox (or data URI for TlS)
+  var idpInput = myDocument.createElement('input');
+  box.appendChild(idpInput);
+  idpInput.setAttribute('type', 'text');
+  idpInput.setAttribute('id', 'idpInput');
+  idpInput.size = 40;
+
+  // Sign in button
+  var signInButton = myDocument.createElement('input');
+  box.appendChild(signInButton);
+  signInButton.setAttribute('type', 'button');
+  signInButton.setAttribute('value', 'Log in (old)');
+  signInButton.setAttribute('style', 'padding: 1em; border-radius:0.5em; margin: 2em;');
+
+  signInButton.addEventListener('click', function () {
+    var offline = offlineTestID();
+    if (offline) return setUserCallback(offline.uri);
+
+    var idpUri = document.getElementById('idpInput');
+
+    if (idpUri && idpUri.value !== '') {
+      return solidAuthClient.login(idpUri.value).then(webIdFromSession).then(function (webIdURI) {
+        return setUserCallback(webIdURI);
+      });
+    } else if (window && window.location && window.location.href) {
+      return solidAuthClient.login(window.location.href) // Actually the URI bar often works
+      .then(webIdFromSession) // when using webid-tls
+      .then(function (webIdURI) {
+        return setUserCallback(webIdURI);
+      });
+    }
+
+    // Solid.tls.login().then(function (uri) {
+    //   console.log('signInOrSignUpBox logged in up ' + uri)
+    //   gotOne(uri)
+    // })
+  }, false);
+
+  // Sign in button with PopUP
+  var signInPopUpButton = myDocument.createElement('input');
+  box.appendChild(signInPopUpButton);
+  signInPopUpButton.setAttribute('type', 'button');
+  signInPopUpButton.setAttribute('value', 'Log in');
+  signInPopUpButton.setAttribute('style', 'padding: 1em; border-radius:0.5em; margin: 2em;');
+
+  signInPopUpButton.addEventListener('click', function () {
+    var offline = offlineTestID();
+    if (offline) return setUserCallback(offline.uri);
+
+    var idpUri = document.getElementById('idpInput');
+
+    return solidAuthClient.popupLogin({ popupUri: config.popupUri }).then(function (session) {
+      var webIdURI = session.webId;
+      setUserCallback(webIdURI);
+    });
+  }, false);
+
+  // Sign up button
+  var signupButton = myDocument.createElement('input');
+  box.appendChild(signupButton);
+  signupButton.setAttribute('type', 'button');
+  signupButton.setAttribute('value', 'Sign Up');
+  signupButton.setAttribute('style', 'padding: 1em; border-radius:0.5em; margin: 2em;');
+
+  signupButton.addEventListener('click', function (e) {
+    var signupMgr = new SolidTls.Signup();
+    signupMgr.signup().then(function (uri) {
+      console.log('signInOrSignUpBox signed up ' + uri);
+      setUserCallback(uri);
+    });
+  }, false);
+  return box;
+}
+
+/**
+ * @returns {Promise<string|null>} Resolves with WebID URI or null
+ */
+function webIdFromSession(session) {
+
+  var webId = session ? session.webId : null;
+
+  if (webId) {
+    saveUser(webId);
+  }
+
+  return webId;
+}
+
+/**
+ * @returns {Promise<string|null>} Resolves with WebID URI or null
+ */
+function checkCurrentUser() {
+  return checkUser();
+}
+
+/**
+ * @param [setUserCallback] {Function} Optional callback, `setUserCallback(webId|null)`
+ *
+ * @returns {Promise<string|null>} Resolves with web id uri, if no callback provided
+ */
+function checkUser(setUserCallback) {
+
+  // Check to see if already logged in / have the WebID
+  var me = currentUser();
+  if (me) {
+    return Promise.resolve(setUserCallback ? setUserCallback(me) : me);
+  }
+
+  // doc = kb.any(doc, UI.ns.link('userMirror')) || doc
+
+  return solidAuthClient.currentSession().then(webIdFromSession).catch(function (err) {
+    console.log('Error fetching currentSession:', err);
+    return null;
+  }).then(function (webId) {
+    // if (webId.startsWith('dns:')) {  // legacy rww.io pseudo-users
+    //   webId = null
+    // }
+    var me = saveUser(webId);
+
+    if (me) {
+      console.log('(Logged in as ' + me + ' by authentication)');
+    }
+
+    return setUserCallback ? setUserCallback(me) : me;
+  });
+}
+
+/**
+ * Login status box
+ *
+ * A big sign-up/sign in box or a logout box depending on the state
+ *
+ * @param myDocument
+ * @param listener
+ *
+ * @returns {Element}
+ */
+function loginStatusBox(myDocument, listener) {
+  var me = currentUser();
+
+  var box = myDocument.createElement('div');
+
+  var setIt = function setIt(newidURI) {
+    if (!newidURI) {
+      return;
+    }
+
+    var uri = newidURI.uri || newidURI;
+    tabulator.preferences.set('me', uri);
+    me = $rdf.sym(uri);
+    box.refresh();
+    if (listener) listener(me.uri);
+  };
+
+  var zapIt = function zapIt() {
+    tabulator.preferences.set('me', '');
+    var message = 'Your Web ID was ' + me + '. It has been forgotten.';
+    me = null;
+    try {
+      UI.log.alert(message);
+    } catch (e) {
+      try {
+        window.alert(message);
+      } catch (e) {}
+    }
+    box.refresh();
+    if (listener) listener(null);
+  };
+
+  var logoutButton = function logoutButton(me) {
+    var logoutLabel = 'Web ID logout';
+    if (me) {
+      var nick = UI.store.any(me, UI.ns.foaf('nick')) || UI.store.any(me, UI.ns.foaf('name'));
+      if (nick) {
+        logoutLabel = 'Logout ' + nick.value;
+      }
+    }
+    var signOutButton = myDocument.createElement('input');
+    signOutButton.className = 'WebIDCancelButton';
+    signOutButton.setAttribute('type', 'button');
+    signOutButton.setAttribute('value', logoutLabel);
+    signOutButton.addEventListener('click', zapIt, false);
+    return signOutButton;
+  };
+
+  box.refresh = function () {
+    var me = currentUser();
+    var meUri = me ? me.uri : '';
+    if (box.me !== meUri) {
+      widgets.clearElement(box);
+      if (me) {
+        box.appendChild(logoutButton(me));
+      } else {
+        box.appendChild(signInOrSignUpBox(myDocument, setIt));
+      }
+    }
+    box.me = meUri;
+  };
+
+  box.me = '99999'; // Force refresh
+  box.refresh();
+
+  return box;
+}
+
+/**
+ * Workspace selection etc
+ */
+
+/**
+ * Returns a UI object which, if it selects a workspace,
+ * will callback(workspace, newBase).
+ *
+ * If necessary, will get an account, preferences file, etc. In sequence:
+ *
+ *   - If not logged in, log in.
+ *   - Load preferences file
+ *   - Prompt user for workspaces
+ *   - Allows the user to just type in a URI by hand
+ *
+ * Calls back with the ws and the base URI
+ *
+ * @param dom
+ * @param appDetails
+ * @param callbackWS
+ * @returns {Element}
+ */
+function selectWorkspace(dom, appDetails, callbackWS) {
+  var noun = appDetails.noun;
+  var appPathSegment = appDetails.appPathSegment;
+
+  var me = currentUser();
+  var kb = UI.store;
+  var box = dom.createElement('div');
+  var context = { me: me, dom: dom, div: box };
+
+  var say = function say(s) {
+    box.appendChild(error.errorMessageBlock(dom, s));
+  };
+
+  var figureOutBase = function figureOutBase(ws) {
+    var newBase = kb.any(ws, UI.ns.space('uriPrefix'));
+    if (!newBase) {
+      newBase = ws.uri.split('#')[0];
+    } else {
+      newBase = newBase.value;
+    }
+    if (newBase.slice(-1) !== '/') {
+      console.log(appPathSegment + ': No / at end of uriPrefix ' + newBase); // @@ paramater?
+      newBase = newBase + '/';
+    }
+    var now = new Date();
+    newBase += appPathSegment + '/id' + now.getTime() + '/'; // unique id
+    return newBase;
+  };
+
+  var displayOptions = function displayOptions(context) {
+    // var status = ''
+    var id = context.me;
+    var preferencesFile = context.preferencesFile;
+    var newBase = null;
+
+    // A workspace specifically defined in the private preferences file:
+    var w = kb.statementsMatching(id, UI.ns.space('workspace'), // Only trust prefs file here
+    undefined, preferencesFile).map(function (st) {
+      return st.object;
+    });
+
+    // A workspace in a storage in the public profile:
+    var storages = kb.each(id, UI.ns.space('storage')); // @@ No provenance requirement at the moment
+    storages.map(function (s) {
+      w = w.concat(kb.each(s, UI.ns.ldp('contains')));
+    });
+
+    // if (pending !== undefined) pending.parentNode.removeChild(pending);
+    if (w.length === 1) {
+      say('Workspace used: ' + w[0].uri); // @@ allow user to see URI
+      newBase = figureOutBase(w[0]);
+      // callbackWS(w[0], newBase)
+    } else if (w.length === 0) {
+      say("You don't seem to have any workspaces. You have " + storages.length + ' storages.');
+    }
+
+    // Prompt for ws selection or creation
+    // say( w.length + " workspaces for " + id + "Chose one.");
+    var table = dom.createElement('table');
+    table.setAttribute('style', 'border-collapse:separate; border-spacing: 0.5em;');
+
+    // var popup = window.open(undefined, '_blank', { height: 300, width:400 }, false)
+    box.appendChild(table);
+
+    //  Add a field for directly adding the URI yourself
+
+    // var hr = box.appendChild(dom.createElement('hr')) // @@
+    box.appendChild(dom.createElement('hr')); // @@
+
+    var p = box.appendChild(dom.createElement('p'));
+    p.textContent = 'Where would you like to store the data for the ' + noun + '?  ' + 'Give the URL of the directory where you would like the data stored.';
+    var baseField = box.appendChild(dom.createElement('input'));
+    baseField.setAttribute('type', 'text');
+    baseField.size = 80; // really a string
+    baseField.label = 'base URL';
+    baseField.autocomplete = 'on';
+    if (newBase) {
+      // set to default
+      baseField.value = newBase;
+    }
+
+    context.baseField = baseField;
+
+    box.appendChild(dom.createElement('br')); // @@
+
+    var button = box.appendChild(dom.createElement('button'));
+    button.textContent = 'Start new ' + noun + ' at this URI';
+    button.addEventListener('click', function (e) {
+      var newBase = baseField.value;
+      if (newBase.slice(-1) !== '/') {
+        newBase += '/';
+      }
+      callbackWS(null, newBase);
+    });
+
+    // Now go set up the table of spaces
+
+    // var row = 0
+    w = w.filter(function (x) {
+      return !kb.holds(x, UI.ns.rdf('type'), // Ignore master workspaces
+      UI.ns.space('MasterWorkspace'));
+    });
+    var col1, col2, col3, tr, ws, style, comment;
+    var cellStyle = 'height: 3em; margin: 1em; padding: 1em white; border-radius: 0.3em;';
+    var deselectedStyle = cellStyle + 'border: 0px;';
+    // var selectedStyle = cellStyle + 'border: 1px solid black;'
+    for (var i = 0; i < w.length; i++) {
+      ws = w[i];
+      tr = dom.createElement('tr');
+      if (i === 0) {
+        col1 = dom.createElement('td');
+        col1.setAttribute('rowspan', '' + w.length + 1);
+        col1.textContent = 'Chose a workspace for this:';
+        col1.setAttribute('style', 'vertical-align:middle;');
+        tr.appendChild(col1);
+      }
+      col2 = dom.createElement('td');
+      style = kb.any(ws, UI.ns.ui('style'));
+      if (style) {
+        style = style.value;
+      } else {
+        // Otherise make up arbitrary colour
+        var hash = function hash(x) {
+          return x.split('').reduce(function (a, b) {
+            a = (a << 5) - a + b.charCodeAt(0);return a & a;
+          }, 0);
+        };
+        var bgcolor = '#' + (hash(ws.uri) & 0xffffff | 0xc0c0c0).toString(16); // c0c0c0  forces pale
+        style = 'color: black ; background-color: ' + bgcolor + ';';
+      }
+      col2.setAttribute('style', deselectedStyle + style);
+      tr.target = ws.uri;
+      var label = kb.any(ws, UI.ns.rdfs('label'));
+      if (!label) {
+        label = ws.uri.split('/').slice(-1)[0] || ws.uri.split('/').slice(-2)[0];
+      }
+      col2.textContent = label || '???';
+      tr.appendChild(col2);
+      if (i === 0) {
+        col3 = dom.createElement('td');
+        col3.setAttribute('rowspan', '' + w.length + 1);
+        // col3.textContent = '@@@@@ remove';
+        col3.setAttribute('style', 'width:50%;');
+        tr.appendChild(col3);
+      }
+      table.appendChild(tr);
+
+      var addMyListener = function addMyListener(container, detail, style, ws1) {
+        container.addEventListener('click', function (e) {
+          col3.textContent = detail;
+          col3.setAttribute('style', style);
+          col3.appendChild(addContinueButton(ws1));
+        }, true); // capture vs bubble
+      };
+
+      var addContinueButton = function addContinueButton(selectedWorkspace) {
+        var button = dom.createElement('button');
+        button.textContent = 'Continue';
+        // button.setAttribute('style', style);
+        var newBase = figureOutBase(selectedWorkspace);
+        baseField.value = newBase; // show user proposed URI
+
+        button.addEventListener('click', function (e) {
+          button.disabled = true;
+          callbackWS(selectedWorkspace, newBase);
+          button.textContent = '---->';
+        }, true); // capture vs bubble
+        return button;
+      };
+
+      comment = kb.any(ws, UI.ns.rdfs('comment'));
+      comment = comment ? comment.value : 'Use this workspace';
+      addMyListener(col2, comment ? comment.value : '', deselectedStyle + style, ws);
+    }
+
+    // last line with "Make new workspace"
+    var trLast = dom.createElement('tr');
+    col2 = dom.createElement('td');
+    col2.setAttribute('style', cellStyle);
+    col2.textContent = '+ Make a new workspace';
+    // addMyListener(col2, 'Set up a new workspace', '') // @@ TBD
+    trLast.appendChild(col2);
+    table.appendChild(trLast);
+  }; // displayOptions
+
+  logInLoadProfile(context) // kick off async operation
+  .then(loadPreferences).then(displayOptions);
+
+  return box; // return the box element, while login proceeds
+} // selectWorkspace
+
+/**
+ * Creates a new instance of an app.
+ *
+ * An instance of an app could be e.g. an issue tracker for a given project,
+ * or a chess game, or calendar, or a health/fitness record for a person.
+ *
+ * @param dom
+ * @param appDetails
+ * @param callback
+ *
+ * @returns {Element} A div with a button in it for making a new app instance
+ */
+function newAppInstance(dom, appDetails, callback) {
+  var gotWS = function gotWS(ws, base) {
+    // $rdf.log.debug("newAppInstance: Selected workspace = " + (ws? ws.uri : 'none'))
+    callback(ws, base);
+  };
+  var div = dom.createElement('div');
+  var b = dom.createElement('button');
+  b.setAttribute('type', 'button');
+  div.appendChild(b);
+  b.innerHTML = 'Make new ' + appDetails.noun;
+  // b.setAttribute('style', 'float: right; margin: 0.5em 1em;'); // Caller should set
+  b.addEventListener('click', function (e) {
+    div.appendChild(selectWorkspace(dom, appDetails, gotWS));
+  }, false);
+  div.appendChild(b);
+  return div;
+}
+
+/***/ }),
+/* 248 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _api = __webpack_require__(452);
+
+Object.defineProperty(exports, 'login', {
+  enumerable: true,
+  get: function get() {
+    return _api.login;
+  }
+});
+Object.defineProperty(exports, 'popupLogin', {
+  enumerable: true,
+  get: function get() {
+    return _api.popupLogin;
+  }
+});
+Object.defineProperty(exports, 'currentSession', {
+  enumerable: true,
+  get: function get() {
+    return _api.currentSession;
+  }
+});
+Object.defineProperty(exports, 'logout', {
+  enumerable: true,
+  get: function get() {
+    return _api.logout;
+  }
+});
+Object.defineProperty(exports, 'fetch', {
+  enumerable: true,
+  get: function get() {
+    return _api.fetch;
+  }
+});
+
+/***/ }),
+/* 249 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.combineHandlers = exports.server = exports.client = undefined;
+
+var _regenerator = __webpack_require__(7);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(8);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _promise = __webpack_require__(46);
+
+var _promise2 = _interopRequireDefault(_promise);
+
+var _typeof2 = __webpack_require__(218);
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
+var _defineProperty2 = __webpack_require__(90);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _v = __webpack_require__(220);
+
+var _v2 = _interopRequireDefault(_v);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+  This module describes a simple IPC interface for communicating between browser windows.
+  Window.postMessage() is the transport interface, and a request/response interface
+  is defined on top of it as follows:
+
+  const request = {
+    'solid-auth-client': {
+      id: 'abcd-efgh-ijkl',
+      method: 'doSomethingPlease',
+      args: [ 'one', 'two', 'three' ]
+    }
+  }
+
+  const response = {
+    'solid-auth-client': {
+      id: 'abcd-efgh-ijkl',
+      ret: 'the_value'
+    }
+  }
+*/
+
+var NAMESPACE = 'solid-auth-client';
+
+
+var namespace = function namespace(data) {
+  return (0, _defineProperty3.default)({}, NAMESPACE, data);
+};
+
+var getNamespacedPayload = function getNamespacedPayload(eventData) {
+  if (!eventData || (typeof eventData === 'undefined' ? 'undefined' : (0, _typeof3.default)(eventData)) !== 'object') {
+    return null;
+  }
+  var payload = eventData[NAMESPACE];
+  if (!payload || (typeof payload === 'undefined' ? 'undefined' : (0, _typeof3.default)(payload)) !== 'object') {
+    return null;
+  }
+  return payload;
+};
+
+var getResponse = function getResponse(eventData) {
+  var resp = getNamespacedPayload(eventData);
+  if (!resp) {
+    return null;
+  }
+  var id = resp.id,
+      ret = resp.ret;
+
+  return id != null && typeof id === 'string' && resp.hasOwnProperty('ret') ? { id: id, ret: ret } : null;
+};
+
+var getRequest = function getRequest(eventData) {
+  var req = getNamespacedPayload(eventData);
+  if (!req) {
+    return null;
+  }
+  var id = req.id,
+      method = req.method,
+      args = req.args;
+
+  return id != null && typeof id === 'string' && typeof method === 'string' && Array.isArray(args) ? { id: id, method: method, args: args } : null;
+};
+
+var client = exports.client = function client(serverWindow, serverOrigin) {
+  return function (request) {
+    return new _promise2.default(function (resolve, reject) {
+      var reqId = (0, _v2.default)();
+      var responseListener = function responseListener(event) {
+        var data = event.data,
+            origin = event.origin;
+
+        var resp = getResponse(data);
+        if (origin !== serverOrigin || !resp) {
+          return;
+        }
+        if (resp.id !== reqId) {
+          return;
+        }
+        resolve(resp.ret);
+        window.removeEventListener('message', responseListener);
+      };
+      window.addEventListener('message', responseListener);
+      serverWindow.postMessage({
+        'solid-auth-client': {
+          id: reqId,
+          method: request.method,
+          args: request.args
+        }
+      }, serverOrigin);
+    });
+  };
+};
+
+var server = exports.server = function server(childWindow, childOrigin) {
+  return function (handle) {
+    var messageListener = function () {
+      var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(event) {
+        var data, origin, req, resp;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                data = event.data, origin = event.origin;
+                req = getRequest(data);
+
+                if (req) {
+                  _context.next = 4;
+                  break;
+                }
+
+                return _context.abrupt('return');
+
+              case 4:
+                if (!(origin !== childOrigin)) {
+                  _context.next = 7;
+                  break;
+                }
+
+                console.warn('SECURITY WARNING: solid-auth-client is listening for messages from ' + childOrigin + ',' + (' but received a message from ' + origin + '.'));
+                return _context.abrupt('return');
+
+              case 7:
+                _context.next = 9;
+                return handle(req);
+
+              case 9:
+                resp = _context.sent;
+
+                if (resp) {
+                  childWindow.postMessage(namespace(resp), childOrigin);
+                }
+
+              case 11:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, undefined);
+      }));
+
+      return function messageListener(_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+    var s = {
+      start: function start() {
+        window.addEventListener('message', messageListener);
+        return s;
+      },
+      stop: function stop() {
+        window.removeEventListener('message', messageListener);
+        return s;
+      }
+    };
+    return s;
+  };
+};
+
+var combineHandlers = exports.combineHandlers = function combineHandlers() {
+  for (var _len = arguments.length, handlers = Array(_len), _key = 0; _key < _len; _key++) {
+    handlers[_key] = arguments[_key];
+  }
+
+  return function (req) {
+    return handlers.map(function (handler) {
+      return handler(req);
+    }).find(function (promise) {
+      return promise !== null;
+    });
+  };
+};
+
+/***/ }),
+/* 250 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.requiresAuth = exports.login = undefined;
+
+__webpack_require__(33);
+
+var _authHeader = __webpack_require__(92);
+
+var authorization = _interopRequireWildcard(_authHeader);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+/* global fetch, Response */
+var login = exports.login = function login(idp) {
+  return fetch(idp, { method: 'HEAD', credentials: 'include' }).then(function (resp) {
+    return resp.headers.get('user');
+  }).then(function (webId) {
+    return webId ? { authType: 'WebID-TLS', idp: idp, webId: webId } : null;
+  });
+};
+
+var requiresAuth = exports.requiresAuth = function requiresAuth(resp) {
+  if (resp.status !== 401) {
+    return false;
+  }
+  var wwwAuthHeader = resp.headers.get('www-authenticate');
+  if (!wwwAuthHeader) {
+    return false;
+  }
+  var auth = authorization.parse(wwwAuthHeader);
+  return auth.scheme === 'WebID-TLS';
+};
+
+/***/ }),
+/* 251 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(252);
 
 
 /***/ }),
-/* 225 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58976,7 +65308,7 @@ if (typeof tabulator === 'undefined') {
 
 //  Solid-compatible UI module
 // try global
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(97);
 var $rdf = UI.rdf;
 global.$rdf = $rdf;
 
@@ -58986,9 +65318,9 @@ if (typeof window !== 'undefined') {
 
 $rdf.log = UI.log;
 
-UI.panes = __webpack_require__(429);
+UI.panes = __webpack_require__(447);
 
-UI.OutlineObject = __webpack_require__(223);
+UI.OutlineObject = __webpack_require__(244);
 
 // later in the context of a window and a document:
 
@@ -59008,10 +65340,10 @@ global.require = function require(lib) {
 module.exports = UI;
 
 // UI.color = require('jscolor/jscolor.js')
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 226 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process, setImmediate) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -60139,10 +66471,10 @@ module.exports = UI;
 
 }());
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13), __webpack_require__(48).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17), __webpack_require__(56).setImmediate))
 
 /***/ }),
-/* 227 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -60332,16 +66664,16 @@ module.exports = UI;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(13)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(17)))
 
 /***/ }),
-/* 228 */
+/* 255 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 229 */
+/* 256 */
 /***/ (function(module, exports) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
@@ -60350,24 +66682,24 @@ module.exports = __webpack_amd_options__;
 /* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 230 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./N3Lexer": 88,
-	"./N3Lexer.js": 88,
-	"./N3Parser": 89,
-	"./N3Parser.js": 89,
-	"./N3Store": 137,
-	"./N3Store.js": 137,
-	"./N3StreamParser": 138,
-	"./N3StreamParser.js": 138,
-	"./N3StreamWriter": 144,
-	"./N3StreamWriter.js": 144,
-	"./N3Util": 90,
-	"./N3Util.js": 90,
-	"./N3Writer": 96,
-	"./N3Writer.js": 96
+	"./N3Lexer": 99,
+	"./N3Lexer.js": 99,
+	"./N3Parser": 100,
+	"./N3Parser.js": 100,
+	"./N3Store": 151,
+	"./N3Store.js": 151,
+	"./N3StreamParser": 152,
+	"./N3StreamParser.js": 152,
+	"./N3StreamWriter": 158,
+	"./N3StreamWriter.js": 158,
+	"./N3Util": 101,
+	"./N3Util.js": 101,
+	"./N3Writer": 107,
+	"./N3Writer.js": 107
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -60383,10 +66715,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 230;
+webpackContext.id = 257;
 
 /***/ }),
-/* 231 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60507,7 +66839,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 232 */
+/* 259 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -60597,13 +66929,13 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 233 */
+/* 260 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 234 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60613,7 +66945,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Buffer = __webpack_require__(3).Buffer;
+var Buffer = __webpack_require__(4).Buffer;
 /*</replacement>*/
 
 function copyBuffer(src, target, offset) {
@@ -60683,7 +67015,7 @@ module.exports = function () {
 }();
 
 /***/ }),
-/* 235 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {
@@ -60754,10 +67086,10 @@ function config (name) {
   return String(val).toLowerCase() === 'true';
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 236 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60790,11 +67122,11 @@ function config (name) {
 
 module.exports = PassThrough;
 
-var Transform = __webpack_require__(143);
+var Transform = __webpack_require__(157);
 
 /*<replacement>*/
-var util = __webpack_require__(49);
-util.inherits = __webpack_require__(2);
+var util = __webpack_require__(57);
+util.inherits = __webpack_require__(1);
 /*</replacement>*/
 
 util.inherits(PassThrough, Transform);
@@ -60810,35 +67142,35 @@ PassThrough.prototype._transform = function (chunk, encoding, cb) {
 };
 
 /***/ }),
-/* 237 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(93);
+module.exports = __webpack_require__(104);
 
 
 /***/ }),
-/* 238 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(33);
+module.exports = __webpack_require__(43);
 
 
 /***/ }),
-/* 239 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(92).Transform
+module.exports = __webpack_require__(103).Transform
 
 
 /***/ }),
-/* 240 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(92).PassThrough
+module.exports = __webpack_require__(103).PassThrough
 
 
 /***/ }),
-/* 241 */
+/* 268 */
 /***/ (function(module, exports) {
 
 module.exports = function isBuffer(arg) {
@@ -60849,7 +67181,7 @@ module.exports = function isBuffer(arg) {
 }
 
 /***/ }),
-/* 242 */
+/* 269 */
 /***/ (function(module, exports) {
 
 if (typeof Object.create === 'function') {
@@ -60878,7 +67210,7 @@ if (typeof Object.create === 'function') {
 
 
 /***/ }),
-/* 243 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60892,7 +67224,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Node = __webpack_require__(12);
+var Node = __webpack_require__(16);
 
 var DefaultGraph = function (_Node) {
   _inherits(DefaultGraph, _Node);
@@ -60920,7 +67252,7 @@ var DefaultGraph = function (_Node) {
 module.exports = DefaultGraph;
 
 /***/ }),
-/* 244 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60934,7 +67266,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Node = __webpack_require__(12);
+var Node = __webpack_require__(16);
 
 /**
  * Singleton subclass of an empty Collection.
@@ -60967,7 +67299,7 @@ Empty.termType = 'empty';
 module.exports = Empty;
 
 /***/ }),
-/* 245 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61030,13 +67362,13 @@ var jsonParser = function () {
 module.exports = jsonParser;
 
 /***/ }),
-/* 246 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var log = __webpack_require__(32);
+var log = __webpack_require__(42);
 
 function queryToSPARQL(query) {
   var indent = 0;
@@ -61113,7 +67445,7 @@ function queryToSPARQL(query) {
 module.exports = queryToSPARQL;
 
 /***/ }),
-/* 247 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61130,8 +67462,8 @@ function SQuery () {
 STerm.prototype.toString = STerm.val
 SQuery.prototype.add = function (str) {this.terms.push()}*/
 
-var log = __webpack_require__(32);
-var Query = __webpack_require__(68).Query;
+var log = __webpack_require__(42);
+var Query = __webpack_require__(76).Query;
 // const Fetcher = require('./fetcher')
 
 /**
@@ -61614,7 +67946,7 @@ function SPARQLToQuery(SPARQL, testMode, kb) {
 module.exports = SPARQLToQuery;
 
 /***/ }),
-/* 248 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61628,7 +67960,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 // 2010-12-07 TimBL addred local file write code
 
 
-var _indexedFormula = __webpack_require__(63);
+var _indexedFormula = __webpack_require__(71);
 
 var _indexedFormula2 = _interopRequireDefault(_indexedFormula);
 
@@ -61636,13 +67968,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var docpart = __webpack_require__(11).docpart;
-var Fetcher = __webpack_require__(98);
-var namedNode = __webpack_require__(69).namedNode;
-var Namespace = __webpack_require__(50);
-var Serializer = __webpack_require__(97);
-var uriJoin = __webpack_require__(11).join;
-var Util = __webpack_require__(24);
+var docpart = __webpack_require__(15).docpart;
+var Fetcher = __webpack_require__(109);
+var namedNode = __webpack_require__(77).namedNode;
+var Namespace = __webpack_require__(58);
+var Serializer = __webpack_require__(108);
+var uriJoin = __webpack_require__(15).join;
+var Util = __webpack_require__(32);
 
 var UpdateManager = function () {
   function UpdateManager(store) {
@@ -62697,7 +69029,7 @@ var UpdateManager = function () {
 module.exports = UpdateManager;
 
 /***/ }),
-/* 249 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62724,29 +69056,29 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _templateObject = _taggedTemplateLiteral(['\n        To add someone to this group, drag and drop their WebID URL onto the box.\n      '], ['\n        To add someone to this group, drag and drop their WebID URL onto the box.\n      ']);
 
-var _escapeHtml = __webpack_require__(250);
+var _escapeHtml = __webpack_require__(163);
 
 var _escapeHtml2 = _interopRequireDefault(_escapeHtml);
 
-var _nodeUuid = __webpack_require__(251);
+var _nodeUuid = __webpack_require__(164);
 
 var _nodeUuid2 = _interopRequireDefault(_nodeUuid);
 
-var _rdflib = __webpack_require__(18);
+var _rdflib = __webpack_require__(3);
 
 var _rdflib2 = _interopRequireDefault(_rdflib);
 
-var _dragAndDrop = __webpack_require__(178);
+var _dragAndDrop = __webpack_require__(194);
 
-var _error = __webpack_require__(75);
+var _error = __webpack_require__(83);
 
-var _iconBase = __webpack_require__(20);
+var _iconBase = __webpack_require__(25);
 
-var _ns = __webpack_require__(7);
+var _ns = __webpack_require__(11);
 
 var _ns2 = _interopRequireDefault(_ns);
 
-var _store = __webpack_require__(14);
+var _store = __webpack_require__(18);
 
 var _store2 = _interopRequireDefault(_store);
 
@@ -63228,393 +69560,28 @@ function indexes(book) {
 }
 
 /***/ }),
-/* 250 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*!
- * escape-html
- * Copyright(c) 2012-2013 TJ Holowaychuk
- * Copyright(c) 2015 Andreas Lubbe
- * Copyright(c) 2015 Tiancheng "Timothy" Gu
- * MIT Licensed
- */
-
-
-
-/**
- * Module variables.
- * @private
- */
-
-var matchHtmlRegExp = /["'&<>]/;
-
-/**
- * Module exports.
- * @public
- */
-
-module.exports = escapeHtml;
-
-/**
- * Escape special characters in the given string of html.
- *
- * @param  {string} string The string to escape for inserting into HTML
- * @return {string}
- * @public
- */
-
-function escapeHtml(string) {
-  var str = '' + string;
-  var match = matchHtmlRegExp.exec(str);
-
-  if (!match) {
-    return str;
-  }
-
-  var escape;
-  var html = '';
-  var index = 0;
-  var lastIndex = 0;
-
-  for (index = match.index; index < str.length; index++) {
-    switch (str.charCodeAt(index)) {
-      case 34: // "
-        escape = '&quot;';
-        break;
-      case 38: // &
-        escape = '&amp;';
-        break;
-      case 39: // '
-        escape = '&#39;';
-        break;
-      case 60: // <
-        escape = '&lt;';
-        break;
-      case 62: // >
-        escape = '&gt;';
-        break;
-      default:
-        continue;
-    }
-
-    if (lastIndex !== index) {
-      html += str.substring(lastIndex, index);
-    }
-
-    lastIndex = index + 1;
-    html += escape;
-  }
-
-  return lastIndex !== index
-    ? html + str.substring(lastIndex, index)
-    : html;
-}
-
-
-/***/ }),
-/* 251 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(Buffer) {var __WEBPACK_AMD_DEFINE_RESULT__;//     uuid.js
-//
-//     Copyright (c) 2010-2012 Robert Kieffer
-//     MIT License - http://opensource.org/licenses/mit-license.php
-
-/*global window, require, define */
-(function(_window) {
-  'use strict';
-
-  // Unique ID creation requires a high quality random # generator.  We feature
-  // detect to determine the best RNG source, normalizing to a function that
-  // returns 128-bits of randomness, since that's what's usually required
-  var _rng, _mathRNG, _nodeRNG, _whatwgRNG, _previousRoot;
-
-  function setupBrowser() {
-    // Allow for MSIE11 msCrypto
-    var _crypto = _window.crypto || _window.msCrypto;
-
-    if (!_rng && _crypto && _crypto.getRandomValues) {
-      // WHATWG crypto-based RNG - http://wiki.whatwg.org/wiki/Crypto
-      //
-      // Moderately fast, high quality
-      try {
-        var _rnds8 = new Uint8Array(16);
-        _whatwgRNG = _rng = function whatwgRNG() {
-          _crypto.getRandomValues(_rnds8);
-          return _rnds8;
-        };
-        _rng();
-      } catch(e) {}
-    }
-
-    if (!_rng) {
-      // Math.random()-based (RNG)
-      //
-      // If all else fails, use Math.random().  It's fast, but is of unspecified
-      // quality.
-      var  _rnds = new Array(16);
-      _mathRNG = _rng = function() {
-        for (var i = 0, r; i < 16; i++) {
-          if ((i & 0x03) === 0) { r = Math.random() * 0x100000000; }
-          _rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
-        }
-
-        return _rnds;
-      };
-      if ('undefined' !== typeof console && console.warn) {
-        console.warn("[SECURITY] node-uuid: crypto not usable, falling back to insecure Math.random()");
-      }
-    }
-  }
-
-  function setupNode() {
-    // Node.js crypto-based RNG - http://nodejs.org/docs/v0.6.2/api/crypto.html
-    //
-    // Moderately fast, high quality
-    if (true) {
-      try {
-        var _rb = __webpack_require__(252).randomBytes;
-        _nodeRNG = _rng = _rb && function() {return _rb(16);};
-        _rng();
-      } catch(e) {}
-    }
-  }
-
-  if (_window) {
-    setupBrowser();
-  } else {
-    setupNode();
-  }
-
-  // Buffer class to use
-  var BufferClass = ('function' === typeof Buffer) ? Buffer : Array;
-
-  // Maps for number <-> hex string conversion
-  var _byteToHex = [];
-  var _hexToByte = {};
-  for (var i = 0; i < 256; i++) {
-    _byteToHex[i] = (i + 0x100).toString(16).substr(1);
-    _hexToByte[_byteToHex[i]] = i;
-  }
-
-  // **`parse()` - Parse a UUID into it's component bytes**
-  function parse(s, buf, offset) {
-    var i = (buf && offset) || 0, ii = 0;
-
-    buf = buf || [];
-    s.toLowerCase().replace(/[0-9a-f]{2}/g, function(oct) {
-      if (ii < 16) { // Don't overflow!
-        buf[i + ii++] = _hexToByte[oct];
-      }
-    });
-
-    // Zero out remaining bytes if string was short
-    while (ii < 16) {
-      buf[i + ii++] = 0;
-    }
-
-    return buf;
-  }
-
-  // **`unparse()` - Convert UUID byte array (ala parse()) into a string**
-  function unparse(buf, offset) {
-    var i = offset || 0, bth = _byteToHex;
-    return  bth[buf[i++]] + bth[buf[i++]] +
-            bth[buf[i++]] + bth[buf[i++]] + '-' +
-            bth[buf[i++]] + bth[buf[i++]] + '-' +
-            bth[buf[i++]] + bth[buf[i++]] + '-' +
-            bth[buf[i++]] + bth[buf[i++]] + '-' +
-            bth[buf[i++]] + bth[buf[i++]] +
-            bth[buf[i++]] + bth[buf[i++]] +
-            bth[buf[i++]] + bth[buf[i++]];
-  }
-
-  // **`v1()` - Generate time-based UUID**
-  //
-  // Inspired by https://github.com/LiosK/UUID.js
-  // and http://docs.python.org/library/uuid.html
-
-  // random #'s we need to init node and clockseq
-  var _seedBytes = _rng();
-
-  // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
-  var _nodeId = [
-    _seedBytes[0] | 0x01,
-    _seedBytes[1], _seedBytes[2], _seedBytes[3], _seedBytes[4], _seedBytes[5]
-  ];
-
-  // Per 4.2.2, randomize (14 bit) clockseq
-  var _clockseq = (_seedBytes[6] << 8 | _seedBytes[7]) & 0x3fff;
-
-  // Previous uuid creation time
-  var _lastMSecs = 0, _lastNSecs = 0;
-
-  // See https://github.com/broofa/node-uuid for API details
-  function v1(options, buf, offset) {
-    var i = buf && offset || 0;
-    var b = buf || [];
-
-    options = options || {};
-
-    var clockseq = (options.clockseq != null) ? options.clockseq : _clockseq;
-
-    // UUID timestamps are 100 nano-second units since the Gregorian epoch,
-    // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
-    // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
-    // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
-    var msecs = (options.msecs != null) ? options.msecs : new Date().getTime();
-
-    // Per 4.2.1.2, use count of uuid's generated during the current clock
-    // cycle to simulate higher resolution clock
-    var nsecs = (options.nsecs != null) ? options.nsecs : _lastNSecs + 1;
-
-    // Time since last uuid creation (in msecs)
-    var dt = (msecs - _lastMSecs) + (nsecs - _lastNSecs)/10000;
-
-    // Per 4.2.1.2, Bump clockseq on clock regression
-    if (dt < 0 && options.clockseq == null) {
-      clockseq = clockseq + 1 & 0x3fff;
-    }
-
-    // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
-    // time interval
-    if ((dt < 0 || msecs > _lastMSecs) && options.nsecs == null) {
-      nsecs = 0;
-    }
-
-    // Per 4.2.1.2 Throw error if too many uuids are requested
-    if (nsecs >= 10000) {
-      throw new Error('uuid.v1(): Can\'t create more than 10M uuids/sec');
-    }
-
-    _lastMSecs = msecs;
-    _lastNSecs = nsecs;
-    _clockseq = clockseq;
-
-    // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
-    msecs += 12219292800000;
-
-    // `time_low`
-    var tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
-    b[i++] = tl >>> 24 & 0xff;
-    b[i++] = tl >>> 16 & 0xff;
-    b[i++] = tl >>> 8 & 0xff;
-    b[i++] = tl & 0xff;
-
-    // `time_mid`
-    var tmh = (msecs / 0x100000000 * 10000) & 0xfffffff;
-    b[i++] = tmh >>> 8 & 0xff;
-    b[i++] = tmh & 0xff;
-
-    // `time_high_and_version`
-    b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
-    b[i++] = tmh >>> 16 & 0xff;
-
-    // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
-    b[i++] = clockseq >>> 8 | 0x80;
-
-    // `clock_seq_low`
-    b[i++] = clockseq & 0xff;
-
-    // `node`
-    var node = options.node || _nodeId;
-    for (var n = 0; n < 6; n++) {
-      b[i + n] = node[n];
-    }
-
-    return buf ? buf : unparse(b);
-  }
-
-  // **`v4()` - Generate random UUID**
-
-  // See https://github.com/broofa/node-uuid for API details
-  function v4(options, buf, offset) {
-    // Deprecated - 'format' argument, as supported in v1.2
-    var i = buf && offset || 0;
-
-    if (typeof(options) === 'string') {
-      buf = (options === 'binary') ? new BufferClass(16) : null;
-      options = null;
-    }
-    options = options || {};
-
-    var rnds = options.random || (options.rng || _rng)();
-
-    // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
-    rnds[6] = (rnds[6] & 0x0f) | 0x40;
-    rnds[8] = (rnds[8] & 0x3f) | 0x80;
-
-    // Copy bytes to buffer, if provided
-    if (buf) {
-      for (var ii = 0; ii < 16; ii++) {
-        buf[i + ii] = rnds[ii];
-      }
-    }
-
-    return buf || unparse(rnds);
-  }
-
-  // Export public API
-  var uuid = v4;
-  uuid.v1 = v1;
-  uuid.v4 = v4;
-  uuid.parse = parse;
-  uuid.unparse = unparse;
-  uuid.BufferClass = BufferClass;
-  uuid._rng = _rng;
-  uuid._mathRNG = _mathRNG;
-  uuid._nodeRNG = _nodeRNG;
-  uuid._whatwgRNG = _whatwgRNG;
-
-  if (('undefined' !== typeof module) && module.exports) {
-    // Publish as node.js module
-    module.exports = uuid;
-  } else if (true) {
-    // Publish as AMD module
-    !(__WEBPACK_AMD_DEFINE_RESULT__ = function() {return uuid;}.call(exports, __webpack_require__, exports, module),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-
-  } else {
-    // Publish as global (in browsers)
-    _previousRoot = _window.uuid;
-
-    // **`noConflict()` - (browser only) to reset global 'uuid' var**
-    uuid.noConflict = function() {
-      _window.uuid = _previousRoot;
-      return uuid;
-    };
-
-    _window.uuid = uuid;
-  }
-})('undefined' !== typeof window ? window : null);
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
-
-/***/ }),
-/* 252 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = __webpack_require__(51)
-exports.createHash = exports.Hash = __webpack_require__(52)
-exports.createHmac = exports.Hmac = __webpack_require__(151)
+exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = __webpack_require__(59)
+exports.createHash = exports.Hash = __webpack_require__(60)
+exports.createHmac = exports.Hmac = __webpack_require__(167)
 
-var algos = __webpack_require__(260)
+var algos = __webpack_require__(285)
 var algoKeys = Object.keys(algos)
 var hashes = ['sha1', 'sha224', 'sha256', 'sha384', 'sha512', 'md5', 'rmd160'].concat(algoKeys)
 exports.getHashes = function () {
   return hashes
 }
 
-var p = __webpack_require__(153)
+var p = __webpack_require__(169)
 exports.pbkdf2 = p.pbkdf2
 exports.pbkdf2Sync = p.pbkdf2Sync
 
-var aes = __webpack_require__(262)
+var aes = __webpack_require__(287)
 
 exports.Cipher = aes.Cipher
 exports.createCipher = aes.createCipher
@@ -63627,7 +69594,7 @@ exports.createDecipheriv = aes.createDecipheriv
 exports.getCiphers = aes.getCiphers
 exports.listCiphers = aes.listCiphers
 
-var dh = __webpack_require__(281)
+var dh = __webpack_require__(306)
 
 exports.DiffieHellmanGroup = dh.DiffieHellmanGroup
 exports.createDiffieHellmanGroup = dh.createDiffieHellmanGroup
@@ -63635,16 +69602,16 @@ exports.getDiffieHellman = dh.getDiffieHellman
 exports.createDiffieHellman = dh.createDiffieHellman
 exports.DiffieHellman = dh.DiffieHellman
 
-var sign = __webpack_require__(288)
+var sign = __webpack_require__(313)
 
 exports.createSign = sign.createSign
 exports.Sign = sign.Sign
 exports.createVerify = sign.createVerify
 exports.Verify = sign.Verify
 
-exports.createECDH = __webpack_require__(332)
+exports.createECDH = __webpack_require__(357)
 
-var publicEncrypt = __webpack_require__(335)
+var publicEncrypt = __webpack_require__(360)
 
 exports.publicEncrypt = publicEncrypt.publicEncrypt
 exports.privateEncrypt = publicEncrypt.privateEncrypt
@@ -63692,7 +69659,7 @@ exports.constants = {
 
 
 /***/ }),
-/* 253 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63730,13 +69697,13 @@ module.exports = function hash (buf, fn) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 254 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Buffer) {
-var Transform = __webpack_require__(43).Transform
-var inherits = __webpack_require__(2)
+var Transform = __webpack_require__(52).Transform
+var inherits = __webpack_require__(1)
 
 function HashBase (blockSize) {
   Transform.call(this)
@@ -63821,7 +69788,7 @@ module.exports = HashBase
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 255 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {/*
@@ -63832,8 +69799,8 @@ module.exports = HashBase
  * operation was added.
  */
 
-var inherits = __webpack_require__(2)
-var Hash = __webpack_require__(45)
+var inherits = __webpack_require__(1)
+var Hash = __webpack_require__(53)
 
 var K = [
   0x5a827999, 0x6ed9eba1, 0x8f1bbcdc | 0, 0xca62c1d6 | 0
@@ -63921,7 +69888,7 @@ module.exports = Sha
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 256 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {/*
@@ -63933,8 +69900,8 @@ module.exports = Sha
  * See http://pajhome.org.uk/crypt/md5 for details.
  */
 
-var inherits = __webpack_require__(2)
-var Hash = __webpack_require__(45)
+var inherits = __webpack_require__(1)
+var Hash = __webpack_require__(53)
 
 var K = [
   0x5a827999, 0x6ed9eba1, 0x8f1bbcdc | 0, 0xca62c1d6 | 0
@@ -64026,7 +69993,7 @@ module.exports = Sha1
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 257 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {/**
@@ -64037,9 +70004,9 @@ module.exports = Sha1
  *
  */
 
-var inherits = __webpack_require__(2)
-var Sha256 = __webpack_require__(149)
-var Hash = __webpack_require__(45)
+var inherits = __webpack_require__(1)
+var Sha256 = __webpack_require__(165)
+var Hash = __webpack_require__(53)
 
 var W = new Array(64)
 
@@ -64085,12 +70052,12 @@ module.exports = Sha224
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 258 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var inherits = __webpack_require__(2)
-var SHA512 = __webpack_require__(150)
-var Hash = __webpack_require__(45)
+/* WEBPACK VAR INJECTION */(function(Buffer) {var inherits = __webpack_require__(1)
+var SHA512 = __webpack_require__(166)
+var Hash = __webpack_require__(53)
 
 var W = new Array(160)
 
@@ -64148,15 +70115,15 @@ module.exports = Sha384
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 259 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var inherits = __webpack_require__(2)
-var Buffer = __webpack_require__(3).Buffer
+var inherits = __webpack_require__(1)
+var Buffer = __webpack_require__(4).Buffer
 
-var Base = __webpack_require__(27)
+var Base = __webpack_require__(36)
 
 var ZEROS = Buffer.alloc(128)
 var blocksize = 64
@@ -64201,20 +70168,20 @@ module.exports = Hmac
 
 
 /***/ }),
-/* 260 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(152)
+module.exports = __webpack_require__(168)
 
 
 /***/ }),
-/* 261 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global, process) {var checkParameters = __webpack_require__(154)
-var defaultEncoding = __webpack_require__(155)
-var sync = __webpack_require__(156)
-var Buffer = __webpack_require__(3).Buffer
+/* WEBPACK VAR INJECTION */(function(global, process) {var checkParameters = __webpack_require__(170)
+var defaultEncoding = __webpack_require__(171)
+var sync = __webpack_require__(172)
+var Buffer = __webpack_require__(4).Buffer
 
 var ZERO_BUF
 var subtle = global.crypto && global.crypto.subtle
@@ -64310,17 +70277,17 @@ module.exports = function (password, salt, iterations, keylen, digest, callback)
   }), callback)
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(13)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(17)))
 
 /***/ }),
-/* 262 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ebtk = __webpack_require__(71)
-var aes = __webpack_require__(104)
-var DES = __webpack_require__(274)
-var desModes = __webpack_require__(280)
-var aesModes = __webpack_require__(105)
+var ebtk = __webpack_require__(79)
+var aes = __webpack_require__(115)
+var DES = __webpack_require__(299)
+var desModes = __webpack_require__(305)
+var aesModes = __webpack_require__(116)
 function createCipher (suite, password) {
   var keyLen, ivLen
   suite = suite.toLowerCase()
@@ -64392,13 +70359,13 @@ exports.listCiphers = exports.getCiphers = getCiphers
 
 
 /***/ }),
-/* 263 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Buffer) {
-var inherits = __webpack_require__(2)
-var HashBase = __webpack_require__(264)
+var inherits = __webpack_require__(1)
+var HashBase = __webpack_require__(289)
 
 var ARRAY16 = new Array(16)
 
@@ -64545,14 +70512,14 @@ module.exports = MD5
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 264 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var Buffer = __webpack_require__(3).Buffer
-var Transform = __webpack_require__(43).Transform
-var inherits = __webpack_require__(2)
+var Buffer = __webpack_require__(4).Buffer
+var Transform = __webpack_require__(52).Transform
+var inherits = __webpack_require__(1)
 
 function throwIfNotStringOrBuffer (val, prefix) {
   if (!Buffer.isBuffer(val) && typeof val !== 'string') {
@@ -64647,17 +70614,17 @@ module.exports = HashBase
 
 
 /***/ }),
-/* 265 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MODES = __webpack_require__(105)
-var AuthCipher = __webpack_require__(159)
-var Buffer = __webpack_require__(3).Buffer
-var StreamCipher = __webpack_require__(160)
-var Transform = __webpack_require__(27)
-var aes = __webpack_require__(72)
-var ebtk = __webpack_require__(71)
-var inherits = __webpack_require__(2)
+var MODES = __webpack_require__(116)
+var AuthCipher = __webpack_require__(175)
+var Buffer = __webpack_require__(4).Buffer
+var StreamCipher = __webpack_require__(176)
+var Transform = __webpack_require__(36)
+var aes = __webpack_require__(80)
+var ebtk = __webpack_require__(79)
+var inherits = __webpack_require__(1)
 
 function Cipher (mode, key, iv) {
   Transform.call(this)
@@ -64767,7 +70734,7 @@ exports.createCipher = createCipher
 
 
 /***/ }),
-/* 266 */
+/* 291 */
 /***/ (function(module, exports) {
 
 exports.encrypt = function (self, block) {
@@ -64780,10 +70747,10 @@ exports.decrypt = function (self, block) {
 
 
 /***/ }),
-/* 267 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var xor = __webpack_require__(53)
+var xor = __webpack_require__(61)
 
 exports.encrypt = function (self, block) {
   var data = xor(block, self._prev)
@@ -64803,11 +70770,11 @@ exports.decrypt = function (self, block) {
 
 
 /***/ }),
-/* 268 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(3).Buffer
-var xor = __webpack_require__(53)
+var Buffer = __webpack_require__(4).Buffer
+var xor = __webpack_require__(61)
 
 function encryptStart (self, data, decrypt) {
   var len = data.length
@@ -64842,7 +70809,7 @@ exports.encrypt = function (self, data, decrypt) {
 
 
 /***/ }),
-/* 269 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {function encryptByte (self, byteParam, decrypt) {
@@ -64872,10 +70839,10 @@ exports.encrypt = function (self, chunk, decrypt) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 270 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(3).Buffer
+var Buffer = __webpack_require__(4).Buffer
 
 function encryptByte (self, byteParam, decrypt) {
   var pad
@@ -64920,10 +70887,10 @@ exports.encrypt = function (self, chunk, decrypt) {
 
 
 /***/ }),
-/* 271 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var xor = __webpack_require__(53)
+/* WEBPACK VAR INJECTION */(function(Buffer) {var xor = __webpack_require__(61)
 
 function getBlock (self) {
   self._prev = self._cipher.encryptBlock(self._prev)
@@ -64943,10 +70910,10 @@ exports.encrypt = function (self, chunk) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 272 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(3).Buffer
+var Buffer = __webpack_require__(4).Buffer
 var ZEROES = Buffer.alloc(16, 0)
 
 function toArray (buf) {
@@ -65038,17 +71005,17 @@ module.exports = GHASH
 
 
 /***/ }),
-/* 273 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var AuthCipher = __webpack_require__(159)
-var Buffer = __webpack_require__(3).Buffer
-var MODES = __webpack_require__(105)
-var StreamCipher = __webpack_require__(160)
-var Transform = __webpack_require__(27)
-var aes = __webpack_require__(72)
-var ebtk = __webpack_require__(71)
-var inherits = __webpack_require__(2)
+var AuthCipher = __webpack_require__(175)
+var Buffer = __webpack_require__(4).Buffer
+var MODES = __webpack_require__(116)
+var StreamCipher = __webpack_require__(176)
+var Transform = __webpack_require__(36)
+var aes = __webpack_require__(80)
+var ebtk = __webpack_require__(79)
+var inherits = __webpack_require__(1)
 
 function Decipher (mode, key, iv) {
   Transform.call(this)
@@ -65165,12 +71132,12 @@ exports.createDecipheriv = createDecipheriv
 
 
 /***/ }),
-/* 274 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var CipherBase = __webpack_require__(27)
-var des = __webpack_require__(106)
-var inherits = __webpack_require__(2)
+/* WEBPACK VAR INJECTION */(function(Buffer) {var CipherBase = __webpack_require__(36)
+var des = __webpack_require__(117)
+var inherits = __webpack_require__(1)
 
 var modes = {
   'des-ede3-cbc': des.CBC.instantiate(des.EDE),
@@ -65215,7 +71182,7 @@ DES.prototype._final = function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 275 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65478,13 +71445,13 @@ exports.padSplit = function padSplit(num, size, group) {
 
 
 /***/ }),
-/* 276 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var assert = __webpack_require__(15);
+var assert = __webpack_require__(19);
 
 function Cipher(options) {
   this.options = options;
@@ -65626,16 +71593,16 @@ Cipher.prototype._finalDecrypt = function _finalDecrypt() {
 
 
 /***/ }),
-/* 277 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var assert = __webpack_require__(15);
-var inherits = __webpack_require__(2);
+var assert = __webpack_require__(19);
+var inherits = __webpack_require__(1);
 
-var des = __webpack_require__(106);
+var des = __webpack_require__(117);
 var utils = des.utils;
 var Cipher = des.Cipher;
 
@@ -65776,14 +71743,14 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
 
 
 /***/ }),
-/* 278 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var assert = __webpack_require__(15);
-var inherits = __webpack_require__(2);
+var assert = __webpack_require__(19);
+var inherits = __webpack_require__(1);
 
 var proto = {};
 
@@ -65848,16 +71815,16 @@ proto._update = function _update(inp, inOff, out, outOff) {
 
 
 /***/ }),
-/* 279 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var assert = __webpack_require__(15);
-var inherits = __webpack_require__(2);
+var assert = __webpack_require__(19);
+var inherits = __webpack_require__(1);
 
-var des = __webpack_require__(106);
+var des = __webpack_require__(117);
 var Cipher = des.Cipher;
 var DES = des.DES;
 
@@ -65910,7 +71877,7 @@ EDE.prototype._unpad = DES.prototype._unpad;
 
 
 /***/ }),
-/* 280 */
+/* 305 */
 /***/ (function(module, exports) {
 
 exports['des-ecb'] = {
@@ -65940,13 +71907,13 @@ exports['des-ede'] = {
 
 
 /***/ }),
-/* 281 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var generatePrime = __webpack_require__(161)
-var primes = __webpack_require__(286)
+/* WEBPACK VAR INJECTION */(function(Buffer) {var generatePrime = __webpack_require__(177)
+var primes = __webpack_require__(311)
 
-var DH = __webpack_require__(287)
+var DH = __webpack_require__(312)
 
 function getDiffieHellman (mod) {
   var prime = new Buffer(primes[mod].prime, 'hex')
@@ -65989,13 +71956,13 @@ exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 282 */
+/* 307 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 283 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {(function (module, exports) {
@@ -66050,7 +72017,7 @@ exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(284).Buffer;
+    Buffer = __webpack_require__(309).Buffer;
   } catch (e) {
   }
 
@@ -69426,40 +75393,40 @@ exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
   };
 })(typeof module === 'undefined' || module, this);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module)))
 
 /***/ }),
-/* 284 */
+/* 309 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 285 */
+/* 310 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 286 */
+/* 311 */
 /***/ (function(module, exports) {
 
 module.exports = {"modp1":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff"},"modp2":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece65381ffffffffffffffff"},"modp5":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca237327ffffffffffffffff"},"modp14":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aacaa68ffffffffffffffff"},"modp15":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a93ad2caffffffffffffffff"},"modp16":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c934063199ffffffffffffffff"},"modp17":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dcc4024ffffffffffffffff"},"modp18":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"}}
 
 /***/ }),
-/* 287 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var BN = __webpack_require__(162);
-var MillerRabin = __webpack_require__(163);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var BN = __webpack_require__(178);
+var MillerRabin = __webpack_require__(179);
 var millerRabin = new MillerRabin();
 var TWENTYFOUR = new BN(24);
 var ELEVEN = new BN(11);
 var TEN = new BN(10);
 var THREE = new BN(3);
 var SEVEN = new BN(7);
-var primes = __webpack_require__(161);
-var randomBytes = __webpack_require__(51);
+var primes = __webpack_require__(177);
+var randomBytes = __webpack_require__(59);
 module.exports = DH;
 
 function setPublicKey(pub, enc) {
@@ -69618,16 +75585,16 @@ function formatReturnValue(bn, enc) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 288 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(52)
-var stream = __webpack_require__(43)
-var inherits = __webpack_require__(2)
-var sign = __webpack_require__(289)
-var verify = __webpack_require__(331)
+/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(60)
+var stream = __webpack_require__(52)
+var inherits = __webpack_require__(1)
+var sign = __webpack_require__(314)
+var verify = __webpack_require__(356)
 
-var algorithms = __webpack_require__(152)
+var algorithms = __webpack_require__(168)
 Object.keys(algorithms).forEach(function (key) {
   algorithms[key].id = new Buffer(algorithms[key].id, 'hex')
   algorithms[key.toLowerCase()] = algorithms[key]
@@ -69716,16 +75683,16 @@ module.exports = {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 289 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {// much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
-var createHmac = __webpack_require__(151)
-var crt = __webpack_require__(107)
-var EC = __webpack_require__(5).ec
-var BN = __webpack_require__(169)
-var parseKeys = __webpack_require__(74)
-var curves = __webpack_require__(174)
+var createHmac = __webpack_require__(167)
+var crt = __webpack_require__(118)
+var EC = __webpack_require__(6).ec
+var BN = __webpack_require__(185)
+var parseKeys = __webpack_require__(82)
+var curves = __webpack_require__(190)
 
 function sign (hash, key, hashType, signType, tag) {
   var priv = parseKeys(key)
@@ -69868,7 +75835,7 @@ module.exports.makeKey = makeKey
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 290 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {(function (module, exports) {
@@ -69923,7 +75890,7 @@ module.exports.makeKey = makeKey
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(291).Buffer;
+    Buffer = __webpack_require__(316).Buffer;
   } catch (e) {
   }
 
@@ -73299,31 +79266,31 @@ module.exports.makeKey = makeKey
   };
 })(typeof module === 'undefined' || module, this);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module)))
 
 /***/ }),
-/* 291 */
+/* 316 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 292 */
+/* 317 */
 /***/ (function(module, exports) {
 
 module.exports = {"_args":[["elliptic@6.4.0","/home/travis/build/linkeddata/mashlib"]],"_from":"elliptic@6.4.0","_id":"elliptic@6.4.0","_inBundle":false,"_integrity":"sha1-ysmvh2LIWDYYcAPI3+GT5eLq5d8=","_location":"/elliptic","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"elliptic@6.4.0","name":"elliptic","escapedName":"elliptic","rawSpec":"6.4.0","saveSpec":null,"fetchSpec":"6.4.0"},"_requiredBy":["/@trust/keyto","/browserify-sign","/create-ecdh"],"_resolved":"https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz","_spec":"6.4.0","_where":"/home/travis/build/linkeddata/mashlib","author":{"name":"Fedor Indutny","email":"fedor@indutny.com"},"bugs":{"url":"https://github.com/indutny/elliptic/issues"},"dependencies":{"bn.js":"^4.4.0","brorand":"^1.0.1","hash.js":"^1.0.0","hmac-drbg":"^1.0.0","inherits":"^2.0.1","minimalistic-assert":"^1.0.0","minimalistic-crypto-utils":"^1.0.0"},"description":"EC cryptography","devDependencies":{"brfs":"^1.4.3","coveralls":"^2.11.3","grunt":"^0.4.5","grunt-browserify":"^5.0.0","grunt-cli":"^1.2.0","grunt-contrib-connect":"^1.0.0","grunt-contrib-copy":"^1.0.0","grunt-contrib-uglify":"^1.0.1","grunt-mocha-istanbul":"^3.0.1","grunt-saucelabs":"^8.6.2","istanbul":"^0.4.2","jscs":"^2.9.0","jshint":"^2.6.0","mocha":"^2.1.0"},"files":["lib"],"homepage":"https://github.com/indutny/elliptic","keywords":["EC","Elliptic","curve","Cryptography"],"license":"MIT","main":"lib/elliptic.js","name":"elliptic","repository":{"type":"git","url":"git+ssh://git@github.com/indutny/elliptic.git"},"scripts":{"jscs":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","jshint":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","lint":"npm run jscs && npm run jshint","test":"npm run lint && npm run unit","unit":"istanbul test _mocha --reporter=spec test/index.js","version":"grunt dist && git add dist/"},"version":"6.4.0"}
 
 /***/ }),
-/* 293 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = exports;
-var BN = __webpack_require__(25);
-var minAssert = __webpack_require__(15);
-var minUtils = __webpack_require__(165);
+var BN = __webpack_require__(34);
+var minAssert = __webpack_require__(19);
+var minUtils = __webpack_require__(181);
 
 utils.assert = minAssert;
 utils.toArray = minUtils.toArray;
@@ -73441,20 +79408,20 @@ utils.intFromLE = intFromLE;
 
 
 /***/ }),
-/* 294 */
+/* 319 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 295 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var BN = __webpack_require__(25);
-var elliptic = __webpack_require__(5);
+var BN = __webpack_require__(34);
+var elliptic = __webpack_require__(6);
 var utils = elliptic.utils;
 var getNAF = utils.getNAF;
 var getJSF = utils.getJSF;
@@ -73829,16 +79796,16 @@ BasePoint.prototype.dblp = function dblp(k) {
 
 
 /***/ }),
-/* 296 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var curve = __webpack_require__(73);
-var elliptic = __webpack_require__(5);
-var BN = __webpack_require__(25);
-var inherits = __webpack_require__(2);
+var curve = __webpack_require__(81);
+var elliptic = __webpack_require__(6);
+var BN = __webpack_require__(34);
+var inherits = __webpack_require__(1);
 var Base = curve.base;
 
 var assert = elliptic.utils.assert;
@@ -74774,18 +80741,18 @@ JPoint.prototype.isInfinity = function isInfinity() {
 
 
 /***/ }),
-/* 297 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var curve = __webpack_require__(73);
-var BN = __webpack_require__(25);
-var inherits = __webpack_require__(2);
+var curve = __webpack_require__(81);
+var BN = __webpack_require__(34);
+var inherits = __webpack_require__(1);
 var Base = curve.base;
 
-var elliptic = __webpack_require__(5);
+var elliptic = __webpack_require__(6);
 var utils = elliptic.utils;
 
 function MontCurve(conf) {
@@ -74961,16 +80928,16 @@ Point.prototype.getX = function getX() {
 
 
 /***/ }),
-/* 298 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var curve = __webpack_require__(73);
-var elliptic = __webpack_require__(5);
-var BN = __webpack_require__(25);
-var inherits = __webpack_require__(2);
+var curve = __webpack_require__(81);
+var elliptic = __webpack_require__(6);
+var BN = __webpack_require__(34);
+var inherits = __webpack_require__(1);
 var Base = curve.base;
 
 var assert = elliptic.utils.assert;
@@ -75401,7 +81368,7 @@ Point.prototype.mixedAdd = Point.prototype.add;
 
 
 /***/ }),
-/* 299 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75409,8 +81376,8 @@ Point.prototype.mixedAdd = Point.prototype.add;
 
 var curves = exports;
 
-var hash = __webpack_require__(108);
-var elliptic = __webpack_require__(5);
+var hash = __webpack_require__(119);
+var elliptic = __webpack_require__(6);
 
 var assert = elliptic.utils.assert;
 
@@ -75574,7 +81541,7 @@ defineCurve('ed25519', {
 
 var pre;
 try {
-  pre = __webpack_require__(306);
+  pre = __webpack_require__(331);
 } catch (e) {
   pre = undefined;
 }
@@ -75613,29 +81580,29 @@ defineCurve('secp256k1', {
 
 
 /***/ }),
-/* 300 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-exports.sha1 = __webpack_require__(301);
-exports.sha224 = __webpack_require__(302);
-exports.sha256 = __webpack_require__(167);
-exports.sha384 = __webpack_require__(303);
-exports.sha512 = __webpack_require__(168);
+exports.sha1 = __webpack_require__(326);
+exports.sha224 = __webpack_require__(327);
+exports.sha256 = __webpack_require__(183);
+exports.sha384 = __webpack_require__(328);
+exports.sha512 = __webpack_require__(184);
 
 
 /***/ }),
-/* 301 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(22);
-var common = __webpack_require__(54);
-var shaCommon = __webpack_require__(166);
+var utils = __webpack_require__(27);
+var common = __webpack_require__(62);
+var shaCommon = __webpack_require__(182);
 
 var rotl32 = utils.rotl32;
 var sum32 = utils.sum32;
@@ -75708,14 +81675,14 @@ SHA1.prototype._digest = function digest(enc) {
 
 
 /***/ }),
-/* 302 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(22);
-var SHA256 = __webpack_require__(167);
+var utils = __webpack_require__(27);
+var SHA256 = __webpack_require__(183);
 
 function SHA224() {
   if (!(this instanceof SHA224))
@@ -75745,15 +81712,15 @@ SHA224.prototype._digest = function digest(enc) {
 
 
 /***/ }),
-/* 303 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(22);
+var utils = __webpack_require__(27);
 
-var SHA512 = __webpack_require__(168);
+var SHA512 = __webpack_require__(184);
 
 function SHA384() {
   if (!(this instanceof SHA384))
@@ -75787,14 +81754,14 @@ SHA384.prototype._digest = function digest(enc) {
 
 
 /***/ }),
-/* 304 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(22);
-var common = __webpack_require__(54);
+var utils = __webpack_require__(27);
+var common = __webpack_require__(62);
 
 var rotl32 = utils.rotl32;
 var sum32 = utils.sum32;
@@ -75940,14 +81907,14 @@ var sh = [
 
 
 /***/ }),
-/* 305 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(22);
-var assert = __webpack_require__(15);
+var utils = __webpack_require__(27);
+var assert = __webpack_require__(19);
 
 function Hmac(hash, key, enc) {
   if (!(this instanceof Hmac))
@@ -75994,7 +81961,7 @@ Hmac.prototype.digest = function digest(enc) {
 
 
 /***/ }),
-/* 306 */
+/* 331 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -76780,20 +82747,20 @@ module.exports = {
 
 
 /***/ }),
-/* 307 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var BN = __webpack_require__(25);
-var HmacDRBG = __webpack_require__(308);
-var elliptic = __webpack_require__(5);
+var BN = __webpack_require__(34);
+var HmacDRBG = __webpack_require__(333);
+var elliptic = __webpack_require__(6);
 var utils = elliptic.utils;
 var assert = utils.assert;
 
-var KeyPair = __webpack_require__(309);
-var Signature = __webpack_require__(310);
+var KeyPair = __webpack_require__(334);
+var Signature = __webpack_require__(335);
 
 function EC(options) {
   if (!(this instanceof EC))
@@ -77027,15 +82994,15 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
 
 
 /***/ }),
-/* 308 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var hash = __webpack_require__(108);
-var utils = __webpack_require__(165);
-var assert = __webpack_require__(15);
+var hash = __webpack_require__(119);
+var utils = __webpack_require__(181);
+var assert = __webpack_require__(19);
 
 function HmacDRBG(options) {
   if (!(this instanceof HmacDRBG))
@@ -77147,14 +83114,14 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
 
 
 /***/ }),
-/* 309 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var BN = __webpack_require__(25);
-var elliptic = __webpack_require__(5);
+var BN = __webpack_require__(34);
+var elliptic = __webpack_require__(6);
 var utils = elliptic.utils;
 var assert = utils.assert;
 
@@ -77273,15 +83240,15 @@ KeyPair.prototype.inspect = function inspect() {
 
 
 /***/ }),
-/* 310 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var BN = __webpack_require__(25);
+var BN = __webpack_require__(34);
 
-var elliptic = __webpack_require__(5);
+var elliptic = __webpack_require__(6);
 var utils = elliptic.utils;
 var assert = utils.assert;
 
@@ -77415,19 +83382,19 @@ Signature.prototype.toDER = function toDER(enc) {
 
 
 /***/ }),
-/* 311 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var hash = __webpack_require__(108);
-var elliptic = __webpack_require__(5);
+var hash = __webpack_require__(119);
+var elliptic = __webpack_require__(6);
 var utils = elliptic.utils;
 var assert = utils.assert;
 var parseBytes = utils.parseBytes;
-var KeyPair = __webpack_require__(312);
-var Signature = __webpack_require__(313);
+var KeyPair = __webpack_require__(337);
+var Signature = __webpack_require__(338);
 
 function EDDSA(curve) {
   assert(curve === 'ed25519', 'only tested with ed25519 so far');
@@ -77540,13 +83507,13 @@ EDDSA.prototype.isPoint = function isPoint(val) {
 
 
 /***/ }),
-/* 312 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var elliptic = __webpack_require__(5);
+var elliptic = __webpack_require__(6);
 var utils = elliptic.utils;
 var assert = utils.assert;
 var parseBytes = utils.parseBytes;
@@ -77643,14 +83610,14 @@ module.exports = KeyPair;
 
 
 /***/ }),
-/* 313 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var BN = __webpack_require__(25);
-var elliptic = __webpack_require__(5);
+var BN = __webpack_require__(34);
+var elliptic = __webpack_require__(6);
 var utils = elliptic.utils;
 var assert = utils.assert;
 var cachedProperty = utils.cachedProperty;
@@ -77716,13 +83683,13 @@ module.exports = Signature;
 
 
 /***/ }),
-/* 314 */
+/* 339 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 315 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -77730,9 +83697,9 @@ module.exports = Signature;
 // Fedor, you are amazing.
 
 
-var asn1 = __webpack_require__(55)
+var asn1 = __webpack_require__(63)
 
-exports.certificate = __webpack_require__(328)
+exports.certificate = __webpack_require__(353)
 
 var RSAPrivateKey = asn1.define('RSAPrivateKey', function () {
   this.seq().obj(
@@ -77851,7 +83818,7 @@ exports.signature = asn1.define('signature', function () {
 
 
 /***/ }),
-/* 316 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {(function (module, exports) {
@@ -77906,7 +83873,7 @@ exports.signature = asn1.define('signature', function () {
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(317).Buffer;
+    Buffer = __webpack_require__(342).Buffer;
   } catch (e) {
   }
 
@@ -81282,20 +87249,20 @@ exports.signature = asn1.define('signature', function () {
   };
 })(typeof module === 'undefined' || module, this);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module)))
 
 /***/ }),
-/* 317 */
+/* 342 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 318 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var asn1 = __webpack_require__(55);
-var inherits = __webpack_require__(2);
+var asn1 = __webpack_require__(63);
+var inherits = __webpack_require__(1);
 
 var api = exports;
 
@@ -81314,7 +87281,7 @@ function Entity(name, body) {
 Entity.prototype._createNamed = function createNamed(base) {
   var named;
   try {
-    named = __webpack_require__(319).runInThisContext(
+    named = __webpack_require__(344).runInThisContext(
       '(function ' + this.name + '(entity) {\n' +
       '  this._initNamed(entity);\n' +
       '})'
@@ -81358,10 +87325,10 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
 
 
 /***/ }),
-/* 319 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var indexOf = __webpack_require__(320);
+var indexOf = __webpack_require__(345);
 
 var Object_keys = function (obj) {
     if (Object.keys) return Object.keys(obj)
@@ -81502,7 +87469,7 @@ exports.createContext = Script.createContext = function (context) {
 
 
 /***/ }),
-/* 320 */
+/* 345 */
 /***/ (function(module, exports) {
 
 
@@ -81517,10 +87484,10 @@ module.exports = function(arr, obj){
 };
 
 /***/ }),
-/* 321 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var inherits = __webpack_require__(2);
+var inherits = __webpack_require__(1);
 
 function Reporter(options) {
   this._reporterState = {
@@ -81644,13 +87611,13 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
 
 
 /***/ }),
-/* 322 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Reporter = __webpack_require__(56).Reporter;
-var EncoderBuffer = __webpack_require__(56).EncoderBuffer;
-var DecoderBuffer = __webpack_require__(56).DecoderBuffer;
-var assert = __webpack_require__(15);
+var Reporter = __webpack_require__(64).Reporter;
+var EncoderBuffer = __webpack_require__(64).EncoderBuffer;
+var DecoderBuffer = __webpack_require__(64).DecoderBuffer;
+var assert = __webpack_require__(19);
 
 // Supported tags
 var tags = [
@@ -82284,10 +88251,10 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
 
 
 /***/ }),
-/* 323 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var constants = __webpack_require__(171);
+var constants = __webpack_require__(187);
 
 exports.tagClass = {
   0: 'universal',
@@ -82332,23 +88299,23 @@ exports.tagByName = constants._reverse(exports.tag);
 
 
 /***/ }),
-/* 324 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var decoders = exports;
 
-decoders.der = __webpack_require__(172);
-decoders.pem = __webpack_require__(325);
+decoders.der = __webpack_require__(188);
+decoders.pem = __webpack_require__(350);
 
 
 /***/ }),
-/* 325 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var inherits = __webpack_require__(2);
+var inherits = __webpack_require__(1);
 var Buffer = __webpack_require__(0).Buffer;
 
-var DERDecoder = __webpack_require__(172);
+var DERDecoder = __webpack_require__(188);
 
 function PEMDecoder(entity) {
   DERDecoder.call(this, entity);
@@ -82397,22 +88364,22 @@ PEMDecoder.prototype.decode = function decode(data, options) {
 
 
 /***/ }),
-/* 326 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var encoders = exports;
 
-encoders.der = __webpack_require__(173);
-encoders.pem = __webpack_require__(327);
+encoders.der = __webpack_require__(189);
+encoders.pem = __webpack_require__(352);
 
 
 /***/ }),
-/* 327 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var inherits = __webpack_require__(2);
+var inherits = __webpack_require__(1);
 
-var DEREncoder = __webpack_require__(173);
+var DEREncoder = __webpack_require__(189);
 
 function PEMEncoder(entity) {
   DEREncoder.call(this, entity);
@@ -82434,7 +88401,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
 
 
 /***/ }),
-/* 328 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82443,7 +88410,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
 
 
 
-var asn = __webpack_require__(55)
+var asn = __webpack_require__(63)
 
 var Time = asn.define('Time', function () {
   this.choice({
@@ -82529,21 +88496,21 @@ module.exports = X509Certificate
 
 
 /***/ }),
-/* 329 */
+/* 354 */
 /***/ (function(module, exports) {
 
 module.exports = {"2.16.840.1.101.3.4.1.1":"aes-128-ecb","2.16.840.1.101.3.4.1.2":"aes-128-cbc","2.16.840.1.101.3.4.1.3":"aes-128-ofb","2.16.840.1.101.3.4.1.4":"aes-128-cfb","2.16.840.1.101.3.4.1.21":"aes-192-ecb","2.16.840.1.101.3.4.1.22":"aes-192-cbc","2.16.840.1.101.3.4.1.23":"aes-192-ofb","2.16.840.1.101.3.4.1.24":"aes-192-cfb","2.16.840.1.101.3.4.1.41":"aes-256-ecb","2.16.840.1.101.3.4.1.42":"aes-256-cbc","2.16.840.1.101.3.4.1.43":"aes-256-ofb","2.16.840.1.101.3.4.1.44":"aes-256-cfb"}
 
 /***/ }),
-/* 330 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {// adapted from https://github.com/apatil/pemstrip
 var findProc = /Proc-Type: 4,ENCRYPTED\n\r?DEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)\n\r?\n\r?([0-9A-z\n\r\+\/\=]+)\n\r?/m
 var startRegex = /^-----BEGIN ((?:.* KEY)|CERTIFICATE)-----\n/m
 var fullRegex = /^-----BEGIN ((?:.* KEY)|CERTIFICATE)-----\n\r?([0-9A-z\n\r\+\/\=]+)\n\r?-----END \1-----$/m
-var evp = __webpack_require__(71)
-var ciphers = __webpack_require__(104)
+var evp = __webpack_require__(79)
+var ciphers = __webpack_require__(115)
 module.exports = function (okey, password) {
   var key = okey.toString()
   var match = key.match(findProc)
@@ -82572,14 +88539,14 @@ module.exports = function (okey, password) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 331 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {// much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
-var BN = __webpack_require__(169)
-var EC = __webpack_require__(5).ec
-var parseKeys = __webpack_require__(74)
-var curves = __webpack_require__(174)
+var BN = __webpack_require__(185)
+var EC = __webpack_require__(6).ec
+var parseKeys = __webpack_require__(82)
+var curves = __webpack_require__(190)
 
 function verify (sig, hash, key, signType, tag) {
   var pub = parseKeys(key)
@@ -82662,11 +88629,11 @@ module.exports = verify
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 332 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var elliptic = __webpack_require__(5);
-var BN = __webpack_require__(333);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var elliptic = __webpack_require__(6);
+var BN = __webpack_require__(358);
 
 module.exports = function createECDH(curve) {
 	return new ECDH(curve);
@@ -82791,7 +88758,7 @@ function formatReturnValue(bn, enc, len) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 333 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {(function (module, exports) {
@@ -82846,7 +88813,7 @@ function formatReturnValue(bn, enc, len) {
 
   var Buffer;
   try {
-    Buffer = __webpack_require__(334).Buffer;
+    Buffer = __webpack_require__(359).Buffer;
   } catch (e) {
   }
 
@@ -86222,20 +92189,20 @@ function formatReturnValue(bn, enc, len) {
   };
 })(typeof module === 'undefined' || module, this);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module)))
 
 /***/ }),
-/* 334 */
+/* 359 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 335 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.publicEncrypt = __webpack_require__(336);
-exports.privateDecrypt = __webpack_require__(338);
+exports.publicEncrypt = __webpack_require__(361);
+exports.privateDecrypt = __webpack_require__(363);
 
 exports.privateEncrypt = function privateEncrypt(key, buf) {
   return exports.publicEncrypt(key, buf, true);
@@ -86246,17 +92213,17 @@ exports.publicDecrypt = function publicDecrypt(key, buf) {
 };
 
 /***/ }),
-/* 336 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var parseKeys = __webpack_require__(74);
-var randomBytes = __webpack_require__(51);
-var createHash = __webpack_require__(52);
-var mgf = __webpack_require__(175);
-var xor = __webpack_require__(176);
-var bn = __webpack_require__(109);
-var withPublic = __webpack_require__(177);
-var crt = __webpack_require__(107);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var parseKeys = __webpack_require__(82);
+var randomBytes = __webpack_require__(59);
+var createHash = __webpack_require__(60);
+var mgf = __webpack_require__(191);
+var xor = __webpack_require__(192);
+var bn = __webpack_require__(120);
+var withPublic = __webpack_require__(193);
+var crt = __webpack_require__(118);
 
 var constants = {
   RSA_PKCS1_OAEP_PADDING: 4,
@@ -86347,22 +92314,22 @@ function nonZero(len, crypto) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 337 */
+/* 362 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 338 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var parseKeys = __webpack_require__(74);
-var mgf = __webpack_require__(175);
-var xor = __webpack_require__(176);
-var bn = __webpack_require__(109);
-var crt = __webpack_require__(107);
-var createHash = __webpack_require__(52);
-var withPublic = __webpack_require__(177);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var parseKeys = __webpack_require__(82);
+var mgf = __webpack_require__(191);
+var xor = __webpack_require__(192);
+var bn = __webpack_require__(120);
+var crt = __webpack_require__(118);
+var createHash = __webpack_require__(60);
+var withPublic = __webpack_require__(193);
 module.exports = function privateDecrypt(private_key, enc, reverse) {
   var padding;
   if (private_key.padding) {
@@ -86467,7 +92434,7 @@ function compare(a, b){
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 339 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -86481,11 +92448,11 @@ function compare(a, b){
 // throwing away all the user's work.
 var UI = {};
 
-UI.acl = __webpack_require__(148);
-UI.ns = __webpack_require__(7);
-UI.widgets = __webpack_require__(21);
+UI.acl = __webpack_require__(162);
+UI.ns = __webpack_require__(11);
+UI.widgets = __webpack_require__(26);
 UI.aclControl = module.exports = {};
-var utils = __webpack_require__(23);
+var utils = __webpack_require__(28);
 
 // In apps which may use drag and drop, this utility takes care of the fact
 // by default in a browser, an uncuaght user drop into a browser window
@@ -87004,58 +92971,7 @@ UI.aclControl.ACLControlBox5 = function (subject, dom, noun, kb, callback) {
 // ends
 
 /***/ }),
-/* 340 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*
- The MIT License (MIT)
-
- Copyright (c) 2015-2016 Solid
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
-
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
-
- solid-client is a Javascript library for Solid applications. This library
- currently depends on rdflib.js. Please make sure to load the rdflib.js script
- before loading solid-client
-
- If you would like to know more about the solid Solid project, please see
- https://github.com/solid/
- */
-
-
-/**
- * Provides methods for WebID authentication and signup in Solid
- * @see {@link https://github.com/solid/}
- * @module solid-auth-tls
- */
-
-var auth = __webpack_require__(341);
-
-module.exports = {
-  Signup: __webpack_require__(342),
-  login: auth.login,
-  currentUser: auth.currentUser
-};
-
-/***/ }),
-/* 341 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87065,7 +92981,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 /* global XMLHttpRequest */
 
-var defaultConfig = __webpack_require__(180);
+var defaultConfig = __webpack_require__(197);
 
 /**
  * Note:
@@ -87230,13 +93146,13 @@ module.exports = {
 };
 
 /***/ }),
-/* 342 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaultConfig = __webpack_require__(180);
+var defaultConfig = __webpack_require__(197);
 
 /**
  * Provides functionality for signing up with a Solid provider
@@ -87307,7 +93223,7 @@ Signup.prototype.signup = function signup(signupUrl) {
 module.exports = Signup;
 
 /***/ }),
-/* 343 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87317,7 +93233,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _api = __webpack_require__(344);
+var _api = __webpack_require__(368);
 
 Object.defineProperty(exports, 'login', {
   enumerable: true,
@@ -87351,7 +93267,7 @@ Object.defineProperty(exports, 'fetch', {
 });
 
 /***/ }),
-/* 344 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87362,15 +93278,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.logout = exports.currentSession = exports.popupLogin = exports.login = exports.fetch = undefined;
 
-var _extends2 = __webpack_require__(76);
+var _extends2 = __webpack_require__(37);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _regenerator = __webpack_require__(36);
+var _regenerator = __webpack_require__(7);
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _asyncToGenerator2 = __webpack_require__(37);
+var _asyncToGenerator2 = __webpack_require__(8);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
@@ -87613,21 +93529,21 @@ var logout = exports.logout = function () {
   };
 }();
 
-var _authnFetch = __webpack_require__(370);
+var _authnFetch = __webpack_require__(394);
 
-var _popup = __webpack_require__(417);
+var _popup = __webpack_require__(436);
 
-var _session2 = __webpack_require__(122);
+var _session2 = __webpack_require__(133);
 
-var _storage = __webpack_require__(84);
+var _storage = __webpack_require__(91);
 
-var _urlUtil = __webpack_require__(129);
+var _urlUtil = __webpack_require__(140);
 
-var _webidTls = __webpack_require__(222);
+var _webidTls = __webpack_require__(242);
 
 var WebIdTls = _interopRequireWildcard(_webidTls);
 
-var _webidOidc = __webpack_require__(125);
+var _webidOidc = __webpack_require__(136);
 
 var WebIdOidc = _interopRequireWildcard(_webidOidc);
 
@@ -87649,45 +93565,45 @@ var fetch = exports.fetch = function fetch(url, options) {
 };
 
 /***/ }),
-/* 345 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(346), __esModule: true };
+module.exports = { "default": __webpack_require__(370), __esModule: true };
 
 /***/ }),
-/* 346 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(347);
-module.exports = __webpack_require__(16).Object.assign;
+__webpack_require__(371);
+module.exports = __webpack_require__(20).Object.assign;
 
 
 /***/ }),
-/* 347 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(28);
+var $export = __webpack_require__(38);
 
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(348) });
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(372) });
 
 
 /***/ }),
-/* 348 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
-var getKeys = __webpack_require__(78);
-var gOPS = __webpack_require__(118);
-var pIE = __webpack_require__(80);
-var toObject = __webpack_require__(119);
-var IObject = __webpack_require__(183);
+var getKeys = __webpack_require__(85);
+var gOPS = __webpack_require__(129);
+var pIE = __webpack_require__(87);
+var toObject = __webpack_require__(130);
+var IObject = __webpack_require__(200);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__(58)(function () {
+module.exports = !$assign || __webpack_require__(66)(function () {
   var A = {};
   var B = {};
   // eslint-disable-next-line no-undef
@@ -87714,14 +93630,14 @@ module.exports = !$assign || __webpack_require__(58)(function () {
 
 
 /***/ }),
-/* 349 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
-var toIObject = __webpack_require__(47);
-var toLength = __webpack_require__(113);
-var toAbsoluteIndex = __webpack_require__(350);
+var toIObject = __webpack_require__(55);
+var toLength = __webpack_require__(124);
+var toAbsoluteIndex = __webpack_require__(374);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -87743,10 +93659,10 @@ module.exports = function (IS_INCLUDES) {
 
 
 /***/ }),
-/* 350 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(114);
+var toInteger = __webpack_require__(125);
 var max = Math.max;
 var min = Math.min;
 module.exports = function (index, length) {
@@ -87756,7 +93672,7 @@ module.exports = function (index, length) {
 
 
 /***/ }),
-/* 351 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // This method of obtaining a reference to the global object needs to be
@@ -87774,7 +93690,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(352);
+module.exports = __webpack_require__(376);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -87790,7 +93706,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 352 */
+/* 376 */
 /***/ (function(module, exports) {
 
 /**
@@ -88526,24 +94442,24 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 353 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(184);
-__webpack_require__(120);
-__webpack_require__(189);
-__webpack_require__(361);
-__webpack_require__(368);
-__webpack_require__(369);
-module.exports = __webpack_require__(16).Promise;
+__webpack_require__(201);
+__webpack_require__(131);
+__webpack_require__(206);
+__webpack_require__(385);
+__webpack_require__(392);
+__webpack_require__(393);
+module.exports = __webpack_require__(20).Promise;
 
 
 /***/ }),
-/* 354 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(114);
-var defined = __webpack_require__(112);
+var toInteger = __webpack_require__(125);
+var defined = __webpack_require__(123);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function (TO_STRING) {
@@ -88562,18 +94478,18 @@ module.exports = function (TO_STRING) {
 
 
 /***/ }),
-/* 355 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var create = __webpack_require__(187);
-var descriptor = __webpack_require__(59);
-var setToStringTag = __webpack_require__(83);
+var create = __webpack_require__(204);
+var descriptor = __webpack_require__(67);
+var setToStringTag = __webpack_require__(89);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(34)(IteratorPrototype, __webpack_require__(9)('iterator'), function () { return this; });
+__webpack_require__(44)(IteratorPrototype, __webpack_require__(13)('iterator'), function () { return this; });
 
 module.exports = function (Constructor, NAME, next) {
   Constructor.prototype = create(IteratorPrototype, { next: descriptor(1, next) });
@@ -88582,14 +94498,14 @@ module.exports = function (Constructor, NAME, next) {
 
 
 /***/ }),
-/* 356 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(26);
-var anObject = __webpack_require__(29);
-var getKeys = __webpack_require__(78);
+var dP = __webpack_require__(35);
+var anObject = __webpack_require__(39);
+var getKeys = __webpack_require__(85);
 
-module.exports = __webpack_require__(30) ? Object.defineProperties : function defineProperties(O, Properties) {
+module.exports = __webpack_require__(40) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var keys = getKeys(Properties);
   var length = keys.length;
@@ -88601,13 +94517,13 @@ module.exports = __webpack_require__(30) ? Object.defineProperties : function de
 
 
 /***/ }),
-/* 357 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has = __webpack_require__(35);
-var toObject = __webpack_require__(119);
-var IE_PROTO = __webpack_require__(115)('IE_PROTO');
+var has = __webpack_require__(45);
+var toObject = __webpack_require__(130);
+var IE_PROTO = __webpack_require__(126)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function (O) {
@@ -88620,21 +94536,21 @@ module.exports = Object.getPrototypeOf || function (O) {
 
 
 /***/ }),
-/* 358 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var addToUnscopables = __webpack_require__(359);
-var step = __webpack_require__(360);
-var Iterators = __webpack_require__(61);
-var toIObject = __webpack_require__(47);
+var addToUnscopables = __webpack_require__(383);
+var step = __webpack_require__(384);
+var Iterators = __webpack_require__(69);
+var toIObject = __webpack_require__(55);
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(185)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(202)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0;                   // next index
   this._k = kind;                // kind
@@ -88661,14 +94577,14 @@ addToUnscopables('entries');
 
 
 /***/ }),
-/* 359 */
+/* 383 */
 /***/ (function(module, exports) {
 
 module.exports = function () { /* empty */ };
 
 
 /***/ }),
-/* 360 */
+/* 384 */
 /***/ (function(module, exports) {
 
 module.exports = function (done, value) {
@@ -88677,26 +94593,26 @@ module.exports = function (done, value) {
 
 
 /***/ }),
-/* 361 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var LIBRARY = __webpack_require__(82);
-var global = __webpack_require__(8);
-var ctx = __webpack_require__(57);
-var classof = __webpack_require__(190);
-var $export = __webpack_require__(28);
-var isObject = __webpack_require__(46);
-var aFunction = __webpack_require__(77);
-var anInstance = __webpack_require__(362);
-var forOf = __webpack_require__(363);
-var speciesConstructor = __webpack_require__(194);
-var task = __webpack_require__(195).set;
-var microtask = __webpack_require__(365)();
-var newPromiseCapabilityModule = __webpack_require__(121);
-var perform = __webpack_require__(196);
-var promiseResolve = __webpack_require__(197);
+var LIBRARY = __webpack_require__(88);
+var global = __webpack_require__(12);
+var ctx = __webpack_require__(65);
+var classof = __webpack_require__(207);
+var $export = __webpack_require__(38);
+var isObject = __webpack_require__(54);
+var aFunction = __webpack_require__(84);
+var anInstance = __webpack_require__(386);
+var forOf = __webpack_require__(387);
+var speciesConstructor = __webpack_require__(211);
+var task = __webpack_require__(212).set;
+var microtask = __webpack_require__(389)();
+var newPromiseCapabilityModule = __webpack_require__(132);
+var perform = __webpack_require__(213);
+var promiseResolve = __webpack_require__(214);
 var PROMISE = 'Promise';
 var TypeError = global.TypeError;
 var process = global.process;
@@ -88710,7 +94626,7 @@ var USE_NATIVE = !!function () {
   try {
     // correct subclassing with @@species support
     var promise = $Promise.resolve(1);
-    var FakePromise = (promise.constructor = {})[__webpack_require__(9)('species')] = function (exec) {
+    var FakePromise = (promise.constructor = {})[__webpack_require__(13)('species')] = function (exec) {
       exec(empty, empty);
     };
     // unhandled rejections tracking support, NodeJS Promise without it fails @@species test
@@ -88866,7 +94782,7 @@ if (!USE_NATIVE) {
     this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
     this._n = false;          // <- notify
   };
-  Internal.prototype = __webpack_require__(366)($Promise.prototype, {
+  Internal.prototype = __webpack_require__(390)($Promise.prototype, {
     // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
     then: function then(onFulfilled, onRejected) {
       var reaction = newPromiseCapability(speciesConstructor(this, $Promise));
@@ -88897,9 +94813,9 @@ if (!USE_NATIVE) {
 }
 
 $export($export.G + $export.W + $export.F * !USE_NATIVE, { Promise: $Promise });
-__webpack_require__(83)($Promise, PROMISE);
-__webpack_require__(367)(PROMISE);
-Wrapper = __webpack_require__(16)[PROMISE];
+__webpack_require__(89)($Promise, PROMISE);
+__webpack_require__(391)(PROMISE);
+Wrapper = __webpack_require__(20)[PROMISE];
 
 // statics
 $export($export.S + $export.F * !USE_NATIVE, PROMISE, {
@@ -88917,7 +94833,7 @@ $export($export.S + $export.F * (LIBRARY || !USE_NATIVE), PROMISE, {
     return promiseResolve(LIBRARY && this === Wrapper ? $Promise : this, x);
   }
 });
-$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(198)(function (iter) {
+$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(215)(function (iter) {
   $Promise.all(iter)['catch'](empty);
 })), PROMISE, {
   // 25.4.4.1 Promise.all(iterable)
@@ -88964,7 +94880,7 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(198)(functio
 
 
 /***/ }),
-/* 362 */
+/* 386 */
 /***/ (function(module, exports) {
 
 module.exports = function (it, Constructor, name, forbiddenField) {
@@ -88975,15 +94891,15 @@ module.exports = function (it, Constructor, name, forbiddenField) {
 
 
 /***/ }),
-/* 363 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ctx = __webpack_require__(57);
-var call = __webpack_require__(191);
-var isArrayIter = __webpack_require__(192);
-var anObject = __webpack_require__(29);
-var toLength = __webpack_require__(113);
-var getIterFn = __webpack_require__(193);
+var ctx = __webpack_require__(65);
+var call = __webpack_require__(208);
+var isArrayIter = __webpack_require__(209);
+var anObject = __webpack_require__(39);
+var toLength = __webpack_require__(124);
+var getIterFn = __webpack_require__(210);
 var BREAK = {};
 var RETURN = {};
 var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) {
@@ -89006,7 +94922,7 @@ exports.RETURN = RETURN;
 
 
 /***/ }),
-/* 364 */
+/* 388 */
 /***/ (function(module, exports) {
 
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -89028,15 +94944,15 @@ module.exports = function (fn, args, that) {
 
 
 /***/ }),
-/* 365 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(8);
-var macrotask = __webpack_require__(195).set;
+var global = __webpack_require__(12);
+var macrotask = __webpack_require__(212).set;
 var Observer = global.MutationObserver || global.WebKitMutationObserver;
 var process = global.process;
 var Promise = global.Promise;
-var isNode = __webpack_require__(60)(process) == 'process';
+var isNode = __webpack_require__(68)(process) == 'process';
 
 module.exports = function () {
   var head, last, notify;
@@ -89102,10 +95018,10 @@ module.exports = function () {
 
 
 /***/ }),
-/* 366 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hide = __webpack_require__(34);
+var hide = __webpack_require__(44);
 module.exports = function (target, src, safe) {
   for (var key in src) {
     if (safe && target[key]) target[key] = src[key];
@@ -89115,16 +95031,16 @@ module.exports = function (target, src, safe) {
 
 
 /***/ }),
-/* 367 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var global = __webpack_require__(8);
-var core = __webpack_require__(16);
-var dP = __webpack_require__(26);
-var DESCRIPTORS = __webpack_require__(30);
-var SPECIES = __webpack_require__(9)('species');
+var global = __webpack_require__(12);
+var core = __webpack_require__(20);
+var dP = __webpack_require__(35);
+var DESCRIPTORS = __webpack_require__(40);
+var SPECIES = __webpack_require__(13)('species');
 
 module.exports = function (KEY) {
   var C = typeof core[KEY] == 'function' ? core[KEY] : global[KEY];
@@ -89136,17 +95052,17 @@ module.exports = function (KEY) {
 
 
 /***/ }),
-/* 368 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 // https://github.com/tc39/proposal-promise-finally
 
-var $export = __webpack_require__(28);
-var core = __webpack_require__(16);
-var global = __webpack_require__(8);
-var speciesConstructor = __webpack_require__(194);
-var promiseResolve = __webpack_require__(197);
+var $export = __webpack_require__(38);
+var core = __webpack_require__(20);
+var global = __webpack_require__(12);
+var speciesConstructor = __webpack_require__(211);
+var promiseResolve = __webpack_require__(214);
 
 $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
   var C = speciesConstructor(this, core.Promise || global.Promise);
@@ -89163,15 +95079,15 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
 
 
 /***/ }),
-/* 369 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // https://github.com/tc39/proposal-promise-try
-var $export = __webpack_require__(28);
-var newPromiseCapability = __webpack_require__(121);
-var perform = __webpack_require__(196);
+var $export = __webpack_require__(38);
+var newPromiseCapability = __webpack_require__(132);
+var perform = __webpack_require__(213);
 
 $export($export.S, 'Promise', { 'try': function (callbackfn) {
   var promiseCapability = newPromiseCapability.f(this);
@@ -89182,7 +95098,7 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 
 
 /***/ }),
-/* 370 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89192,23 +95108,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = __webpack_require__(36);
+var _regenerator = __webpack_require__(7);
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _asyncToGenerator2 = __webpack_require__(37);
+var _asyncToGenerator2 = __webpack_require__(8);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 exports.authnFetch = authnFetch;
 
-__webpack_require__(44);
+__webpack_require__(33);
 
-var _host = __webpack_require__(371);
+var _host = __webpack_require__(395);
 
-var _session = __webpack_require__(122);
+var _session = __webpack_require__(133);
 
-var _webidOidc = __webpack_require__(125);
+var _webidOidc = __webpack_require__(136);
 
 var WebIdOidc = _interopRequireWildcard(_webidOidc);
 
@@ -89368,7 +95284,7 @@ var fetchWithCredentials = function () {
 }();
 
 /***/ }),
-/* 371 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89379,19 +95295,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.hostNameFromRequestInfo = undefined;
 
-var _defineProperty2 = __webpack_require__(199);
+var _defineProperty2 = __webpack_require__(90);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _extends3 = __webpack_require__(76);
+var _extends3 = __webpack_require__(37);
 
 var _extends4 = _interopRequireDefault(_extends3);
 
-var _regenerator = __webpack_require__(36);
+var _regenerator = __webpack_require__(7);
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _asyncToGenerator2 = __webpack_require__(37);
+var _asyncToGenerator2 = __webpack_require__(8);
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
@@ -89399,15 +95315,15 @@ exports.getHost = getHost;
 exports.saveHost = saveHost;
 exports.updateHostFromResponse = updateHostFromResponse;
 
-var _session = __webpack_require__(122);
+var _session = __webpack_require__(133);
 
-var _storage = __webpack_require__(84);
+var _storage = __webpack_require__(91);
 
-var _webidOidc = __webpack_require__(125);
+var _webidOidc = __webpack_require__(136);
 
 var WebIdOidc = _interopRequireWildcard(_webidOidc);
 
-var _webidTls = __webpack_require__(222);
+var _webidTls = __webpack_require__(242);
 
 var WebIdTls = _interopRequireWildcard(_webidTls);
 
@@ -89558,42 +95474,36 @@ function updateHostFromResponse(storage) {
 }
 
 /***/ }),
-/* 372 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(373), __esModule: true };
+module.exports = { "default": __webpack_require__(397), __esModule: true };
 
 /***/ }),
-/* 373 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(374);
-var $Object = __webpack_require__(16).Object;
+__webpack_require__(398);
+var $Object = __webpack_require__(20).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
 
 
 /***/ }),
-/* 374 */
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $export = __webpack_require__(28);
+var $export = __webpack_require__(38);
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__(30), 'Object', { defineProperty: __webpack_require__(26).f });
+$export($export.S + $export.F * !__webpack_require__(40), 'Object', { defineProperty: __webpack_require__(35).f });
 
 
 /***/ }),
-/* 375 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(376), __esModule: true };
-
-/***/ }),
-/* 376 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var core = __webpack_require__(16);
+var core = __webpack_require__(20);
 var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
 module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
   return $JSON.stringify.apply($JSON, arguments);
@@ -89601,95 +95511,68 @@ module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
 
 
 /***/ }),
-/* 377 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-exports.__esModule = true;
-
-var _iterator = __webpack_require__(378);
-
-var _iterator2 = _interopRequireDefault(_iterator);
-
-var _symbol = __webpack_require__(380);
-
-var _symbol2 = _interopRequireDefault(_symbol);
-
-var _typeof = typeof _symbol2.default === "function" && typeof _iterator2.default === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj; };
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.default) === "symbol" ? function (obj) {
-  return typeof obj === "undefined" ? "undefined" : _typeof(obj);
-} : function (obj) {
-  return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof(obj);
-};
+module.exports = { "default": __webpack_require__(401), __esModule: true };
 
 /***/ }),
-/* 378 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(379), __esModule: true };
-
-/***/ }),
-/* 379 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(120);
-__webpack_require__(189);
-module.exports = __webpack_require__(123).f('iterator');
+__webpack_require__(131);
+__webpack_require__(206);
+module.exports = __webpack_require__(134).f('iterator');
 
 
 /***/ }),
-/* 380 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(381), __esModule: true };
+module.exports = { "default": __webpack_require__(403), __esModule: true };
 
 /***/ }),
-/* 381 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(382);
-__webpack_require__(184);
-__webpack_require__(388);
-__webpack_require__(389);
-module.exports = __webpack_require__(16).Symbol;
+__webpack_require__(404);
+__webpack_require__(201);
+__webpack_require__(410);
+__webpack_require__(411);
+module.exports = __webpack_require__(20).Symbol;
 
 
 /***/ }),
-/* 382 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // ECMAScript 6 symbols shim
-var global = __webpack_require__(8);
-var has = __webpack_require__(35);
-var DESCRIPTORS = __webpack_require__(30);
-var $export = __webpack_require__(28);
-var redefine = __webpack_require__(186);
-var META = __webpack_require__(383).KEY;
-var $fails = __webpack_require__(58);
-var shared = __webpack_require__(116);
-var setToStringTag = __webpack_require__(83);
-var uid = __webpack_require__(79);
-var wks = __webpack_require__(9);
-var wksExt = __webpack_require__(123);
-var wksDefine = __webpack_require__(124);
-var enumKeys = __webpack_require__(384);
-var isArray = __webpack_require__(385);
-var anObject = __webpack_require__(29);
-var toIObject = __webpack_require__(47);
-var toPrimitive = __webpack_require__(111);
-var createDesc = __webpack_require__(59);
-var _create = __webpack_require__(187);
-var gOPNExt = __webpack_require__(386);
-var $GOPD = __webpack_require__(387);
-var $DP = __webpack_require__(26);
-var $keys = __webpack_require__(78);
+var global = __webpack_require__(12);
+var has = __webpack_require__(45);
+var DESCRIPTORS = __webpack_require__(40);
+var $export = __webpack_require__(38);
+var redefine = __webpack_require__(203);
+var META = __webpack_require__(405).KEY;
+var $fails = __webpack_require__(66);
+var shared = __webpack_require__(127);
+var setToStringTag = __webpack_require__(89);
+var uid = __webpack_require__(86);
+var wks = __webpack_require__(13);
+var wksExt = __webpack_require__(134);
+var wksDefine = __webpack_require__(135);
+var enumKeys = __webpack_require__(406);
+var isArray = __webpack_require__(407);
+var anObject = __webpack_require__(39);
+var toIObject = __webpack_require__(55);
+var toPrimitive = __webpack_require__(122);
+var createDesc = __webpack_require__(67);
+var _create = __webpack_require__(204);
+var gOPNExt = __webpack_require__(408);
+var $GOPD = __webpack_require__(409);
+var $DP = __webpack_require__(35);
+var $keys = __webpack_require__(85);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -89812,11 +95695,11 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(201).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(80).f = $propertyIsEnumerable;
-  __webpack_require__(118).f = $getOwnPropertySymbols;
+  __webpack_require__(219).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(87).f = $propertyIsEnumerable;
+  __webpack_require__(129).f = $getOwnPropertySymbols;
 
-  if (DESCRIPTORS && !__webpack_require__(82)) {
+  if (DESCRIPTORS && !__webpack_require__(88)) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 
@@ -89891,7 +95774,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function () {
 });
 
 // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(34)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(44)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 // 19.4.3.5 Symbol.prototype[@@toStringTag]
 setToStringTag($Symbol, 'Symbol');
 // 20.2.1.9 Math[@@toStringTag]
@@ -89901,18 +95784,18 @@ setToStringTag(global.JSON, 'JSON', true);
 
 
 /***/ }),
-/* 383 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var META = __webpack_require__(79)('meta');
-var isObject = __webpack_require__(46);
-var has = __webpack_require__(35);
-var setDesc = __webpack_require__(26).f;
+var META = __webpack_require__(86)('meta');
+var isObject = __webpack_require__(54);
+var has = __webpack_require__(45);
+var setDesc = __webpack_require__(35).f;
 var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
 };
-var FREEZE = !__webpack_require__(58)(function () {
+var FREEZE = !__webpack_require__(66)(function () {
   return isExtensible(Object.preventExtensions({}));
 });
 var setMeta = function (it) {
@@ -89960,13 +95843,13 @@ var meta = module.exports = {
 
 
 /***/ }),
-/* 384 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(78);
-var gOPS = __webpack_require__(118);
-var pIE = __webpack_require__(80);
+var getKeys = __webpack_require__(85);
+var gOPS = __webpack_require__(129);
+var pIE = __webpack_require__(87);
 module.exports = function (it) {
   var result = getKeys(it);
   var getSymbols = gOPS.f;
@@ -89981,23 +95864,23 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 385 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(60);
+var cof = __webpack_require__(68);
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
 
 
 /***/ }),
-/* 386 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-var toIObject = __webpack_require__(47);
-var gOPN = __webpack_require__(201).f;
+var toIObject = __webpack_require__(55);
+var gOPN = __webpack_require__(219).f;
 var toString = {}.toString;
 
 var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -90017,18 +95900,18 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 
 /***/ }),
-/* 387 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pIE = __webpack_require__(80);
-var createDesc = __webpack_require__(59);
-var toIObject = __webpack_require__(47);
-var toPrimitive = __webpack_require__(111);
-var has = __webpack_require__(35);
-var IE8_DOM_DEFINE = __webpack_require__(181);
+var pIE = __webpack_require__(87);
+var createDesc = __webpack_require__(67);
+var toIObject = __webpack_require__(55);
+var toPrimitive = __webpack_require__(122);
+var has = __webpack_require__(45);
+var IE8_DOM_DEFINE = __webpack_require__(198);
 var gOPD = Object.getOwnPropertyDescriptor;
 
-exports.f = __webpack_require__(30) ? gOPD : function getOwnPropertyDescriptor(O, P) {
+exports.f = __webpack_require__(40) ? gOPD : function getOwnPropertyDescriptor(O, P) {
   O = toIObject(O);
   P = toPrimitive(P, true);
   if (IE8_DOM_DEFINE) try {
@@ -90039,56 +95922,21 @@ exports.f = __webpack_require__(30) ? gOPD : function getOwnPropertyDescriptor(O
 
 
 /***/ }),
-/* 388 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(124)('asyncIterator');
+__webpack_require__(135)('asyncIterator');
 
 
 /***/ }),
-/* 389 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(124)('observable');
+__webpack_require__(135)('observable');
 
 
 /***/ }),
-/* 390 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var rng = __webpack_require__(391);
-var bytesToUuid = __webpack_require__(392);
-
-function v4(options, buf, offset) {
-  var i = buf && offset || 0;
-
-  if (typeof(options) == 'string') {
-    buf = options == 'binary' ? new Array(16) : null;
-    options = null;
-  }
-  options = options || {};
-
-  var rnds = options.random || (options.rng || rng)();
-
-  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
-  rnds[6] = (rnds[6] & 0x0f) | 0x40;
-  rnds[8] = (rnds[8] & 0x3f) | 0x80;
-
-  // Copy bytes to buffer, if provided
-  if (buf) {
-    for (var ii = 0; ii < 16; ++ii) {
-      buf[i + ii] = rnds[ii];
-    }
-  }
-
-  return buf || bytesToUuid(rnds);
-}
-
-module.exports = v4;
-
-
-/***/ }),
-/* 391 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {// Unique ID creation requires a high quality random # generator.  In the
@@ -90125,10 +95973,10 @@ if (!rng) {
 
 module.exports = rng;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 392 */
+/* 413 */
 /***/ (function(module, exports) {
 
 /**
@@ -90157,7 +96005,7 @@ module.exports = bytesToUuid;
 
 
 /***/ }),
-/* 393 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90171,7 +96019,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _util = __webpack_require__(203);
+var _util = __webpack_require__(221);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -90224,7 +96072,7 @@ exports.default = function (scheme, token, params) {
 //# sourceMappingURL=format.js.map
 
 /***/ }),
-/* 394 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90234,7 +96082,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _util = __webpack_require__(203);
+var _util = __webpack_require__(221);
 
 // lol dis
 var body = /((?:[a-zA-Z0-9._~+\/-]+=*(?:\s+|$))|[^\u0000-\u001F\u007F()<>@,;:\\"/?={}\[\]\u0020\u0009]+)(?:=([^\\"=\s,]+|"(?:[^"\\]|\\.)*"))?/g; // eslint-disable-line
@@ -90285,17 +96133,7 @@ exports.default = function (str) {
 //# sourceMappingURL=parse.js.map
 
 /***/ }),
-/* 395 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(204)
-
-
-/***/ }),
-/* 396 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90310,7 +96148,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var JSONPatch = __webpack_require__(207);
+var JSONPatch = __webpack_require__(226);
 
 /**
  * JSONDocument
@@ -90481,7 +96319,7 @@ var JSONDocument = function () {
 module.exports = JSONDocument;
 
 /***/ }),
-/* 397 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90496,7 +96334,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var JSONPointer = __webpack_require__(127);
+var JSONPointer = __webpack_require__(138);
 
 /**
  * JSONPointer mode
@@ -90582,7 +96420,7 @@ var JSONMapping = function () {
 module.exports = JSONMapping;
 
 /***/ }),
-/* 398 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90601,8 +96439,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Initializer = __webpack_require__(206);
-var Validator = __webpack_require__(208);
+var Initializer = __webpack_require__(225);
+var Validator = __webpack_require__(227);
 
 /**
  * JSONSchema
@@ -90699,12 +96537,12 @@ var JSONSchema = function () {
 module.exports = JSONSchema;
 
 /***/ }),
-/* 399 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Buffer) {
-var pad_string_1 = __webpack_require__(400);
+var pad_string_1 = __webpack_require__(420);
 function encode(input, encoding) {
     if (encoding === void 0) { encoding = "utf8"; }
     if (Buffer.isBuffer(input)) {
@@ -90744,7 +96582,7 @@ exports.default = base64url;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 400 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90772,7 +96610,7 @@ exports.default = padString;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 401 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90781,10 +96619,10 @@ exports.default = padString;
 /**
  * Local dependencies
  */
-var None = __webpack_require__(402);
-var HMAC = __webpack_require__(403);
-var RSASSA_PKCS1_v1_5 = __webpack_require__(405);
-var SupportedAlgorithms = __webpack_require__(406
+var None = __webpack_require__(422);
+var HMAC = __webpack_require__(423);
+var RSASSA_PKCS1_v1_5 = __webpack_require__(425);
+var SupportedAlgorithms = __webpack_require__(426
 
 /**
  * Register Supported Algorithms
@@ -90928,7 +96766,7 @@ supportedAlgorithms.define('RS512', 'importKey', new RSASSA_PKCS1_v1_5({
 );module.exports = supportedAlgorithms;
 
 /***/ }),
-/* 402 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90978,7 +96816,7 @@ var None = function () {
 module.exports = None;
 
 /***/ }),
-/* 403 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90993,9 +96831,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var base64url = __webpack_require__(38);
-var crypto = __webpack_require__(85);
-var TextEncoder = __webpack_require__(209
+var base64url = __webpack_require__(47);
+var crypto = __webpack_require__(93);
+var TextEncoder = __webpack_require__(228
 
 /**
  * HMAC with SHA-2 Functions
@@ -91100,13 +96938,13 @@ module.exports = HMAC;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 404 */
+/* 424 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_404__;
+module.exports = __WEBPACK_EXTERNAL_MODULE_424__;
 
 /***/ }),
-/* 405 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91121,9 +96959,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var base64url = __webpack_require__(38);
-var crypto = __webpack_require__(85);
-var TextEncoder = __webpack_require__(209
+var base64url = __webpack_require__(47);
+var crypto = __webpack_require__(93);
+var TextEncoder = __webpack_require__(228
 
 /**
  * RSASSA-PKCS1-v1_5
@@ -91256,7 +97094,7 @@ module.exports = RSASSA_PKCS1_v1_5;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 406 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91269,7 +97107,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Dependencies
  */
-var NotSupportedError = __webpack_require__(210
+var NotSupportedError = __webpack_require__(229
 
 /**
  * Operations
@@ -91367,7 +97205,7 @@ var SupportedAlgorithms = function () {
 module.exports = SupportedAlgorithms;
 
 /***/ }),
-/* 407 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91376,7 +97214,7 @@ module.exports = SupportedAlgorithms;
 /**
  * Package dependencies
  */
-var _require = __webpack_require__(17
+var _require = __webpack_require__(21
 
 /**
  * Format extensions
@@ -91393,7 +97231,7 @@ Formats.register('base64url', new RegExp());
 Formats.register('MediaType', new RegExp());
 
 /***/ }),
-/* 408 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91411,11 +97249,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _require = __webpack_require__(17),
+var _require = __webpack_require__(21),
     JSONDocument = _require.JSONDocument;
 
-var JWKSetSchema = __webpack_require__(214);
-var JWK = __webpack_require__(213
+var JWKSetSchema = __webpack_require__(233);
+var JWK = __webpack_require__(232
 
 /**
  * JWKSet
@@ -91492,7 +97330,7 @@ var JWKSet = function (_JSONDocument) {
 module.exports = JWKSet;
 
 /***/ }),
-/* 409 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91511,14 +97349,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Dependencies
  */
-var base64url = __webpack_require__(38);
+var base64url = __webpack_require__(47);
 
-var _require = __webpack_require__(17),
+var _require = __webpack_require__(21),
     JSONDocument = _require.JSONDocument;
 
-var JWTSchema = __webpack_require__(215);
-var JWS = __webpack_require__(219);
-var DataError = __webpack_require__(212
+var JWTSchema = __webpack_require__(234);
+var JWS = __webpack_require__(238);
+var DataError = __webpack_require__(231
 
 /**
  * JWT
@@ -91788,18 +97626,18 @@ var JWT = function (_JSONDocument) {
 module.exports = JWT;
 
 /***/ }),
-/* 410 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {/**
  * Dependencies
  */
-const assert = __webpack_require__(126)
-const base64url = __webpack_require__(38)
-const crypto = __webpack_require__(85)
-const { JWT } = __webpack_require__(62)
-const FormUrlEncoded = __webpack_require__(220)
-const { URL } = __webpack_require__(41)
+const assert = __webpack_require__(137)
+const base64url = __webpack_require__(47)
+const crypto = __webpack_require__(93)
+const { JWT } = __webpack_require__(70)
+const FormUrlEncoded = __webpack_require__(239)
+const { URL } = __webpack_require__(50)
 
 /**
  * Authentication Request
@@ -91986,22 +97824,22 @@ module.exports = AuthenticationRequest
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 411 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, Buffer) {/**
  * Dependencies
  */
-const { URL } = __webpack_require__(41)
-const assert = __webpack_require__(126)
-const crypto = __webpack_require__(85)
-const base64url = __webpack_require__(38)
-const fetch = __webpack_require__(44)
+const { URL } = __webpack_require__(50)
+const assert = __webpack_require__(137)
+const crypto = __webpack_require__(93)
+const base64url = __webpack_require__(47)
+const fetch = __webpack_require__(33)
 const Headers = fetch.Headers ? fetch.Headers : global.Headers
-const FormUrlEncoded = __webpack_require__(220)
-const IDToken = __webpack_require__(412)
-const Session = __webpack_require__(414)
-const onHttpError = __webpack_require__(221)
+const FormUrlEncoded = __webpack_require__(239)
+const IDToken = __webpack_require__(432)
+const Session = __webpack_require__(434)
+const onHttpError = __webpack_require__(240)
 
 /**
  * AuthenticationResponse
@@ -92518,17 +98356,17 @@ class AuthenticationResponse {
  */
 module.exports = AuthenticationResponse
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(0).Buffer))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(0).Buffer))
 
 /***/ }),
-/* 412 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * Local dependencies
  */
-const {JWT} = __webpack_require__(62)
-const IDTokenSchema = __webpack_require__(413)
+const {JWT} = __webpack_require__(70)
+const IDTokenSchema = __webpack_require__(433)
 
 /**
  * IDToken
@@ -92550,13 +98388,13 @@ module.exports = IDToken
 
 
 /***/ }),
-/* 413 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * Local dependencies
  */
-const {JWTSchema} = __webpack_require__(62)
+const {JWTSchema} = __webpack_require__(70)
 
 /**
  * IDToken Schema
@@ -92733,7 +98571,7 @@ module.exports = IDTokenSchema
 
 
 /***/ }),
-/* 414 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -92773,7 +98611,7 @@ class Session {
    * @returns {Session}
    */
   static fromAuthResponse (response) {
-    const RelyingParty = __webpack_require__(204)  // import here due to circular dep
+    const RelyingParty = __webpack_require__(223)  // import here due to circular dep
 
     const payload = response.decoded.payload
     const registration = response.rp.registration
@@ -92796,13 +98634,13 @@ module.exports = Session
 
 
 /***/ }),
-/* 415 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
  * Dependencies
  */
-const {JSONSchema} = __webpack_require__(17)
+const {JSONSchema} = __webpack_require__(21)
 
 /**
  * RelyingParty Schema
@@ -92920,129 +98758,7 @@ module.exports = RelyingPartySchema
 
 
 /***/ }),
-/* 416 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _require = __webpack_require__(41),
-    URL = _require.URL;
-
-var _require2 = __webpack_require__(62),
-    JWT = _require2.JWT,
-    JWK = _require2.JWK;
-
-var DEFAULT_MAX_AGE = 3600; // Default token expiration, in seconds
-
-var PoPToken = function (_JWT) {
-  _inherits(PoPToken, _JWT);
-
-  function PoPToken() {
-    _classCallCheck(this, PoPToken);
-
-    return _possibleConstructorReturn(this, (PoPToken.__proto__ || Object.getPrototypeOf(PoPToken)).apply(this, arguments));
-  }
-
-  _createClass(PoPToken, null, [{
-    key: 'issueFor',
-
-    /**
-     * @param resourceServerUri {string} RS URI for which this token is intended
-     *
-     * @param session {Session}
-     * @param session.clientId {string}
-     * @param session.idToken {string}
-     * @param session.sessionKey {string}
-     *
-     * @returns {Promise<string>} PoPToken, encoded as compact JWT
-     */
-    value: function issueFor(resourceServerUri, session) {
-      if (!resourceServerUri) {
-        throw new Error('Cannot issue PoPToken - missing resource server URI');
-      }
-
-      if (!session.sessionKey) {
-        throw new Error('Cannot issue PoPToken - missing session key');
-      }
-
-      if (!session.idToken) {
-        throw new Error('Cannot issue PoPToken - missing id token');
-      }
-
-      var jwk = JSON.parse(session.sessionKey);
-
-      return JWK.importKey(jwk).then(function (importedSessionJwk) {
-        var options = {
-          aud: new URL(resourceServerUri).origin,
-          key: importedSessionJwk,
-          iss: session.clientId,
-          id_token: session.idToken
-        };
-
-        return PoPToken.issue(options);
-      }).then(function (jwt) {
-        return jwt.encode();
-      });
-    }
-
-    /**
-     * issue
-     *
-     * @param options {Object}
-     * @param options.iss {string} Token issuer (RP client_id)
-     * @param options.aud {string|Array<string>} Audience for the token
-     *   (such as the Resource Server url)
-     * @param options.key {JWK} Proof of Possession (private) signing key, see
-     *   https://tools.ietf.org/html/rfc7800#section-3.1
-     *
-     * @param options.id_token {string} JWT compact encoded ID Token
-     *
-     * Optional:
-     * @param [options.iat] {number} Issued at timestamp (in seconds)
-     * @param [options.max] {number} Max token lifetime in seconds
-     *
-     * @returns {PoPToken} Proof of Possession Token (JWT instance)
-     */
-
-  }, {
-    key: 'issue',
-    value: function issue(options) {
-      var aud = options.aud,
-          iss = options.iss,
-          key = options.key;
-
-
-      var alg = key.alg;
-      var iat = options.iat || Math.floor(Date.now() / 1000);
-      var max = options.max || DEFAULT_MAX_AGE;
-
-      var exp = iat + max; // token expiration
-
-      var header = { alg: alg };
-      var payload = { iss: iss, aud: aud, exp: exp, iat: iat, id_token: options.id_token, token_type: 'pop' };
-
-      var jwt = new PoPToken({ header: header, payload: payload, key: key.cryptoKey }, { filter: false });
-
-      return jwt;
-    }
-  }]);
-
-  return PoPToken;
-}(JWT);
-
-module.exports = PoPToken;
-
-/***/ }),
-/* 417 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93053,17 +98769,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.openIdpSelector = exports.startPopupServer = exports.appOriginHandler = exports.loginHandler = exports.storageHandler = undefined;
 
-var _promise = __webpack_require__(81);
+var _promise = __webpack_require__(46);
 
 var _promise2 = _interopRequireDefault(_promise);
 
-var _toConsumableArray2 = __webpack_require__(418);
+var _toConsumableArray2 = __webpack_require__(243);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
-var _ipc = __webpack_require__(200);
+var _ipc = __webpack_require__(217);
 
-var _urlUtil = __webpack_require__(129);
+var _urlUtil = __webpack_require__(140);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -93151,63 +98867,36 @@ var openIdpSelector = exports.openIdpSelector = function openIdpSelector(options
 };
 
 /***/ }),
-/* 418 */
+/* 437 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(438), __esModule: true };
+
+/***/ }),
+/* 438 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(131);
+__webpack_require__(439);
+module.exports = __webpack_require__(20).Array.from;
+
+
+/***/ }),
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+var ctx = __webpack_require__(65);
+var $export = __webpack_require__(38);
+var toObject = __webpack_require__(130);
+var call = __webpack_require__(208);
+var isArrayIter = __webpack_require__(209);
+var toLength = __webpack_require__(124);
+var createProperty = __webpack_require__(440);
+var getIterFn = __webpack_require__(210);
 
-exports.__esModule = true;
-
-var _from = __webpack_require__(419);
-
-var _from2 = _interopRequireDefault(_from);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function (arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-
-    return arr2;
-  } else {
-    return (0, _from2.default)(arr);
-  }
-};
-
-/***/ }),
-/* 419 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(420), __esModule: true };
-
-/***/ }),
-/* 420 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(120);
-__webpack_require__(421);
-module.exports = __webpack_require__(16).Array.from;
-
-
-/***/ }),
-/* 421 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var ctx = __webpack_require__(57);
-var $export = __webpack_require__(28);
-var toObject = __webpack_require__(119);
-var call = __webpack_require__(191);
-var isArrayIter = __webpack_require__(192);
-var toLength = __webpack_require__(113);
-var createProperty = __webpack_require__(422);
-var getIterFn = __webpack_require__(193);
-
-$export($export.S + $export.F * !__webpack_require__(198)(function (iter) { Array.from(iter); }), 'Array', {
+$export($export.S + $export.F * !__webpack_require__(215)(function (iter) { Array.from(iter); }), 'Array', {
   // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
   from: function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
     var O = toObject(arrayLike);
@@ -93237,13 +98926,13 @@ $export($export.S + $export.F * !__webpack_require__(198)(function (iter) { Arra
 
 
 /***/ }),
-/* 422 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $defineProperty = __webpack_require__(26);
-var createDesc = __webpack_require__(59);
+var $defineProperty = __webpack_require__(35);
+var createDesc = __webpack_require__(67);
 
 module.exports = function (object, index, value) {
   if (index in object) $defineProperty.f(object, index, createDesc(0, value));
@@ -93252,7 +98941,7 @@ module.exports = function (object, index, value) {
 
 
 /***/ }),
-/* 423 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93263,18 +98952,18 @@ module.exports = function (object, index, value) {
 */
 
 //const SolidTls = require('solid-auth-tls')
-var $rdf = __webpack_require__(18);
+var $rdf = __webpack_require__(3);
 // const error = require('./widgets/error')
-var widgets = __webpack_require__(21);
+var widgets = __webpack_require__(26);
 // const utils = require('./utils')
 
 var UI = {
-  authn: __webpack_require__(179),
-  icons: __webpack_require__(20),
-  log: __webpack_require__(19),
-  ns: __webpack_require__(7),
-  store: __webpack_require__(14),
-  utils: __webpack_require__(23)
+  authn: __webpack_require__(195),
+  icons: __webpack_require__(25),
+  log: __webpack_require__(23),
+  ns: __webpack_require__(11),
+  store: __webpack_require__(18),
+  utils: __webpack_require__(28)
 };
 
 var kb = UI.store;
@@ -93492,7 +99181,7 @@ function getNameForm(dom, kb, classLabel, gotNameCallback) {
 }
 
 /***/ }),
-/* 424 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93520,16 +99209,16 @@ function getNameForm(dom, kb, classLabel, gotNameCallback) {
 //   matrix.refresh() will re-run the query and adjust the display
 
 var UI = {
-  icons: __webpack_require__(20),
-  log: __webpack_require__(19),
-  ns: __webpack_require__(7),
-  pad: __webpack_require__(1),
-  rdf: __webpack_require__(18),
-  store: __webpack_require__(14),
-  widgets: __webpack_require__(21)
+  icons: __webpack_require__(25),
+  log: __webpack_require__(23),
+  ns: __webpack_require__(11),
+  pad: __webpack_require__(97),
+  rdf: __webpack_require__(3),
+  store: __webpack_require__(18),
+  widgets: __webpack_require__(26)
 };
 
-var utils = __webpack_require__(23);
+var utils = __webpack_require__(28);
 var kb = UI.store;
 
 module.exports.matrixForQuery = function (dom, query, vx, vy, vvalue, options, whenDone) {
@@ -93731,7 +99420,7 @@ module.exports.matrixForQuery = function (dom, query, vx, vy, vvalue, options, w
 };
 
 /***/ }),
-/* 425 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93742,16 +99431,16 @@ module.exports.matrixForQuery = function (dom, query, vx, vy, vvalue, options, w
 
 
 var UI = {
-  icons: __webpack_require__(20),
-  log: __webpack_require__(19),
-  ns: __webpack_require__(7),
-  pad: __webpack_require__(1),
-  rdf: __webpack_require__(18),
-  store: __webpack_require__(14),
-  widgets: __webpack_require__(21)
+  icons: __webpack_require__(25),
+  log: __webpack_require__(23),
+  ns: __webpack_require__(11),
+  pad: __webpack_require__(97),
+  rdf: __webpack_require__(3),
+  store: __webpack_require__(18),
+  widgets: __webpack_require__(26)
 };
 
-var utils = __webpack_require__(23);
+var utils = __webpack_require__(28);
 var kb = UI.store;
 
 var buttonStyle = 'font-size: 100%; margin: 0.8em; padding:0.5em; background-color: white;';
@@ -94046,7 +99735,7 @@ module.exports = function (dom, kb, subject, messageStore, options) {
 };
 
 /***/ }),
-/* 426 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94058,19 +99747,19 @@ module.exports = function (dom, kb, subject, messageStore, options) {
 //
 //   See notepad for the main widget
 
-var $rdf = __webpack_require__(18);
+var $rdf = __webpack_require__(3);
 var padModule = module.exports = {};
 var UI = {
-    icons: __webpack_require__(20),
-    log: __webpack_require__(19),
-    ns: __webpack_require__(7),
+    icons: __webpack_require__(25),
+    log: __webpack_require__(23),
+    ns: __webpack_require__(11),
     pad: padModule,
     rdf: $rdf,
-    store: __webpack_require__(14),
-    widgets: __webpack_require__(21)
+    store: __webpack_require__(18),
+    widgets: __webpack_require__(26)
 };
 
-var utils = __webpack_require__(23);
+var utils = __webpack_require__(28);
 
 // Figure out a random color from my webid
 
@@ -94781,7 +100470,7 @@ UI.pad.notepad = function (dom, padDoc, subject, me, options) {
 };
 
 /***/ }),
-/* 427 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94803,15 +100492,15 @@ UI.pad.notepad = function (dom, padDoc, subject, me, options) {
 //
 
 var UI = {
-  icons: __webpack_require__(20),
-  log: __webpack_require__(19),
-  ns: __webpack_require__(7),
-  store: __webpack_require__(14),
-  widgets: __webpack_require__(21)
+  icons: __webpack_require__(25),
+  log: __webpack_require__(23),
+  ns: __webpack_require__(11),
+  store: __webpack_require__(18),
+  widgets: __webpack_require__(26)
 };
 
-var utils = __webpack_require__(23);
-var $rdf = __webpack_require__(18);
+var utils = __webpack_require__(28);
+var $rdf = __webpack_require__(3);
 
 // UI.widgets.renderTableViewPane
 module.exports = function renderTableViewPane(doc, options) {
@@ -96516,7 +102205,7 @@ module.exports = function renderTableViewPane(doc, options) {
 // ENDS
 
 /***/ }),
-/* 428 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -96535,15 +102224,15 @@ var tabs = {};
 module.exports = tabs;
 
 var UI = {
-  icons: __webpack_require__(20),
-  log: __webpack_require__(19),
-  ns: __webpack_require__(7),
-  store: __webpack_require__(14),
+  icons: __webpack_require__(25),
+  log: __webpack_require__(23),
+  ns: __webpack_require__(11),
+  store: __webpack_require__(18),
   tabs: tabs,
-  widgets: __webpack_require__(21)
+  widgets: __webpack_require__(26)
 };
 
-var utils = __webpack_require__(23);
+var utils = __webpack_require__(28);
 
 // options.subject
 // options.orientation 0 top, 1 left, 2 bottom, 3 right
@@ -96826,7 +102515,7 @@ UI.tabs.tabWidget = function (options) {
 };
 
 /***/ }),
-/* 429 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -96887,7 +102576,7 @@ paneModule.byName = function (name) {
 };
 
 // This has common outline mode functionality for the default and other other panes
-paneModule.OutlineManager = __webpack_require__(223);
+paneModule.OutlineManager = __webpack_require__(244);
 
 paneModule.getOutliner = function (dom) {
   if (!dom.outliner) {
@@ -96901,59 +102590,59 @@ paneModule.getOutliner = function (dom) {
 */
 // Developer designed:
 
-paneModule.register(__webpack_require__(433));
-paneModule.register(__webpack_require__(434));
+paneModule.register(__webpack_require__(463));
+paneModule.register(__webpack_require__(464));
 
-paneModule.register(__webpack_require__(441));
-paneModule.register(__webpack_require__(442)); // A posistion in an argumnent tree
+paneModule.register(__webpack_require__(471));
+paneModule.register(__webpack_require__(472)); // A posistion in an argumnent tree
 
-paneModule.register(__webpack_require__(443));
-paneModule.register(__webpack_require__(444));
-paneModule.register(__webpack_require__(445));
+paneModule.register(__webpack_require__(473));
+paneModule.register(__webpack_require__(474));
+paneModule.register(__webpack_require__(475));
 //paneModule.register(require('./publication/publicationPane.js'))
-paneModule.register(__webpack_require__(446));
-paneModule.register(__webpack_require__(448));
-paneModule.register(__webpack_require__(449));
-paneModule.register(__webpack_require__(450));
+paneModule.register(__webpack_require__(476));
+paneModule.register(__webpack_require__(478));
+paneModule.register(__webpack_require__(479));
+paneModule.register(__webpack_require__(480));
 
-paneModule.register(__webpack_require__(451));
-paneModule.register(__webpack_require__(452));
+paneModule.register(__webpack_require__(481));
+paneModule.register(__webpack_require__(482));
 
 // Content views
 
-paneModule.register(__webpack_require__(453)); // Basic image view
-paneModule.register(__webpack_require__(454)); // Basic playlist view
+paneModule.register(__webpack_require__(483)); // Basic image view
+paneModule.register(__webpack_require__(484)); // Basic playlist view
 
-paneModule.register(__webpack_require__(455)); // Video clip player
-paneModule.register(__webpack_require__(456)); // Audio clip player
+paneModule.register(__webpack_require__(485)); // Video clip player
+paneModule.register(__webpack_require__(486)); // Audio clip player
 
 
-paneModule.register(__webpack_require__(457)); // Should be above dataContentPane
-paneModule.register(__webpack_require__(459)); // Should be above dataContentPane
-paneModule.register(__webpack_require__(460)); // Should be above dataContentPane
+paneModule.register(__webpack_require__(487)); // Should be above dataContentPane
+paneModule.register(__webpack_require__(489)); // Should be above dataContentPane
+paneModule.register(__webpack_require__(490)); // Should be above dataContentPane
 // paneModule.register(require('./dynamic/dynamicPanes.js')) // warp etc  warp broken 2017/8
-paneModule.register(__webpack_require__(461));
+paneModule.register(__webpack_require__(491));
 
-paneModule.register(__webpack_require__(463));
+paneModule.register(__webpack_require__(493));
 
-paneModule.register(__webpack_require__(464)); // A web page as a web page -- how to escape to tabr?
-paneModule.register(__webpack_require__(465)); // Prefered for a data file
-paneModule.register(__webpack_require__(466));
-paneModule.register(__webpack_require__(467));
+paneModule.register(__webpack_require__(494)); // A web page as a web page -- how to escape to tabr?
+paneModule.register(__webpack_require__(495)); // Prefered for a data file
+paneModule.register(__webpack_require__(496));
+paneModule.register(__webpack_require__(497));
 
 // User configured:
-paneModule.register(__webpack_require__(468));
+paneModule.register(__webpack_require__(498));
 
 // Generic:
 
-paneModule.register(__webpack_require__(469));
-paneModule.register(__webpack_require__(470));
+paneModule.register(__webpack_require__(499));
+paneModule.register(__webpack_require__(500));
 
 // Fallback totally generic:
-paneModule.register(__webpack_require__(471));
+paneModule.register(__webpack_require__(501));
 
 // paneModule.register(require("newOutline.js"))
-paneModule.register(__webpack_require__(472));
+paneModule.register(__webpack_require__(502));
 // paneModule.register(require("categoryPane.js"))  // Not useful enough
 // paneModule.register(require("pubsPane.js")) // not finished
 
@@ -96961,7 +102650,7 @@ paneModule.register(__webpack_require__(472));
 // Note must use // not /* to comment out to make sure expander sees it
 // paneModule.register(require("lawPane.js"))
 
-paneModule.register(__webpack_require__(473));
+paneModule.register(__webpack_require__(503));
 
 // paneModule.register(require("./social/pane.js")) // competitor to other social
 // paneModule.register(require("./airPane.js"))
@@ -96973,17 +102662,17 @@ paneModule.register(__webpack_require__(473));
 // paneModule.register(require("photoImportPane.js"))
 
 // The sharing pane is fairly generic and administrative  201
-paneModule.register(__webpack_require__(474));
+paneModule.register(__webpack_require__(504));
 
 // The internals pane is always (almost?) the last as it is the least user-friendly
-paneModule.register(__webpack_require__(475));
+paneModule.register(__webpack_require__(505));
 // The home pame is a 2016 experiment. Always there.
-paneModule.register(__webpack_require__(476));
+paneModule.register(__webpack_require__(506));
 
 // ENDS
 
 /***/ }),
-/* 430 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -97381,7 +103070,7 @@ var TabulatorOutlinerObserver = {
 };
 
 /***/ }),
-/* 431 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -97391,7 +103080,7 @@ var TabulatorOutlinerObserver = {
 
 
 var outlineIcons = module.exports = {}; // was tabulator.Icon
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 outlineIcons.src = []; // collect the URIs of the icon filterColumns
 outlineIcons.tooltips = []; // look up tool tips from URL
@@ -97514,7 +103203,5444 @@ outlineIcons.termWidgets.addTri = new outlineIcons.OutlinerIcon(outlineIcons.src
 // Ideally: "New "+label(subject)
 
 /***/ }),
-/* 432 */
+/* 450 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GroupBuilder = exports.Group = exports.GroupPicker = exports.PeoplePicker = undefined;
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}(); /**
+      *
+      * People Picker Pane
+      *
+      * This pane offers a mechanism for selecting a set of individuals, groups, or
+      * organizations to take some action on.
+      *
+      * Assumptions
+      *   - Assumes that the user has a type index entry for vcard:AddressBook.
+      *
+      */
+
+// const webClient = require('solid-web-client')(rdf)
+
+var _templateObject = _taggedTemplateLiteral(['\n        To add someone to this group, drag and drop their WebID URL onto the box.\n      '], ['\n        To add someone to this group, drag and drop their WebID URL onto the box.\n      ']);
+
+var _escapeHtml = __webpack_require__(163);
+
+var _escapeHtml2 = _interopRequireDefault(_escapeHtml);
+
+var _nodeUuid = __webpack_require__(164);
+
+var _nodeUuid2 = _interopRequireDefault(_nodeUuid);
+
+var _rdflib = __webpack_require__(3);
+
+var _rdflib2 = _interopRequireDefault(_rdflib);
+
+var _dragAndDrop = __webpack_require__(246);
+
+var _error = __webpack_require__(95);
+
+var _iconBase = __webpack_require__(29);
+
+var _ns = __webpack_require__(14);
+
+var _ns2 = _interopRequireDefault(_ns);
+
+var _store = __webpack_require__(22);
+
+var _store2 = _interopRequireDefault(_store);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+var PeoplePicker = exports.PeoplePicker = function () {
+  function PeoplePicker(element, typeIndex, groupPickedCb, options) {
+    _classCallCheck(this, PeoplePicker);
+
+    this.options = options || {};
+    this.element = element;
+    this.typeIndex = typeIndex;
+    this.groupPickedCb = groupPickedCb;
+    this.selectedgroup = this.options.selectedgroup; // current selected group if any
+    this.onSelectGroup = this.onSelectGroup.bind(this);
+  }
+
+  _createClass(PeoplePicker, [{
+    key: 'render',
+    value: function render() {
+      var _this = this;
+
+      var container = document.createElement('div');
+      container.style.maxWidth = '350px';
+      container.style.minHeight = '200px';
+      container.style.outline = '1px solid black';
+      container.style.display = 'flex';
+
+      if (this.selectedgroup) {
+        container.style.flexDirection = 'column';
+        var selectedGroup = document.createElement('div');
+        new Group(selectedGroup, this.selectedgroup).render();
+        var changeGroupButton = document.createElement('button');
+        changeGroupButton.textContent = (0, _escapeHtml2.default)('Change group');
+        changeGroupButton.addEventListener('click', function (event) {
+          _this.selectedgroup = null;
+          _this.render();
+        });
+        container.appendChild(selectedGroup);
+        container.appendChild(changeGroupButton);
+      } else {
+        this.findAddressBook(this.typeIndex).then(function (_ref) {
+          var book = _ref.book;
+
+          var chooseExistingGroupButton = document.createElement('button');
+          chooseExistingGroupButton.textContent = (0, _escapeHtml2.default)('Pick an existing group');
+          chooseExistingGroupButton.style.margin = 'auto';
+          chooseExistingGroupButton.addEventListener('click', function (event) {
+            new GroupPicker(container, book, _this.onSelectGroup).render();
+          });
+
+          var createNewGroupButton = document.createElement('button');
+          createNewGroupButton.textContent = (0, _escapeHtml2.default)('Create a new group');
+          createNewGroupButton.style.margin = 'auto';
+          createNewGroupButton.addEventListener('click', function (event) {
+            _this.createNewGroup(book).then(function (_ref2) {
+              var group = _ref2.group;
+
+              new GroupBuilder(_this.element, book, group, _this.onSelectGroup).render();
+            }).catch(function (errorBody) {
+              _this.element.appendChild((0, _error.errorMessageBlock)(document, (0, _escapeHtml2.default)('Error creating a new group. (' + errorBody + ')')));
+            });
+          });
+
+          container.appendChild(chooseExistingGroupButton);
+          container.appendChild(createNewGroupButton);
+
+          _this.element.innerHTML = '';
+          _this.element.appendChild(container);
+        }).catch(function (err) {
+          _this.element.appendChild((0, _error.errorMessageBlock)(document, (0, _escapeHtml2.default)('Could find your groups. (' + err + ')')));
+        });
+      }
+
+      this.element.innerHTML = '';
+      this.element.appendChild(container);
+      return this;
+    }
+  }, {
+    key: 'findAddressBook',
+    value: function findAddressBook(typeIndex) {
+      return new Promise(function (resolve, reject) {
+        _store2.default.fetcher.nowOrWhenFetched(typeIndex, function (ok, err) {
+          if (!ok) {
+            return reject(err);
+          }
+          var bookRegistration = _store2.default.any(null, _ns2.default.solid('forClass'), _ns2.default.vcard('AddressBook'));
+          if (!bookRegistration) {
+            return reject(new Error('no address book registered in the solid type index ' + typeIndex));
+          }
+          var book = _store2.default.any(bookRegistration, _ns2.default.solid('instance'));
+          if (!book) {
+            return reject(new Error('incomplete address book registration'));
+          }
+          _store2.default.fetcher.load(book).then(function (xhr) {
+            return resolve({ book: book });
+          }).catch(function (err) {
+            return reject(new Error('Could not load address book ' + err));
+          });
+        });
+      });
+    }
+  }, {
+    key: 'createNewGroup',
+    value: function createNewGroup(book) {
+      var _indexes = indexes(book),
+          groupIndex = _indexes.groupIndex,
+          groupContainer = _indexes.groupContainer;
+
+      var group = _rdflib2.default.sym('' + groupContainer.uri + _nodeUuid2.default.v4().slice(0, 8) + '.ttl#this');
+      var name = this.options.defaultNewGroupName || 'Untitled Group';
+
+      // NOTE that order matters here.  Unfortunately this type of update is
+      // non-atomic in that solid requires us to send two PATCHes, either of which
+      // might fail.
+      var patchPromises = [group.doc(), groupIndex].map(function (doc) {
+        var typeStatement = _rdflib2.default.st(group, _ns2.default.rdf('type'), _ns2.default.vcard('Group'), doc);
+        var nameStatement = _rdflib2.default.st(group, _ns2.default.vcard('fn'), name, group.doc(), doc);
+        var includesGroupStatement = _rdflib2.default.st(book, _ns2.default.vcard('includesGroup'), group, doc);
+        var toIns = doc.equals(groupIndex) ? [typeStatement, nameStatement, includesGroupStatement] : [typeStatement, nameStatement];
+        return patch(doc.uri, { toIns: toIns }).then(function () {
+          toIns.forEach(function (st) {
+            _store2.default.add(st);
+          });
+        });
+      });
+      return Promise.all(patchPromises).then(function () {
+        return { group: group };
+      }).catch(function (err) {
+        console.log('Could not create new group.  PATCH failed ' + err);
+        throw new Error('Couldn\'t create new group.  PATCH failed for (' + (err.xhr ? err.xhr.responseURL : '') + ')');
+      });
+    }
+  }, {
+    key: 'onSelectGroup',
+    value: function onSelectGroup(group) {
+      this.selectedgroup = group;
+      this.groupPickedCb(group);
+      this.render();
+    }
+  }]);
+
+  return PeoplePicker;
+}();
+
+var GroupPicker = exports.GroupPicker = function () {
+  function GroupPicker(element, book, onSelectGroup) {
+    _classCallCheck(this, GroupPicker);
+
+    this.element = element;
+    this.book = book;
+    this.onSelectGroup = onSelectGroup;
+  }
+
+  _createClass(GroupPicker, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      this.loadGroups().then(function (groups) {
+        // render the groups
+        var container = document.createElement('div');
+        container.style.display = 'flex';
+        container.style.flexDirection = 'column';
+        groups.forEach(function (group) {
+          var groupButton = document.createElement('button');
+          groupButton.addEventListener('click', _this2.handleClickGroup(group));
+          new Group(groupButton, group).render();
+          container.appendChild(groupButton);
+        });
+        _this2.element.innerHTML = '';
+        _this2.element.appendChild(container);
+      }).catch(function (err) {
+        _this2.element.appendChild((0, _error.errorMessageBlock)(document, (0, _escapeHtml2.default)('There was an error loading your groups. (' + err + ')')));
+      });
+      return this;
+    }
+  }, {
+    key: 'loadGroups',
+    value: function loadGroups() {
+      var _this3 = this;
+
+      return new Promise(function (resolve, reject) {
+        var _indexes2 = indexes(_this3.book),
+            groupIndex = _indexes2.groupIndex;
+
+        _store2.default.fetcher.nowOrWhenFetched(groupIndex, function (ok, err) {
+          if (!ok) {
+            return reject(err);
+          }
+          var groups = _store2.default.each(_this3.book, _ns2.default.vcard('includesGroup'));
+          return resolve(groups);
+        });
+      });
+    }
+  }, {
+    key: 'handleClickGroup',
+    value: function handleClickGroup(group) {
+      var _this4 = this;
+
+      return function (event) {
+        _this4.onSelectGroup(group);
+      };
+    }
+  }]);
+
+  return GroupPicker;
+}();
+
+var Group = exports.Group = function () {
+  function Group(element, group) {
+    _classCallCheck(this, Group);
+
+    this.element = element;
+    this.group = group;
+  }
+
+  _createClass(Group, [{
+    key: 'render',
+    value: function render() {
+      var container = document.createElement('div');
+      container.textContent = (0, _escapeHtml2.default)( // @@@@@ need to escape??
+      getWithDefault(this.group, _ns2.default.vcard('fn'), '[' + this.group.value + ']'));
+      this.element.innerHTML = '';
+      this.element.appendChild(container);
+      return this;
+    }
+  }]);
+
+  return Group;
+}();
+
+var GroupBuilder = exports.GroupBuilder = function () {
+  function GroupBuilder(element, book, group, doneBuildingCb, groupChangedCb) {
+    _classCallCheck(this, GroupBuilder);
+
+    this.element = element;
+    this.book = book;
+    this.group = group;
+    this.onGroupChanged = function (err, changeType, agent) {
+      if (groupChangedCb) {
+        groupChangedCb(err, changeType, agent);
+      }
+    };
+    this.groupChangedCb = groupChangedCb;
+    this.doneBuildingCb = doneBuildingCb;
+  }
+
+  _createClass(GroupBuilder, [{
+    key: 'refresh',
+    value: function refresh() {
+      // TODO: implement
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this5 = this;
+
+      var dropContainer = document.createElement('div');
+      dropContainer.style.maxWidth = '350px';
+      dropContainer.style.minHeight = '200px';
+      dropContainer.style.outline = '1px solid black';
+      dropContainer.style.display = 'flex';
+      dropContainer.style.flexDirection = 'column';
+
+      (0, _dragAndDrop.makeDropTarget)(dropContainer, function (uris) {
+        uris.map(function (uri) {
+          _this5.add(uri).catch(function (err) {
+            _this5.element.appendChild((0, _error.errorMessageBlock)(document, (0, _escapeHtml2.default)('Could not add the given WebId. (' + err + ')')));
+          });
+        });
+      });
+
+      var groupNameInput = document.createElement('input');
+      groupNameInput.type = 'text';
+      groupNameInput.value = getWithDefault(this.group, _ns2.default.vcard('fn'), 'Untitled Group');
+      groupNameInput.addEventListener('change', function (event) {
+        _this5.setGroupName(event.target.value).catch(function (err) {
+          _this5.element.appendChild((0, _error.errorMessageBlock)(document, 'Error changing group name. (' + err + ')'));
+        });
+      });
+      var groupNameLabel = document.createElement('label');
+      groupNameLabel.textContent = (0, _escapeHtml2.default)('Group Name:');
+      groupNameLabel.appendChild(groupNameInput);
+      dropContainer.appendChild(groupNameLabel);
+
+      if (_store2.default.any(this.group, _ns2.default.vcard('hasMember'))) {
+        _store2.default.match(this.group, _ns2.default.vcard('hasMember')).forEach(function (statement) {
+          var webIdNode = statement.object;
+          var personDiv = document.createElement('div');
+          new Person(personDiv, webIdNode, _this5.handleRemove(webIdNode)).render();
+          dropContainer.appendChild(personDiv);
+        });
+      } else {
+        var copy = document.createElement('p');
+        copy.textContent = (0, _escapeHtml2.default)(_templateObject);
+        dropContainer.appendChild(copy);
+      }
+
+      var doneBuildingButton = document.createElement('button');
+      doneBuildingButton.textContent = (0, _escapeHtml2.default)('Done');
+      doneBuildingButton.addEventListener('click', function (event) {
+        _this5.doneBuildingCb(_this5.group);
+      });
+      dropContainer.appendChild(doneBuildingButton);
+
+      this.element.innerHTML = '';
+      this.element.appendChild(dropContainer);
+      return this;
+    }
+  }, {
+    key: 'add',
+    value: function add(webId) {
+      var _this6 = this;
+
+      return new Promise(function (resolve, reject) {
+        _store2.default.fetcher.nowOrWhenFetched(webId, function (ok, err) {
+          if (!ok) {
+            _this6.onGroupChanged(err);
+            return reject(err);
+          }
+          // make sure it's a valid person, group, or entity (for now just handle
+          // webId)
+          var webIdNode = _rdflib2.default.namedNode(webId);
+          var rdfClass = _store2.default.any(webIdNode, _ns2.default.rdf('type'));
+          if (!rdfClass || !rdfClass.equals(_ns2.default.foaf('Person'))) {
+            return reject(new Error('Only people supported right now. (tried to add something of type ' + rdfClass.value + ')'));
+          }
+          return resolve(webIdNode);
+        });
+      }).then(function (webIdNode) {
+        var statement = _rdflib2.default.st(_this6.group, _ns2.default.vcard('hasMember'), webIdNode);
+        if (_store2.default.holdsStatement(statement)) {
+          return webIdNode;
+        }
+        return patch(_this6.group.doc().uri, { toIns: [statement] }).then(function () {
+          statement.why = _this6.group.doc();
+          _store2.default.add(statement);
+          _this6.onGroupChanged(null, 'added', webIdNode);
+          _this6.render();
+        });
+      });
+    }
+  }, {
+    key: 'handleRemove',
+    value: function handleRemove(webIdNode) {
+      var _this7 = this;
+
+      return function (event) {
+        var statement = _rdflib2.default.st(_this7.group, _ns2.default.vcard('hasMember'), webIdNode);
+        return patch(_this7.group.doc().uri, { toDel: [statement] }).then(function () {
+          _store2.default.remove(statement);
+          _this7.onGroupChanged(null, 'removed', webIdNode);
+          _this7.render();
+          return true;
+        }).catch(function (err) {
+          var name = _store2.default.any(webIdNode, _ns2.default.foaf('name'));
+          var errorMessage = name && name.value ? 'Could not remove ' + name.value + '. (' + err + ')' : 'Could not remove ' + webIdNode.value + '. (' + err + ')';
+          throw new Error(errorMessage);
+        });
+      };
+    }
+  }, {
+    key: 'setGroupName',
+    value: function setGroupName(name) {
+      var _this8 = this;
+
+      var _indexes3 = indexes(this.book),
+          groupIndex = _indexes3.groupIndex;
+
+      var updatePromises = [this.group.doc(), groupIndex].map(function (namedGraph) {
+        var oldNameStatements = _store2.default.match(_this8.group, _ns2.default.vcard('fn'), null, namedGraph);
+        var newNameStatement = _rdflib2.default.st(_this8.group, _ns2.default.vcard('fn'), _rdflib2.default.literal(name));
+        return patch(namedGraph.value, { toDel: oldNameStatements, toIns: [newNameStatement] }).then(function (solidResponse) {
+          _store2.default.removeStatements(oldNameStatements);
+          newNameStatement.why = namedGraph;
+          _store2.default.add(newNameStatement);
+        });
+      });
+      return Promise.all(updatePromises);
+    }
+  }]);
+
+  return GroupBuilder;
+}();
+
+var Person = function () {
+  function Person(element, webIdNode, handleRemove) {
+    _classCallCheck(this, Person);
+
+    this.webIdNode = webIdNode;
+    this.element = element;
+    this.handleRemove = handleRemove;
+  }
+
+  _createClass(Person, [{
+    key: 'render',
+    value: function render() {
+      var _this9 = this;
+
+      var container = document.createElement('div');
+      container.style.display = 'flex';
+
+      // TODO: take a look at UI.widgets.setName
+      var imgSrc = getWithDefault(this.webIdNode, _ns2.default.foaf('img'), _iconBase.iconBase + 'noun_15059.svg');
+      var profileImg = document.createElement('img');
+      profileImg.src = (0, _escapeHtml2.default)(imgSrc);
+      profileImg.width = '50';
+      profileImg.height = '50';
+      profileImg.style.margin = '5px';
+
+      // TODO: take a look at UI.widgets.setImage
+      var name = getWithDefault(this.webIdNode, _ns2.default.foaf('name'), '[' + this.webIdNode + ']');
+      var nameSpan = document.createElement('span');
+      nameSpan.innerHTML = (0, _escapeHtml2.default)(name);
+      nameSpan.style.flexGrow = '1';
+      nameSpan.style.margin = 'auto 0';
+
+      var removeButton = document.createElement('button');
+      removeButton.textContent = 'Remove';
+      removeButton.addEventListener('click', function (event) {
+        return _this9.handleRemove().catch(function (err) {
+          _this9.element.appendChild((0, _error.errorMessageBlock)(document, (0, _escapeHtml2.default)('' + err)));
+        });
+      });
+      removeButton.style.margin = '5px';
+
+      container.appendChild(profileImg);
+      container.appendChild(nameSpan);
+      container.appendChild(removeButton);
+
+      this.element.innerHTML = '';
+      this.element.appendChild(container);
+      return this;
+    }
+  }]);
+
+  return Person;
+}();
+
+function getWithDefault(subject, predicate, defaultValue) {
+  var object = _store2.default.any(subject, predicate);
+  return object ? object.value : defaultValue;
+}
+
+function patch(url, _ref3) {
+  var toDel = _ref3.toDel,
+      toIns = _ref3.toIns;
+
+  return new Promise(function (resolve, reject) {
+    _store2.default.updater.update(toDel, toIns, function (uri, success, errorMessage) {
+      if (!success) {
+        return reject(new Error('PATCH failed for resource <' + uri + '>: ' + errorMessage));
+      }
+      resolve();
+    });
+  });
+  // return webClient.patch(url, toDel, toIns)
+  //   .then(solidResponse => {
+  //     const status = solidResponse.xhr.status
+  //     if (status < 200 || status >= 400) {
+  //       const err = new Error(`PATCH failed for resource <${solidResponse.url}>`)
+  //       err.solidResponse = solidResponse
+  //       throw err
+  //     }
+  //   })
+}
+
+function indexes(book) {
+  return {
+    // bookIndex: book,
+    groupIndex: _store2.default.any(book, _ns2.default.vcard('groupIndex')),
+    groupContainer: _store2.default.sym(book.dir().uri + 'Group/')
+  };
+}
+
+/***/ }),
+/* 451 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* global confirm */
+// ///////////////////////////// ACL User Interface
+
+// See https://www.coshx.com/blog/2014/04/11/preventing-drag-and-drop-disasters-with-a-chrome-userscript/
+// Without this dropping anything onto a browser page will cause chrome etc to jump to diff page
+// throwing away all the user's work.
+
+var UI = {};
+
+UI.acl = __webpack_require__(245);
+UI.ns = __webpack_require__(14);
+UI.widgets = __webpack_require__(30);
+UI.aclControl = module.exports = {};
+var utils = __webpack_require__(31);
+
+// In apps which may use drag and drop, this utility takes care of the fact
+// by default in a browser, an uncuaght user drop into a browser window
+// causes the bowser to lose all its work in tat window and navigate to another page
+UI.aclControl.preventBrowserDropEvents = function (document) {
+  console.log('preventBrowserDropEvents called.');
+  if (typeof tabulator !== 'undefined') {
+    if (tabulator.preventBrowserDropEventsDone) return;
+    tabulator.preventBrowserDropEventsDone = true;
+  }
+
+  function preventDrag(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    // console.log("@@@@ document-level drag suppressed: " + e.dataTransfer.dropEffect)
+  }
+
+  function handleDrop(e) {
+    if (e.dataTransfer.files.length > 0) {
+      if (!confirm('Are you sure you want to drop this file here? ' + '(Cancel opens it in a new tab)')) {
+        e.stopPropagation();
+        e.preventDefault();
+        console.log('@@@@ document-level DROP suppressed: ' + e.dataTransfer.dropEffect);
+        /*
+                var file = e.dataTransfer.files[0]
+                var reader = new FileReader()
+                 reader.onload = function (event) {
+                  window.open(reader.result)
+                }
+                reader.readAsDataURL(file)
+        */
+      }
+    }
+  }
+  document.addEventListener('drop', handleDrop, false);
+  document.addEventListener('dragenter', preventDrag, false);
+  document.addEventListener('dragover', preventDrag, false);
+};
+
+UI.aclControl.shortNameForFolder = function (x) {
+  var str = x.uri;
+  if (str.slice(-1) === '/') {
+    str = str.slice(0, -1);
+  }
+  var slash = str.lastIndexOf('/');
+  if (slash >= 0) {
+    str = str.slice(slash + 1);
+  }
+  return str || '/';
+};
+
+UI.aclControl.ACLControlBox5 = function (subject, dom, noun, kb, callback) {
+  var updater = kb.updater || new $rdf.UpdateManager(kb);
+  var ACL = UI.ns.acl;
+  var doc = subject.doc(); // The ACL is actually to the doc describing the thing
+
+  var table = dom.createElement('table');
+  table.setAttribute('style', 'margin: 1em; border: 0.1em #ccc ;');
+  var headerRow = table.appendChild(dom.createElement('tr'));
+  headerRow.textContent = 'Sharing for ' + noun + ' ' + utils.label(subject);
+  headerRow.setAttribute('style', 'min-width: 20em; padding: 1em; font-size: 120%; border-bottom: 0.1em solid red; margin-bottom: 2em;');
+
+  var statusRow = table.appendChild(dom.createElement('tr'));
+  var statusBlock = statusRow.appendChild(dom.createElement('div'));
+  statusBlock.setAttribute('style', 'padding: 2em;');
+  var MainRow = table.appendChild(dom.createElement('tr'));
+  var box = MainRow.appendChild(dom.createElement('table'));
+  var bottomRow = table.appendChild(dom.createElement('tr'));
+
+  var bigButtonStyle = 'border-radius: 0.3em; background-color: white; border: 0.01em solid #888;';
+
+  var ACLControlEditable = function ACLControlEditable(box, doc, aclDoc, kb, options) {
+    var defaultOrMain = options.doingDefault ? 'default' : 'main';
+    options = options || {};
+    var ac = UI.acl.readACL(doc, aclDoc, kb, options.doingDefaults); // Note kb might not be normal one
+    var byCombo;
+    box[defaultOrMain] = byCombo = UI.acl.ACLbyCombination(ac);
+    var kToCombo = function kToCombo(k) {
+      var y = ['Read', 'Append', 'Write', 'Control'];
+      var combo = [];
+      for (var i = 0; i < 4; i++) {
+        if (k & 1 << i) {
+          combo.push('http://www.w3.org/ns/auth/acl#' + y[i]);
+        }
+      }
+      combo.sort();
+      combo = combo.join('\n');
+      return combo;
+    };
+    var colloquial = { 13: 'Owners', 9: 'Owners (write locked)', 5: 'Editors', 3: 'Posters', 2: 'Submitters', 1: 'Viewers' };
+    var recommended = { 13: true, 5: true, 3: true, 2: true, 1: true };
+    var explanation = {
+      13: 'can read, write, and control sharing.',
+      9: 'can read and control sharing, currently write-locked.',
+      5: 'can read and change information',
+      3: 'can add new information, and read but not change existing information',
+      2: 'can add new information but not read any',
+      1: 'can read but not change information'
+    };
+
+    var kToColor = { 13: 'purple', 9: 'blue', 5: 'red', 3: 'orange', 2: '#cc0', 1: 'green' };
+
+    var ktToList = function ktToList(k) {
+      var list = '';
+      var y = ['Read', 'Append', 'Write', 'Control'];
+      for (var i = 0; i < 4; i++) {
+        if (k & 1 << i) {
+          list += y[i];
+        }
+      }
+    };
+
+    var removeAgentFromCombos = function removeAgentFromCombos(uri) {
+      for (var k = 0; k < 16; k++) {
+        var a = byCombo[kToCombo(k)];
+        if (a) {
+          for (var i = 0; i < a.length; i++) {
+            while (i < a.length && a[i][1] === uri) {
+              a.splice(i, 1);
+            }
+          }
+        }
+      }
+    };
+
+    //
+    var agentTriage = function agentTriage(uri) {
+      var ns = UI.ns;
+      var obj = $rdf.sym(uri);
+      var types = kb.findTypeURIs(obj);
+      for (var ty in types) {
+        console.log('    drop object type includes: ' + ty);
+      }
+      // An Origin URI is one like https://fred.github.io eith no trailing slash
+      if (uri.startsWith('http') && uri.split('/').length === 3) {
+        // there is no third slash
+        return { pred: 'origin', obj: obj // The only way to know an origin alas
+        };
+      }
+
+      if (ns.vcard('WebID').uri in types) return { pred: 'agent', obj: obj };
+
+      if (ns.vcard('Group').uri in types) {
+        return { pred: 'agentGroup', obj: obj // @@ note vcard membership not RDFs
+        };
+      }
+      if (obj.sameTerm(ns.foaf('Agent')) || obj.sameTerm(ns.rdf('Resource')) || obj.sameTerm(ns.owl('Thing'))) {
+        return { pred: 'agentClass', obj: obj };
+      }
+      if (ns.vcard('Individual').uri in types || ns.foaf('Person').uri in types || ns.foaf('Agent').uri in types) {
+        var pref = kb.any(obj, ns.foaf('preferredURI'));
+        if (pref) return { pred: 'agent', obj: $rdf.sym(pref) };
+        return { pred: 'agent', obj: obj };
+      }
+      if (ns.solid('AppProvider').uri in types) {
+        return { pred: 'origin', obj: obj };
+      }
+      if (ns.solid('AppProviderClass').uri in types) {
+        return { pred: 'originClass', obj: obj };
+      }
+      console.log('    Triage fails for ' + uri);
+    };
+
+    box.saveBack = function (callback) {
+      var kb2 = $rdf.graph();
+      if (!box.isContainer) {
+        UI.acl.makeACLGraphbyCombo(kb2, doc, box.mainByCombo, aclDoc, true);
+      } else if (box.defaultsDiffer) {
+        // Pair of controls
+        UI.acl.makeACLGraphbyCombo(kb2, doc, box.mainByCombo, aclDoc, true);
+        UI.acl.makeACLGraphbyCombo(kb2, doc, box.defByCombo, aclDoc, false, true);
+      } else {
+        // Linked controls
+        UI.acl.makeACLGraphbyCombo(kb2, doc, box.mainByCombo, aclDoc, true, true);
+      }
+      var updater = kb2.updater || new $rdf.UpdateManager(kb2);
+      updater.put(aclDoc, kb2.statementsMatching(undefined, undefined, undefined, aclDoc), 'text/turtle', function (uri, ok, message) {
+        if (!ok) {
+          console.log('ACL file save failed: ' + message);
+        } else {
+          kb.fetcher.unload(aclDoc);
+          kb.add(kb2.statements);
+          kb.fetcher.requested[aclDoc.uri] = 'done'; // missing: save headers
+          console.log('ACL modification: success!');
+        }
+        callback(ok);
+      });
+    };
+
+    var renderCombo = function renderCombo(byCombo, combo) {
+      var row = box.appendChild(dom.createElement('tr'));
+      row.combo = combo;
+      row.setAttribute('style', 'color: ' + (options.modify ? kToColor[k] || 'black' : '#888') + ';');
+
+      var left = row.appendChild(dom.createElement('td'));
+
+      left.textContent = colloquial[k] || ktToList[k];
+      left.setAttribute('style', 'padding-bottom: 2em;');
+
+      var middle = row.appendChild(dom.createElement('td'));
+      var middleTable = middle.appendChild(dom.createElement('table'));
+      middleTable.style.width = '100%';
+
+      var right = row.appendChild(dom.createElement('td'));
+      right.textContent = explanation[k] || 'Unusual combination';
+      right.setAttribute('style', 'max-width: 30%;');
+
+      var addAgent = function addAgent(pred, obj) {
+        if (middleTable.NoneTR) {
+          middleTable.removeChild(middleTable.NoneTR);
+          delete middleTable.NoneTR;
+        }
+        var opt = {};
+        if (options.modify) {
+          opt.deleteFunction = function deletePerson() {
+            var arr = byCombo[combo];
+            for (var b = 0; b < arr.length; b++) {
+              if (arr[b][0] === pred && arr[b][1] === obj) {
+                arr.splice(b, 1); // remove from ACL
+                break;
+              }
+            }
+            box.saveBack(function (ok) {
+              if (ok) {
+                middleTable.removeChild(tr);
+              } // @@ else
+            });
+          };
+        }
+        var tr = middleTable.appendChild(UI.widgets.personTR(dom, ACL(pred), $rdf.sym(obj), opt));
+        tr.predObj = [pred.uri, obj.uri];
+      };
+
+      var syncCombo = function syncCombo(combo) {
+        var i;
+        var arr = byCombo[combo];
+        if (arr && arr.length) {
+          var already = middleTable.children;
+          arr.sort();
+          for (var j = 0; j < already.length; j++) {
+            already[j].trashme = true;
+          }
+          for (var a = 0; a < arr.length; a++) {
+            var found = false;
+            for (i = 0; i < already.length; i++) {
+              if (already[i].predObj && // skip NoneTR
+              already[i].predObj[0] === arr[a][0] && already[i].predObj[1] === arr[a][1]) {
+                found = true;
+                delete already[i].trashme;
+                break;
+              }
+            }
+            if (!found) {
+              addAgent(arr[a][0], arr[a][1]);
+            }
+          }
+          for (i = already.length - 1; i >= 0; i--) {
+            if (already[i].trashme) {
+              middleTable.removeChild(already[i]);
+            }
+          }
+        } else {
+          UI.widgets.clearElement(middleTable);
+          var tr = middleTable.appendChild(dom.createElement('tr'));
+          tr.textContent = 'None';
+          tr.setAttribute('style', 'padding: 1em;');
+          middleTable.NoneTR = tr;
+        }
+      };
+
+      syncCombo(combo);
+      row.refresh = function () {
+        syncCombo(combo);
+      };
+
+      if (options.modify) {
+        // see http://html5demos.com/drag-anything
+        row.addEventListener('dragover', function (e) {
+          e.preventDefault(); // Neeed else drop does not work [sic]
+          e.dataTransfer.dropEffect = 'copy';
+          // console.log('dragover event') // millions of them
+        });
+
+        row.addEventListener('dragenter', function (e) {
+          console.log('dragenter event dropEffect: ' + e.dataTransfer.dropEffect);
+          this.style.backgroundColor = '#ccc';
+          e.dataTransfer.dropEffect = 'link';
+          console.log('dragenter event dropEffect 2: ' + e.dataTransfer.dropEffect);
+        });
+        row.addEventListener('dragleave', function (e) {
+          console.log('dragleave event dropEffect: ' + e.dataTransfer.dropEffect);
+          this.style.backgroundColor = 'white';
+        });
+
+        row.addEventListener('drop', function (e) {
+          if (e.preventDefault) e.preventDefault(); // stops the browser from redirecting off to the text.
+          console.log('Drop event. dropEffect: ' + e.dataTransfer.dropEffect);
+          console.log('Drop event. types: ' + (e.dataTransfer.types ? e.dataTransfer.types.join(', ') : 'NOPE'));
+
+          var uris = null;
+          var text;
+          var thisEle = this;
+          if (e.dataTransfer.types) {
+            for (var t = 0; t < e.dataTransfer.types.length; t++) {
+              var type = e.dataTransfer.types[t];
+              if (type === 'text/uri-list') {
+                uris = e.dataTransfer.getData(type).split('\n'); // @ ignore those starting with #
+                console.log('Dropped text/uri-list: ' + uris);
+              } else if (type === 'text/plain') {
+                text = e.dataTransfer.getData(type);
+              }
+            }
+            if (uris === null && text && text.slice(0, 4) === 'http') {
+              uris = text;
+              console.log("Waring: Poor man's drop: using text for URI"); // chrome disables text/uri-list??
+            }
+          } else {
+            // ... however, if we're IE, we don't have the .types property, so we'll just get the Text value
+            uris = [e.dataTransfer.getData('Text')];
+            console.log('@@ WARNING non-standrad drop event: ' + uris[0]);
+          }
+          console.log('Dropped URI list (2): ' + uris);
+          if (uris) {
+            uris.map(function (u) {
+              var saveAndRestoreUI = function saveAndRestoreUI() {
+                if (!(combo in byCombo)) {
+                  byCombo[combo] = [];
+                }
+                removeAgentFromCombos(u); // Combos are mutually distinct
+                byCombo[combo].push([res.pred, res.obj.uri]);
+                console.log('ACL: setting access to ' + subject + ' by ' + res.pred + ': ' + res.obj);
+                box.saveBack(function (ok) {
+                  if (ok) {
+                    thisEle.style.backgroundColor = 'white'; // restore look to before drag
+                    syncPanel();
+                  }
+                });
+              };
+
+              var res = agentTriage(u); // eg 'agent', 'origin', agentClass'
+              if (!res) {
+                console.log('   looking up dropped thing ' + u);
+                kb.fetcher.nowOrWhenFetched(u, function (ok, mess) {
+                  if (!ok) {
+                    console.log('Error looking up dropped thing ' + u + ': ' + mess);
+                  } else {
+                    res = agentTriage(u);
+                    if (!res) {
+                      console.log('Error: Drop fails to drop appropriate thing! ' + u);
+                    } else {
+                      saveAndRestoreUI();
+                    }
+                  }
+                });
+                return;
+              } else {
+                saveAndRestoreUI();
+              }
+            });
+          }
+          return false;
+        });
+      } // if modify
+    };
+    var syncPanel = function syncPanel() {
+      var kids = box.children;
+      for (var i = 0; i < kids.length; i++) {
+        if (kids[i].refresh) {
+          kids[i].refresh();
+        }
+      } // @@ later -- need to addd combos not in the box?
+    };
+
+    var k, combo;
+    for (k = 15; k > 0; k--) {
+      combo = kToCombo(k);
+      if (options.modify && recommended[k] || byCombo[combo]) {
+        renderCombo(byCombo, combo);
+      } // if
+    } // for
+    return byCombo;
+  }; // ACLControlEditable
+
+  UI.acl.getACLorDefault(doc, function (ok, p2, targetDoc, targetACLDoc, defaultHolder, defaultACLDoc) {
+    var defa = !p2;
+    // @@ Could also set from classes ldp:Container etc etc
+    if (!ok) {
+      statusBlock.textContent += 'Error reading ' + (defa ? ' default ' : '') + 'ACL.' + ' status ' + targetDoc + ': ' + targetACLDoc;
+    } else {
+      box.isContainer = targetDoc.uri.slice(-1) === '/'; // Give default for all directories
+      if (defa) {
+        var defaults = kb.each(undefined, ACL('defaultForNew'), defaultHolder, defaultACLDoc);
+        if (!defaults.length) {
+          statusBlock.textContent += ' (No defaults given.)';
+        } else {
+          statusBlock.innerHTML = '';
+          statusBlock.textContent = 'The sharing for this ' + noun + ' is the default for folder ';
+          var a = statusBlock.appendChild(dom.createElement('a'));
+          a.setAttribute('href', defaultHolder.uri);
+          a.textContent = UI.aclControl.shortNameForFolder(defaultHolder);
+          var kb2 = UI.acl.adoptACLDefault(doc, targetACLDoc, defaultHolder, defaultACLDoc);
+          ACLControlEditable(box, doc, targetACLDoc, kb2, { modify: false }); // Add btton to save them as actual
+          box.style.cssText = 'color: #777;';
+
+          var editPlease = bottomRow.appendChild(dom.createElement('button'));
+          editPlease.textContent = 'Set specific sharing\nfor this ' + noun;
+          editPlease.style.cssText = bigButtonStyle;
+          editPlease.addEventListener('click', function (event) {
+            updater.put(targetACLDoc, kb2.statements, 'text/turtle', function (uri, ok, message) {
+              if (!ok) {
+                statusBlock.textContent += ' (Error writing back access control file: ' + message + ')';
+              } else {
+                statusBlock.textContent = ' (Now editing specific access for this ' + noun + ')';
+                // box.style.cssText = 'color: black;'
+                bottomRow.removeChild(editPlease);
+              }
+            });
+          });
+        } // defaults.length
+      } else {
+        // Not using defaults
+        var useDefault;
+        var addDefaultButton = function addDefaultButton(prospectiveDefaultHolder) {
+          useDefault = bottomRow.appendChild(dom.createElement('button'));
+          useDefault.textContent = 'Stop specific sharing for this ' + noun + ' -- just use default'; // + utils.label(thisDefaultHolder)
+          if (prospectiveDefaultHolder) {
+            useDefault.textContent += ' for ' + utils.label(prospectiveDefaultHolder);
+          }
+          useDefault.style.cssText = bigButtonStyle;
+          useDefault.addEventListener('click', function (event) {
+            kb.fetcher.delete(targetACLDoc.uri).then(function () {
+              statusBlock.textContent = ' The sharing for this ' + noun + ' is now the default.';
+              bottomRow.removeChild(useDefault);
+              box.style.cssText = 'color: #777;';
+            }).catch(function (e) {
+              statusBlock.textContent += ' (Error deleting access control file: ' + targetACLDoc + ': ' + e + ')';
+            });
+          });
+        };
+        var prospectiveDefaultHolder;
+
+        var str = targetDoc.uri.split('#')[0];
+        var p = str.slice(0, -1).lastIndexOf('/');
+        var q = str.indexOf('//');
+        var targetDocDir = q >= 0 && p < q + 2 || p < 0 ? null : str.slice(0, p + 1);
+
+        if (targetDocDir) {
+          UI.acl.getACLorDefault($rdf.sym(targetDocDir), function (ok2, p22, targetDoc2, targetACLDoc2, defaultHolder2, defaultACLDoc2) {
+            if (ok2) {
+              prospectiveDefaultHolder = p22 ? targetDoc2 : defaultHolder2;
+            }
+            addDefaultButton(prospectiveDefaultHolder);
+          });
+        } else {
+          addDefaultButton();
+        }
+
+        box.addControlForDefaults = function () {
+          box.notice.textContent = 'Access to things within this folder:';
+          box.notice.style.cssText = 'font-size: 120%; color: black;';
+          var mergeButton = UI.widgets.clearElement(box.offer).appendChild(dom.createElement('button'));
+          mergeButton.innerHTML = '<p>Set default for folder contents to<br />just track the sharing for the folder</p>';
+          mergeButton.style.cssText = bigButtonStyle;
+          mergeButton.addEventListener('click', function (e) {
+            delete box.defaultsDiffer;
+            delete box.defByCombo;
+            box.saveBack(function (ok) {
+              if (ok) {
+                box.removeControlForDefaults();
+              }
+            });
+          }, false);
+          box.defaultsDiffer = true;
+          box.defByCombo = ACLControlEditable(box, targetDoc, targetACLDoc, kb, { modify: true, doingDefaults: true });
+        };
+        box.removeControlForDefaults = function () {
+          statusBlock.textContent = 'This is also the default for things in this folder.';
+          box.notice.textContent = 'Sharing for things within the folder currently tracks sharing for the folder.';
+          box.notice.style.cssText = 'font-size: 80%; color: #888;';
+          var splitButton = UI.widgets.clearElement(box.offer).appendChild(dom.createElement('button'));
+          splitButton.innerHTML = '<p>Set the sharing of folder contets <br />separately from the sharing for the folder</p>';
+          splitButton.style.cssText = bigButtonStyle;
+          splitButton.addEventListener('click', function (e) {
+            box.addControlForDefaults();
+            statusBlock.textContent = '';
+          });
+          while (box.divider.nextSibling) {
+            box.removeChild(box.divider.nextSibling);
+          }
+          statusBlock.textContent = 'This is now also the default for things in this folder.';
+        };
+
+        if (box.isContainer) {
+          var ac = UI.acl.readACL(targetDoc, targetACLDoc, kb);
+          var acd = UI.acl.readACL(targetDoc, targetACLDoc, kb, true);
+          box.defaultsDiffer = !UI.acl.sameACL(ac, acd);
+          console.log('Defaults differ ACL: ' + box.defaultsDiffer);
+        }
+        box.mainByCombo = ACLControlEditable(box, targetDoc, targetACLDoc, kb, { modify: true }); // yes can edit
+        box.divider = box.appendChild(dom.createElement('tr'));
+        box.notice = box.divider.appendChild(dom.createElement('td'));
+        box.notice.style.cssText = 'font-size: 80%; color: #888;';
+        box.offer = box.divider.appendChild(dom.createElement('td'));
+        box.notice.setAttribute('colspan', '2');
+
+        if (box.defaultsDiffer) {
+          box.addControlForDefaults();
+        } else {
+          box.removeControlForDefaults();
+        }
+      } // Not using defaults
+    }
+  });
+  return table;
+}; // ACLControlBox
+// ends
+
+/***/ }),
+/* 452 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.logout = exports.currentSession = exports.popupLogin = exports.login = exports.fetch = undefined;
+
+var _extends2 = __webpack_require__(37);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _regenerator = __webpack_require__(7);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(8);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var firstSession = function () {
+  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(storage, authFns) {
+    var _session;
+
+    return _regenerator2.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            if (!(authFns.length === 0)) {
+              _context.next = 2;
+              break;
+            }
+
+            return _context.abrupt('return', null);
+
+          case 2:
+            _context.prev = 2;
+            _context.next = 5;
+            return authFns[0]();
+
+          case 5:
+            _session = _context.sent;
+
+            if (!_session) {
+              _context.next = 8;
+              break;
+            }
+
+            return _context.abrupt('return', (0, _session2.saveSession)(storage)(_session));
+
+          case 8:
+            _context.next = 13;
+            break;
+
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context['catch'](2);
+
+            console.error(_context.t0);
+
+          case 13:
+            return _context.abrupt('return', firstSession(storage, authFns.slice(1)));
+
+          case 14:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, this, [[2, 10]]);
+  }));
+
+  return function firstSession(_x, _x2) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+var login = exports.login = function () {
+  var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(idp, options) {
+    var webIdTlsSession, webIdOidcLoginRedirectFn;
+    return _regenerator2.default.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            options = (0, _extends3.default)({}, defaultLoginOptions(), options);
+            _context2.next = 3;
+            return WebIdTls.login(idp);
+
+          case 3:
+            webIdTlsSession = _context2.sent;
+
+            if (!webIdTlsSession) {
+              _context2.next = 6;
+              break;
+            }
+
+            return _context2.abrupt('return', (0, _session2.saveSession)(options.storage)(webIdTlsSession));
+
+          case 6:
+            _context2.next = 8;
+            return WebIdOidc.login(idp, options);
+
+          case 8:
+            webIdOidcLoginRedirectFn = _context2.sent;
+            return _context2.abrupt('return', webIdOidcLoginRedirectFn);
+
+          case 10:
+          case 'end':
+            return _context2.stop();
+        }
+      }
+    }, _callee2, this);
+  }));
+
+  return function login(_x3, _x4) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+var popupLogin = exports.popupLogin = function () {
+  var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(options) {
+    var childWindow, session;
+    return _regenerator2.default.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            if (options.popupUri) {
+              _context3.next = 2;
+              break;
+            }
+
+            throw new Error('Must provide options.popupUri');
+
+          case 2:
+            if (!options.callbackUri) {
+              options.callbackUri = options.popupUri;
+            }
+            options = (0, _extends3.default)({}, defaultLoginOptions(), options);
+            childWindow = (0, _popup.openIdpSelector)(options);
+            _context3.next = 7;
+            return (0, _popup.startPopupServer)(options.storage, childWindow, options);
+
+          case 7:
+            session = _context3.sent;
+            return _context3.abrupt('return', session);
+
+          case 9:
+          case 'end':
+            return _context3.stop();
+        }
+      }
+    }, _callee3, this);
+  }));
+
+  return function popupLogin(_x5) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+var currentSession = exports.currentSession = function () {
+  var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4() {
+    var storage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _storage.defaultStorage)();
+    var session;
+    return _regenerator2.default.wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.next = 2;
+            return (0, _session2.getSession)(storage);
+
+          case 2:
+            session = _context4.sent;
+
+            if (!session) {
+              _context4.next = 5;
+              break;
+            }
+
+            return _context4.abrupt('return', session);
+
+          case 5:
+            return _context4.abrupt('return', firstSession(storage, [WebIdOidc.currentSession.bind(null, storage)]));
+
+          case 6:
+          case 'end':
+            return _context4.stop();
+        }
+      }
+    }, _callee4, this);
+  }));
+
+  return function currentSession() {
+    return _ref4.apply(this, arguments);
+  };
+}();
+
+var logout = exports.logout = function () {
+  var _ref5 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {
+    var storage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _storage.defaultStorage)();
+    var session;
+    return _regenerator2.default.wrap(function _callee5$(_context5) {
+      while (1) {
+        switch (_context5.prev = _context5.next) {
+          case 0:
+            _context5.next = 2;
+            return (0, _session2.getSession)(storage);
+
+          case 2:
+            session = _context5.sent;
+
+            if (session) {
+              _context5.next = 5;
+              break;
+            }
+
+            return _context5.abrupt('return');
+
+          case 5:
+            _context5.t0 = session.authType;
+            _context5.next = _context5.t0 === 'WebID-OIDC' ? 8 : _context5.t0 === 'WebID-TLS' ? 18 : 18;
+            break;
+
+          case 8:
+            _context5.prev = 8;
+            _context5.next = 11;
+            return WebIdOidc.logout(storage);
+
+          case 11:
+            _context5.next = 17;
+            break;
+
+          case 13:
+            _context5.prev = 13;
+            _context5.t1 = _context5['catch'](8);
+
+            console.warn('Error logging out:');
+            console.error(_context5.t1);
+
+          case 17:
+            return _context5.abrupt('break', 19);
+
+          case 18:
+            return _context5.abrupt('break', 19);
+
+          case 19:
+            return _context5.abrupt('return', (0, _session2.clearSession)(storage));
+
+          case 20:
+          case 'end':
+            return _context5.stop();
+        }
+      }
+    }, _callee5, this, [[8, 13]]);
+  }));
+
+  return function logout() {
+    return _ref5.apply(this, arguments);
+  };
+}();
+
+var _authnFetch = __webpack_require__(453);
+
+var _popup = __webpack_require__(455);
+
+var _session2 = __webpack_require__(141);
+
+var _storage = __webpack_require__(96);
+
+var _urlUtil = __webpack_require__(143);
+
+var _webidTls = __webpack_require__(250);
+
+var WebIdTls = _interopRequireWildcard(_webidTls);
+
+var _webidOidc = __webpack_require__(142);
+
+var WebIdOidc = _interopRequireWildcard(_webidOidc);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var defaultLoginOptions = function defaultLoginOptions() {
+  var url = (0, _urlUtil.currentUrlNoParams)();
+  return {
+    callbackUri: url ? url.split('#')[0] : null,
+    popupUri: null,
+    storage: (0, _storage.defaultStorage)()
+  };
+};
+/* global RequestInfo, Response */
+var fetch = exports.fetch = function fetch(url, options) {
+  return (0, _authnFetch.authnFetch)((0, _storage.defaultStorage)())(url, options);
+};
+
+/***/ }),
+/* 453 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _regenerator = __webpack_require__(7);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(8);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+exports.authnFetch = authnFetch;
+
+__webpack_require__(33);
+
+var _host = __webpack_require__(454);
+
+var _session = __webpack_require__(141);
+
+var _webidOidc = __webpack_require__(142);
+
+var WebIdOidc = _interopRequireWildcard(_webidOidc);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* global fetch, RequestInfo, Response */
+function authnFetch(storage) {
+  var _this = this;
+
+  return function () {
+    var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(url, options) {
+      var session, shouldShareCreds, resp, _shouldShareCreds;
+
+      return _regenerator2.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              options = options || {};
+              _context.next = 3;
+              return (0, _session.getSession)(storage);
+
+            case 3:
+              session = _context.sent;
+              _context.next = 6;
+              return shouldShareCredentials(storage)(url);
+
+            case 6:
+              shouldShareCreds = _context.sent;
+
+              if (!(session && shouldShareCreds)) {
+                _context.next = 9;
+                break;
+              }
+
+              return _context.abrupt('return', fetchWithCredentials(session, url, options));
+
+            case 9:
+              _context.next = 11;
+              return fetch(url, options);
+
+            case 11:
+              resp = _context.sent;
+
+              if (!(resp.status === 401)) {
+                _context.next = 20;
+                break;
+              }
+
+              _context.next = 15;
+              return (0, _host.updateHostFromResponse)(storage)(resp);
+
+            case 15:
+              _context.next = 17;
+              return shouldShareCredentials(storage)(url);
+
+            case 17:
+              _shouldShareCreds = _context.sent;
+
+              if (!(session && _shouldShareCreds)) {
+                _context.next = 20;
+                break;
+              }
+
+              return _context.abrupt('return', fetchWithCredentials(session, url, options));
+
+            case 20:
+              return _context.abrupt('return', resp);
+
+            case 21:
+            case 'end':
+              return _context.stop();
+          }
+        }
+      }, _callee, _this);
+    }));
+
+    return function (_x, _x2) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+}
+
+function shouldShareCredentials(storage) {
+  var _this2 = this;
+
+  return function () {
+    var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(url) {
+      var session, requestHost;
+      return _regenerator2.default.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return (0, _session.getSession)(storage);
+
+            case 2:
+              session = _context2.sent;
+
+              if (session) {
+                _context2.next = 5;
+                break;
+              }
+
+              return _context2.abrupt('return', false);
+
+            case 5:
+              _context2.next = 7;
+              return (0, _host.getHost)(storage)(url);
+
+            case 7:
+              requestHost = _context2.sent;
+              return _context2.abrupt('return', requestHost != null && session.authType === requestHost.authType);
+
+            case 9:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, _this2);
+    }));
+
+    return function (_x3) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+}
+
+var fetchWithCredentials = function () {
+  var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(session, url, options) {
+    return _regenerator2.default.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.t0 = session.authType;
+            _context3.next = _context3.t0 === 'WebID-OIDC' ? 3 : _context3.t0 === 'WebID-TLS' ? 4 : 4;
+            break;
+
+          case 3:
+            return _context3.abrupt('return', WebIdOidc.fetchWithCredentials(session)(url, options));
+
+          case 4:
+            return _context3.abrupt('return', fetch(url, options));
+
+          case 5:
+          case 'end':
+            return _context3.stop();
+        }
+      }
+    }, _callee3, undefined);
+  }));
+
+  return function fetchWithCredentials(_x4, _x5, _x6) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+/***/ }),
+/* 454 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.hostNameFromRequestInfo = undefined;
+
+var _defineProperty2 = __webpack_require__(90);
+
+var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+
+var _extends3 = __webpack_require__(37);
+
+var _extends4 = _interopRequireDefault(_extends3);
+
+var _regenerator = __webpack_require__(7);
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = __webpack_require__(8);
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+exports.getHost = getHost;
+exports.saveHost = saveHost;
+exports.updateHostFromResponse = updateHostFromResponse;
+
+var _session = __webpack_require__(141);
+
+var _storage = __webpack_require__(96);
+
+var _webidOidc = __webpack_require__(142);
+
+var WebIdOidc = _interopRequireWildcard(_webidOidc);
+
+var _webidTls = __webpack_require__(250);
+
+var WebIdTls = _interopRequireWildcard(_webidTls);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* global RequestInfo, Request, Response, URL */
+var hostNameFromRequestInfo = exports.hostNameFromRequestInfo = function hostNameFromRequestInfo(url) {
+  var _url = url instanceof URL ? url : url instanceof Request ? new URL(url.url) : new URL(url);
+  return _url.host;
+};
+
+function getHost(storage) {
+  var _this = this;
+
+  return function () {
+    var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(url) {
+      var requestHostName, session, _ref2, hosts;
+
+      return _regenerator2.default.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              requestHostName = hostNameFromRequestInfo(url);
+              _context.next = 3;
+              return (0, _session.getSession)(storage);
+
+            case 3:
+              session = _context.sent;
+
+              if (!(session && hostNameFromRequestInfo(session.idp) === requestHostName)) {
+                _context.next = 6;
+                break;
+              }
+
+              return _context.abrupt('return', { url: requestHostName, authType: session.authType });
+
+            case 6:
+              _context.next = 8;
+              return (0, _storage.getData)(storage);
+
+            case 8:
+              _ref2 = _context.sent;
+              hosts = _ref2.hosts;
+
+              if (hosts) {
+                _context.next = 12;
+                break;
+              }
+
+              return _context.abrupt('return', null);
+
+            case 12:
+              return _context.abrupt('return', hosts[requestHostName] || null);
+
+            case 13:
+            case 'end':
+              return _context.stop();
+          }
+        }
+      }, _callee, _this);
+    }));
+
+    return function (_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+}
+
+function saveHost(storage) {
+  var _this2 = this;
+
+  return function () {
+    var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(_ref4) {
+      var url = _ref4.url,
+          authType = _ref4.authType;
+      return _regenerator2.default.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return (0, _storage.updateStorage)(storage, function (data) {
+                return (0, _extends4.default)({}, data, {
+                  hosts: (0, _extends4.default)({}, data.hosts, (0, _defineProperty3.default)({}, url, { authType: authType }))
+                });
+              });
+
+            case 2:
+              return _context2.abrupt('return', { url: url, authType: authType });
+
+            case 3:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, _this2);
+    }));
+
+    return function (_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+}
+
+function updateHostFromResponse(storage) {
+  var _this3 = this;
+
+  return function () {
+    var _ref5 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(resp) {
+      var authType, hostName;
+      return _regenerator2.default.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              authType = void 0;
+
+              if (WebIdOidc.requiresAuth(resp)) {
+                authType = 'WebID-OIDC';
+              } else if (WebIdTls.requiresAuth(resp)) {
+                authType = 'WebID-TLS';
+              } else {
+                authType = null;
+              }
+
+              hostName = hostNameFromRequestInfo(resp.url);
+
+              if (!authType) {
+                _context3.next = 6;
+                break;
+              }
+
+              _context3.next = 6;
+              return saveHost(storage)({ url: hostName, authType: authType });
+
+            case 6:
+            case 'end':
+              return _context3.stop();
+          }
+        }
+      }, _callee3, _this3);
+    }));
+
+    return function (_x3) {
+      return _ref5.apply(this, arguments);
+    };
+  }();
+}
+
+/***/ }),
+/* 455 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.openIdpSelector = exports.startPopupServer = exports.loginHandler = exports.storageHandler = undefined;
+
+var _promise = __webpack_require__(46);
+
+var _promise2 = _interopRequireDefault(_promise);
+
+var _toConsumableArray2 = __webpack_require__(243);
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
+var _ipc = __webpack_require__(249);
+
+var _urlUtil = __webpack_require__(143);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var popupAppRequestHandler = function popupAppRequestHandler(store, options, foundSessionCb) {
+  return (0, _ipc.combineHandlers)(storageHandler(store), loginHandler(options, foundSessionCb));
+};
+
+var storageHandler = exports.storageHandler = function storageHandler(store) {
+  return function (req) {
+    var id = req.id,
+        method = req.method,
+        args = req.args;
+
+    switch (method) {
+      case 'storage/getItem':
+        return store.getItem.apply(store, (0, _toConsumableArray3.default)(args)).then(function (item) {
+          return { id: id, ret: item };
+        });
+      case 'storage/setItem':
+        return store.setItem.apply(store, (0, _toConsumableArray3.default)(args)).then(function () {
+          return { id: id, ret: null };
+        });
+      case 'storage/removeItem':
+        return store.removeItem.apply(store, (0, _toConsumableArray3.default)(args)).then(function () {
+          return { id: id, ret: null };
+        });
+      default:
+        return null;
+    }
+  };
+};
+
+var loginHandler = exports.loginHandler = function loginHandler(options, foundSessionCb) {
+  return function (req) {
+    var id = req.id,
+        method = req.method,
+        args = req.args;
+
+    switch (method) {
+      case 'getLoginOptions':
+        return _promise2.default.resolve({
+          id: id,
+          ret: {
+            popupUri: options.popupUri,
+            callbackUri: options.callbackUri
+          }
+        });
+      case 'foundSession':
+        foundSessionCb(args[0]);
+        return _promise2.default.resolve({ id: id, ret: null });
+      default:
+        return null;
+    }
+  };
+};
+
+var startPopupServer = exports.startPopupServer = function startPopupServer(store, childWindow, options) {
+  return new _promise2.default(function (resolve, reject) {
+    if (!(options.popupUri && options.callbackUri)) {
+      return reject(new Error('Cannot serve a popup without both "options.popupUri" and "options.callbackUri"'));
+    }
+    var popupServer = (0, _ipc.server)(childWindow, (0, _urlUtil.originOf)(options.popupUri))(popupAppRequestHandler(store, options, function (session) {
+      popupServer.stop();
+      resolve(session);
+    }));
+    popupServer.start();
+  });
+};
+
+var openIdpSelector = exports.openIdpSelector = function openIdpSelector(options) {
+  if (!(options.popupUri && options.callbackUri)) {
+    throw new Error('Cannot open IDP select UI.  Must provide both "options.popupUri" and "options.callbackUri".');
+  }
+  var width = 650;
+  var height = 400;
+  var w = window.open(options.popupUri, '_blank', 'width=' + width + ',height=' + height + ',left=' + (window.innerWidth - width) / 2 + ',top=' + (window.innerHeight - height) / 2);
+  return w;
+};
+
+/***/ }),
+/* 456 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/*   create.js     UI to craete new objects in the solid-app-set world
+**
+*/
+
+//const SolidTls = require('solid-auth-tls')
+
+var $rdf = __webpack_require__(3);
+// const error = require('./widgets/error')
+var widgets = __webpack_require__(30);
+// const utils = require('./utils')
+var solidAuthClient = __webpack_require__(248);
+
+var UI = {
+  authn: __webpack_require__(247),
+  icons: __webpack_require__(29),
+  log: __webpack_require__(24),
+  ns: __webpack_require__(14),
+  store: __webpack_require__(22),
+  utils: __webpack_require__(31)
+};
+
+var kb = UI.store;
+var buttonStyle = 'font-size: 100%; margin: 0.8em; padding:0.5em;';
+
+module.exports = {
+  newThingUI: newThingUI
+
+  /*  newThingUI -- return UI for user to select a new object, folder, etc
+  **
+  ** context must include:  dom, div,
+  **     optional:   folder: NamedNode -- the folder where the thing is bring put
+  **                (suppresses asking for a full URI or workspace)
+  **
+  */
+};function newThingUI(context, panes) {
+  var dom = context.dom;
+  var div = context.div;
+  if (context.me && !context.me.uri) throw new Error('newThingUI:  Invalid userid ' + me);
+
+  var iconStyle = 'padding: 0.7em; width: 2em; height: 2em;'; // was: 'padding: 1em; width: 3em; height: 3em;'
+  var star = div.appendChild(dom.createElement('img'));
+  var visible = false; // the inividual tools tools
+  //   noun_272948.svg = black star
+  // noun_34653_green.svg = green plus
+  star.setAttribute('src', UI.icons.iconBase + 'noun_34653_green.svg');
+  star.setAttribute('style', iconStyle);
+  star.setAttribute('title', 'Add another tool to the meeting');
+
+  var complain = function complain(message) {
+    var pre = div.appendChild(dom.createElement('pre'));
+    pre.setAttribute('style', 'background-color: pink');
+    pre.appendChild(dom.createTextNode(message));
+  };
+
+  var selectNewTool = function selectNewTool(event) {
+    visible = !visible;
+    star.setAttribute('style', iconStyle + (visible ? 'background-color: yellow;' : ''));
+    styleTheIcons(visible ? '' : 'display: none;');
+  };
+  var resetIconBar = function resetIconBar() {
+    visibile = false;
+    star.setAttribute('style', iconStyle + (visible ? 'background-color: yellow;' : ''));
+    styleTheIcons('display: none;');
+  };
+  star.addEventListener('click', selectNewTool);
+  var makeNewAppInstance = function makeNewAppInstance(options) {
+    return new Promise(function (resolve, reject) {
+      var selectUI, selectUIParent;
+      var callbackWS = function callbackWS(ws, newBase) {
+        var newPaneOptions = {
+          newBase: newBase,
+          workspace: ws
+        };
+        for (var opt in options) {
+          // get div, dom, me, folder, pane, refreshTable
+          newPaneOptions[opt] = options[opt];
+        }
+        console.log("newThingUI: Minting new " + newPaneOptions.pane.name + " at " + newPaneOptions.newBase);
+        options.pane.mintNew(newPaneOptions).then(function (newPaneOptions) {
+          if (!newPaneOptions || !newPaneOptions.newInstance) {
+            throw new Error('Cannot mint new - missing newInstance');
+          }
+          if (newPaneOptions.folder) {
+            kb.add(newPaneOptions.folder, UI.ns.ldp('contains'), kb.sym(newPaneOptions.newBase), newPaneOptions.folder.doc()); // Ping the patch system?
+            if (newPaneOptions.refreshTarget) {
+              newPaneOptions.refreshTarget.refresh(); // Refresh the cntaining display
+            }
+            selectUI.parentNode.removeChild(selectUI);
+          } else {
+            var p = options.div.appendChild(dom.createElement('p'));
+            p.setAttribute('style', 'font-size: 120%;');
+            // Make link to new thing
+            p.innerHTML = "Your <a target='_blank' href='" + newPaneOptions.newInstance.uri + "'><b>new " + options.noun + '</b></a> is ready to be set up. ' + "<br/><br/><a target='_blank' href='" + newPaneOptions.newInstance.uri + "'>Go to your new " + options.noun + '.</a>';
+            //selectUI.parentNode.removeChild(selectUI) // Clean up
+            selectUIParent.removeChild(selectUI); // Clean up
+          }
+          selectNewTool(); // toggle star to plain and menu vanish again
+        }).catch(function (err) {
+          complain(err);
+          reject(err);
+        });
+      };
+
+      var pa = options.pane;
+      options.appPathSegment = 'edu.mit.solid.pane.' + pa.name;
+      options.noun = pa.mintClass ? UI.utils.label(pa.mintClass) : pa.name;
+
+      if (!options.folder) {
+        // No folder given? Ask user for full URI
+        selectUI = UI.authn.selectWorkspace(dom, options, callbackWS);
+        options.div.appendChild(selectUI);
+        selectUIParent = options.div;
+      } else {
+        var gotName = function gotName(ok, name) {
+          if (!ok) {
+            // selectUIParent.removeChild(selectUI)   itremves itself if cancelled
+            selectNewTool(); // toggle star to plain and menu vanish again
+          } else {
+            var uri = options.folder.uri;
+            if (!uri.endsWith('/')) {
+              uri = uri + '/';
+            }
+            uri = uri + encodeURIComponent(name) + '/';
+            callbackWS(null, uri);
+          }
+        };
+        selectUI = getNameForm(dom, UI.store, options.noun, gotName);
+        options.div.appendChild(selectUI);
+        selectUIParent = options.div;
+      }
+    });
+  }; // makeNewAppInstance
+
+  var iconArray = [];
+  for (var pn in panes) {
+    var pane = panes[pn];
+    if (pane.mintNew) {
+      var icon = context.div.appendChild(dom.createElement('img'));
+      icon.setAttribute('src', pane.icon);
+      var noun = pane.mintClass ? UI.utils.label(pane.mintClass) : pane.name + ' @@';
+      icon.setAttribute('title', 'Make new ' + noun);
+      icon.setAttribute('style', iconStyle + 'display: none;');
+      iconArray.push(icon);
+      var foo = function foo(pane, icon, noun) {
+        var iconEle = icon;
+        var thisPane = pane;
+        var thisNoun = noun;
+        if (!icon.disabled) {
+          icon.addEventListener('click', function (e) {
+            selectTool(iconEle);
+            var options = {
+              event: e,
+              folder: context.folder,
+              iconEle: iconEle,
+              pane: thisPane,
+              noun: thisNoun,
+              noIndexHTML: true, // do NOT @@ for now write a HTML file
+              div: context.div,
+              me: context.me,
+              dom: context.dom,
+              refreshTarget: context.refreshTarget
+            };
+            makeNewAppInstance(options);
+          });
+        }
+      }; // foo
+      foo(pane, icon, noun);
+    }
+  }
+
+  var styleTheIcons = function styleTheIcons(style) {
+    for (var i = 0; i < iconArray.length; i++) {
+      var st = iconStyle + style;
+      if (iconArray[i].disabled) {
+        // @@ unused
+        st += 'opacity: 0.3;';
+      }
+      iconArray[i].setAttribute('style', st); // eg 'background-color: #ccc;'
+    }
+  };
+  var selectTool = function selectTool(icon) {
+    styleTheIcons('display: none;'); // 'background-color: #ccc;'
+    icon.setAttribute('style', iconStyle + 'background-color: yellow;');
+  };
+}
+
+// Form to get the name of a new thing before we create it
+//
+// Used in contacts for new groups, individuals.
+//
+function getNameForm(dom, kb, classLabel, gotNameCallback) {
+  var form = dom.createElement('div'); // form is broken as HTML behaviour can resurface on js error
+  form.innerHTML = '<p>Name of new ' + classLabel + ':</p>';
+  var namefield = dom.createElement('input');
+  namefield.setAttribute('type', 'text');
+  namefield.setAttribute('size', '30');
+  namefield.setAttribute('style', buttonStyle);
+  namefield.setAttribute('maxLength', '2048'); // No arbitrary limits
+  namefield.select(); // focus next user input
+
+  var gotName = function gotName() {
+    namefield.setAttribute('class', 'pendingedit');
+    namefield.disabled = true;
+    gotNameCallback(true, namefield.value);
+  };
+
+  namefield.addEventListener('keyup', function (e) {
+    if (e.keyCode === 13) {
+      gotName();
+    }
+  }, false);
+  form.appendChild(namefield);
+
+  var br = form.appendChild(dom.createElement('br'));
+
+  var cancel = form.appendChild(dom.createElement('button'));
+  cancel.setAttribute('type', 'button');
+  cancel.style.cssText = buttonStyle;
+  cancel.innerHTML = 'Cancel';
+  cancel.addEventListener('click', function (e) {
+    form.parentNode.removeChild(form);
+    gotNameCallback(false);
+  }, false);
+
+  var b = form.appendChild(dom.createElement('button'));
+  b.setAttribute('type', 'button');
+  b.innerHTML = 'Continue';
+  b.style.cssText = buttonStyle;
+  b.addEventListener('click', function (e) {
+    gotName();
+  }, false);
+
+  return form;
+}
+
+/***/ }),
+/* 457 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//      Build a 2D matrix of values
+//
+//  dom      AKA document
+//  query    a Query object of rdflib.js with a valid pattern
+//  vx       A variable object, the one to be used for the X variable (horiz)
+//  vy       A variable object, the one to be used for the Y variable (vertical)
+//  vvalue       A variable object, the one to be used for the cell value
+//  returns  A DOM element with the matrix in it, which has a .refresh() function.
+//
+// Options:
+//     cellFunction(td, x, y, value)  fill the TD element of a single cell
+//     xDecreasing  set true for x axis to be in decreasiong order.
+//     yDecreasing  set true for y axis to be in decreasiong order.
+//     set_x        array of X values to be define initial rows (order irrelevant)
+//     set_y        array of Y values to be define initial columns
+//
+// Features:
+//   Header row at top (x axis) and left (y-axis) generated automatically.
+//   Extra rows and columns are inserted as needed to hold new data points
+//   matrix.refresh() will re-run the query and adjust the display
+
+var UI = {
+  icons: __webpack_require__(29),
+  log: __webpack_require__(24),
+  ns: __webpack_require__(14),
+  pad: __webpack_require__(2),
+  rdf: __webpack_require__(3),
+  store: __webpack_require__(22),
+  widgets: __webpack_require__(30)
+};
+
+var utils = __webpack_require__(31);
+var kb = UI.store;
+
+module.exports.matrixForQuery = function (dom, query, vx, vy, vvalue, options, whenDone) {
+  var matrix = dom.createElement('table');
+  var header = dom.createElement('tr');
+  var corner = header.appendChild(dom.createElement('td'));
+  corner.setAttribute('class', 'MatrixCorner');
+  // corner.textContent = '*'; // @@ test only
+  matrix.appendChild(header); // just one for now
+  matrix.lastHeader = header; // Element before data
+  var headerRows = 1;
+  var headerColumns = 1;
+  var columns = []; // Vector
+  var rows = []; // Associative array
+
+  var setCell = function setCell(cell, x, y, value) {
+    while (cell.firstChild) {
+      // Empty any previous
+      cell.removeChild(cell.firstChild);
+    }
+    cell.setAttribute('style', '');
+    cell.style.textAlign = 'center';
+
+    if (options.cellFunction) {
+      options.cellFunction(cell, x, y, value);
+    } else {
+      cell.textContent = utils.label(value);
+      cell.setAttribute('style', 'padding: 0.3em');
+    }
+    delete cell.old;
+  };
+
+  var rowFor = function rowFor(y1) {
+    var y = y1.toNT();
+    if (rows[y]) return rows[y];
+    var tr = dom.createElement('tr');
+    var header = tr.appendChild(dom.createElement('td'));
+    header.setAttribute('style', 'padding: 0.3em;');
+    header.textContent = utils.label(y1); // first approximation
+    if (y1.termType = 'NamedNode') {
+      kb.fetcher.nowOrWhenFetched(y1.uri.split('#')[0], undefined, function (uri, ok, body) {
+        header.textContent = utils.label(y1);
+      });
+    }
+    for (var i = 0; i < columns.length; i++) {
+      setCell(tr.appendChild(dom.createElement('td')), $rdf.fromNT(columns[i]), y1, null);
+    }
+    tr.dataValueNT = y;
+    rows[y] = tr;
+    for (var ele = matrix.lastHeader.nextSibling; ele; ele = ele.nextSibling) {
+      // skip header
+      if (y > ele.dataValueNT && options && options.yDecreasing || y < ele.dataValueNT && !(options && options.yDecreasing)) {
+        return matrix.insertBefore(tr, ele); // return the tr
+      }
+    }
+    return matrix.appendChild(tr); // return the tr
+  };
+
+  var columnNumberFor = function columnNumberFor(x1) {
+    var xNT = x1.toNT(); // xNT is a NT string
+    var col = null;
+    // These are data columns (not headings)
+    for (var i = 0; i < columns.length; i++) {
+      if (columns[i] === xNT) {
+        return i;
+      }
+
+      if (xNT > columns[i] && options.xDecreasing || xNT < columns[i] && !options.xDecreasing) {
+        columns = columns.slice(0, i).concat([xNT]).concat(columns.slice(i));
+        col = i;
+        break;
+      }
+    }
+
+    if (col === null) {
+      col = columns.length;
+      columns.push(xNT);
+    }
+
+    // col is the number of the new column, starting from 0
+    for (var row = matrix.firstChild; row; row = row.nextSibling) {
+      // For every row header or not
+      var y = row.dataValueNT;
+      var td = dom.createElement('td'); // Add a new cell
+      td.style.textAlign = 'center';
+      if (row === matrix.firstChild) {
+        td.textContent = utils.label(x1);
+      } else {
+        setCell(td, x1, $rdf.fromNT(y), null);
+      }
+      if (col === columns.length - 1) {
+        row.appendChild(td);
+      } else {
+        var t = row.firstChild;
+        for (var j = 0; j < col + 1; j++) {
+          // Skip header col too
+          t = t.nextSibling;
+        }
+        row.insertBefore(td, t);
+      }
+    }
+    return col;
+  };
+
+  var markOldCells = function markOldCells() {
+    for (var i = 1; i < matrix.children.length; i++) {
+      var row = matrix.children[i];
+      for (var j = 1; j < row.children.length; j++) {
+        row.children[j].old = true;
+      }
+    }
+  };
+
+  var clearOldCells = function clearOldCells() {
+    var row, cell;
+    var colsUsed = [];
+    var rowsUsed = [];
+
+    if (options.set_y) {
+      // Knows y values create rows
+      for (var k = 0; k < options.set_y.length; k++) {
+        rowsUsed[options.set_y[k]] = true;
+      }
+    }
+    if (options.set_x) {
+      for (k = 0; k < options.set_x.length; k++) {
+        colsUsed[columnNumberFor(options.set_x[k]) + 1] = true;
+      }
+    }
+
+    for (var i = 1; i < matrix.children.length; i++) {
+      row = matrix.children[i];
+      for (var j = 1; j < row.children.length; j++) {
+        cell = row.children[j];
+        if (cell.old) {
+          var y = $rdf.fromNT(row.dataValueNT);
+          var x = $rdf.fromNT(columns[j - 1]);
+          setCell(cell, x, y, null);
+        } else {
+          rowsUsed[row.dataValueNT] = true;
+          colsUsed[j] = true;
+        }
+      }
+    }
+
+    for (var i = 0; i < matrix.children.length; i++) {
+      row = matrix.children[i];
+      if (i > 0 && !rowsUsed[row.dataValueNT]) {
+        delete rows[row.dataValueNT];
+        matrix.removeChild(row);
+      } else {
+        for (var j = row.children.length - 1; j > 0; j--) {
+          // backwards
+          var cell = row.children[j];
+          if (!colsUsed[j]) {
+            row.removeChild(cell);
+          }
+        }
+      }
+    }
+    var newcolumns = [];
+    for (var j = 0; j < columns.length; j++) {
+      if (colsUsed[j + 1]) {
+        newcolumns.push(columns[j]);
+      }
+    }
+    columns = newcolumns;
+  };
+
+  matrix.refresh = function () {
+    markOldCells();
+    kb.query(query, addCellFromBindings, undefined, clearOldCells);
+  };
+
+  var addCellFromBindings = function addCellFromBindings(bindings) {
+    var x = bindings[vx],
+        y = bindings[vy],
+        value = bindings[vvalue];
+    var row = rowFor(y);
+    var colNo = columnNumberFor(x);
+    var cell = row.children[colNo + 1]; // number of Y axis headings
+    setCell(cell, x, y, value);
+  };
+
+  if (options.set_y) {
+    // Knows y values create rows
+    for (var k = 0; k < options.set_y.length; k++) {
+      rowFor(options.set_y[k]);
+    }
+  }
+  if (options.set_x) {
+    for (k = 0; k < options.set_x.length; k++) {
+      columnNumberFor(options.set_x[k]);
+    }
+  }
+
+  kb.query(query, addCellFromBindings, undefined, whenDone); // Populate the matrix
+  return matrix;
+};
+
+/***/ }),
+/* 458 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//  Common code for a discussion are a of messages about something
+//
+
+
+var UI = {
+  icons: __webpack_require__(29),
+  log: __webpack_require__(24),
+  ns: __webpack_require__(14),
+  pad: __webpack_require__(2),
+  rdf: __webpack_require__(3),
+  store: __webpack_require__(22),
+  widgets: __webpack_require__(30)
+};
+
+var utils = __webpack_require__(31);
+var kb = UI.store;
+
+var buttonStyle = 'font-size: 100%; margin: 0.8em; padding:0.5em; background-color: white;';
+
+module.exports = function (dom, kb, subject, messageStore, options) {
+  kb = kb || UI.kb;
+  var ns = UI.ns;
+  var WF = $rdf.Namespace('http://www.w3.org/2005/01/wf/flow#');
+  var DCT = $rdf.Namespace('http://purl.org/dc/terms/');
+
+  options = options || {};
+
+  var newestFirst = !!options.newestFirst;
+
+  var messageBodyStyle = 'white-space: pre-wrap; width: 90%; font-size:100%; background-color: white; border: 0.07em solid #eee; padding: .2em 0.5em; margin: 0.1em 1em 0.1em 1em';
+  // 'font-size: 100%; margin: 0.1em 1em 0.1em 1em;  background-color: white; white-space: pre-wrap; padding: 0.1em;'
+
+  var div = dom.createElement('div');
+  var messageTable; // Shared by initial build and addMessageFromBindings
+
+  var me_uri = tabulator.preferences.get('me');
+  var me = me_uri ? kb.sym(me_uri) : null;
+  if (!me) console.log('Message area: @@ Should be logged in at this point');
+
+  var updater = UI.store.updater;
+
+  var anchor = function anchor(text, term) {
+    // If there is no link return an element anyway
+    var a = dom.createElement('a');
+    if (term.uri) {
+      a.setAttribute('href', term.uri);
+      a.addEventListener('click', UI.widgets.openHrefInOutlineMode, true);
+      a.setAttribute('style', 'color: #3B5998; text-decoration: none; '); // font-weight: bold
+    }
+    a.textContent = text;
+    return a;
+  };
+
+  var mention = function mention(message, style) {
+    var pre = dom.createElement('pre');
+    pre.setAttribute('style', style || 'color: grey');
+    div.appendChild(pre);
+    pre.appendChild(dom.createTextNode(message));
+    return pre;
+  };
+
+  var announce = {
+    log: function log(message) {
+      mention(message, 'color: #111;');
+    },
+    warn: function warn(message) {
+      mention(message, 'color: #880;');
+    },
+    error: function error(message) {
+      mention(message, 'color: #800;');
+    }
+
+    //       Form for a new message
+    //
+  };var newMessageForm = function newMessageForm() {
+    var form = dom.createElement('tr');
+    var lhs = dom.createElement('td');
+    var middle = dom.createElement('td');
+    var rhs = dom.createElement('td');
+    form.appendChild(lhs);
+    form.appendChild(middle);
+    form.appendChild(rhs);
+    form.AJAR_date = '9999-01-01T00:00:00Z'; // ISO format for field sort
+
+    var sendMessage = function sendMessage() {
+      // titlefield.setAttribute('class','pendingedit')
+      // titlefield.disabled = true
+      field.setAttribute('class', 'pendingedit');
+      field.disabled = true;
+      var sts = [];
+      var now = new Date();
+      var timestamp = '' + now.getTime();
+      var dateStamp = $rdf.term(now);
+      // http://www.w3schools.com/jsref/jsref_obj_date.asp
+      var message = kb.sym(messageStore.uri + '#' + 'Msg' + timestamp);
+
+      sts.push(new $rdf.Statement(subject, ns.wf('message'), message, messageStore));
+      // sts.push(new $rdf.Statement(message, ns.dc('title'), kb.literal(titlefield.value), messageStore))
+      sts.push(new $rdf.Statement(message, ns.sioc('content'), kb.literal(field.value), messageStore));
+      sts.push(new $rdf.Statement(message, DCT('created'), dateStamp, messageStore));
+      if (me) sts.push(new $rdf.Statement(message, ns.foaf('maker'), me, messageStore));
+
+      var sendComplete = function sendComplete(uri, success, body) {
+        if (!success) {
+          form.appendChild(UI.widgets.errorMessageBlock(dom, 'Error writing message: ' + body));
+        } else {
+          var bindings = { '?msg': message,
+            '?content': kb.literal(field.value),
+            '?date': dateStamp,
+            '?creator': me };
+          renderMessage(bindings);
+
+          field.value = ''; // clear from out for reuse
+          field.setAttribute('class', '');
+          field.disabled = false;
+        }
+      };
+      updater.update([], sts, sendComplete);
+    };
+    // form.addEventListener('submit', sendMessage, false)
+    // form.setAttribute('onsubmit', "function xx(){return false;}")
+    form.appendChild(dom.createElement('br'));
+
+    var field = dom.createElement('textarea');
+    middle.appendChild(field);
+    field.rows = 3;
+    // field.cols = 40
+    field.setAttribute('style', messageBodyStyle);
+
+    var submit = dom.createElement('button');
+    // submit.disabled = true // until the filled has been modified
+    submit.textContent = 'send'; // @@ I18n
+    submit.setAttribute('style', 'float: right;');
+    submit.addEventListener('click', sendMessage, false);
+    rhs.appendChild(submit);
+
+    return form;
+  };
+
+  var nick = function nick(person) {
+    var s = UI.store.any(person, UI.ns.foaf('nick'));
+    if (s) return '' + s.value;
+    return '' + utils.label(person);
+  };
+
+  // ///////////////////////////////////////////////////////////////////////
+
+  var syncMessages = function syncMessages(about, messageTable) {
+    var displayed = {};
+    var ele, ele2;
+    for (ele = messageTable.firstChild; ele; ele = ele.nextSibling) {
+      if (ele.AJAR_subject) {
+        displayed[ele.AJAR_subject.uri] = true;
+      }
+    }
+    var messages = kb.each(about, ns.wf('message'));
+    var stored = {};
+    messages.map(function (m) {
+      stored[m.uri] = true;
+      if (!displayed[m.uri]) {
+        addMessage(m);
+      }
+    });
+
+    for (ele = messageTable.firstChild; ele;) {
+      ele2 = ele.nextSibling;
+      if (ele.AJAR_subject && !stored[ele.AJAR_subject.uri]) {
+        messageTable.removeChild(ele);
+      }
+      ele = ele2;
+    }
+  };
+
+  var deleteMessage = function deleteMessage(message) {
+    var deletions = kb.statementsMatching(message).concat(kb.statementsMatching(undefined, undefined, message));
+    updater.update(deletions, [], function (uri, ok, body) {
+      if (!ok) {
+        announce.error('Cant delete messages:' + body);
+      } else {
+        syncMessages(subject, messageTable);
+      }
+    });
+  };
+
+  var addMessage = function addMessage(message) {
+    var bindings = {
+      '?msg': message,
+      '?creator': kb.any(message, ns.foaf('maker')),
+      '?date': kb.any(message, DCT('created')),
+      '?content': kb.any(message, ns.sioc('content'))
+    };
+    renderMessage(bindings);
+  };
+
+  var renderMessage = function renderMessage(bindings) {
+    var creator = bindings['?creator'];
+    var message = bindings['?msg'];
+    var date = bindings['?date'];
+    var content = bindings['?content'];
+
+    var dateString = date.value;
+    var tr = dom.createElement('tr');
+    tr.AJAR_date = dateString;
+    tr.AJAR_subject = message;
+
+    var done = false;
+    for (var ele = messageTable.firstChild;; ele = ele.nextSibling) {
+      if (!ele) {
+        // empty
+        break;
+      }
+      if (dateString > ele.AJAR_date && newestFirst || dateString < ele.AJAR_date && !newestFirst) {
+        messageTable.insertBefore(tr, ele);
+        done = true;
+        break;
+      }
+    }
+    if (!done) {
+      messageTable.appendChild(tr);
+    }
+
+    var td1 = dom.createElement('td');
+    tr.appendChild(td1);
+
+    var nickAnchor = td1.appendChild(anchor(nick(creator), creator));
+    if (creator.uri) {
+      UI.store.fetcher.nowOrWhenFetched(creator.doc(), undefined, function (ok, body) {
+        nickAnchor.textContent = nick(creator);
+      });
+    }
+    td1.appendChild(dom.createElement('br'));
+    td1.appendChild(anchor(UI.widgets.shortDate(dateString), message));
+
+    var td2 = dom.createElement('td');
+    tr.appendChild(td2);
+    var pre = dom.createElement('p');
+    pre.setAttribute('style', messageBodyStyle);
+    td2.appendChild(pre);
+    pre.textContent = content.value;
+
+    var td3 = dom.createElement('td');
+    tr.appendChild(td3);
+
+    var delButton = dom.createElement('button');
+    td3.appendChild(delButton);
+    delButton.textContent = '-';
+
+    tr.setAttribute('class', 'hoverControl'); // See tabbedtab.css (sigh global CSS)
+    delButton.setAttribute('class', 'hoverControlHide');
+    delButton.setAttribute('style', 'color: red;');
+    delButton.addEventListener('click', function (e) {
+      td3.removeChild(delButton); // Ask -- are you sure?
+      var cancelButton = dom.createElement('button');
+      cancelButton.textContent = 'cancel';
+      td3.appendChild(cancelButton).addEventListener('click', function (e) {
+        td3.removeChild(sureButton);
+        td3.removeChild(cancelButton);
+        td3.appendChild(delButton);
+      }, false);
+      var sureButton = dom.createElement('button');
+      sureButton.textContent = 'Delete message';
+      td3.appendChild(sureButton).addEventListener('click', function (e) {
+        td3.removeChild(sureButton);
+        td3.removeChild(cancelButton);
+        deleteMessage(message);
+      }, false);
+    }, false);
+  };
+
+  // Messages with date, author etc
+
+  messageTable = dom.createElement('table');
+  div.appendChild(messageTable);
+  messageTable.setAttribute('style', 'width: 100%;'); // fill that div!
+
+  if (tabulator.preferences.get('me')) {
+    var tr = newMessageForm();
+    if (newestFirst) {
+      messageTable.insertBefore(tr, messageTable.firstChild); // If newestFirst
+    } else {
+      messageTable.appendChild(tr); // not newestFirst
+    }
+  }
+
+  var query;
+  // Do this with a live query to pull in messages from web
+  if (options.query) {
+    query = options.query;
+  } else {
+    query = new $rdf.Query('Messages');
+    var v = {}; // semicolon needed
+    var vs = ['msg', 'date', 'creator', 'content'];
+    vs.map(function (x) {
+      query.vars.push(v[x] = $rdf.variable(x));
+    });
+    query.pat.add(subject, WF('message'), v['msg']);
+    query.pat.add(v['msg'], ns.dct('created'), v['date']);
+    query.pat.add(v['msg'], ns.foaf('maker'), v['creator']);
+    query.pat.add(v['msg'], ns.sioc('content'), v['content']);
+  }
+
+  kb.query(query, renderMessage);
+  div.refresh = function () {
+    syncMessages(subject, messageTable);
+  };
+  return div;
+};
+
+/***/ }),
+/* 459 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+////////////////////////////////////////////////
+//
+//   The pad widget
+//
+//   See notepad for the main widget
+
+var $rdf = __webpack_require__(3);
+var padModule = module.exports = {};
+var UI = {
+    icons: __webpack_require__(29),
+    log: __webpack_require__(24),
+    ns: __webpack_require__(14),
+    pad: padModule,
+    rdf: $rdf,
+    store: __webpack_require__(22),
+    widgets: __webpack_require__(30)
+};
+
+var utils = __webpack_require__(31);
+
+// Figure out a random color from my webid
+
+UI.pad.lightColorHash = function (author) {
+    var hash = function hash(x) {
+        return x.split("").reduce(function (a, b) {
+            a = (a << 5) - a + b.charCodeAt(0);return a & a;
+        }, 0);
+    };
+    return author && author.uri ? '#' + (hash(author.uri) & 0xffffff | 0xc0c0c0).toString(16) : '#ffffff'; // c0c0c0  forces pale
+}; // no id -> white
+
+
+// Manage participation in this session
+//
+//  This is more general tham the pad.
+//
+UI.pad.renderPartipants = function (dom, table, padDoc, subject, me, options) {
+    var kb = UI.store,
+        ns = UI.ns;
+    table.setAttribute('style', 'margin: 0.8em;');
+
+    var newRowForParticpation = function newRowForParticpation(parp) {
+        var person = kb.any(parp, ns.wf('participant'));
+        var bg = kb.anyValue(parp, ns.ui('backgroundColor')) || 'white';
+
+        var block = dom.createElement('div');
+        block.setAttribute('style', 'height: 1.5em; width: 1.5em; margin: 0.3em; border 0.01em solid #888; background-color: ' + bg);
+        var tr = UI.widgets.personTR(dom, null, person, options);
+        table.appendChild(tr);
+        var td = dom.createElement('td');
+        td.setAttribute('style', 'vertical-align: middle;');
+        td.appendChild(block);
+        tr.insertBefore(td, tr.firstChild);
+        return tr;
+    };
+
+    var syncTable = function syncTable() {
+        var parps = kb.each(subject, ns.wf('participation')).map(function (parp) {
+            return [kb.anyValue(parp, UI.ns.cal('dtstart')) || '9999-12-31', parp];
+        });
+        parps.sort(); // List in order of joining
+        var participations = parps.map(function (p) {
+            return p[1];
+        });
+        utils.syncTableToArray(table, participations, newRowForParticpation);
+    };
+    table.refresh = syncTable;
+    syncTable();
+    return table;
+};
+
+// Record my participation and display participants
+//
+UI.pad.recordParticipation = function (subject, padDoc, refreshable) {
+    var kb = UI.store,
+        ns = UI.ns;
+
+    var webid = tabulator.preferences.get('me');
+    if (!webid) return; // Not logged in
+
+    var me = kb.sym(webid);
+    var parps = kb.each(subject, ns.wf('participation')).filter(function (pn) {
+        return kb.holds(pn, ns.wf('participant'), me);
+    });
+    if (parps.length > 1) {
+        throw "Multiple records of your participation";
+    }
+    if (!parps.length) {
+        // If I am not already recorded
+        var participation = UI.widgets.newThing(padDoc);
+        var ins = [UI.rdf.st(subject, ns.wf('participation'), participation, padDoc), UI.rdf.st(participation, ns.wf('participant'), me, padDoc), UI.rdf.st(participation, UI.ns.cal('dtstart'), new Date(), padDoc), UI.rdf.st(participation, ns.ui('backgroundColor'), UI.pad.lightColorHash(me), padDoc)];
+        kb.updater.update([], ins, function (uri, ok, errorMessage) {
+            if (!ok) {
+                throw new Error('Error recording your partipation: ' + errorMessage);
+            }
+            if (refreshable && refreshable.refresh) {
+                refreshable.refresh();
+            }
+            // UI.pad.renderPartipants(dom, table, padDoc, subject, me, options)
+        });
+    }
+    return;
+};
+
+// Record my participation and display participants
+//
+UI.pad.manageParticipation = function (dom, container, padDoc, subject, me, options) {
+    var table = dom.createElement('table');
+    container.appendChild(table);
+    UI.pad.renderPartipants(dom, table, padDoc, subject, me, options);
+    try {
+        UI.pad.recordParticipation(subject, padDoc, table);
+    } catch (e) {
+        container.appendChild(UI.widgets.errorMessageBlock(dom, "Error recording your partipation: " + e)); // Clean up?
+    }
+    return table;
+};
+
+UI.pad.notepad = function (dom, padDoc, subject, me, options) {
+    options = options || {};
+    var exists = options.exists;
+    var table = dom.createElement('table');
+    var kb = UI.store;
+    var ns = UI.ns;
+
+    if (me && !me.uri) throw new Error("UI.pad.notepad:  Invalid userid");
+
+    var updater = UI.store.updater;
+
+    var PAD = $rdf.Namespace('http://www.w3.org/ns/pim/pad#');
+
+    table.setAttribute('style', 'padding: 1em; overflow: auto; resize: horizontal; min-width: 40em;');
+
+    var upstreamStatus = null,
+        downstreamStatus = null;
+
+    if (options.statusArea) {
+        var t = options.statusArea.appendChild(dom.createElement('table'));
+        var tr = t.appendChild(dom.createElement('tr'));
+        upstreamStatus = tr.appendChild(dom.createElement('td'));
+        downstreamStatus = tr.appendChild(dom.createElement('td'));
+        upstreamStatus.setAttribute('style', 'width:50%');
+        downstreamStatus.setAttribute('style', 'width:50%');
+    }
+
+    var complain = function complain(message, upstream) {
+        console.log(message);
+        if (options.statusArea) {
+            (upstream ? upstreamStatus : downstreamStatus).appendChild(UI.widgets.errorMessageBlock(dom, message, 'pink'));
+        }
+    };
+
+    var clearStatus = function clearStatus(upsteam) {
+        if (options.statusArea) {
+            options.statusArea.innerHTML = '';
+        }
+    };
+
+    var setPartStyle = function setPartStyle(part, colors, pending) {
+        var chunk = part.subject;
+        colors = colors || '';
+        var baseStyle = 'font-size: 100%; font-family: monospace; width: 100%; border: none; white-space: pre-wrap;';
+        var headingCore = 'font-family: sans-serif; font-weight: bold;  border: none;';
+        var headingStyle = ['font-size: 110%;  padding-top: 0.5em; padding-bottom: 0.5em; width: 100%;', 'font-size: 120%; padding-top: 1em; padding-bottom: 1em; width: 100%;', 'font-size: 150%; padding-top: 1em; padding-bottom: 1em; width: 100%;'];
+
+        var author = kb.any(chunk, ns.dc('author'));
+        if (!colors && author) {
+            // Hash the user webid for now -- later allow user selection!
+            var bgcolor = UI.pad.lightColorHash(author);
+            colors = 'color: ' + (pending ? '#888' : 'black') + '; background-color: ' + bgcolor + ';';
+        }
+
+        var indent = kb.any(chunk, PAD('indent'));
+
+        indent = indent ? indent.value : 0;
+        var style = indent >= 0 ? //
+        // baseStyle + 'padding-left: ' + (indent * 3) + 'em;'
+        baseStyle + 'text-indent: ' + indent * 3 + 'em;' : headingCore + headingStyle[-1 - indent];
+        part.setAttribute('style', style + colors);
+    };
+
+    var removePart = function removePart(part) {
+        var chunk = part.subject;
+        if (!chunk) throw "No chunk for line to be deleted!"; // just in case
+        var prev = kb.any(undefined, PAD('next'), chunk);
+        var next = kb.any(chunk, PAD('next'));
+        if (prev.sameTerm(subject) && next.sameTerm(subject)) {
+            // Last one
+            console.log("You can't delete the only line.");
+            return;
+        }
+
+        var del = kb.statementsMatching(chunk, undefined, undefined, padDoc).concat(kb.statementsMatching(undefined, undefined, chunk, padDoc));
+        var ins = [$rdf.st(prev, PAD('next'), next, padDoc)];
+        var label = chunk.uri.slice(-4);
+        console.log("Deleting line " + label);
+
+        updater.update(del, ins, function (uri, ok, errorMessage, response) {
+            if (ok) {
+                var row = part.parentNode;
+                var before = row.previousSibling;
+                row.parentNode.removeChild(row);
+                console.log("    deleted line " + label + " ok " + part.value);
+                if (before && before.firstChild) {
+                    before.firstChild.focus();
+                }
+            } else if (response && response.status === 409) {
+                // Conflict
+                setPartStyle(part, 'color: black;  background-color: #ffd;'); // yellow
+                part.state = 0; // Needs downstream refresh
+                utils.beep(0.5, 512); // Ooops clash with other person
+                setTimeout(function () {
+                    updater.requestDownstreamAction(padDoc, reloadAndSync);
+                }, 1000);
+            } else {
+                console.log("    removePart FAILED " + chunk + ": " + errorMessage);
+                console.log("    removePart was deleteing :'" + del);
+                setPartStyle(part, 'color: black;  background-color: #fdd;'); // failed
+                var res = response ? response.status : ' [no response field] ';
+                complain('Error ' + res + ' saving changes: ' + errorMessage.true); // upstream,
+                // updater.requestDownstreamAction(padDoc, reloadAndSync);
+            };
+        });
+    }; // removePart
+
+    var changeIndent = function changeIndent(part, chunk, delta) {
+        var del = kb.statementsMatching(chunk, PAD('indent'));
+        var current = del.length ? Number(del[0].object.value) : 0;
+        if (current + delta < -3) return; //  limit negative indent
+        var newIndent = current + delta;
+        var ins = $rdf.st(chunk, PAD('indent'), newIndent, padDoc);
+        updater.update(del, ins, function (uri, ok, error_body) {
+            if (!ok) {
+                console.log("Indent change FAILED '" + newIndent + "' for " + padDoc + ": " + error_body);
+                setPartStyle(part, 'color: black;  background-color: #fdd;'); // failed
+                updater.requestDownstreamAction(padDoc, reloadAndSync);
+            } else {
+                setPartStyle(part); // Implement the indent
+            }
+        });
+    };
+
+    // Use this sort of code to split the line when return pressed in the middle @@
+    var doGetCaretPosition = function doGetCaretPosition(oField) {
+        var iCaretPos = 0;
+
+        // IE Support
+        if (document.selection) {
+
+            // Set focus on the element to avoid IE bug
+            oField.focus();
+
+            // To get cursor position, get empty selection range
+            var oSel = document.selection.createRange();
+
+            // Move selection start to 0 position
+            oSel.moveStart('character', -oField.value.length);
+
+            // The caret position is selection length
+            iCaretPos = oSel.text.length;
+        }
+
+        // Firefox support
+        else if (oField.selectionStart || oField.selectionStart == '0') iCaretPos = oField.selectionStart;
+
+        // Return results
+        return iCaretPos;
+    };
+
+    var addListeners = function addListeners(part, chunk) {
+        part.addEventListener('keydown', function (event) {
+            var queueProperty, queue;
+            //  up 38; down 40; left 37; right 39     tab 9; shift 16; escape 27
+            switch (event.keyCode) {
+                case 13:
+                    // Return
+                    var before = event.shiftKey;
+                    console.log('enter'); // Shift-return inserts before -- only way to add to top of pad.
+                    if (before) {
+                        queue = kb.any(undefined, PAD('next'), chunk);
+                        queueProperty = 'newlinesAfter';
+                    } else {
+                        queue = kb.any(chunk, PAD('next'));
+                        queueProperty = 'newlinesBefore';
+                    }
+                    queue[queueProperty] = queue[queueProperty] || 0;
+                    queue[queueProperty] += 1;
+                    if (queue[queueProperty] > 1) {
+                        console.log('    queueing newline queue = ' + queue[queueProperty]);
+                        return;
+                    }
+                    console.log("    go ahead line before " + queue[queueProperty]);
+                    newChunk(part, before); // was document.activeElement
+                    break;
+
+                case 8:
+                    // Delete
+                    if (part.value.length === 0) {
+                        console.log("Delete key line " + chunk.uri.slice(-4) + " state " + part.state);
+
+                        switch (part.state) {
+                            case 1: // contents being sent
+                            case 2:
+                                // contents need to be sent again
+                                part.state = 4; // delete me
+                                return;
+                            case 3: // being deleted already
+                            case 4:
+                                // already deleme state
+                                return;
+                            case undefined:
+                            case 0:
+                                part.state = 3; // being deleted
+                                removePart(part);
+                                event.preventDefault();
+                                break; // continue
+                            default:
+                                throw "Unexpected state " + part.state;
+                        }
+                    }
+                    break;
+                case 9:
+                    // Tab
+                    var delta = event.shiftKey ? -1 : 1;
+                    changeIndent(part, chunk, delta);
+                    event.preventDefault(); // default is to highlight next field
+                    break;
+                case 27:
+                    // ESC
+                    console.log('escape');
+                    updater.requestDownstreamAction(padDoc, reloadAndSync);
+                    event.preventDefault();
+                    break;
+
+                case 38:
+                    // Up
+                    if (part.parentNode.previousSibling) {
+                        part.parentNode.previousSibling.firstChild.focus();
+                        event.preventDefault();
+                    }
+                    break;
+
+                case 40:
+                    // Down
+                    if (part.parentNode.nextSibling) {
+                        part.parentNode.nextSibling.firstChild.focus();
+                        event.preventDefault();
+                    }
+                    break;
+
+                default:
+            }
+        });
+
+        var updateStore = function updateStore(part) {
+            var chunk = part.subject;
+            setPartStyle(part, undefined, true);
+            var old = kb.any(chunk, ns.sioc('content')).value;
+            var del = [$rdf.st(chunk, ns.sioc('content'), old, padDoc)];
+            var ins = [$rdf.st(chunk, ns.sioc('content'), part.value, padDoc)];
+            var newOne = part.value;
+
+            // DEBUGGING ONLY
+            if (part.lastSent) {
+                if (old != part.lastSent) {
+                    throw "Out of order, last sent expected '" + old + "' but found '" + part.lastSent + "'";
+                }
+            }
+            part.lastSent = newOne;
+
+            console.log(" Patch proposed to " + chunk.uri.slice(-4) + " '" + old + "' -> '" + newOne + "' ");
+            updater.update(del, ins, function (uri, ok, error_body, xhr) {
+                if (!ok) {
+                    // alert("clash " + error_body);
+                    console.log("    patch FAILED " + xhr.status + " for '" + old + "' -> '" + newOne + "': " + error_body);
+                    if (xhr.status === 409) {
+                        // Conflict -  @@ we assume someone else
+                        setPartStyle(part, 'color: black;  background-color: #fdd;');
+                        part.state = 0; // Needs downstream refresh
+                        utils.beep(0.5, 512); // Ooops clash with other person
+                        setTimeout(function () {
+                            updater.requestDownstreamAction(padDoc, reloadAndSync);
+                        }, 1000);
+                    } else {
+                        setPartStyle(part, 'color: black;  background-color: #fdd;'); // failed pink
+                        part.state = 0;
+                        complain("    Error " + xhr.status + " sending data: " + error_body, true);
+                        utils.beep(1.0, 128); // Other
+                        // @@@   Do soemthing more serious with other errors eg auth, etc
+                    }
+                } else {
+                    clearStatus(true); // upstream
+                    setPartStyle(part); // synced
+                    console.log("    Patch ok '" + old + "' -> '" + newOne + "' ");
+
+                    if (part.state === 4) {
+                        //  delete me
+                        part.state = 3;
+                        removePart(part);
+                    } else if (part.state === 3) {// being deleted
+                        // pass
+                    } else if (part.state === 2) {
+                        part.state = 1; // pending: lock
+                        updateStore(part);
+                    } else {
+                        part.state = 0; // clear lock
+                    }
+                }
+            });
+        };
+
+        part.addEventListener('input', function inputChangeListener(event) {
+            // console.log("input changed "+part.value);
+            setPartStyle(part, undefined, true); // grey out - not synced
+            console.log("Input event state " + part.state + " value '" + part.value + "'");
+            switch (part.state) {
+                case 3:
+                    // being deleted
+                    return;
+                case 4:
+                    // needs to be deleted
+                    return;
+                case 2:
+                    // needs content updating, we know
+                    return;
+                case 1:
+                    part.state = 2; // lag we need another patch
+                    return;
+                case 0:
+                case undefined:
+                    part.state = 1; // being upadted
+                    updateStore(part);
+            }
+        }); // listener
+    }; // addlisteners
+
+
+    var newPartAfter = function newPartAfter(tr1, chunk, before) {
+        // @@ take chunk and add listeners
+        var text = kb.any(chunk, ns.sioc('content'));
+        text = text ? text.value : '';
+        var tr = dom.createElement('tr');
+        if (before) {
+            table.insertBefore(tr, tr1);
+        } else {
+            // after
+            if (tr1 && tr1.nextSibling) {
+                table.insertBefore(tr, tr1.nextSibling);
+            } else {
+                table.appendChild(tr);
+            }
+        }
+        var part = tr.appendChild(dom.createElement('input'));
+        part.subject = chunk;
+        part.setAttribute('type', 'text');
+        part.value = text;
+        if (me) {
+            setPartStyle(part, '');
+            addListeners(part, chunk);
+        } else {
+            setPartStyle(part, 'color: #222; background-color: #111;');
+            console.log("Note can't add listeners - not logged in");
+        }
+        return part;
+    };
+
+    var newChunk = function newChunk(ele, before) {
+        // element of chunk being split
+        var kb = UI.store,
+            tr1;
+
+        var here,
+            prev,
+            next,
+            queue,
+            indent = 0,
+            queueProperty = null;
+        if (ele) {
+            if (ele.tagName.toLowerCase() !== 'input') {
+                console.log("return pressed when current document is: " + ele.tagName);
+            }
+            here = ele.subject;
+            indent = kb.any(here, PAD('indent'));
+            indent = indent ? Number(indent.value) : 0;
+            if (before) {
+                prev = kb.any(undefined, PAD('next'), here);
+                next = here;
+                queue = prev;
+                queueProperty = 'newlinesAfter';
+            } else {
+                prev = here;
+                next = kb.any(here, PAD('next'));
+                queue = next;
+                queueProperty = 'newlinesBefore';
+            }
+            tr1 = ele.parentNode;
+        } else {
+            prev = subject;
+            next = subject;
+            tr1 = undefined;
+        }
+
+        var chunk = UI.widgets.newThing(padDoc);
+        var label = chunk.uri.slice(-4);
+
+        var del = [$rdf.st(prev, PAD('next'), next, padDoc)];
+        var ins = [$rdf.st(prev, PAD('next'), chunk, padDoc), $rdf.st(chunk, PAD('next'), next, padDoc), $rdf.st(chunk, ns.dc('author'), me, padDoc), $rdf.st(chunk, ns.sioc('content'), '', padDoc)];
+        if (indent > 0) {
+            // Do not inherit
+            ins.push($rdf.st(chunk, PAD('indent'), indent, padDoc));
+        }
+
+        console.log("    Fresh chunk " + label + " proposed");
+        updater.update(del, ins, function (uri, ok, error_body, xhr) {
+            if (!ok) {
+                //alert("Error writing new line " + label + ": " + error_body);
+                console.log("    ERROR writing new line " + label + ": " + error_body);
+            } else {
+                var newPart = newPartAfter(tr1, chunk, before);
+                setPartStyle(newPart);
+                newPart.focus(); // Note this is delayed
+                if (queueProperty) {
+                    console.log("    Fresh chunk " + label + " updated, queue = " + queue[queueProperty]);
+                    queue[queueProperty] -= 1;
+                    if (queue[queueProperty] > 0) {
+                        console.log("    Implementing queued newlines = " + next.newLinesBefore);
+                        newChunk(newPart, before);
+                    }
+                }
+            }
+        });
+    };
+
+    var consistencyCheck = function consistencyCheck() {
+        var found = [],
+            failed = 0;
+        var complain2 = function complain2(msg) {
+            complain(msg);
+            failed++;
+        };
+
+        if (!kb.the(subject, PAD('next'))) {
+            complain2("No initial next pointer");
+            return false; // can't do linked list
+        }
+        //var chunk = kb.the(subject, PAD('next'))
+        var prev = subject,
+            chunk;
+        for (;;) {
+            chunk = kb.the(prev, PAD('next'));
+            if (!chunk) {
+                complain2('No next pointer from ' + prev);
+            }
+            if (chunk.sameTerm(subject)) {
+                break;
+            }
+            prev = chunk;
+            var label = chunk.uri.split('#')[1];
+            if (found[chunk.uri]) {
+                complain2("Loop!");
+                return false;
+            }
+
+            found[chunk.uri] = true;
+            var k = kb.each(chunk, PAD('next')).length;
+            if (k !== 1) complain2("Should be 1 not " + k + " next pointer for " + label);
+
+            k = kb.each(chunk, PAD('indent')).length;
+            if (k > 1) complain2("Should be 0 or 1 not " + k + " indent for " + label);
+
+            k = kb.each(chunk, ns.sioc('content')).length;
+            if (k !== 1) complain2("Should be 1 not " + k + " contents for " + label);
+
+            k = kb.each(chunk, ns.dc('author')).length;
+            if (k !== 1) complain2("Should be 1 not " + k + " author for " + label);
+
+            var sts = kb.statementsMatching(undefined, ns.sioc('contents'));
+            sts.map(function (st) {
+                if (!found[st.subject.uri]) {
+                    complain2("Loose chunk! " + st.subject.uri);
+                }
+            });
+        }
+        return !failed;
+    };
+
+    // Ensure that the display matches the current state of the
+    var sync = function sync() {
+        var first = kb.the(subject, PAD('next'));
+        if (kb.each(subject, PAD('next')).length !== 1) {
+            var msg = "Pad: Inconsistent data - NEXT pointers: " + kb.each(subject, PAD('next')).length;
+            console.log(msg);
+            if (options.statusAra) {
+                options.statusArea.textContent += msg;
+            }
+            return;
+        }
+        var last = kb.the(undefined, PAD('previous'), subject);
+        var chunk = first; //  = kb.the(subject, PAD('next'));
+        var row;
+
+        // First see which of the logical chunks have existing physical manifestations
+        var manif = [];
+        // Find which lines correspond to existing chunks
+        var i;
+        for (var chunk = kb.the(subject, PAD('next')); !chunk.sameTerm(subject); chunk = kb.the(chunk, PAD('next'))) {
+            for (var i = 0; i < table.children.length; i++) {
+                var tr = table.children[i];
+                if (tr.firstChild.subject.sameTerm(chunk)) {
+                    manif[chunk.uri] = tr.firstChild;
+                }
+            }
+        }
+
+        // Remove any deleted lines
+        for (var i = table.children.length - 1; i >= 0; i--) {
+            row = table.children[i];
+            if (!manif[row.firstChild.subject.uri]) {
+                table.removeChild(row);
+            }
+        }
+        // Insert any new lines and update old ones
+        row = table.firstChild; // might be null
+        for (var chunk = kb.the(subject, PAD('next')); !chunk.sameTerm(subject); chunk = kb.the(chunk, PAD('next'))) {
+            var text = kb.any(chunk, ns.sioc('content')).value;
+            // superstitious -- don't mess with unchanged input fields
+            // which may be selected by the user
+            if (row && manif[chunk.uri]) {
+                var part = row.firstChild;
+                if (text !== part.value) {
+                    part.value = text;
+                }
+                setPartStyle(part);
+                part.state = 0; // Clear the state machine
+                delete part.lastSent; // DEBUG ONLY
+                row = row.nextSibling;
+            } else {
+                newPartAfter(row, chunk, true); // actually before
+            }
+        };
+    };
+
+    // Refresh the DOM tree
+
+    var refreshTree = function refreshTree(root) {
+        if (root.refresh) {
+            root.refresh();
+            return;
+        }
+        for (var i = 0; i < root.children.length; i++) {
+            refreshTree(root.children[i]);
+        }
+    };
+
+    var reloading = false;
+
+    var checkAndSync = function checkAndSync() {
+        console.log("    reloaded OK");
+        clearStatus();
+        if (!consistencyCheck()) {
+            complain("CONSITENCY CHECK FAILED");
+        } else {
+            refreshTree(table);
+        }
+    };
+
+    var reloadAndSync = function reloadAndSync() {
+        if (reloading) {
+            console.log("   Already reloading - stop");
+            return; // once only needed
+        }
+        reloading = true;
+        var retryTimeout = 1000; // ms
+        var tryReload = function tryReload() {
+            console.log("try reload - timeout = " + retryTimeout);
+            updater.reload(updater.store, padDoc, function (ok, message, xhr) {
+                reloading = false;
+                if (ok) {
+                    checkAndSync();
+                } else {
+                    if (xhr.status === 0) {
+                        complain("Network error refreshing the pad. Retrying in " + retryTimeout / 1000);
+                        reloading = true;
+                        retryTimeout = retryTimeout * 2;
+                        setTimeout(tryReload, retryTimeout);
+                    } else {
+                        complain("Error " + xhr.status + "refreshing the pad:" + message + ". Stopped. " + padDoc);
+                    }
+                }
+            });
+        };
+        tryReload();
+    };
+
+    table.refresh = sync; // Catch downward propagating refresh events
+    table.reloadAndSync = reloadAndSync;
+
+    if (!me) console.log('Warning: must be logged in for pad to be edited');
+
+    if (exists) {
+        console.log("Existing pad.");
+        if (consistencyCheck()) {
+            sync();
+            if (kb.holds(subject, PAD('next'), subject)) {
+                //Empty list untenable
+                newChunk(); // require at least one line
+            }
+        } else {
+            console.log(table.textContent = "Inconsistent data. Abort");
+        }
+    } else {
+        // Make new pad
+        console.log("No pad exists - making new one.");
+        var insertables = [$rdf.st(subject, ns.rdf('type'), PAD('Notepad'), padDoc), $rdf.st(subject, ns.dc('author'), me, padDoc), $rdf.st(subject, ns.dc('created'), new Date(), padDoc), $rdf.st(subject, PAD('next'), subject, padDoc)];
+
+        updater.update([], insertables, function (uri, ok, error_body) {
+            if (!ok) {
+                complain(error_body);
+            } else {
+                console.log("Initial pad created");
+                newChunk(); // Add a first chunck
+                // getResults();
+            }
+        });
+    }
+    return table;
+};
+
+/***/ }),
+/* 460 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// Table Widget: Format an array of RDF statements as an HTML table.
+//
+// This can operate in one of three modes: when the class of object is given
+// or when the source document from whuch data is taken is given,
+// or if a prepared query object is given.
+// (In principle it could operate with neither class nor document
+// given but typically
+// there would be too much data.)
+// When the tableClass is not given, it looks for common  classes in the data,
+// and gives the user the option.
+//
+// 2008 Written, Ilaria Liccardi  as the tableViewPane.js
+// 2014 Core table widget moved into common/table.js - timbl
+//
+
+var UI = {
+  icons: __webpack_require__(29),
+  log: __webpack_require__(24),
+  ns: __webpack_require__(14),
+  store: __webpack_require__(22),
+  widgets: __webpack_require__(30)
+};
+
+var utils = __webpack_require__(31);
+var $rdf = __webpack_require__(3);
+
+// UI.widgets.renderTableViewPane
+module.exports = function renderTableViewPane(doc, options) {
+  var sourceDocument = options.sourceDocument;
+  var tableClass = options.tableClass;
+  var givenQuery = options.query;
+
+  var RDFS_TYPE = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type';
+  var RDFS_LITERAL = 'http://www.w3.org/2000/01/rdf-schema#Literal';
+  var ns = UI.ns;
+  var kb = UI.store;
+  var rowsLookup = {}; //  Persistent mapping of subject URI to dom TR
+
+  // Predicates that are never made into columns:
+
+  var FORBIDDEN_COLUMNS = {
+    'http://www.w3.org/2002/07/owl#sameAs': true,
+    'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': true
+
+    // Number types defined in the XML schema:
+
+  };var XSD_NUMBER_TYPES = {
+    'http://www.w3.org/2001/XMLSchema#decimal': true,
+    'http://www.w3.org/2001/XMLSchema#float': true,
+    'http://www.w3.org/2001/XMLSchema#double': true,
+    'http://www.w3.org/2001/XMLSchema#integer': true,
+    'http://www.w3.org/2001/XMLSchema#nonNegativeInteger': true,
+    'http://www.w3.org/2001/XMLSchema#positiveInteger': true,
+    'http://www.w3.org/2001/XMLSchema#nonPositiveInteger': true,
+    'http://www.w3.org/2001/XMLSchema#negativeInteger': true,
+    'http://www.w3.org/2001/XMLSchema#long': true,
+    'http://www.w3.org/2001/XMLSchema#int': true,
+    'http://www.w3.org/2001/XMLSchema#short': true,
+    'http://www.w3.org/2001/XMLSchema#byte': true,
+    'http://www.w3.org/2001/XMLSchema#unsignedLong': true,
+    'http://www.w3.org/2001/XMLSchema#unsignedInt': true,
+    'http://www.w3.org/2001/XMLSchema#unsignedShort': true,
+    'http://www.w3.org/2001/XMLSchema#unsignedByte': true
+  };
+
+  var XSD_DATE_TYPES = {
+    'http://www.w3.org/2001/XMLSchema#dateTime': true,
+    'http://www.w3.org/2001/XMLSchema#date': true
+
+    // Classes that indicate an image:
+
+  };var IMAGE_TYPES = {
+    'http://xmlns.com/foaf/0.1/Image': true,
+    'http://purl.org/dc/terms/Image': true
+
+    // Name of the column used as a "key" value to look up the row.
+    // This is necessary because in the normal view, the columns are
+    // all "optional" values, meaning that we will get a result set
+    // for every individual value that is found.  The row key acts
+    // as an anchor that can be used to combine this information
+    // back into the same row.
+
+  };var keyVariable = options.keyVariable || '?_row';
+
+  var subjectIdCounter = 0;
+  var allType, types;
+  var typeSelectorDiv, addColumnDiv;
+
+  // The last SPARQL query used:
+  var lastQuery = null;
+  var mostCommonType = null;
+
+  var resultDiv = doc.createElement('div');
+  resultDiv.className = 'tableViewPane';
+
+  resultDiv.appendChild(generateControlBar()); // sets typeSelectorDiv
+
+  var tableDiv = doc.createElement('div');
+  resultDiv.appendChild(tableDiv);
+
+  // Save a refresh function for use by caller
+  resultDiv.refresh = function () {
+    runQuery(table.query, table.logicalRows, table.columns, table);
+    // updateTable(givenQuery, mostCommonType) // This could be a lot more incremental and efficient
+  };
+
+  // A specifically asked-for query
+  if (givenQuery) {
+    var table = renderTableForQuery(givenQuery);
+    // lastQuery = givenQuery
+    tableDiv.appendChild(table);
+  } else {
+    // Find the most common type and select it by default
+
+    var s = calculateTable();
+    allType = s[0];types = s[1];
+    if (!tableClass) typeSelectorDiv.appendChild(generateTypeSelector(allType, types));
+
+    mostCommonType = getMostCommonType(types);
+
+    if (mostCommonType) {
+      buildFilteredTable(mostCommonType);
+    } else {
+      buildFilteredTable(allType);
+    }
+  }
+  return resultDiv;
+
+  // /////////////////////////////////////////////////////////////////
+
+
+  function closeDialog(dialog) {
+    dialog.parentNode.removeChild(dialog);
+  }
+
+  function createActionButton(label, callback) {
+    var button = doc.createElement('input');
+    button.setAttribute('type', 'submit');
+    button.setAttribute('value', label);
+    button.addEventListener('click', callback, false);
+    return button;
+  }
+
+  function createSparqlWindow() {
+    var dialog = doc.createElement('div');
+
+    dialog.setAttribute('class', 'sparqlDialog');
+
+    var title = doc.createElement('h3');
+    title.appendChild(doc.createTextNode('Edit SPARQL query'));
+
+    var inputbox = doc.createElement('textarea');
+    inputbox.value = queryToSPARQL(lastQuery);
+
+    dialog.appendChild(title);
+    dialog.appendChild(inputbox);
+
+    dialog.appendChild(createActionButton('Query', function () {
+      var query = SPARQLToQuery(inputbox.value);
+      updateTable(query);
+      closeDialog(dialog);
+    }));
+
+    dialog.appendChild(createActionButton('Close', function () {
+      closeDialog(dialog);
+    }));
+
+    return dialog;
+  }
+
+  function sparqlButtonPressed() {
+    var dialog = createSparqlWindow();
+
+    resultDiv.appendChild(dialog);
+  }
+
+  function generateSparqlButton() {
+    var image = doc.createElement('img');
+    image.setAttribute('class', 'sparqlButton');
+    image.setAttribute('src', tabulator.iconPrefix + 'icons/1pt5a.gif');
+    image.setAttribute('alt', 'Edit SPARQL query');
+
+    image.addEventListener('click', sparqlButtonPressed, false);
+
+    return image;
+  }
+
+  // Generate the control bar displayed at the top of the screen.
+
+  function generateControlBar() {
+    var result = doc.createElement('table');
+    result.setAttribute('class', 'toolbar');
+
+    var tr = doc.createElement('tr');
+
+    /*             @@    Add in later -- not debugged yet
+            var sparqlButtonDiv = doc.createElement("td")
+            sparqlButtonDiv.appendChild(generateSparqlButton())
+            tr.appendChild(sparqlButtonDiv)
+    */
+    typeSelectorDiv = doc.createElement('td');
+    tr.appendChild(typeSelectorDiv);
+
+    addColumnDiv = doc.createElement('td');
+    tr.appendChild(addColumnDiv);
+
+    result.appendChild(tr);
+
+    return result;
+  }
+
+  // Add the SELECT details to the query being built.
+
+  function addSelectToQuery(query, type) {
+    var selectedColumns = type.getColumns();
+
+    for (var i = 0; i < selectedColumns.length; ++i) {
+      // TODO: autogenerate nicer names for variables
+      // variables have to be unambiguous
+
+      var variable = kb.variable('_col' + i);
+
+      query.vars.push(variable);
+      selectedColumns[i].setVariable(variable);
+    }
+  }
+
+  // Add WHERE details to the query being built.
+
+  function addWhereToQuery(query, rowVar, type) {
+    var queryType = type.type;
+
+    if (!queryType) {
+      queryType = kb.variable('_any');
+    }
+
+    // _row a type
+    query.pat.add(rowVar, UI.ns.rdf('type'), queryType);
+  }
+
+  // Generate OPTIONAL column selectors.
+
+  function addColumnsToQuery(query, rowVar, type) {
+    var selectedColumns = type.getColumns();
+
+    for (var i = 0; i < selectedColumns.length; ++i) {
+      var column = selectedColumns[i];
+
+      var formula = kb.formula();
+
+      formula.add(rowVar, column.predicate, column.getVariable());
+
+      query.pat.optional.push(formula);
+    }
+  }
+
+  // Generate a query object from the currently-selected type
+  // object.
+
+  function generateQuery(type) {
+    var query = new $rdf.Query();
+    var rowVar = kb.variable(keyVariable.slice(1)); // don't pass '?'
+
+    addSelectToQuery(query, type);
+    addWhereToQuery(query, rowVar, type);
+    addColumnsToQuery(query, rowVar, type);
+
+    return query;
+  }
+
+  // Build the contents of the tableDiv element, filtered according
+  // to the specified type.
+
+  function buildFilteredTable(type) {
+    // Generate "add column" cell.
+
+    clearElement(addColumnDiv);
+    addColumnDiv.appendChild(generateColumnAddDropdown(type));
+
+    var query = generateQuery(type);
+
+    updateTable(query, type);
+  }
+
+  function updateTable(query, type) {
+    // Stop the previous query from doing any updates.
+
+    if (lastQuery) {
+      lastQuery.running = false;
+    }
+
+    // Render the HTML table.
+
+    var htmlTable = renderTableForQuery(query, type);
+
+    // Clear the tableDiv element, and replace with the new table.
+
+    clearElement(tableDiv);
+    tableDiv.appendChild(htmlTable);
+
+    // Save the query for the edit dialog.
+
+    lastQuery = query;
+  }
+
+  // Remove all subelements of the specified element.
+
+  function clearElement(element) {
+    while (element.childNodes.length > 0) {
+      element.removeChild(element.childNodes[0]);
+    }
+  }
+
+  // A SubjectType is created for each rdf:type discovered.
+
+  function SubjectType(type) {
+    this.type = type;
+    this.columns = null;
+    this.allColumns = null;
+    this.useCount = 0;
+
+    // Get a list of all columns used by this type.
+
+    this.getAllColumns = function () {
+      return this.allColumns;
+    };
+
+    // Get a list of the current columns used by this type
+    // (subset of allColumns)
+
+    this.getColumns = function () {
+      // The first time through, get a list of all the columns
+      // and select only the six most popular columns.
+
+      if (!this.columns) {
+        var allColumns = this.getAllColumns();
+        this.columns = allColumns.slice(0, 7);
+      }
+
+      return this.columns;
+    };
+
+    // Get a list of unused columns
+
+    this.getUnusedColumns = function () {
+      var allColumns = this.getAllColumns();
+      var columns = this.getColumns();
+
+      var result = [];
+
+      for (var i = 0; i < allColumns.length; ++i) {
+        if (columns.indexOf(allColumns[i]) == -1) {
+          result.push(allColumns[i]);
+        }
+      }
+
+      return result;
+    };
+
+    this.addColumn = function (column) {
+      this.columns.push(column);
+    };
+
+    this.removeColumn = function (column) {
+      this.columns = this.columns.filter(function (x) {
+        return x !== column;
+      });
+    };
+
+    this.getLabel = function () {
+      return utils.label(this.type);
+    };
+
+    this.addUse = function () {
+      this.useCount += 1;
+    };
+  }
+
+  // Class representing a column in the table.
+
+  function Column() {
+    this.useCount = 0;
+
+    // Have we checked any values for this column yet?
+
+    this.checkedAnyValues = false;
+
+    // If the range is unknown, but we just get literals in this
+    // column, then we can generate a literal selector.
+
+    this.possiblyLiteral = true;
+
+    // If the range is unknown, but we just get literals and they
+    // match the regular expression for numbers, we can generate
+    // a number selector.
+
+    this.possiblyNumber = true;
+
+    // We accumulate classes which things in the column must be a member of
+
+    this.constraints = [];
+
+    // Check values as they are read.  If we don't know what the
+    // range is, we might be able to infer that it is a literal
+    // if all of the values are literals.  Similarly, we might
+    // be able to determine if the literal values are actually
+    // numbers (using regexps).
+
+    this.checkValue = function (term) {
+      var termType = term.termType;
+      if (this.possiblyLiteral && termType !== 'Literal' && termType !== 'NamedNode') {
+        this.possiblyNumber = false;
+        this.possiblyLiteral = false;
+      } else if (this.possiblyNumber) {
+        if (termType != 'Literal') {
+          this.possiblyNumber = false;
+        } else {
+          var literalValue = term.value;
+
+          if (!literalValue.match(/^\-?\d+(\.\d*)?$/)) {
+            this.possiblyNumber = false;
+          }
+        }
+      }
+
+      this.checkedAnyValues = true;
+    };
+
+    this.getVariable = function () {
+      return this.variable;
+    };
+
+    this.setVariable = function (variable) {
+      this.variable = variable;
+    };
+
+    this.getKey = function () {
+      return this.variable.toString();
+    };
+
+    this.addUse = function () {
+      this.useCount += 1;
+    };
+
+    this.getLabel = function () {
+      if (this.predicate) {
+        if (this.predicate.sameTerm(ns.rdf('type')) && this.superClass) {
+          return utils.label(this.superClass);
+        }
+        return utils.label(this.predicate);
+      } else if (this.variable) {
+        return this.variable.toString();
+      } else {
+        return 'unlabeled column?';
+      }
+    };
+
+    this.setPredicate = function (predicate, inverse, other) {
+      if (inverse) {
+        // variable is in the subject pos
+        this.inverse = predicate;
+        this.constraints = this.constraints.concat(kb.each(predicate, UI.ns.rdfs('domain')));
+        if (predicate.sameTerm(ns.rdfs('subClassOf')) && other.termType === 'NamedNode') {
+          this.superClass = other;
+          this.alternatives = kb.each(undefined, ns.rdfs('subClassOf'), other);
+        }
+      } else {
+        // variable is the object
+        this.predicate = predicate;
+        this.constraints = this.constraints.concat(kb.each(predicate, UI.ns.rdfs('range')));
+      }
+    };
+
+    this.getConstraints = function () {
+      return this.constraints;
+    };
+
+    this.filterFunction = function () {
+      return true;
+    };
+
+    this.sortKey = function () {
+      return this.getLabel().toLowerCase();
+    };
+
+    this.isImageColumn = function () {
+      for (var i = 0; i < this.constraints.length; i++) {
+        if (this.constraints[i].uri in IMAGE_TYPES) return true;
+      }return false;
+    };
+  }
+
+  // Convert an object to an array.
+
+  function objectToArray(obj, filter) {
+    var result = [];
+
+    for (var property in obj) {
+      // @@@ have to guard against methods
+      var value = obj[property];
+
+      if (!filter || filter(property, value)) {
+        result.push(value);
+      }
+    }
+
+    return result;
+  }
+
+  // Get the list of valid columns from the columns object.
+
+  function getColumnsList(columns) {
+    return objectToArray(columns);
+  }
+
+  // Generate an <option> in a drop-down list.
+
+  function optionElement(label, value) {
+    var result = doc.createElement('option');
+
+    result.setAttribute('value', value);
+    result.appendChild(doc.createTextNode(label));
+
+    return result;
+  }
+
+  // Generate drop-down list box for choosing type of data displayed
+
+  function generateTypeSelector(allType, types) {
+    var resultDiv = doc.createElement('div');
+
+    resultDiv.appendChild(doc.createTextNode('Select type: '));
+
+    var dropdown = doc.createElement('select');
+
+    dropdown.appendChild(optionElement('All types', 'null'));
+
+    for (var uri in types) {
+      dropdown.appendChild(optionElement(types[uri].getLabel(), uri));
+    }
+
+    dropdown.addEventListener('click', function () {
+      var type;
+
+      if (dropdown.value === 'null') {
+        type = allType;
+      } else {
+        type = types[dropdown.value];
+      }
+
+      typeSelectorChanged(type);
+    }, false);
+
+    resultDiv.appendChild(dropdown);
+
+    return resultDiv;
+  }
+
+  // Callback invoked when the type selector drop-down list is changed.
+
+  function typeSelectorChanged(selectedType) {
+    buildFilteredTable(selectedType);
+  }
+
+  // Build drop-down list to add a new column
+
+  function generateColumnAddDropdown(type) {
+    var resultDiv = doc.createElement('div');
+
+    var unusedColumns = type.getUnusedColumns();
+
+    unusedColumns.sort(function (a, b) {
+      var aLabel = a.sortKey();
+      var bLabel = b.sortKey();
+      return (aLabel > bLabel) - (aLabel < bLabel);
+    });
+
+    // If there are no unused columns, the div is empty.
+
+    if (unusedColumns.length > 0) {
+      resultDiv.appendChild(doc.createTextNode('Add column: '));
+
+      // Build dropdown list of unused columns.
+
+      var dropdown = doc.createElement('select');
+
+      dropdown.appendChild(optionElement('', '-1'));
+
+      for (var i = 0; i < unusedColumns.length; ++i) {
+        var column = unusedColumns[i];
+        dropdown.appendChild(optionElement(column.getLabel(), '' + i));
+      }
+
+      resultDiv.appendChild(dropdown);
+
+      // Invoke callback when the dropdown is changed, to add
+      // the column and reload the table.
+
+      dropdown.addEventListener('click', function () {
+        var columnIndex = new Number(dropdown.value);
+
+        if (columnIndex >= 0) {
+          type.addColumn(unusedColumns[columnIndex]);
+          buildFilteredTable(type);
+        }
+      }, false);
+    }
+
+    return resultDiv;
+  }
+
+  // Find the column for a given predicate, creating a new column object
+  // if necessary.
+
+  function getColumnForPredicate(columns, predicate) {
+    var column;
+
+    if (predicate.uri in columns) {
+      column = columns[predicate.uri];
+    } else {
+      column = new Column();
+      column.setPredicate(predicate);
+      columns[predicate.uri] = column;
+    }
+
+    return column;
+  }
+
+  // Find a type by its URI, creating a new SubjectType object if
+  // necessary.
+
+  function getTypeForObject(types, type) {
+    var subjectType;
+
+    if (type.uri in types) {
+      subjectType = types[type.uri];
+    } else {
+      subjectType = new SubjectType(type);
+      types[type.uri] = subjectType;
+    }
+
+    return subjectType;
+  }
+
+  // Discover types and subjects for search.
+
+  function discoverTypes() {
+    // rdf:type properties of subjects, indexed by URI for the type.
+
+    var types = {};
+
+    // Get a list of statements that match:  ? rdfs:type ?
+    // From this we can get a list of subjects and types.
+
+    var subjectList = kb.statementsMatching(undefined, UI.ns.rdf('type'), tableClass, // can be undefined OR
+    sourceDocument); // can be undefined
+
+    // Subjects for later lookup.  This is a mapping of type URIs to
+    // lists of subjects (it is necessary to record the type of
+    // a subject).
+
+    var subjects = {};
+
+    for (var i = 0; i < subjectList.length; ++i) {
+      var type = subjectList[i].object;
+
+      if (type.termType !== 'NamedNode') {
+        // @@ no bnodes?
+        continue;
+      }
+
+      var typeObj = getTypeForObject(types, type);
+
+      if (!(type.uri in subjects)) {
+        subjects[type.uri] = [];
+      }
+
+      subjects[type.uri].push(subjectList[i].subject);
+      typeObj.addUse();
+    }
+
+    return [subjects, types];
+  }
+
+  // Get columns for the given subject.
+
+  function getSubjectProperties(subject, columns) {
+    // Get a list of properties of this subject.
+
+    var properties = kb.statementsMatching(subject, undefined, undefined, sourceDocument);
+
+    var result = {};
+
+    for (var j = 0; j < properties.length; ++j) {
+      var predicate = properties[j].predicate;
+
+      if (predicate.uri in FORBIDDEN_COLUMNS) {
+        continue;
+      }
+
+      // Find/create a column for this predicate.
+
+      var column = getColumnForPredicate(columns, predicate);
+      column.checkValue(properties[j].object);
+
+      result[predicate.uri] = column;
+    }
+
+    return result;
+  }
+
+  // Identify the columns associated with a type.
+
+  function identifyColumnsForType(type, subjects) {
+
+    var allColumns = {};
+
+    // Process each subject of this type to build up the
+    // column list.
+
+    for (var i = 0; i < subjects.length; ++i) {
+      var columns = getSubjectProperties(subjects[i], allColumns);
+
+      for (var predicateUri in columns) {
+        var column = columns[predicateUri];
+
+        column.addUse();
+      }
+    }
+
+    // Generate the columns list
+
+    var allColumnsList = objectToArray(allColumns);
+    sortColumns(allColumnsList);
+    type.allColumns = allColumnsList;
+  }
+
+  // Build table information from parsing RDF statements.
+
+  function calculateTable() {
+
+    // Find the types that we will display in the dropdown
+    // list box, and associated objects of those types.
+
+    var subjects, types;
+
+    var s = discoverTypes();
+    subjects = s[0];types = s[1]; // no [ ] on LHS
+
+    for (var typeUrl in subjects) {
+      var subjectList = subjects[typeUrl];
+      var type = types[typeUrl];
+
+      identifyColumnsForType(type, subjectList);
+    }
+
+    // TODO: Special type that captures all rows.
+    // Combine columns from all types
+
+    var allType = new SubjectType(null);
+
+    return [allType, objectToArray(types)];
+  }
+
+  // Sort the list of columns by the most common columns.
+
+  function sortColumns(columns) {
+    function sortFunction(a, b) {
+      return (a.useCount < b.useCount) - (a.useCount > b.useCount);
+    }
+
+    columns.sort(sortFunction);
+  }
+
+  // Create the delete button for a column.
+
+  function renderColumnDeleteButton(type, column) {
+    var button = doc.createElement('a');
+
+    button.appendChild(doc.createTextNode('[x]'));
+
+    button.addEventListener('click', function () {
+      type.removeColumn(column);
+      buildFilteredTable(type);
+    }, false);
+
+    return button;
+  }
+
+  // Render the table header for the HTML table.
+
+  function renderTableHeader(columns, type) {
+    var tr = doc.createElement('tr');
+
+    /* Empty header for link column */
+    var linkTd = doc.createElement('th');
+    tr.appendChild(linkTd);
+
+    /*
+    var labelTd = doc.createElement("th")
+    labelTd.appendChild(doc.createTextNode("*label*"))
+    tr.appendChild(labelTd)
+    */
+
+    for (var i = 0; i < columns.length; ++i) {
+      var th = doc.createElement('th');
+      var column = columns[i];
+
+      th.appendChild(doc.createTextNode(column.getLabel()));
+
+      // We can only add a delete button if we are using the
+      // proper interface and have a type to delete from:
+      if (type) {
+        th.appendChild(renderColumnDeleteButton(type, column));
+      }
+
+      tr.appendChild(th);
+    }
+
+    return tr;
+  }
+
+  // Sort the rows in the rendered table by data from a specific
+  // column, using the provided sort function to compare values.
+
+  function applyColumnSort(rows, column, sortFunction, reverse) {
+    var columnKey = column.getKey();
+
+    // Sort the rows array.
+    rows.sort(function (row1, row2) {
+      var row1Value = null,
+          row2Value = null;
+
+      if (columnKey in row1.values) {
+        row1Value = row1.values[columnKey][0];
+      }
+      if (columnKey in row2.values) {
+        row2Value = row2.values[columnKey][0];
+      }
+
+      var result = sortFunction(row1Value, row2Value);
+
+      if (reverse) {
+        return -result;
+      } else {
+        return result;
+      }
+    });
+
+    // Remove all rows from the table:
+
+    if (rows.length) {
+      var parentTable = rows[0]._htmlRow.parentNode;
+
+      for (var i = 0; i < rows.length; ++i) {
+        parentTable.removeChild(rows[i]._htmlRow);
+      }
+
+      // Add back the rows in the new sorted order:
+
+      for (var i = 0; i < rows.length; ++i) {
+        parentTable.appendChild(rows[i]._htmlRow);
+      }
+    }
+  }
+
+  // Filter the list of rows based on the selectors for the
+  // columns.
+
+  function applyColumnFiltersToRow(row, columns) {
+    var rowDisplayed = true;
+
+    // Check the filter functions for every column.
+    // The row should only be displayed if the filter functions
+    // for all of the columns return true.
+
+    for (var c = 0; c < columns.length; ++c) {
+      var column = columns[c];
+      var columnKey = column.getKey();
+
+      var columnValue = null;
+
+      if (columnKey in row.values) {
+        columnValue = row.values[columnKey][0];
+      }
+
+      if (!column.filterFunction(columnValue)) {
+        rowDisplayed = false;
+        break;
+      }
+    }
+
+    // Show or hide the HTML row according to the result
+    // from the filter function.
+
+    var htmlRow = row._htmlRow;
+
+    if (rowDisplayed) {
+      htmlRow.style.display = '';
+    } else {
+      htmlRow.style.display = 'none';
+    }
+  }
+
+  // Filter the list of rows based on the selectors for the
+  // columns.
+
+  function applyColumnFilters(rows, columns) {
+    // Apply filterFunction to each row.
+
+    for (var r = 0; r < rows.length; ++r) {
+      var row = rows[r];
+      applyColumnFiltersToRow(row, columns);
+    }
+  }
+
+  // /////////////////////////////////// Literal column handling
+
+  // Sort by literal value
+
+  function literalSort(rows, column, reverse) {
+    function literalToString(colValue) {
+      if (colValue) {
+        if (colValue.termType === 'Literal') {
+          return colValue.value.toLowerCase();
+        } else if (colValue.termType === 'NamedNode') {
+          return utils.label(colValue).toLowerCase();
+        }
+        return colValue.value.toLowerCase();
+      } else {
+        return '';
+      }
+    }
+
+    function literalCompare(value1, value2) {
+      var strValue1 = literalToString(value1);
+      var strValue2 = literalToString(value2);
+
+      if (strValue1 < strValue2) {
+        return -1;
+      } else if (strValue1 > strValue2) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+
+    applyColumnSort(rows, column, literalCompare, reverse);
+  }
+
+  // Generates a selector for an RDF literal column.
+
+  function renderLiteralSelector(rows, columns, column) {
+    var result = doc.createElement('div');
+
+    var textBox = doc.createElement('input');
+    textBox.setAttribute('type', 'text');
+    textBox.style.width = '70%';
+
+    result.appendChild(textBox);
+
+    var sort1 = doc.createElement('span');
+    sort1.appendChild(doc.createTextNode('\u25BC'));
+    sort1.addEventListener('click', function () {
+      literalSort(rows, column, false);
+    }, false);
+    result.appendChild(sort1);
+
+    var sort2 = doc.createElement('span');
+    sort2.appendChild(doc.createTextNode('\u25B2'));
+    sort2.addEventListener('click', function () {
+      literalSort(rows, column, true);
+    }, false);
+    result.appendChild(sort2);
+
+    var substring = null;
+
+    // Filter the table to show only rows that have a particular
+    // substring in the specified column.
+
+    column.filterFunction = function (colValue) {
+      if (!substring) {
+        return true;
+      } else if (!colValue) {
+        return false;
+      } else {
+        var literalValue;
+
+        if (colValue.termType === 'Literal') {
+          literalValue = colValue.value;
+        } else if (colValue.termType === 'NamedNode') {
+          literalValue = utils.label(colValue);
+        } else {
+          literalValue = '';
+        }
+
+        return literalValue.toLowerCase().indexOf(substring) >= 0;
+      }
+    };
+
+    textBox.addEventListener('keyup', function () {
+      if (textBox.value !== '') {
+        substring = textBox.value.toLowerCase();
+      } else {
+        substring = null;
+      }
+
+      applyColumnFilters(rows, columns);
+    }, false);
+
+    return result;
+  }
+
+  // ///////////////////////////////////  Enumeration
+
+  // Generates a dropdown selector for enumeration types include
+  //
+  //  @param rows,
+  //  @param columns, the mapping of predictae URIs to columns
+  //  @param column,
+  //  @param list,    List of alternative terms
+  //
+  function renderEnumSelector(rows, columns, column, list) {
+    var doMultiple = true;
+    var result = doc.createElement('div');
+    var dropdown = doc.createElement('select');
+
+    var searchValue = {}; // Defualt to all enabled
+    for (var i = 0; i < list.length; ++i) {
+      var value = list[i];
+      searchValue[value.uri] = true;
+    }
+
+    var initialSelection = getHints(column).initialSelection;
+    if (initialSelection) searchValue = initialSelection;
+
+    if (doMultiple) dropdown.setAttribute('multiple', 'true');else dropdown.appendChild(optionElement('(All)', '-1'));
+
+    for (var i = 0; i < list.length; ++i) {
+      var value = list[i];
+      var ele = optionElement(utils.label(value), i);
+      if (searchValue[value.uri]) ele.selected = true;
+      dropdown.appendChild(ele);
+    }
+    result.appendChild(dropdown);
+
+    // Select based on an enum value.
+
+    column.filterFunction = function (colValue) {
+      return !searchValue || colValue && searchValue[colValue.uri];
+    };
+
+    dropdown.addEventListener('click', function () {
+      if (doMultiple) {
+        searchValue = {};
+        var opt = dropdown.options;
+        for (var i = 0; i < opt.length; i++) {
+          var option = opt[i];
+          var index = new Number(option.value);
+          if (opt[i].selected) searchValue[list[index].uri] = true;
+        }
+      } else {
+        if (index < 0) {
+          // All
+          searchValue = null;
+        } else {
+          var index = new Number(dropdown.value);
+          searchValue = {};
+          searchValue[list[index].uri] = true;
+        }
+      }
+      applyColumnFilters(rows, columns);
+    }, true);
+
+    return result;
+  }
+
+  // //////////////////////////////////// Numeric
+  //
+  // Selector for XSD number types.
+
+  function renderNumberSelector(rows, columns, column) {
+    var result = doc.createElement('div');
+
+    var minSelector = doc.createElement('input');
+    minSelector.setAttribute('type', 'text');
+    minSelector.style.width = '40px';
+    result.appendChild(minSelector);
+
+    var maxSelector = doc.createElement('input');
+    maxSelector.setAttribute('type', 'text');
+    maxSelector.style.width = '40px';
+    result.appendChild(maxSelector);
+
+    // Select based on minimum/maximum limits.
+
+    var min = null;
+    var max = null;
+
+    column.filterFunction = function (colValue) {
+      if (colValue) {
+        colValue = new Number(colValue);
+      }
+
+      if (min && (!colValue || colValue < min)) {
+        return false;
+      }
+      if (max && (!colValue || colValue > max)) {
+        return false;
+      }
+
+      return true;
+    };
+
+    // When the values in the boxes are changed, update the
+    // displayed columns.
+
+    function eventListener() {
+      if (minSelector.value === '') {
+        min = null;
+      } else {
+        min = new Number(minSelector.value);
+      }
+
+      if (maxSelector.value === '') {
+        max = null;
+      } else {
+        max = new Number(maxSelector.value);
+      }
+
+      applyColumnFilters(rows, columns);
+    }
+
+    minSelector.addEventListener('keyup', eventListener, false);
+    maxSelector.addEventListener('keyup', eventListener, false);
+
+    return result;
+  }
+
+  // /////////////////////////////////////////////////////////////////
+
+
+  // Fallback attempts at generating a selector if other attempts fail.
+
+  function fallbackRenderTableSelector(rows, columns, column) {
+    // Have all values matched as numbers?
+
+    if (column.checkedAnyValues && column.possiblyNumber) {
+      return renderNumberSelector(rows, columns, column);
+    }
+
+    // Have all values been literals?
+
+    if (column.possiblyLiteral) {
+      return renderLiteralSelector(rows, columns, column);
+    }
+
+    return null;
+  }
+
+  // Render a selector for a given row.
+
+  function renderTableSelector(rows, columns, column) {
+    // What type of data is in this column?  Check the constraints for
+    // this predicate.
+
+    // If this is a class which can be one of various sibling classes?
+    if (column.superClass && column.alternatives.length > 0) return renderEnumSelector(rows, columns, column, column.alternatives);
+
+    var cs = column.getConstraints();
+    var range;
+    for (var i = 0; i < cs.length; i++) {
+      range = cs[i];
+
+      // Is this a number type?
+      // Alternatively, is this an rdf:Literal type where all of
+      // the values match as numbers?
+
+      if (column.checkedAnyValues && column.possiblyNumber || range.uri in XSD_NUMBER_TYPES) {
+        return renderNumberSelector(rows, columns, column);
+      }
+
+      // rdf:Literal?  Assume a string at this point
+
+      if (range.uri === RDFS_LITERAL) {
+        return renderLiteralSelector(rows, columns, column);
+      }
+
+      // Is this an enumeration type?
+
+      // Also  ToDo: @@@ Handle membership of classes whcih are disjointUnions
+
+      var choices = kb.each(range, UI.ns.owl('oneOf'));
+      if (choices.length > 0) return renderEnumSelector(rows, columns, column, choices.elements);
+    }
+    return fallbackRenderTableSelector(rows, columns, column);
+  }
+
+  // Generate the search selectors for the table columns.
+
+  function renderTableSelectors(rows, columns) {
+    var tr = doc.createElement('tr');
+    tr.className = 'selectors';
+
+    // Empty link column
+
+    tr.appendChild(doc.createElement('td'));
+
+    // Generate selectors.
+
+    for (var i = 0; i < columns.length; ++i) {
+      var td = doc.createElement('td');
+
+      var selector = renderTableSelector(rows, columns, columns[i]);
+
+      if (selector) {
+        td.appendChild(selector);
+      }
+      /*
+                  // Useful debug: display URI of predicate in column header
+                  if (columns[i].predicate.uri) {
+                      td.appendChild(document.createTextNode(columns[i].predicate.uri))
+                  }
+      */
+      tr.appendChild(td);
+    }
+
+    return tr;
+  }
+
+  function linkTo(uri, linkText, hints) {
+    hints = hints || {};
+    var result = doc.createElement('a');
+    var linkFunction = hints.linkFunction;
+    result.setAttribute('href', uri);
+    result.appendChild(doc.createTextNode(linkText));
+    if (!linkFunction) {
+      result.addEventListener('click', UI.widgets.openHrefInOutlineMode, true);
+    } else {
+      result.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var target = utils.getTarget(e);
+        var uri = target.getAttribute('href');
+        if (!uri) console.log('No href found \n');
+        linkFunction(uri);
+        // tabulator.outline.GotoSubject(UI.store.sym(uri), true, undefined, true, undefined)
+      }, true);
+    }
+    return result;
+  }
+
+  function linkToObject(obj, hints) {
+    var match = false;
+
+    if (obj.uri) {
+      match = obj.uri.match(/^mailto:(.*)/);
+    }
+
+    if (match) {
+      return linkTo(obj.uri, match[1], hints);
+    } else {
+      return linkTo(obj.uri, utils.label(obj), hints);
+    }
+  }
+
+  // Render an image
+
+  function renderImage(obj) {
+    var result = doc.createElement('img');
+    result.setAttribute('src', obj.uri);
+
+    // Set the height, so it appears as a thumbnail.
+    result.style.height = '40px';
+    return result;
+  }
+
+  // Render an individual RDF object to an HTML object displayed
+  // in a table cell.
+
+  function getHints(column) {
+    if (options && options.hints && column.variable && options.hints[column.variable.toNT()]) {
+      return options.hints[column.variable.toNT()];
+    }
+    return {};
+  }
+
+  function renderValue(obj, column) {
+    // hint
+    var hints = getHints(column);
+    var cellFormat = hints.cellFormat;
+    var span;
+    if (cellFormat) {
+      switch (cellFormat) {
+        case 'shortDate':
+          return doc.createTextNode(UI.widgets.shortDate(obj.value));
+          break;
+
+        default:
+        // drop through
+
+      }
+    } else {
+      if (obj.termType === 'Literal') {
+        if (obj.datatype) {
+          if (XSD_DATE_TYPES[obj.datatype.uri]) {
+            return doc.createTextNode(UI.widgets.shortDate(obj.value));
+          } else if (XSD_NUMBER_TYPES[obj.datatype.uri]) {
+            var span = doc.createElement('span');
+            span.textContent = obj.value;
+            span.setAttribute('style', 'text-align: right');
+            return span;
+          }
+        }
+        return doc.createTextNode(obj.value);
+      } else if (obj.termType === 'NamedNode' && column.isImageColumn()) {
+        return renderImage(obj);
+      } else if (obj.termType === 'NamedNode' || obj.termType === 'BlankNode') {
+        return linkToObject(obj, hints);
+      } else if (obj.termType === 'Collection') {
+        var span = doc.createElement('span');
+        span.appendChild(doc.createTextNode('['));
+        obj.elements.map(function (x) {
+          span.appendChild(renderValue(x, column));
+          span.appendChild(doc.createTextNode(', '));
+        });
+        span.removeChild(span.lastChild);
+        span.appendChild(doc.createTextNode(']'));
+        return span;
+      } else {
+        return doc.createTextNode("unknown termtype '" + obj.termType + "'!");
+      }
+    }
+  }
+
+  // Render a row of the HTML table, from the given row structure.
+  // Note that unlike other functions, this renders into a provided
+  // row (<tr>) element.
+
+  function renderTableRowInto(tr, row, columns, downstream) {
+    /* Link column, for linking to this subject. */
+
+    var linkTd = doc.createElement('td');
+
+    if (row._subject && 'uri' in row._subject) {
+      linkTd.appendChild(linkTo(row._subject.uri, '\u2192'));
+    }
+
+    tr.appendChild(linkTd);
+
+    // Create a <td> for each column (whether the row has data for that
+    // column or not).
+
+    for (var i = 0; i < columns.length; ++i) {
+      var column = columns[i];
+      var td = doc.createElement('td');
+      var orig;
+
+      var columnKey = column.getKey();
+
+      if (columnKey in row.values) {
+        var objects = row.values[columnKey];
+        var different = false;
+        if (row.originalValues && row.originalValues[columnKey]) {
+          if (objects.length !== row.originalValues[columnKey].length) {
+            different = true;
+          }
+        }
+        for (var j = 0; j < objects.length; ++j) {
+          var obj = objects[j];
+          if (row.originalValues && row.originalValues[columnKey] && row.originalValues[columnKey].length > j) {
+            orig = row.originalValues[columnKey][j];
+            if (obj.toString() !== orig.toString()) {
+              different = true;
+            }
+          }
+          td.appendChild(renderValue(obj, column));
+
+          if (j !== objects.length - 1) {
+            td.appendChild(doc.createTextNode(',\n'));
+          }
+          if (different) {
+            td.style.background = '#efe'; // green = new changed
+          }
+        }
+      }
+
+      tr.appendChild(td);
+    }
+
+    // Save a reference to the HTML row in the row object.
+
+    row._htmlRow = tr;
+
+    return tr;
+  }
+
+  // Check if a value is already stored in the list of values for
+  // a cell (the query can sometimes find it multiple times)
+
+  function valueInList(value, list) {
+    var key = null;
+
+    if (value.termType === 'Literal') {
+      key = 'value';
+    } else if (value.termType === 'NamedNode') {
+      key = 'uri';
+    } else {
+      return list.indexOf(value) >= 0;
+    }
+
+    // Check the list and compare keys:
+
+    var i;
+
+    for (i = 0; i < list.length; ++i) {
+      if (list[i].termType === value.termType && list[i][key] === value[key]) {
+        return true;
+      }
+    }
+
+    // Not found?
+
+    return false;
+  }
+
+  // Update a row, add new values, and regenerate the HTML element
+  // containing the values.
+
+  function updateRow(row, columns, values) {
+    var key;
+    var needUpdate = false;
+
+    for (key in values) {
+      var value = values[key];
+
+      // If this key is not already in the row, create a new entry
+      // for it:
+
+      if (!(key in row.values)) {
+        row.values[key] = [];
+      }
+
+      // Possibly add this new value to the list, but don't
+      // add it if we have already added it:
+
+      if (!valueInList(value, row.values[key])) {
+        row.values[key].push(value);
+        needUpdate = true;
+      }
+    }
+
+    // Regenerate the HTML row?
+
+    if (needUpdate) {
+      clearElement(row._htmlRow);
+      renderTableRowInto(row._htmlRow, row, columns);
+    }
+    applyColumnFiltersToRow(row, columns); // Hide immediately if nec
+  }
+
+  // Get a unique ID for the given subject.  This is normally the
+  // URI; if the subject has no URI, a unique ID is assigned.
+
+  function getSubjectId(subject) {
+    if ('uri' in subject) {
+      return subject.uri;
+    } else if ('_subject_id' in subject) {
+      return subject._subject_id;
+    } else {
+      var result = '' + subjectIdCounter;
+      subject._subject_id = result;
+      ++subjectIdCounter;
+      return result;
+    }
+  }
+
+  // Run a query and populate the table.
+  // Populates also an array of logical rows.  This will be empty when the function
+  // first returns (as the query is performed in the background)
+
+  function runQuery(query, rows, columns, table) {
+    query.running = true;
+    var oldStyle;
+    var startTime = Date.now();
+
+    var progressMessage = doc.createElement('tr');
+    table.appendChild(progressMessage);
+    progressMessage.textContent = 'Loading ...';
+
+    for (var i = 0; i < rows.length; i++) {
+      rows[i].original = true;
+      if (!rows[i].originalValues) {
+        // remember first set
+        rows[i].originalValues = rows[i].values;
+      }
+      rows[i].values = {};
+      // oldStyle = rows[i]._htmlRow.getAttribute('style') || ''
+      // rows[i]._htmlRow.style.background = '#ffe'; //setAttribute('style', ' background-color: #ffe;')// yellow
+    }
+
+    var onResult = function onResult(values) {
+      if (!query.running) {
+        return;
+      }
+
+      progressMessage.textContent += '.'; // give a progress bar
+
+      var row = null;
+      var rowKey = null;
+      var rowKeyId;
+
+      // If the query has a row key, use it to look up the row.
+
+      if (keyVariable in values) {
+        rowKey = values[keyVariable];
+        rowKeyId = getSubjectId(rowKey);
+
+        // Do we have a row for this already?
+        // If so, reuse it; otherwise, we must create a new row.
+
+        if (rowKeyId in rowsLookup) {
+          row = rowsLookup[rowKeyId];
+        }
+      }
+
+      // Create a new row?
+
+      if (!row) {
+        var tr = doc.createElement('tr');
+        table.appendChild(tr);
+
+        row = {
+          _htmlRow: tr,
+          _subject: rowKey,
+          values: {}
+        };
+        rows.push(row);
+
+        if (rowKey) {
+          rowsLookup[rowKeyId] = row;
+        }
+      }
+
+      // Add the new values to this row.
+      delete row.original; // This is included in the new data
+      updateRow(row, columns, values);
+    };
+
+    var onDone = function onDone() {
+      if (progressMessage && progressMessage.parentNode && progressMessage.parentNode.removeChild) {
+        progressMessage.parentNode.removeChild(progressMessage);
+        progressMessage = null;
+      }
+
+      var elapsedTime_ms = Date.now() - startTime;
+      console.log('Query done: ' + rows.length + ' rows, ' + elapsedTime_ms + 'ms');
+      // Delete rows which were from old values not new
+      for (var i = rows.length - 1; i >= 0; i--) {
+        // backwards
+        if (rows[i].original) {
+          console.log('   deleting row ' + rows[i]._subject);
+          var tr = rows[i]._htmlRow;
+          tr.parentNode.removeChild(tr);
+          delete rowsLookup[getSubjectId(rows[i]._subject)];
+          rows.splice(i, 1);
+        }
+      }
+
+      /*
+                  for (var i=0; i< rows.length; i++) {
+                      rows[i].originalValues = rows[i].values
+                      rows[i].values = {}
+                      // oldStyle = rows[i]._htmlRow.getAttribute('style') || ''
+                      rows[i]._htmlRow.style.background = '#ffe'; //setAttribute('style', ' background-color: #ffe;')//
+                      applyColumnFilters(rows, columns); // @@ TBL added this
+                      // Here add table clean-up, remove "loading" message etc.
+                  }
+                  */
+      if (options.onDone) options.onDone();
+    };
+    kb.query(query, onResult, undefined, onDone);
+  }
+
+  // Given the formula object which is the query pattern,
+  // deduce from where the variable occurs constraints on
+  // what values it can take.
+
+  function inferColumnsFromFormula(columns, formula) {
+    UI.log.debug('>> processing formula');
+
+    for (var i = 0; i < formula.statements.length; ++i) {
+      var statement = formula.statements[i];
+      // UI.log.debug("processing statement " + i)
+
+      // Does it match this?:
+      // <something> <predicate> ?var
+      // If so, we can use the predicate as the predicate for the
+      // column used for the specified variable.
+
+      if (statement.predicate.termType === 'NamedNode' && statement.object.termType === 'Variable') {
+        var variable = statement.object.toString();
+        if (variable in columns) {
+          var column = columns[variable];
+          column.setPredicate(statement.predicate, false, statement.subject);
+        }
+      }
+      if (statement.predicate.termType === 'NamedNode' && statement.subject.termType === 'Variable') {
+        var variable = statement.subject.toString();
+        if (variable in columns) {
+          var column = columns[variable];
+          column.setPredicate(statement.predicate, true, statement.object);
+        }
+      }
+    }
+
+    // Apply to OPTIONAL formulas:
+
+    for (var i = 0; i < formula.optional.length; ++i) {
+      UI.log.debug('recurse to optional subformula ' + i);
+      inferColumnsFromFormula(columns, formula.optional[i]);
+    }
+
+    UI.log.debug('<< finished processing formula');
+  }
+
+  // Generate a list of column structures and infer details about the
+  // predicates based on the contents of the query
+
+  function inferColumns(query) {
+    // Generate the columns list:
+
+    var result = [];
+    var columns = {};
+
+    for (var i = 0; i < query.vars.length; ++i) {
+      var column = new Column();
+      var queryVar = query.vars[i];
+      UI.log.debug('column ' + i + ' : ' + queryVar);
+
+      column.setVariable(queryVar);
+      columns[queryVar] = column;
+      result.push(column);
+    }
+
+    inferColumnsFromFormula(columns, query.pat);
+
+    return result;
+  }
+
+  // Generate a table from a query.
+
+  function renderTableForQuery(query, type) {
+    // infer columns from query, to allow generic queries
+    var columns;
+    if (!givenQuery) {
+      columns = type.getColumns();
+    } else {
+      columns = inferColumns(query);
+    }
+
+    // Start with an empty list of rows; this will be populated
+    // by the query.
+
+    var rows = [];
+
+    // Create table element and header.
+
+    var table = doc.createElement('table');
+
+    table.appendChild(renderTableHeader(columns, type));
+    table.appendChild(renderTableSelectors(rows, columns));
+
+    // Run query.  Note that this is perform asynchronously; the
+    // query runs in the background and this call does not block.
+
+    table.logicalRows = rows; // Save for refresh
+    table.columns = columns;
+    table.query = query;
+
+    runQuery(query, rows, columns, table);
+
+    return table;
+  }
+
+  // Find the most common type of row
+
+  function getMostCommonType(types) {
+    var bestCount = -1;
+    var best = null;
+
+    for (var typeUri in types) {
+      var type = types[typeUri];
+
+      if (type.useCount > bestCount) {
+        best = type;
+        bestCount = type.useCount;
+      }
+    }
+
+    return best;
+  }
+
+  // Filter list of columns to only those columns used in the
+  // specified rows.
+
+  function filterColumns(columns, rows) {
+    var filteredColumns = {};
+
+    // Copy columns from "columns" -> "filteredColumns", but only
+    // those columns that are used in the list of rows specified.
+
+    for (var columnUri in columns) {
+      for (var i = 0; i < rows.length; ++i) {
+        if (columnUri in rows[i]) {
+          filteredColumns[columnUri] = columns[columnUri];
+          break;
+        }
+      }
+    }
+
+    return filteredColumns;
+  }
+};
+// ///////////////////////////////////////////////////////////////////
+
+// ENDS
+
+/***/ }),
+/* 461 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// SOLID-compaible Tabs widget
+//
+// - Any Orientation = top, left, bottom, right
+// - Selected bodies are hidden not deleted
+// - Multiple tab select with Alt key
+//
+// written 2016-05-27
+
+
+var tabs = {};
+module.exports = tabs;
+
+var UI = {
+  icons: __webpack_require__(29),
+  log: __webpack_require__(24),
+  ns: __webpack_require__(14),
+  store: __webpack_require__(22),
+  tabs: tabs,
+  widgets: __webpack_require__(30)
+};
+
+var utils = __webpack_require__(31);
+
+// options.subject
+// options.orientation 0 top, 1 left, 2 bottom, 3 right
+// options.showMain(div, subject) function to show subject in div when tab selected
+// options.renderTabSettings  function(subject, domContainer)
+// options.renderTabSettings  like showMain but when user has held Alt down
+//
+
+UI.tabs.tabWidget = function (options) {
+  var kb = UI.store;
+  var subject = options.subject;
+  var dom = options.dom;
+  var box = dom.createElement('div');
+  var orientation = parseInt(options.orientation || "0");
+  var backgroundColor = options.backgroundColor || "#ddddcc";
+  var color;
+  var flipped = orientation & 2;
+  var vertical = orientation & 1;
+  var wholetable = box.appendChild(dom.createElement('table'));
+
+  var tabContainer, tabElement, mainDiv, tabBar;
+
+  var isLight = function isLight(x) {
+    var total = 0;
+    for (var i = 0; i < 3; i++) {
+      total += parseInt(x.slice(i * 2 + 1, i * 2 + 3), 16);
+    }
+    return total > 128 * 3;
+  };
+  var colorBlend = function colorBlend(a, b, mix) {
+    var ca,
+        cb,
+        res,
+        str = '#';
+    var hex = '0123456789abcdef';
+    for (var i = 0; i < 3; i++) {
+      ca = parseInt(a.slice(i * 2 + 1, i * 2 + 3), 16);
+      cb = parseInt(b.slice(i * 2 + 1, i * 2 + 3), 16);
+      res = ca * (1.0 - mix) + cb * mix; // @@@ rounding
+      var res2 = parseInt(('' + res).split('.')[0]); // @@ ugh
+      var h = parseInt(('' + res2 / 16).split('.')[0]); // @@ ugh
+      var l = parseInt(('' + res2 % 16).split('.')[0]); // @@ ugh
+      str += hex[h] + hex[l];
+    }
+    // console.log('Blending colors ' + a + ' with ' + mix + ' of ' + b + ' to give ' + str)
+    return str;
+  };
+
+  var selectedColor;
+  if (isLight(backgroundColor)) {
+    selectedColor = colorBlend(backgroundColor, "#ffffff", 0.3);
+    color = '#000000';
+  } else {
+    selectedColor = colorBlend(backgroundColor, "#000000", 0.3);
+    color = '#ffffff';
+  }
+  var bodyDivStyle = 'resize: both; overflow: scroll; margin:0; border: 0.5em; border-style: solid; border-color: ' + selectedColor + '; padding: 1em;  min-width: 30em; min-height: 450px; width:100%;';
+
+  if (vertical) {
+    var onlyTR = wholetable.appendChild(dom.createElement('tr'));
+    var mainTD = dom.createElement('td');
+    mainTD.setAttribute('style', 'margin: 0;'); // override tabbedtab.css
+    var tabTD = dom.createElement('td');
+    tabTD.setAttribute('style', 'margin: 0;');
+    if (flipped) {
+      onlyTR.appendChild(mainTD);
+      onlyTR.appendChild(tabTD);
+    } else {
+      onlyTR.appendChild(tabTD);
+      onlyTR.appendChild(mainTD);
+    }
+    tabContainer = tabTD.appendChild(dom.createElement('table'));
+    tabElement = 'tr';
+    tabBar = tabTD; // drop zone
+    //mainTD.appendChild(bodyDiv)
+  } else {
+    // horizontal
+    tabContainer = dom.createElement('tr');
+    var mainTR = wholetable.appendChild(dom.createElement('tr'));
+    if (flipped) {
+      var mainTR = wholetable.appendChild(dom.createElement('tr'));
+      var tabTR = wholetable.appendChild(dom.createElement('tr'));
+    } else {
+      var tabTR = wholetable.appendChild(dom.createElement('tr'));
+      var mainTR = wholetable.appendChild(dom.createElement('tr'));
+    }
+    tabContainer = tabTR;
+    var mainTD = mainTR.appendChild(dom.createElement('td'));
+    tabElement = 'td';
+    //mainTD.appendChild(bodyDiv)
+  }
+  var bodyContainer = mainTD.appendChild(dom.createElement('table'));
+  box.tabContainer = tabContainer;
+  box.bodyContainer = bodyContainer;
+
+  var getItems = function getItems() {
+    if (options.ordered) {
+      var list = kb.the(subject, options.predicate);
+      return list.elements;
+    } else {
+      return kb.each(subject, options.predicate);
+    }
+  };
+
+  var corners = ["2em", "2em", "0", "0"]; // top left, TR, BR, BL
+  corners = corners.concat(corners).slice(orientation, orientation + 4);
+  corners = 'border-radius: ' + corners.join(' ') + ';';
+
+  var margins = ["0.3em", "0.3em", "0", "0.3em"]; // top, right, bottom, left
+  margins = margins.concat(margins).slice(orientation, orientation + 4);
+  margins = 'margin: ' + margins.join(' ') + ';';
+
+  var tabStyle = corners + 'padding: 0.7em; max-width: 20em;'; //  border: 0.05em 0 0.5em 0.05em; border-color: grey;
+  tabStyle += 'color: ' + color + ';';
+  var unselectedStyle = tabStyle + 'opacity: 50%; margin: 0.3em; background-color: ' + backgroundColor + ';'; // @@ rotate border
+  var selectedStyle = tabStyle + margins + ' background-color: ' + selectedColor + ';';
+  var shownStyle = '';
+  var hiddenStyle = shownStyle + 'display: none;';
+
+  var resetTabStyle = function resetTabStyle() {
+    for (var i = 0; i < tabContainer.children.length; i++) {
+      tabContainer.children[i].firstChild.setAttribute('style', unselectedStyle);
+    }
+  };
+  var resetBodyStyle = function resetBodyStyle() {
+    for (var i = 0; i < bodyContainer.children.length; i++) {
+      bodyContainer.children[i].setAttribute('style', hiddenStyle);
+    }
+  };
+
+  var makeNewSlot = function makeNewSlot(item) {
+    var ele = dom.createElement(tabElement);
+    ele.subject = item;
+    var div = ele.appendChild(dom.createElement('div'));
+    div.setAttribute('style', unselectedStyle);
+
+    div.addEventListener('click', function (e) {
+      if (!e.metaKey) {
+        resetTabStyle();
+        resetBodyStyle();
+      }
+      div.setAttribute('style', selectedStyle);
+      ele.bodyTR.setAttribute('style', shownStyle);
+      var bodyDiv = ele.bodyTR.firstChild;
+      if (!bodyDiv) {
+        bodyDiv = ele.bodyTR.appendChild(dom.createElement('div'));
+        bodyDiv.setAttribute('style', bodyDivStyle);
+      }
+      if (options.renderTabSettings && e.altKey) {
+        if (bodyDiv.asSetttings !== true) {
+          bodyDiv.innerHTML = 'loading settings ...' + item;
+          options.renderTabSettings(bodyDiv, ele.subject);
+          bodyDiv.asSetttings = true;
+        }
+      } else {
+        if (bodyDiv.asSetttings !== false) {
+          bodyDiv.innerHTML = 'loading item ...' + item;
+          options.renderMain(bodyDiv, ele.subject);
+          bodyDiv.asSetttings = false;
+        }
+      }
+    });
+
+    if (options.renderTab) {
+      options.renderTab(div, item);
+    } else {
+      div.textContent = utils.label(item);
+    }
+    return ele;
+  };
+
+  var orderedSync = function orderedSync() {
+    var items = getItems();
+    if (!vertical) {
+      mainTD.setAttribute('colspan', items.length);
+    }
+    var slot, i, j, left, right;
+    var differ = false;
+    // Find how many match at each end
+    for (left = 0; left < tabContainer.children.length; left++) {
+      slot = tabContainer.children[left];
+      if (left >= items.length || !slot.subject.sameTerm(items[left])) {
+        differ = true;
+        break;
+      }
+    }
+    if (!differ && items.length === tabContainer.children.length) {
+      return; // The two just match in order: a case to optimize for
+    }
+    for (right = tabContainer.children.length - 1; right >= 0; right--) {
+      slot = tabContainer.children[right];
+      j = right - tabContainer.children.length + items.length;
+      if (!slot.subject.sameTerm(items[j])) {
+        break;
+      }
+    }
+    // The elements left ... right in tabContainer.children do not match
+    var insertables = items.slice(left, right - tabContainer.children.length + items.length + 1);
+    while (right >= left) {
+      // remove extra
+      tabContainer.removeChild(tabContainer.children[left]);
+      bodyContainer.removeChild(bodyContainer.children[left]);
+      right -= 1;
+    }
+    for (i = 0; i < insertables.length; i++) {
+      var newSlot = makeNewSlot(insertables[i]);
+      var newBodyTR = dom.createElement('tr');
+      //var newBodyDiv = newBodyTR.appendChild(dom.createElement('div'))
+      newSlot.bodyTR = newBodyTR;
+      dom.createElement('tr');
+      if (left === tabContainer.children.length) {
+        // None left of original on right
+        tabContainer.appendChild(newSlot);
+        bodyContainer.appendChild(newBodyTR);
+        // console.log('   appending new ' + insertables[i])
+      } else {
+        // console.log('   inserting at ' + (left + i) + ' new ' + insertables[i])
+        tabContainer.insertBefore(newSlot, tabContainer.children[left + i]);
+        bodyContainer.insertBefore(newBodyTR, bodyContainer.children[left + i]);
+      }
+    }
+  };
+
+  // UNMAINTAINED
+  var unorderedSync = function unorderedSync() {
+    var items = getItems();
+    if (!vertical) {
+      mainTD.setAttribute('colspan', items.length);
+    }
+    var slot, i, j, found, pair;
+    var missing = [];
+    for (i = 0; i < tabContainer.children.length; i++) {
+      slot = tabContainer.children[i];
+      slot.deleteMe = true;
+    }
+    for (j = 0; j < items.length; j++) {
+      found = false;
+      for (i = 0; i < tabContainer.children.length; i++) {
+        if (tabContainer.children[i].subject === items[j]) {
+          found = true;
+        }
+      }
+      if (!found) {
+        missing.push([j, items[j]]);
+      }
+    }
+    for (j = 0; j < missing.length; j++) {
+      pair = missing[j];
+      i = pair[0];
+      slot = makeNewSlot(pair[1]);
+      if (i >= tabContainer.length) {
+        tabContainer.appendChild(slot);
+      } else {
+        tabContainer.insertBefore(slot, tabContainer.children[i + 1]);
+      }
+    }
+
+    for (i = 0; i < tabContainer.children.length; i++) {
+      slot = tabContainer.children[i];
+      if (slot.deleteMe) {
+        tabContainer.removeChild(slot);
+      }
+    }
+  };
+
+  var sync = function sync() {
+    if (options.ordered) {
+      orderedSync();
+    } else {
+      unorderedSync();
+    }
+  };
+  box.refresh = sync;
+  sync();
+
+  if (!options.startEmpty && tabContainer.children.length) {
+    tabContainer.children[0].firstChild.click(); // Open first tab
+  }
+  return box;
+};
+
+/***/ }),
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -99236,7 +110362,7 @@ module.exports = function UserInput(outline) {
 };
 
 /***/ }),
-/* 433 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -99253,7 +110379,7 @@ module.exports = function UserInput(outline) {
 ** like "this" where the string is seen by the user and so I18n is an issue.
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 var SET_MODIFIED_DATES = false;
 
@@ -99962,7 +111088,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 434 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -99984,9 +111110,9 @@ to change its state according to an ontology, comment on it, etc.
 */
 /* global alert, confirm, FileReader */
 
-var UI = __webpack_require__(1);
-var mime = __webpack_require__(130);
-var toolsPane0 = __webpack_require__(438);
+var UI = __webpack_require__(2);
+var mime = __webpack_require__(144);
+var toolsPane0 = __webpack_require__(468);
 var toolsPane = toolsPane0.toolsPane;
 
 // if (typeof console === 'undefined') { // e.g. firefox extension. Node and browser have console
@@ -101074,13 +112200,13 @@ module.exports = {
       var individualFormDoc = individualForm.doc();
       if (!kb.holds(undefined, undefined, undefined, individualFormDoc)) {
         // If not loaded already
-        var individualFormText = __webpack_require__(439);
+        var individualFormText = __webpack_require__(469);
         $rdf.parse(individualFormText, kb, individualFormDoc.uri, 'text/turtle'); // Load form directly
       }
       var vcardOnt = UI.ns.vcard('Type').doc();
       if (!kb.holds(undefined, undefined, undefined, vcardOnt)) {
         // If not loaded already
-        $rdf.parse(__webpack_require__(440), kb, vcardOnt.uri, 'text/turtle'); // Load ontology directly
+        $rdf.parse(__webpack_require__(470), kb, vcardOnt.uri, 'text/turtle'); // Load ontology directly
       }
 
       var toBeFetched = [subject.doc()]; // was: individualFormDoc, UI.ns.vcard('Type').doc()
@@ -101234,7 +112360,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 435 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -101247,17 +112373,17 @@ module.exports = {
  * Module exports.
  */
 
-module.exports = __webpack_require__(436)
+module.exports = __webpack_require__(466)
 
 
 /***/ }),
-/* 436 */
+/* 466 */
 /***/ (function(module, exports) {
 
 module.exports = {"application/1d-interleaved-parityfec":{"source":"iana"},"application/3gpdash-qoe-report+xml":{"source":"iana"},"application/3gpp-ims+xml":{"source":"iana"},"application/a2l":{"source":"iana"},"application/activemessage":{"source":"iana"},"application/alto-costmap+json":{"source":"iana","compressible":true},"application/alto-costmapfilter+json":{"source":"iana","compressible":true},"application/alto-directory+json":{"source":"iana","compressible":true},"application/alto-endpointcost+json":{"source":"iana","compressible":true},"application/alto-endpointcostparams+json":{"source":"iana","compressible":true},"application/alto-endpointprop+json":{"source":"iana","compressible":true},"application/alto-endpointpropparams+json":{"source":"iana","compressible":true},"application/alto-error+json":{"source":"iana","compressible":true},"application/alto-networkmap+json":{"source":"iana","compressible":true},"application/alto-networkmapfilter+json":{"source":"iana","compressible":true},"application/aml":{"source":"iana"},"application/andrew-inset":{"source":"iana","extensions":["ez"]},"application/applefile":{"source":"iana"},"application/applixware":{"source":"apache","extensions":["aw"]},"application/atf":{"source":"iana"},"application/atfx":{"source":"iana"},"application/atom+xml":{"source":"iana","compressible":true,"extensions":["atom"]},"application/atomcat+xml":{"source":"iana","extensions":["atomcat"]},"application/atomdeleted+xml":{"source":"iana"},"application/atomicmail":{"source":"iana"},"application/atomsvc+xml":{"source":"iana","extensions":["atomsvc"]},"application/atxml":{"source":"iana"},"application/auth-policy+xml":{"source":"iana"},"application/bacnet-xdd+zip":{"source":"iana"},"application/batch-smtp":{"source":"iana"},"application/bdoc":{"compressible":false,"extensions":["bdoc"]},"application/beep+xml":{"source":"iana"},"application/calendar+json":{"source":"iana","compressible":true},"application/calendar+xml":{"source":"iana"},"application/call-completion":{"source":"iana"},"application/cals-1840":{"source":"iana"},"application/cbor":{"source":"iana"},"application/cccex":{"source":"iana"},"application/ccmp+xml":{"source":"iana"},"application/ccxml+xml":{"source":"iana","extensions":["ccxml"]},"application/cdfx+xml":{"source":"iana"},"application/cdmi-capability":{"source":"iana","extensions":["cdmia"]},"application/cdmi-container":{"source":"iana","extensions":["cdmic"]},"application/cdmi-domain":{"source":"iana","extensions":["cdmid"]},"application/cdmi-object":{"source":"iana","extensions":["cdmio"]},"application/cdmi-queue":{"source":"iana","extensions":["cdmiq"]},"application/cdni":{"source":"iana"},"application/cea":{"source":"iana"},"application/cea-2018+xml":{"source":"iana"},"application/cellml+xml":{"source":"iana"},"application/cfw":{"source":"iana"},"application/clue_info+xml":{"source":"iana"},"application/cms":{"source":"iana"},"application/cnrp+xml":{"source":"iana"},"application/coap-group+json":{"source":"iana","compressible":true},"application/coap-payload":{"source":"iana"},"application/commonground":{"source":"iana"},"application/conference-info+xml":{"source":"iana"},"application/cose":{"source":"iana"},"application/cose-key":{"source":"iana"},"application/cose-key-set":{"source":"iana"},"application/cpl+xml":{"source":"iana"},"application/csrattrs":{"source":"iana"},"application/csta+xml":{"source":"iana"},"application/cstadata+xml":{"source":"iana"},"application/csvm+json":{"source":"iana","compressible":true},"application/cu-seeme":{"source":"apache","extensions":["cu"]},"application/cybercash":{"source":"iana"},"application/dart":{"compressible":true},"application/dash+xml":{"source":"iana","extensions":["mpd"]},"application/dashdelta":{"source":"iana"},"application/davmount+xml":{"source":"iana","extensions":["davmount"]},"application/dca-rft":{"source":"iana"},"application/dcd":{"source":"iana"},"application/dec-dx":{"source":"iana"},"application/dialog-info+xml":{"source":"iana"},"application/dicom":{"source":"iana"},"application/dicom+json":{"source":"iana","compressible":true},"application/dicom+xml":{"source":"iana"},"application/dii":{"source":"iana"},"application/dit":{"source":"iana"},"application/dns":{"source":"iana"},"application/docbook+xml":{"source":"apache","extensions":["dbk"]},"application/dskpp+xml":{"source":"iana"},"application/dssc+der":{"source":"iana","extensions":["dssc"]},"application/dssc+xml":{"source":"iana","extensions":["xdssc"]},"application/dvcs":{"source":"iana"},"application/ecmascript":{"source":"iana","compressible":true,"extensions":["ecma"]},"application/edi-consent":{"source":"iana"},"application/edi-x12":{"source":"iana","compressible":false},"application/edifact":{"source":"iana","compressible":false},"application/efi":{"source":"iana"},"application/emergencycalldata.comment+xml":{"source":"iana"},"application/emergencycalldata.control+xml":{"source":"iana"},"application/emergencycalldata.deviceinfo+xml":{"source":"iana"},"application/emergencycalldata.ecall.msd":{"source":"iana"},"application/emergencycalldata.providerinfo+xml":{"source":"iana"},"application/emergencycalldata.serviceinfo+xml":{"source":"iana"},"application/emergencycalldata.subscriberinfo+xml":{"source":"iana"},"application/emergencycalldata.veds+xml":{"source":"iana"},"application/emma+xml":{"source":"iana","extensions":["emma"]},"application/emotionml+xml":{"source":"iana"},"application/encaprtp":{"source":"iana"},"application/epp+xml":{"source":"iana"},"application/epub+zip":{"source":"iana","extensions":["epub"]},"application/eshop":{"source":"iana"},"application/exi":{"source":"iana","extensions":["exi"]},"application/fastinfoset":{"source":"iana"},"application/fastsoap":{"source":"iana"},"application/fdt+xml":{"source":"iana"},"application/fido.trusted-apps+json":{"compressible":true},"application/fits":{"source":"iana"},"application/font-sfnt":{"source":"iana"},"application/font-tdpfr":{"source":"iana","extensions":["pfr"]},"application/font-woff":{"source":"iana","compressible":false,"extensions":["woff"]},"application/font-woff2":{"compressible":false,"extensions":["woff2"]},"application/framework-attributes+xml":{"source":"iana"},"application/geo+json":{"source":"iana","compressible":true,"extensions":["geojson"]},"application/geo+json-seq":{"source":"iana"},"application/geoxacml+xml":{"source":"iana"},"application/gml+xml":{"source":"iana","extensions":["gml"]},"application/gpx+xml":{"source":"apache","extensions":["gpx"]},"application/gxf":{"source":"apache","extensions":["gxf"]},"application/gzip":{"source":"iana","compressible":false,"extensions":["gz"]},"application/h224":{"source":"iana"},"application/held+xml":{"source":"iana"},"application/http":{"source":"iana"},"application/hyperstudio":{"source":"iana","extensions":["stk"]},"application/ibe-key-request+xml":{"source":"iana"},"application/ibe-pkg-reply+xml":{"source":"iana"},"application/ibe-pp-data":{"source":"iana"},"application/iges":{"source":"iana"},"application/im-iscomposing+xml":{"source":"iana"},"application/index":{"source":"iana"},"application/index.cmd":{"source":"iana"},"application/index.obj":{"source":"iana"},"application/index.response":{"source":"iana"},"application/index.vnd":{"source":"iana"},"application/inkml+xml":{"source":"iana","extensions":["ink","inkml"]},"application/iotp":{"source":"iana"},"application/ipfix":{"source":"iana","extensions":["ipfix"]},"application/ipp":{"source":"iana"},"application/isup":{"source":"iana"},"application/its+xml":{"source":"iana"},"application/java-archive":{"source":"apache","compressible":false,"extensions":["jar","war","ear"]},"application/java-serialized-object":{"source":"apache","compressible":false,"extensions":["ser"]},"application/java-vm":{"source":"apache","compressible":false,"extensions":["class"]},"application/javascript":{"source":"iana","charset":"UTF-8","compressible":true,"extensions":["js","mjs"]},"application/jf2feed+json":{"source":"iana","compressible":true},"application/jose":{"source":"iana"},"application/jose+json":{"source":"iana","compressible":true},"application/jrd+json":{"source":"iana","compressible":true},"application/json":{"source":"iana","charset":"UTF-8","compressible":true,"extensions":["json","map"]},"application/json-patch+json":{"source":"iana","compressible":true},"application/json-seq":{"source":"iana"},"application/json5":{"extensions":["json5"]},"application/jsonml+json":{"source":"apache","compressible":true,"extensions":["jsonml"]},"application/jwk+json":{"source":"iana","compressible":true},"application/jwk-set+json":{"source":"iana","compressible":true},"application/jwt":{"source":"iana"},"application/kpml-request+xml":{"source":"iana"},"application/kpml-response+xml":{"source":"iana"},"application/ld+json":{"source":"iana","compressible":true,"extensions":["jsonld"]},"application/lgr+xml":{"source":"iana"},"application/link-format":{"source":"iana"},"application/load-control+xml":{"source":"iana"},"application/lost+xml":{"source":"iana","extensions":["lostxml"]},"application/lostsync+xml":{"source":"iana"},"application/lxf":{"source":"iana"},"application/mac-binhex40":{"source":"iana","extensions":["hqx"]},"application/mac-compactpro":{"source":"apache","extensions":["cpt"]},"application/macwriteii":{"source":"iana"},"application/mads+xml":{"source":"iana","extensions":["mads"]},"application/manifest+json":{"charset":"UTF-8","compressible":true,"extensions":["webmanifest"]},"application/marc":{"source":"iana","extensions":["mrc"]},"application/marcxml+xml":{"source":"iana","extensions":["mrcx"]},"application/mathematica":{"source":"iana","extensions":["ma","nb","mb"]},"application/mathml+xml":{"source":"iana","extensions":["mathml"]},"application/mathml-content+xml":{"source":"iana"},"application/mathml-presentation+xml":{"source":"iana"},"application/mbms-associated-procedure-description+xml":{"source":"iana"},"application/mbms-deregister+xml":{"source":"iana"},"application/mbms-envelope+xml":{"source":"iana"},"application/mbms-msk+xml":{"source":"iana"},"application/mbms-msk-response+xml":{"source":"iana"},"application/mbms-protection-description+xml":{"source":"iana"},"application/mbms-reception-report+xml":{"source":"iana"},"application/mbms-register+xml":{"source":"iana"},"application/mbms-register-response+xml":{"source":"iana"},"application/mbms-schedule+xml":{"source":"iana"},"application/mbms-user-service-description+xml":{"source":"iana"},"application/mbox":{"source":"iana","extensions":["mbox"]},"application/media-policy-dataset+xml":{"source":"iana"},"application/media_control+xml":{"source":"iana"},"application/mediaservercontrol+xml":{"source":"iana","extensions":["mscml"]},"application/merge-patch+json":{"source":"iana","compressible":true},"application/metalink+xml":{"source":"apache","extensions":["metalink"]},"application/metalink4+xml":{"source":"iana","extensions":["meta4"]},"application/mets+xml":{"source":"iana","extensions":["mets"]},"application/mf4":{"source":"iana"},"application/mikey":{"source":"iana"},"application/mmt-usd+xml":{"source":"iana"},"application/mods+xml":{"source":"iana","extensions":["mods"]},"application/moss-keys":{"source":"iana"},"application/moss-signature":{"source":"iana"},"application/mosskey-data":{"source":"iana"},"application/mosskey-request":{"source":"iana"},"application/mp21":{"source":"iana","extensions":["m21","mp21"]},"application/mp4":{"source":"iana","extensions":["mp4s","m4p"]},"application/mpeg4-generic":{"source":"iana"},"application/mpeg4-iod":{"source":"iana"},"application/mpeg4-iod-xmt":{"source":"iana"},"application/mrb-consumer+xml":{"source":"iana"},"application/mrb-publish+xml":{"source":"iana"},"application/msc-ivr+xml":{"source":"iana"},"application/msc-mixer+xml":{"source":"iana"},"application/msword":{"source":"iana","compressible":false,"extensions":["doc","dot"]},"application/mud+json":{"source":"iana","compressible":true},"application/mxf":{"source":"iana","extensions":["mxf"]},"application/n-quads":{"source":"iana"},"application/n-triples":{"source":"iana"},"application/nasdata":{"source":"iana"},"application/news-checkgroups":{"source":"iana"},"application/news-groupinfo":{"source":"iana"},"application/news-transmission":{"source":"iana"},"application/nlsml+xml":{"source":"iana"},"application/nss":{"source":"iana"},"application/ocsp-request":{"source":"iana"},"application/ocsp-response":{"source":"iana"},"application/octet-stream":{"source":"iana","compressible":false,"extensions":["bin","dms","lrf","mar","so","dist","distz","pkg","bpk","dump","elc","deploy","exe","dll","deb","dmg","iso","img","msi","msp","msm","buffer"]},"application/oda":{"source":"iana","extensions":["oda"]},"application/odx":{"source":"iana"},"application/oebps-package+xml":{"source":"iana","extensions":["opf"]},"application/ogg":{"source":"iana","compressible":false,"extensions":["ogx"]},"application/omdoc+xml":{"source":"apache","extensions":["omdoc"]},"application/onenote":{"source":"apache","extensions":["onetoc","onetoc2","onetmp","onepkg"]},"application/oxps":{"source":"iana","extensions":["oxps"]},"application/p2p-overlay+xml":{"source":"iana"},"application/parityfec":{"source":"iana"},"application/passport":{"source":"iana"},"application/patch-ops-error+xml":{"source":"iana","extensions":["xer"]},"application/pdf":{"source":"iana","compressible":false,"extensions":["pdf"]},"application/pdx":{"source":"iana"},"application/pgp-encrypted":{"source":"iana","compressible":false,"extensions":["pgp"]},"application/pgp-keys":{"source":"iana"},"application/pgp-signature":{"source":"iana","extensions":["asc","sig"]},"application/pics-rules":{"source":"apache","extensions":["prf"]},"application/pidf+xml":{"source":"iana"},"application/pidf-diff+xml":{"source":"iana"},"application/pkcs10":{"source":"iana","extensions":["p10"]},"application/pkcs12":{"source":"iana"},"application/pkcs7-mime":{"source":"iana","extensions":["p7m","p7c"]},"application/pkcs7-signature":{"source":"iana","extensions":["p7s"]},"application/pkcs8":{"source":"iana","extensions":["p8"]},"application/pkix-attr-cert":{"source":"iana","extensions":["ac"]},"application/pkix-cert":{"source":"iana","extensions":["cer"]},"application/pkix-crl":{"source":"iana","extensions":["crl"]},"application/pkix-pkipath":{"source":"iana","extensions":["pkipath"]},"application/pkixcmp":{"source":"iana","extensions":["pki"]},"application/pls+xml":{"source":"iana","extensions":["pls"]},"application/poc-settings+xml":{"source":"iana"},"application/postscript":{"source":"iana","compressible":true,"extensions":["ai","eps","ps"]},"application/ppsp-tracker+json":{"source":"iana","compressible":true},"application/problem+json":{"source":"iana","compressible":true},"application/problem+xml":{"source":"iana"},"application/provenance+xml":{"source":"iana"},"application/prs.alvestrand.titrax-sheet":{"source":"iana"},"application/prs.cww":{"source":"iana","extensions":["cww"]},"application/prs.hpub+zip":{"source":"iana"},"application/prs.nprend":{"source":"iana"},"application/prs.plucker":{"source":"iana"},"application/prs.rdf-xml-crypt":{"source":"iana"},"application/prs.xsf+xml":{"source":"iana"},"application/pskc+xml":{"source":"iana","extensions":["pskcxml"]},"application/qsig":{"source":"iana"},"application/raptorfec":{"source":"iana"},"application/rdap+json":{"source":"iana","compressible":true},"application/rdf+xml":{"source":"iana","compressible":true,"extensions":["rdf"]},"application/reginfo+xml":{"source":"iana","extensions":["rif"]},"application/relax-ng-compact-syntax":{"source":"iana","extensions":["rnc"]},"application/remote-printing":{"source":"iana"},"application/reputon+json":{"source":"iana","compressible":true},"application/resource-lists+xml":{"source":"iana","extensions":["rl"]},"application/resource-lists-diff+xml":{"source":"iana","extensions":["rld"]},"application/rfc+xml":{"source":"iana"},"application/riscos":{"source":"iana"},"application/rlmi+xml":{"source":"iana"},"application/rls-services+xml":{"source":"iana","extensions":["rs"]},"application/route-apd+xml":{"source":"iana"},"application/route-s-tsid+xml":{"source":"iana"},"application/route-usd+xml":{"source":"iana"},"application/rpki-ghostbusters":{"source":"iana","extensions":["gbr"]},"application/rpki-manifest":{"source":"iana","extensions":["mft"]},"application/rpki-publication":{"source":"iana"},"application/rpki-roa":{"source":"iana","extensions":["roa"]},"application/rpki-updown":{"source":"iana"},"application/rsd+xml":{"source":"apache","extensions":["rsd"]},"application/rss+xml":{"source":"apache","compressible":true,"extensions":["rss"]},"application/rtf":{"source":"iana","compressible":true,"extensions":["rtf"]},"application/rtploopback":{"source":"iana"},"application/rtx":{"source":"iana"},"application/samlassertion+xml":{"source":"iana"},"application/samlmetadata+xml":{"source":"iana"},"application/sbml+xml":{"source":"iana","extensions":["sbml"]},"application/scaip+xml":{"source":"iana"},"application/scim+json":{"source":"iana","compressible":true},"application/scvp-cv-request":{"source":"iana","extensions":["scq"]},"application/scvp-cv-response":{"source":"iana","extensions":["scs"]},"application/scvp-vp-request":{"source":"iana","extensions":["spq"]},"application/scvp-vp-response":{"source":"iana","extensions":["spp"]},"application/sdp":{"source":"iana","extensions":["sdp"]},"application/sep+xml":{"source":"iana"},"application/sep-exi":{"source":"iana"},"application/session-info":{"source":"iana"},"application/set-payment":{"source":"iana"},"application/set-payment-initiation":{"source":"iana","extensions":["setpay"]},"application/set-registration":{"source":"iana"},"application/set-registration-initiation":{"source":"iana","extensions":["setreg"]},"application/sgml":{"source":"iana"},"application/sgml-open-catalog":{"source":"iana"},"application/shf+xml":{"source":"iana","extensions":["shf"]},"application/sieve":{"source":"iana"},"application/simple-filter+xml":{"source":"iana"},"application/simple-message-summary":{"source":"iana"},"application/simplesymbolcontainer":{"source":"iana"},"application/slate":{"source":"iana"},"application/smil":{"source":"iana"},"application/smil+xml":{"source":"iana","extensions":["smi","smil"]},"application/smpte336m":{"source":"iana"},"application/soap+fastinfoset":{"source":"iana"},"application/soap+xml":{"source":"iana","compressible":true},"application/sparql-query":{"source":"iana","extensions":["rq"]},"application/sparql-results+xml":{"source":"iana","extensions":["srx"]},"application/spirits-event+xml":{"source":"iana"},"application/sql":{"source":"iana"},"application/srgs":{"source":"iana","extensions":["gram"]},"application/srgs+xml":{"source":"iana","extensions":["grxml"]},"application/sru+xml":{"source":"iana","extensions":["sru"]},"application/ssdl+xml":{"source":"apache","extensions":["ssdl"]},"application/ssml+xml":{"source":"iana","extensions":["ssml"]},"application/tamp-apex-update":{"source":"iana"},"application/tamp-apex-update-confirm":{"source":"iana"},"application/tamp-community-update":{"source":"iana"},"application/tamp-community-update-confirm":{"source":"iana"},"application/tamp-error":{"source":"iana"},"application/tamp-sequence-adjust":{"source":"iana"},"application/tamp-sequence-adjust-confirm":{"source":"iana"},"application/tamp-status-query":{"source":"iana"},"application/tamp-status-response":{"source":"iana"},"application/tamp-update":{"source":"iana"},"application/tamp-update-confirm":{"source":"iana"},"application/tar":{"compressible":true},"application/tei+xml":{"source":"iana","extensions":["tei","teicorpus"]},"application/thraud+xml":{"source":"iana","extensions":["tfi"]},"application/timestamp-query":{"source":"iana"},"application/timestamp-reply":{"source":"iana"},"application/timestamped-data":{"source":"iana","extensions":["tsd"]},"application/trig":{"source":"iana"},"application/ttml+xml":{"source":"iana"},"application/tve-trigger":{"source":"iana"},"application/ulpfec":{"source":"iana"},"application/urc-grpsheet+xml":{"source":"iana"},"application/urc-ressheet+xml":{"source":"iana"},"application/urc-targetdesc+xml":{"source":"iana"},"application/urc-uisocketdesc+xml":{"source":"iana"},"application/vcard+json":{"source":"iana","compressible":true},"application/vcard+xml":{"source":"iana"},"application/vemmi":{"source":"iana"},"application/vividence.scriptfile":{"source":"apache"},"application/vnd.1000minds.decision-model+xml":{"source":"iana"},"application/vnd.3gpp-prose+xml":{"source":"iana"},"application/vnd.3gpp-prose-pc3ch+xml":{"source":"iana"},"application/vnd.3gpp.access-transfer-events+xml":{"source":"iana"},"application/vnd.3gpp.bsf+xml":{"source":"iana"},"application/vnd.3gpp.gmop+xml":{"source":"iana"},"application/vnd.3gpp.mcptt-info+xml":{"source":"iana"},"application/vnd.3gpp.mcptt-mbms-usage-info+xml":{"source":"iana"},"application/vnd.3gpp.mid-call+xml":{"source":"iana"},"application/vnd.3gpp.pic-bw-large":{"source":"iana","extensions":["plb"]},"application/vnd.3gpp.pic-bw-small":{"source":"iana","extensions":["psb"]},"application/vnd.3gpp.pic-bw-var":{"source":"iana","extensions":["pvb"]},"application/vnd.3gpp.sms":{"source":"iana"},"application/vnd.3gpp.sms+xml":{"source":"iana"},"application/vnd.3gpp.srvcc-ext+xml":{"source":"iana"},"application/vnd.3gpp.srvcc-info+xml":{"source":"iana"},"application/vnd.3gpp.state-and-event-info+xml":{"source":"iana"},"application/vnd.3gpp.ussd+xml":{"source":"iana"},"application/vnd.3gpp2.bcmcsinfo+xml":{"source":"iana"},"application/vnd.3gpp2.sms":{"source":"iana"},"application/vnd.3gpp2.tcap":{"source":"iana","extensions":["tcap"]},"application/vnd.3lightssoftware.imagescal":{"source":"iana"},"application/vnd.3m.post-it-notes":{"source":"iana","extensions":["pwn"]},"application/vnd.accpac.simply.aso":{"source":"iana","extensions":["aso"]},"application/vnd.accpac.simply.imp":{"source":"iana","extensions":["imp"]},"application/vnd.acucobol":{"source":"iana","extensions":["acu"]},"application/vnd.acucorp":{"source":"iana","extensions":["atc","acutc"]},"application/vnd.adobe.air-application-installer-package+zip":{"source":"apache","extensions":["air"]},"application/vnd.adobe.flash.movie":{"source":"iana"},"application/vnd.adobe.formscentral.fcdt":{"source":"iana","extensions":["fcdt"]},"application/vnd.adobe.fxp":{"source":"iana","extensions":["fxp","fxpl"]},"application/vnd.adobe.partial-upload":{"source":"iana"},"application/vnd.adobe.xdp+xml":{"source":"iana","extensions":["xdp"]},"application/vnd.adobe.xfdf":{"source":"iana","extensions":["xfdf"]},"application/vnd.aether.imp":{"source":"iana"},"application/vnd.ah-barcode":{"source":"iana"},"application/vnd.ahead.space":{"source":"iana","extensions":["ahead"]},"application/vnd.airzip.filesecure.azf":{"source":"iana","extensions":["azf"]},"application/vnd.airzip.filesecure.azs":{"source":"iana","extensions":["azs"]},"application/vnd.amazon.ebook":{"source":"apache","extensions":["azw"]},"application/vnd.amazon.mobi8-ebook":{"source":"iana"},"application/vnd.americandynamics.acc":{"source":"iana","extensions":["acc"]},"application/vnd.amiga.ami":{"source":"iana","extensions":["ami"]},"application/vnd.amundsen.maze+xml":{"source":"iana"},"application/vnd.android.package-archive":{"source":"apache","compressible":false,"extensions":["apk"]},"application/vnd.anki":{"source":"iana"},"application/vnd.anser-web-certificate-issue-initiation":{"source":"iana","extensions":["cii"]},"application/vnd.anser-web-funds-transfer-initiation":{"source":"apache","extensions":["fti"]},"application/vnd.antix.game-component":{"source":"iana","extensions":["atx"]},"application/vnd.apache.thrift.binary":{"source":"iana"},"application/vnd.apache.thrift.compact":{"source":"iana"},"application/vnd.apache.thrift.json":{"source":"iana"},"application/vnd.api+json":{"source":"iana","compressible":true},"application/vnd.apothekende.reservation+json":{"source":"iana","compressible":true},"application/vnd.apple.installer+xml":{"source":"iana","extensions":["mpkg"]},"application/vnd.apple.mpegurl":{"source":"iana","extensions":["m3u8"]},"application/vnd.apple.pkpass":{"compressible":false,"extensions":["pkpass"]},"application/vnd.arastra.swi":{"source":"iana"},"application/vnd.aristanetworks.swi":{"source":"iana","extensions":["swi"]},"application/vnd.artsquare":{"source":"iana"},"application/vnd.astraea-software.iota":{"source":"iana","extensions":["iota"]},"application/vnd.audiograph":{"source":"iana","extensions":["aep"]},"application/vnd.autopackage":{"source":"iana"},"application/vnd.avistar+xml":{"source":"iana"},"application/vnd.balsamiq.bmml+xml":{"source":"iana"},"application/vnd.balsamiq.bmpr":{"source":"iana"},"application/vnd.bekitzur-stech+json":{"source":"iana","compressible":true},"application/vnd.bint.med-content":{"source":"iana"},"application/vnd.biopax.rdf+xml":{"source":"iana"},"application/vnd.blink-idb-value-wrapper":{"source":"iana"},"application/vnd.blueice.multipass":{"source":"iana","extensions":["mpm"]},"application/vnd.bluetooth.ep.oob":{"source":"iana"},"application/vnd.bluetooth.le.oob":{"source":"iana"},"application/vnd.bmi":{"source":"iana","extensions":["bmi"]},"application/vnd.businessobjects":{"source":"iana","extensions":["rep"]},"application/vnd.cab-jscript":{"source":"iana"},"application/vnd.canon-cpdl":{"source":"iana"},"application/vnd.canon-lips":{"source":"iana"},"application/vnd.capasystems-pg+json":{"source":"iana","compressible":true},"application/vnd.cendio.thinlinc.clientconf":{"source":"iana"},"application/vnd.century-systems.tcp_stream":{"source":"iana"},"application/vnd.chemdraw+xml":{"source":"iana","extensions":["cdxml"]},"application/vnd.chess-pgn":{"source":"iana"},"application/vnd.chipnuts.karaoke-mmd":{"source":"iana","extensions":["mmd"]},"application/vnd.cinderella":{"source":"iana","extensions":["cdy"]},"application/vnd.cirpack.isdn-ext":{"source":"iana"},"application/vnd.citationstyles.style+xml":{"source":"iana"},"application/vnd.claymore":{"source":"iana","extensions":["cla"]},"application/vnd.cloanto.rp9":{"source":"iana","extensions":["rp9"]},"application/vnd.clonk.c4group":{"source":"iana","extensions":["c4g","c4d","c4f","c4p","c4u"]},"application/vnd.cluetrust.cartomobile-config":{"source":"iana","extensions":["c11amc"]},"application/vnd.cluetrust.cartomobile-config-pkg":{"source":"iana","extensions":["c11amz"]},"application/vnd.coffeescript":{"source":"iana"},"application/vnd.collection+json":{"source":"iana","compressible":true},"application/vnd.collection.doc+json":{"source":"iana","compressible":true},"application/vnd.collection.next+json":{"source":"iana","compressible":true},"application/vnd.comicbook+zip":{"source":"iana"},"application/vnd.commerce-battelle":{"source":"iana"},"application/vnd.commonspace":{"source":"iana","extensions":["csp"]},"application/vnd.contact.cmsg":{"source":"iana","extensions":["cdbcmsg"]},"application/vnd.coreos.ignition+json":{"source":"iana","compressible":true},"application/vnd.cosmocaller":{"source":"iana","extensions":["cmc"]},"application/vnd.crick.clicker":{"source":"iana","extensions":["clkx"]},"application/vnd.crick.clicker.keyboard":{"source":"iana","extensions":["clkk"]},"application/vnd.crick.clicker.palette":{"source":"iana","extensions":["clkp"]},"application/vnd.crick.clicker.template":{"source":"iana","extensions":["clkt"]},"application/vnd.crick.clicker.wordbank":{"source":"iana","extensions":["clkw"]},"application/vnd.criticaltools.wbs+xml":{"source":"iana","extensions":["wbs"]},"application/vnd.ctc-posml":{"source":"iana","extensions":["pml"]},"application/vnd.ctct.ws+xml":{"source":"iana"},"application/vnd.cups-pdf":{"source":"iana"},"application/vnd.cups-postscript":{"source":"iana"},"application/vnd.cups-ppd":{"source":"iana","extensions":["ppd"]},"application/vnd.cups-raster":{"source":"iana"},"application/vnd.cups-raw":{"source":"iana"},"application/vnd.curl":{"source":"iana"},"application/vnd.curl.car":{"source":"apache","extensions":["car"]},"application/vnd.curl.pcurl":{"source":"apache","extensions":["pcurl"]},"application/vnd.cyan.dean.root+xml":{"source":"iana"},"application/vnd.cybank":{"source":"iana"},"application/vnd.d2l.coursepackage1p0+zip":{"source":"iana"},"application/vnd.dart":{"source":"iana","compressible":true,"extensions":["dart"]},"application/vnd.data-vision.rdz":{"source":"iana","extensions":["rdz"]},"application/vnd.datapackage+json":{"source":"iana","compressible":true},"application/vnd.dataresource+json":{"source":"iana","compressible":true},"application/vnd.debian.binary-package":{"source":"iana"},"application/vnd.dece.data":{"source":"iana","extensions":["uvf","uvvf","uvd","uvvd"]},"application/vnd.dece.ttml+xml":{"source":"iana","extensions":["uvt","uvvt"]},"application/vnd.dece.unspecified":{"source":"iana","extensions":["uvx","uvvx"]},"application/vnd.dece.zip":{"source":"iana","extensions":["uvz","uvvz"]},"application/vnd.denovo.fcselayout-link":{"source":"iana","extensions":["fe_launch"]},"application/vnd.desmume-movie":{"source":"iana"},"application/vnd.desmume.movie":{"source":"apache"},"application/vnd.dir-bi.plate-dl-nosuffix":{"source":"iana"},"application/vnd.dm.delegation+xml":{"source":"iana"},"application/vnd.dna":{"source":"iana","extensions":["dna"]},"application/vnd.document+json":{"source":"iana","compressible":true},"application/vnd.dolby.mlp":{"source":"apache","extensions":["mlp"]},"application/vnd.dolby.mobile.1":{"source":"iana"},"application/vnd.dolby.mobile.2":{"source":"iana"},"application/vnd.doremir.scorecloud-binary-document":{"source":"iana"},"application/vnd.dpgraph":{"source":"iana","extensions":["dpg"]},"application/vnd.dreamfactory":{"source":"iana","extensions":["dfac"]},"application/vnd.drive+json":{"source":"iana","compressible":true},"application/vnd.ds-keypoint":{"source":"apache","extensions":["kpxx"]},"application/vnd.dtg.local":{"source":"iana"},"application/vnd.dtg.local.flash":{"source":"iana"},"application/vnd.dtg.local.html":{"source":"iana"},"application/vnd.dvb.ait":{"source":"iana","extensions":["ait"]},"application/vnd.dvb.dvbj":{"source":"iana"},"application/vnd.dvb.esgcontainer":{"source":"iana"},"application/vnd.dvb.ipdcdftnotifaccess":{"source":"iana"},"application/vnd.dvb.ipdcesgaccess":{"source":"iana"},"application/vnd.dvb.ipdcesgaccess2":{"source":"iana"},"application/vnd.dvb.ipdcesgpdd":{"source":"iana"},"application/vnd.dvb.ipdcroaming":{"source":"iana"},"application/vnd.dvb.iptv.alfec-base":{"source":"iana"},"application/vnd.dvb.iptv.alfec-enhancement":{"source":"iana"},"application/vnd.dvb.notif-aggregate-root+xml":{"source":"iana"},"application/vnd.dvb.notif-container+xml":{"source":"iana"},"application/vnd.dvb.notif-generic+xml":{"source":"iana"},"application/vnd.dvb.notif-ia-msglist+xml":{"source":"iana"},"application/vnd.dvb.notif-ia-registration-request+xml":{"source":"iana"},"application/vnd.dvb.notif-ia-registration-response+xml":{"source":"iana"},"application/vnd.dvb.notif-init+xml":{"source":"iana"},"application/vnd.dvb.pfr":{"source":"iana"},"application/vnd.dvb.service":{"source":"iana","extensions":["svc"]},"application/vnd.dxr":{"source":"iana"},"application/vnd.dynageo":{"source":"iana","extensions":["geo"]},"application/vnd.dzr":{"source":"iana"},"application/vnd.easykaraoke.cdgdownload":{"source":"iana"},"application/vnd.ecdis-update":{"source":"iana"},"application/vnd.ecowin.chart":{"source":"iana","extensions":["mag"]},"application/vnd.ecowin.filerequest":{"source":"iana"},"application/vnd.ecowin.fileupdate":{"source":"iana"},"application/vnd.ecowin.series":{"source":"iana"},"application/vnd.ecowin.seriesrequest":{"source":"iana"},"application/vnd.ecowin.seriesupdate":{"source":"iana"},"application/vnd.efi.img":{"source":"iana"},"application/vnd.efi.iso":{"source":"iana"},"application/vnd.emclient.accessrequest+xml":{"source":"iana"},"application/vnd.enliven":{"source":"iana","extensions":["nml"]},"application/vnd.enphase.envoy":{"source":"iana"},"application/vnd.eprints.data+xml":{"source":"iana"},"application/vnd.epson.esf":{"source":"iana","extensions":["esf"]},"application/vnd.epson.msf":{"source":"iana","extensions":["msf"]},"application/vnd.epson.quickanime":{"source":"iana","extensions":["qam"]},"application/vnd.epson.salt":{"source":"iana","extensions":["slt"]},"application/vnd.epson.ssf":{"source":"iana","extensions":["ssf"]},"application/vnd.ericsson.quickcall":{"source":"iana"},"application/vnd.espass-espass+zip":{"source":"iana"},"application/vnd.eszigno3+xml":{"source":"iana","extensions":["es3","et3"]},"application/vnd.etsi.aoc+xml":{"source":"iana"},"application/vnd.etsi.asic-e+zip":{"source":"iana"},"application/vnd.etsi.asic-s+zip":{"source":"iana"},"application/vnd.etsi.cug+xml":{"source":"iana"},"application/vnd.etsi.iptvcommand+xml":{"source":"iana"},"application/vnd.etsi.iptvdiscovery+xml":{"source":"iana"},"application/vnd.etsi.iptvprofile+xml":{"source":"iana"},"application/vnd.etsi.iptvsad-bc+xml":{"source":"iana"},"application/vnd.etsi.iptvsad-cod+xml":{"source":"iana"},"application/vnd.etsi.iptvsad-npvr+xml":{"source":"iana"},"application/vnd.etsi.iptvservice+xml":{"source":"iana"},"application/vnd.etsi.iptvsync+xml":{"source":"iana"},"application/vnd.etsi.iptvueprofile+xml":{"source":"iana"},"application/vnd.etsi.mcid+xml":{"source":"iana"},"application/vnd.etsi.mheg5":{"source":"iana"},"application/vnd.etsi.overload-control-policy-dataset+xml":{"source":"iana"},"application/vnd.etsi.pstn+xml":{"source":"iana"},"application/vnd.etsi.sci+xml":{"source":"iana"},"application/vnd.etsi.simservs+xml":{"source":"iana"},"application/vnd.etsi.timestamp-token":{"source":"iana"},"application/vnd.etsi.tsl+xml":{"source":"iana"},"application/vnd.etsi.tsl.der":{"source":"iana"},"application/vnd.eudora.data":{"source":"iana"},"application/vnd.evolv.ecig.profile":{"source":"iana"},"application/vnd.evolv.ecig.settings":{"source":"iana"},"application/vnd.evolv.ecig.theme":{"source":"iana"},"application/vnd.ezpix-album":{"source":"iana","extensions":["ez2"]},"application/vnd.ezpix-package":{"source":"iana","extensions":["ez3"]},"application/vnd.f-secure.mobile":{"source":"iana"},"application/vnd.fastcopy-disk-image":{"source":"iana"},"application/vnd.fdf":{"source":"iana","extensions":["fdf"]},"application/vnd.fdsn.mseed":{"source":"iana","extensions":["mseed"]},"application/vnd.fdsn.seed":{"source":"iana","extensions":["seed","dataless"]},"application/vnd.ffsns":{"source":"iana"},"application/vnd.filmit.zfc":{"source":"iana"},"application/vnd.fints":{"source":"iana"},"application/vnd.firemonkeys.cloudcell":{"source":"iana"},"application/vnd.flographit":{"source":"iana","extensions":["gph"]},"application/vnd.fluxtime.clip":{"source":"iana","extensions":["ftc"]},"application/vnd.font-fontforge-sfd":{"source":"iana"},"application/vnd.framemaker":{"source":"iana","extensions":["fm","frame","maker","book"]},"application/vnd.frogans.fnc":{"source":"iana","extensions":["fnc"]},"application/vnd.frogans.ltf":{"source":"iana","extensions":["ltf"]},"application/vnd.fsc.weblaunch":{"source":"iana","extensions":["fsc"]},"application/vnd.fujitsu.oasys":{"source":"iana","extensions":["oas"]},"application/vnd.fujitsu.oasys2":{"source":"iana","extensions":["oa2"]},"application/vnd.fujitsu.oasys3":{"source":"iana","extensions":["oa3"]},"application/vnd.fujitsu.oasysgp":{"source":"iana","extensions":["fg5"]},"application/vnd.fujitsu.oasysprs":{"source":"iana","extensions":["bh2"]},"application/vnd.fujixerox.art-ex":{"source":"iana"},"application/vnd.fujixerox.art4":{"source":"iana"},"application/vnd.fujixerox.ddd":{"source":"iana","extensions":["ddd"]},"application/vnd.fujixerox.docuworks":{"source":"iana","extensions":["xdw"]},"application/vnd.fujixerox.docuworks.binder":{"source":"iana","extensions":["xbd"]},"application/vnd.fujixerox.docuworks.container":{"source":"iana"},"application/vnd.fujixerox.hbpl":{"source":"iana"},"application/vnd.fut-misnet":{"source":"iana"},"application/vnd.fuzzysheet":{"source":"iana","extensions":["fzs"]},"application/vnd.genomatix.tuxedo":{"source":"iana","extensions":["txd"]},"application/vnd.geo+json":{"source":"iana","compressible":true},"application/vnd.geocube+xml":{"source":"iana"},"application/vnd.geogebra.file":{"source":"iana","extensions":["ggb"]},"application/vnd.geogebra.tool":{"source":"iana","extensions":["ggt"]},"application/vnd.geometry-explorer":{"source":"iana","extensions":["gex","gre"]},"application/vnd.geonext":{"source":"iana","extensions":["gxt"]},"application/vnd.geoplan":{"source":"iana","extensions":["g2w"]},"application/vnd.geospace":{"source":"iana","extensions":["g3w"]},"application/vnd.gerber":{"source":"iana"},"application/vnd.globalplatform.card-content-mgt":{"source":"iana"},"application/vnd.globalplatform.card-content-mgt-response":{"source":"iana"},"application/vnd.gmx":{"source":"iana","extensions":["gmx"]},"application/vnd.google-apps.document":{"compressible":false,"extensions":["gdoc"]},"application/vnd.google-apps.presentation":{"compressible":false,"extensions":["gslides"]},"application/vnd.google-apps.spreadsheet":{"compressible":false,"extensions":["gsheet"]},"application/vnd.google-earth.kml+xml":{"source":"iana","compressible":true,"extensions":["kml"]},"application/vnd.google-earth.kmz":{"source":"iana","compressible":false,"extensions":["kmz"]},"application/vnd.gov.sk.e-form+xml":{"source":"iana"},"application/vnd.gov.sk.e-form+zip":{"source":"iana"},"application/vnd.gov.sk.xmldatacontainer+xml":{"source":"iana"},"application/vnd.grafeq":{"source":"iana","extensions":["gqf","gqs"]},"application/vnd.gridmp":{"source":"iana"},"application/vnd.groove-account":{"source":"iana","extensions":["gac"]},"application/vnd.groove-help":{"source":"iana","extensions":["ghf"]},"application/vnd.groove-identity-message":{"source":"iana","extensions":["gim"]},"application/vnd.groove-injector":{"source":"iana","extensions":["grv"]},"application/vnd.groove-tool-message":{"source":"iana","extensions":["gtm"]},"application/vnd.groove-tool-template":{"source":"iana","extensions":["tpl"]},"application/vnd.groove-vcard":{"source":"iana","extensions":["vcg"]},"application/vnd.hal+json":{"source":"iana","compressible":true},"application/vnd.hal+xml":{"source":"iana","extensions":["hal"]},"application/vnd.handheld-entertainment+xml":{"source":"iana","extensions":["zmm"]},"application/vnd.hbci":{"source":"iana","extensions":["hbci"]},"application/vnd.hc+json":{"source":"iana","compressible":true},"application/vnd.hcl-bireports":{"source":"iana"},"application/vnd.hdt":{"source":"iana"},"application/vnd.heroku+json":{"source":"iana","compressible":true},"application/vnd.hhe.lesson-player":{"source":"iana","extensions":["les"]},"application/vnd.hp-hpgl":{"source":"iana","extensions":["hpgl"]},"application/vnd.hp-hpid":{"source":"iana","extensions":["hpid"]},"application/vnd.hp-hps":{"source":"iana","extensions":["hps"]},"application/vnd.hp-jlyt":{"source":"iana","extensions":["jlt"]},"application/vnd.hp-pcl":{"source":"iana","extensions":["pcl"]},"application/vnd.hp-pclxl":{"source":"iana","extensions":["pclxl"]},"application/vnd.httphone":{"source":"iana"},"application/vnd.hydrostatix.sof-data":{"source":"iana","extensions":["sfd-hdstx"]},"application/vnd.hyper-item+json":{"source":"iana","compressible":true},"application/vnd.hyperdrive+json":{"source":"iana","compressible":true},"application/vnd.hzn-3d-crossword":{"source":"iana"},"application/vnd.ibm.afplinedata":{"source":"iana"},"application/vnd.ibm.electronic-media":{"source":"iana"},"application/vnd.ibm.minipay":{"source":"iana","extensions":["mpy"]},"application/vnd.ibm.modcap":{"source":"iana","extensions":["afp","listafp","list3820"]},"application/vnd.ibm.rights-management":{"source":"iana","extensions":["irm"]},"application/vnd.ibm.secure-container":{"source":"iana","extensions":["sc"]},"application/vnd.iccprofile":{"source":"iana","extensions":["icc","icm"]},"application/vnd.ieee.1905":{"source":"iana"},"application/vnd.igloader":{"source":"iana","extensions":["igl"]},"application/vnd.imagemeter.folder+zip":{"source":"iana"},"application/vnd.imagemeter.image+zip":{"source":"iana"},"application/vnd.immervision-ivp":{"source":"iana","extensions":["ivp"]},"application/vnd.immervision-ivu":{"source":"iana","extensions":["ivu"]},"application/vnd.ims.imsccv1p1":{"source":"iana"},"application/vnd.ims.imsccv1p2":{"source":"iana"},"application/vnd.ims.imsccv1p3":{"source":"iana"},"application/vnd.ims.lis.v2.result+json":{"source":"iana","compressible":true},"application/vnd.ims.lti.v2.toolconsumerprofile+json":{"source":"iana","compressible":true},"application/vnd.ims.lti.v2.toolproxy+json":{"source":"iana","compressible":true},"application/vnd.ims.lti.v2.toolproxy.id+json":{"source":"iana","compressible":true},"application/vnd.ims.lti.v2.toolsettings+json":{"source":"iana","compressible":true},"application/vnd.ims.lti.v2.toolsettings.simple+json":{"source":"iana","compressible":true},"application/vnd.informedcontrol.rms+xml":{"source":"iana"},"application/vnd.informix-visionary":{"source":"iana"},"application/vnd.infotech.project":{"source":"iana"},"application/vnd.infotech.project+xml":{"source":"iana"},"application/vnd.innopath.wamp.notification":{"source":"iana"},"application/vnd.insors.igm":{"source":"iana","extensions":["igm"]},"application/vnd.intercon.formnet":{"source":"iana","extensions":["xpw","xpx"]},"application/vnd.intergeo":{"source":"iana","extensions":["i2g"]},"application/vnd.intertrust.digibox":{"source":"iana"},"application/vnd.intertrust.nncp":{"source":"iana"},"application/vnd.intu.qbo":{"source":"iana","extensions":["qbo"]},"application/vnd.intu.qfx":{"source":"iana","extensions":["qfx"]},"application/vnd.iptc.g2.catalogitem+xml":{"source":"iana"},"application/vnd.iptc.g2.conceptitem+xml":{"source":"iana"},"application/vnd.iptc.g2.knowledgeitem+xml":{"source":"iana"},"application/vnd.iptc.g2.newsitem+xml":{"source":"iana"},"application/vnd.iptc.g2.newsmessage+xml":{"source":"iana"},"application/vnd.iptc.g2.packageitem+xml":{"source":"iana"},"application/vnd.iptc.g2.planningitem+xml":{"source":"iana"},"application/vnd.ipunplugged.rcprofile":{"source":"iana","extensions":["rcprofile"]},"application/vnd.irepository.package+xml":{"source":"iana","extensions":["irp"]},"application/vnd.is-xpr":{"source":"iana","extensions":["xpr"]},"application/vnd.isac.fcs":{"source":"iana","extensions":["fcs"]},"application/vnd.jam":{"source":"iana","extensions":["jam"]},"application/vnd.japannet-directory-service":{"source":"iana"},"application/vnd.japannet-jpnstore-wakeup":{"source":"iana"},"application/vnd.japannet-payment-wakeup":{"source":"iana"},"application/vnd.japannet-registration":{"source":"iana"},"application/vnd.japannet-registration-wakeup":{"source":"iana"},"application/vnd.japannet-setstore-wakeup":{"source":"iana"},"application/vnd.japannet-verification":{"source":"iana"},"application/vnd.japannet-verification-wakeup":{"source":"iana"},"application/vnd.jcp.javame.midlet-rms":{"source":"iana","extensions":["rms"]},"application/vnd.jisp":{"source":"iana","extensions":["jisp"]},"application/vnd.joost.joda-archive":{"source":"iana","extensions":["joda"]},"application/vnd.jsk.isdn-ngn":{"source":"iana"},"application/vnd.kahootz":{"source":"iana","extensions":["ktz","ktr"]},"application/vnd.kde.karbon":{"source":"iana","extensions":["karbon"]},"application/vnd.kde.kchart":{"source":"iana","extensions":["chrt"]},"application/vnd.kde.kformula":{"source":"iana","extensions":["kfo"]},"application/vnd.kde.kivio":{"source":"iana","extensions":["flw"]},"application/vnd.kde.kontour":{"source":"iana","extensions":["kon"]},"application/vnd.kde.kpresenter":{"source":"iana","extensions":["kpr","kpt"]},"application/vnd.kde.kspread":{"source":"iana","extensions":["ksp"]},"application/vnd.kde.kword":{"source":"iana","extensions":["kwd","kwt"]},"application/vnd.kenameaapp":{"source":"iana","extensions":["htke"]},"application/vnd.kidspiration":{"source":"iana","extensions":["kia"]},"application/vnd.kinar":{"source":"iana","extensions":["kne","knp"]},"application/vnd.koan":{"source":"iana","extensions":["skp","skd","skt","skm"]},"application/vnd.kodak-descriptor":{"source":"iana","extensions":["sse"]},"application/vnd.las.las+json":{"source":"iana","compressible":true},"application/vnd.las.las+xml":{"source":"iana","extensions":["lasxml"]},"application/vnd.liberty-request+xml":{"source":"iana"},"application/vnd.llamagraphics.life-balance.desktop":{"source":"iana","extensions":["lbd"]},"application/vnd.llamagraphics.life-balance.exchange+xml":{"source":"iana","extensions":["lbe"]},"application/vnd.lotus-1-2-3":{"source":"iana","extensions":["123"]},"application/vnd.lotus-approach":{"source":"iana","extensions":["apr"]},"application/vnd.lotus-freelance":{"source":"iana","extensions":["pre"]},"application/vnd.lotus-notes":{"source":"iana","extensions":["nsf"]},"application/vnd.lotus-organizer":{"source":"iana","extensions":["org"]},"application/vnd.lotus-screencam":{"source":"iana","extensions":["scm"]},"application/vnd.lotus-wordpro":{"source":"iana","extensions":["lwp"]},"application/vnd.macports.portpkg":{"source":"iana","extensions":["portpkg"]},"application/vnd.mapbox-vector-tile":{"source":"iana"},"application/vnd.marlin.drm.actiontoken+xml":{"source":"iana"},"application/vnd.marlin.drm.conftoken+xml":{"source":"iana"},"application/vnd.marlin.drm.license+xml":{"source":"iana"},"application/vnd.marlin.drm.mdcf":{"source":"iana"},"application/vnd.mason+json":{"source":"iana","compressible":true},"application/vnd.maxmind.maxmind-db":{"source":"iana"},"application/vnd.mcd":{"source":"iana","extensions":["mcd"]},"application/vnd.medcalcdata":{"source":"iana","extensions":["mc1"]},"application/vnd.mediastation.cdkey":{"source":"iana","extensions":["cdkey"]},"application/vnd.meridian-slingshot":{"source":"iana"},"application/vnd.mfer":{"source":"iana","extensions":["mwf"]},"application/vnd.mfmp":{"source":"iana","extensions":["mfm"]},"application/vnd.micro+json":{"source":"iana","compressible":true},"application/vnd.micrografx.flo":{"source":"iana","extensions":["flo"]},"application/vnd.micrografx.igx":{"source":"iana","extensions":["igx"]},"application/vnd.microsoft.portable-executable":{"source":"iana"},"application/vnd.microsoft.windows.thumbnail-cache":{"source":"iana"},"application/vnd.miele+json":{"source":"iana","compressible":true},"application/vnd.mif":{"source":"iana","extensions":["mif"]},"application/vnd.minisoft-hp3000-save":{"source":"iana"},"application/vnd.mitsubishi.misty-guard.trustweb":{"source":"iana"},"application/vnd.mobius.daf":{"source":"iana","extensions":["daf"]},"application/vnd.mobius.dis":{"source":"iana","extensions":["dis"]},"application/vnd.mobius.mbk":{"source":"iana","extensions":["mbk"]},"application/vnd.mobius.mqy":{"source":"iana","extensions":["mqy"]},"application/vnd.mobius.msl":{"source":"iana","extensions":["msl"]},"application/vnd.mobius.plc":{"source":"iana","extensions":["plc"]},"application/vnd.mobius.txf":{"source":"iana","extensions":["txf"]},"application/vnd.mophun.application":{"source":"iana","extensions":["mpn"]},"application/vnd.mophun.certificate":{"source":"iana","extensions":["mpc"]},"application/vnd.motorola.flexsuite":{"source":"iana"},"application/vnd.motorola.flexsuite.adsi":{"source":"iana"},"application/vnd.motorola.flexsuite.fis":{"source":"iana"},"application/vnd.motorola.flexsuite.gotap":{"source":"iana"},"application/vnd.motorola.flexsuite.kmr":{"source":"iana"},"application/vnd.motorola.flexsuite.ttc":{"source":"iana"},"application/vnd.motorola.flexsuite.wem":{"source":"iana"},"application/vnd.motorola.iprm":{"source":"iana"},"application/vnd.mozilla.xul+xml":{"source":"iana","compressible":true,"extensions":["xul"]},"application/vnd.ms-3mfdocument":{"source":"iana"},"application/vnd.ms-artgalry":{"source":"iana","extensions":["cil"]},"application/vnd.ms-asf":{"source":"iana"},"application/vnd.ms-cab-compressed":{"source":"iana","extensions":["cab"]},"application/vnd.ms-color.iccprofile":{"source":"apache"},"application/vnd.ms-excel":{"source":"iana","compressible":false,"extensions":["xls","xlm","xla","xlc","xlt","xlw"]},"application/vnd.ms-excel.addin.macroenabled.12":{"source":"iana","extensions":["xlam"]},"application/vnd.ms-excel.sheet.binary.macroenabled.12":{"source":"iana","extensions":["xlsb"]},"application/vnd.ms-excel.sheet.macroenabled.12":{"source":"iana","extensions":["xlsm"]},"application/vnd.ms-excel.template.macroenabled.12":{"source":"iana","extensions":["xltm"]},"application/vnd.ms-fontobject":{"source":"iana","compressible":true,"extensions":["eot"]},"application/vnd.ms-htmlhelp":{"source":"iana","extensions":["chm"]},"application/vnd.ms-ims":{"source":"iana","extensions":["ims"]},"application/vnd.ms-lrm":{"source":"iana","extensions":["lrm"]},"application/vnd.ms-office.activex+xml":{"source":"iana"},"application/vnd.ms-officetheme":{"source":"iana","extensions":["thmx"]},"application/vnd.ms-opentype":{"source":"apache","compressible":true},"application/vnd.ms-outlook":{"compressible":false,"extensions":["msg"]},"application/vnd.ms-package.obfuscated-opentype":{"source":"apache"},"application/vnd.ms-pki.seccat":{"source":"apache","extensions":["cat"]},"application/vnd.ms-pki.stl":{"source":"apache","extensions":["stl"]},"application/vnd.ms-playready.initiator+xml":{"source":"iana"},"application/vnd.ms-powerpoint":{"source":"iana","compressible":false,"extensions":["ppt","pps","pot"]},"application/vnd.ms-powerpoint.addin.macroenabled.12":{"source":"iana","extensions":["ppam"]},"application/vnd.ms-powerpoint.presentation.macroenabled.12":{"source":"iana","extensions":["pptm"]},"application/vnd.ms-powerpoint.slide.macroenabled.12":{"source":"iana","extensions":["sldm"]},"application/vnd.ms-powerpoint.slideshow.macroenabled.12":{"source":"iana","extensions":["ppsm"]},"application/vnd.ms-powerpoint.template.macroenabled.12":{"source":"iana","extensions":["potm"]},"application/vnd.ms-printdevicecapabilities+xml":{"source":"iana"},"application/vnd.ms-printing.printticket+xml":{"source":"apache"},"application/vnd.ms-printschematicket+xml":{"source":"iana"},"application/vnd.ms-project":{"source":"iana","extensions":["mpp","mpt"]},"application/vnd.ms-tnef":{"source":"iana"},"application/vnd.ms-windows.devicepairing":{"source":"iana"},"application/vnd.ms-windows.nwprinting.oob":{"source":"iana"},"application/vnd.ms-windows.printerpairing":{"source":"iana"},"application/vnd.ms-windows.wsd.oob":{"source":"iana"},"application/vnd.ms-wmdrm.lic-chlg-req":{"source":"iana"},"application/vnd.ms-wmdrm.lic-resp":{"source":"iana"},"application/vnd.ms-wmdrm.meter-chlg-req":{"source":"iana"},"application/vnd.ms-wmdrm.meter-resp":{"source":"iana"},"application/vnd.ms-word.document.macroenabled.12":{"source":"iana","extensions":["docm"]},"application/vnd.ms-word.template.macroenabled.12":{"source":"iana","extensions":["dotm"]},"application/vnd.ms-works":{"source":"iana","extensions":["wps","wks","wcm","wdb"]},"application/vnd.ms-wpl":{"source":"iana","extensions":["wpl"]},"application/vnd.ms-xpsdocument":{"source":"iana","compressible":false,"extensions":["xps"]},"application/vnd.msa-disk-image":{"source":"iana"},"application/vnd.mseq":{"source":"iana","extensions":["mseq"]},"application/vnd.msign":{"source":"iana"},"application/vnd.multiad.creator":{"source":"iana"},"application/vnd.multiad.creator.cif":{"source":"iana"},"application/vnd.music-niff":{"source":"iana"},"application/vnd.musician":{"source":"iana","extensions":["mus"]},"application/vnd.muvee.style":{"source":"iana","extensions":["msty"]},"application/vnd.mynfc":{"source":"iana","extensions":["taglet"]},"application/vnd.ncd.control":{"source":"iana"},"application/vnd.ncd.reference":{"source":"iana"},"application/vnd.nearst.inv+json":{"source":"iana","compressible":true},"application/vnd.nervana":{"source":"iana"},"application/vnd.netfpx":{"source":"iana"},"application/vnd.neurolanguage.nlu":{"source":"iana","extensions":["nlu"]},"application/vnd.nintendo.nitro.rom":{"source":"iana"},"application/vnd.nintendo.snes.rom":{"source":"iana"},"application/vnd.nitf":{"source":"iana","extensions":["ntf","nitf"]},"application/vnd.noblenet-directory":{"source":"iana","extensions":["nnd"]},"application/vnd.noblenet-sealer":{"source":"iana","extensions":["nns"]},"application/vnd.noblenet-web":{"source":"iana","extensions":["nnw"]},"application/vnd.nokia.catalogs":{"source":"iana"},"application/vnd.nokia.conml+wbxml":{"source":"iana"},"application/vnd.nokia.conml+xml":{"source":"iana"},"application/vnd.nokia.iptv.config+xml":{"source":"iana"},"application/vnd.nokia.isds-radio-presets":{"source":"iana"},"application/vnd.nokia.landmark+wbxml":{"source":"iana"},"application/vnd.nokia.landmark+xml":{"source":"iana"},"application/vnd.nokia.landmarkcollection+xml":{"source":"iana"},"application/vnd.nokia.n-gage.ac+xml":{"source":"iana"},"application/vnd.nokia.n-gage.data":{"source":"iana","extensions":["ngdat"]},"application/vnd.nokia.n-gage.symbian.install":{"source":"iana","extensions":["n-gage"]},"application/vnd.nokia.ncd":{"source":"iana"},"application/vnd.nokia.pcd+wbxml":{"source":"iana"},"application/vnd.nokia.pcd+xml":{"source":"iana"},"application/vnd.nokia.radio-preset":{"source":"iana","extensions":["rpst"]},"application/vnd.nokia.radio-presets":{"source":"iana","extensions":["rpss"]},"application/vnd.novadigm.edm":{"source":"iana","extensions":["edm"]},"application/vnd.novadigm.edx":{"source":"iana","extensions":["edx"]},"application/vnd.novadigm.ext":{"source":"iana","extensions":["ext"]},"application/vnd.ntt-local.content-share":{"source":"iana"},"application/vnd.ntt-local.file-transfer":{"source":"iana"},"application/vnd.ntt-local.ogw_remote-access":{"source":"iana"},"application/vnd.ntt-local.sip-ta_remote":{"source":"iana"},"application/vnd.ntt-local.sip-ta_tcp_stream":{"source":"iana"},"application/vnd.oasis.opendocument.chart":{"source":"iana","extensions":["odc"]},"application/vnd.oasis.opendocument.chart-template":{"source":"iana","extensions":["otc"]},"application/vnd.oasis.opendocument.database":{"source":"iana","extensions":["odb"]},"application/vnd.oasis.opendocument.formula":{"source":"iana","extensions":["odf"]},"application/vnd.oasis.opendocument.formula-template":{"source":"iana","extensions":["odft"]},"application/vnd.oasis.opendocument.graphics":{"source":"iana","compressible":false,"extensions":["odg"]},"application/vnd.oasis.opendocument.graphics-template":{"source":"iana","extensions":["otg"]},"application/vnd.oasis.opendocument.image":{"source":"iana","extensions":["odi"]},"application/vnd.oasis.opendocument.image-template":{"source":"iana","extensions":["oti"]},"application/vnd.oasis.opendocument.presentation":{"source":"iana","compressible":false,"extensions":["odp"]},"application/vnd.oasis.opendocument.presentation-template":{"source":"iana","extensions":["otp"]},"application/vnd.oasis.opendocument.spreadsheet":{"source":"iana","compressible":false,"extensions":["ods"]},"application/vnd.oasis.opendocument.spreadsheet-template":{"source":"iana","extensions":["ots"]},"application/vnd.oasis.opendocument.text":{"source":"iana","compressible":false,"extensions":["odt"]},"application/vnd.oasis.opendocument.text-master":{"source":"iana","extensions":["odm"]},"application/vnd.oasis.opendocument.text-template":{"source":"iana","extensions":["ott"]},"application/vnd.oasis.opendocument.text-web":{"source":"iana","extensions":["oth"]},"application/vnd.obn":{"source":"iana"},"application/vnd.ocf+cbor":{"source":"iana"},"application/vnd.oftn.l10n+json":{"source":"iana","compressible":true},"application/vnd.oipf.contentaccessdownload+xml":{"source":"iana"},"application/vnd.oipf.contentaccessstreaming+xml":{"source":"iana"},"application/vnd.oipf.cspg-hexbinary":{"source":"iana"},"application/vnd.oipf.dae.svg+xml":{"source":"iana"},"application/vnd.oipf.dae.xhtml+xml":{"source":"iana"},"application/vnd.oipf.mippvcontrolmessage+xml":{"source":"iana"},"application/vnd.oipf.pae.gem":{"source":"iana"},"application/vnd.oipf.spdiscovery+xml":{"source":"iana"},"application/vnd.oipf.spdlist+xml":{"source":"iana"},"application/vnd.oipf.ueprofile+xml":{"source":"iana"},"application/vnd.oipf.userprofile+xml":{"source":"iana"},"application/vnd.olpc-sugar":{"source":"iana","extensions":["xo"]},"application/vnd.oma-scws-config":{"source":"iana"},"application/vnd.oma-scws-http-request":{"source":"iana"},"application/vnd.oma-scws-http-response":{"source":"iana"},"application/vnd.oma.bcast.associated-procedure-parameter+xml":{"source":"iana"},"application/vnd.oma.bcast.drm-trigger+xml":{"source":"iana"},"application/vnd.oma.bcast.imd+xml":{"source":"iana"},"application/vnd.oma.bcast.ltkm":{"source":"iana"},"application/vnd.oma.bcast.notification+xml":{"source":"iana"},"application/vnd.oma.bcast.provisioningtrigger":{"source":"iana"},"application/vnd.oma.bcast.sgboot":{"source":"iana"},"application/vnd.oma.bcast.sgdd+xml":{"source":"iana"},"application/vnd.oma.bcast.sgdu":{"source":"iana"},"application/vnd.oma.bcast.simple-symbol-container":{"source":"iana"},"application/vnd.oma.bcast.smartcard-trigger+xml":{"source":"iana"},"application/vnd.oma.bcast.sprov+xml":{"source":"iana"},"application/vnd.oma.bcast.stkm":{"source":"iana"},"application/vnd.oma.cab-address-book+xml":{"source":"iana"},"application/vnd.oma.cab-feature-handler+xml":{"source":"iana"},"application/vnd.oma.cab-pcc+xml":{"source":"iana"},"application/vnd.oma.cab-subs-invite+xml":{"source":"iana"},"application/vnd.oma.cab-user-prefs+xml":{"source":"iana"},"application/vnd.oma.dcd":{"source":"iana"},"application/vnd.oma.dcdc":{"source":"iana"},"application/vnd.oma.dd2+xml":{"source":"iana","extensions":["dd2"]},"application/vnd.oma.drm.risd+xml":{"source":"iana"},"application/vnd.oma.group-usage-list+xml":{"source":"iana"},"application/vnd.oma.lwm2m+json":{"source":"iana","compressible":true},"application/vnd.oma.lwm2m+tlv":{"source":"iana"},"application/vnd.oma.pal+xml":{"source":"iana"},"application/vnd.oma.poc.detailed-progress-report+xml":{"source":"iana"},"application/vnd.oma.poc.final-report+xml":{"source":"iana"},"application/vnd.oma.poc.groups+xml":{"source":"iana"},"application/vnd.oma.poc.invocation-descriptor+xml":{"source":"iana"},"application/vnd.oma.poc.optimized-progress-report+xml":{"source":"iana"},"application/vnd.oma.push":{"source":"iana"},"application/vnd.oma.scidm.messages+xml":{"source":"iana"},"application/vnd.oma.xcap-directory+xml":{"source":"iana"},"application/vnd.omads-email+xml":{"source":"iana"},"application/vnd.omads-file+xml":{"source":"iana"},"application/vnd.omads-folder+xml":{"source":"iana"},"application/vnd.omaloc-supl-init":{"source":"iana"},"application/vnd.onepager":{"source":"iana"},"application/vnd.onepagertamp":{"source":"iana"},"application/vnd.onepagertamx":{"source":"iana"},"application/vnd.onepagertat":{"source":"iana"},"application/vnd.onepagertatp":{"source":"iana"},"application/vnd.onepagertatx":{"source":"iana"},"application/vnd.openblox.game+xml":{"source":"iana"},"application/vnd.openblox.game-binary":{"source":"iana"},"application/vnd.openeye.oeb":{"source":"iana"},"application/vnd.openofficeorg.extension":{"source":"apache","extensions":["oxt"]},"application/vnd.openstreetmap.data+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.custom-properties+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.customxmlproperties+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.drawing+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.drawingml.chart+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.drawingml.chartshapes+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.drawingml.diagramcolors+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.drawingml.diagramdata+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.drawingml.diagramlayout+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.drawingml.diagramstyle+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.extended-properties+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml-template":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.commentauthors+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.comments+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.handoutmaster+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.notesmaster+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.notesslide+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.presentation":{"source":"iana","compressible":false,"extensions":["pptx"]},"application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.presprops+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.slide":{"source":"iana","extensions":["sldx"]},"application/vnd.openxmlformats-officedocument.presentationml.slide+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.slidelayout+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.slidemaster+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.slideshow":{"source":"iana","extensions":["ppsx"]},"application/vnd.openxmlformats-officedocument.presentationml.slideshow.main+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.slideupdateinfo+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.tablestyles+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.tags+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.template":{"source":"apache","extensions":["potx"]},"application/vnd.openxmlformats-officedocument.presentationml.template.main+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.presentationml.viewprops+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml-template":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.calcchain+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.chartsheet+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.comments+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.connections+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.dialogsheet+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.externallink+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.pivotcachedefinition+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.pivotcacherecords+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.pivottable+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.querytable+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.revisionheaders+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.revisionlog+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.sharedstrings+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":{"source":"iana","compressible":false,"extensions":["xlsx"]},"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.sheetmetadata+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.table+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.tablesinglecells+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.template":{"source":"apache","extensions":["xltx"]},"application/vnd.openxmlformats-officedocument.spreadsheetml.template.main+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.usernames+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.volatiledependencies+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.theme+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.themeoverride+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.vmldrawing":{"source":"iana"},"application/vnd.openxmlformats-officedocument.wordprocessingml-template":{"source":"iana"},"application/vnd.openxmlformats-officedocument.wordprocessingml.comments+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.wordprocessingml.document":{"source":"iana","compressible":false,"extensions":["docx"]},"application/vnd.openxmlformats-officedocument.wordprocessingml.document.glossary+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.wordprocessingml.endnotes+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.wordprocessingml.fonttable+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.wordprocessingml.footnotes+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.wordprocessingml.template":{"source":"apache","extensions":["dotx"]},"application/vnd.openxmlformats-officedocument.wordprocessingml.template.main+xml":{"source":"iana"},"application/vnd.openxmlformats-officedocument.wordprocessingml.websettings+xml":{"source":"iana"},"application/vnd.openxmlformats-package.core-properties+xml":{"source":"iana"},"application/vnd.openxmlformats-package.digital-signature-xmlsignature+xml":{"source":"iana"},"application/vnd.openxmlformats-package.relationships+xml":{"source":"iana"},"application/vnd.oracle.resource+json":{"source":"iana","compressible":true},"application/vnd.orange.indata":{"source":"iana"},"application/vnd.osa.netdeploy":{"source":"iana"},"application/vnd.osgeo.mapguide.package":{"source":"iana","extensions":["mgp"]},"application/vnd.osgi.bundle":{"source":"iana"},"application/vnd.osgi.dp":{"source":"iana","extensions":["dp"]},"application/vnd.osgi.subsystem":{"source":"iana","extensions":["esa"]},"application/vnd.otps.ct-kip+xml":{"source":"iana"},"application/vnd.oxli.countgraph":{"source":"iana"},"application/vnd.pagerduty+json":{"source":"iana","compressible":true},"application/vnd.palm":{"source":"iana","extensions":["pdb","pqa","oprc"]},"application/vnd.panoply":{"source":"iana"},"application/vnd.paos+xml":{"source":"iana"},"application/vnd.paos.xml":{"source":"apache"},"application/vnd.pawaafile":{"source":"iana","extensions":["paw"]},"application/vnd.pcos":{"source":"iana"},"application/vnd.pg.format":{"source":"iana","extensions":["str"]},"application/vnd.pg.osasli":{"source":"iana","extensions":["ei6"]},"application/vnd.piaccess.application-licence":{"source":"iana"},"application/vnd.picsel":{"source":"iana","extensions":["efif"]},"application/vnd.pmi.widget":{"source":"iana","extensions":["wg"]},"application/vnd.poc.group-advertisement+xml":{"source":"iana"},"application/vnd.pocketlearn":{"source":"iana","extensions":["plf"]},"application/vnd.powerbuilder6":{"source":"iana","extensions":["pbd"]},"application/vnd.powerbuilder6-s":{"source":"iana"},"application/vnd.powerbuilder7":{"source":"iana"},"application/vnd.powerbuilder7-s":{"source":"iana"},"application/vnd.powerbuilder75":{"source":"iana"},"application/vnd.powerbuilder75-s":{"source":"iana"},"application/vnd.preminet":{"source":"iana"},"application/vnd.previewsystems.box":{"source":"iana","extensions":["box"]},"application/vnd.proteus.magazine":{"source":"iana","extensions":["mgz"]},"application/vnd.publishare-delta-tree":{"source":"iana","extensions":["qps"]},"application/vnd.pvi.ptid1":{"source":"iana","extensions":["ptid"]},"application/vnd.pwg-multiplexed":{"source":"iana"},"application/vnd.pwg-xhtml-print+xml":{"source":"iana"},"application/vnd.qualcomm.brew-app-res":{"source":"iana"},"application/vnd.quarantainenet":{"source":"iana"},"application/vnd.quark.quarkxpress":{"source":"iana","extensions":["qxd","qxt","qwd","qwt","qxl","qxb"]},"application/vnd.quobject-quoxdocument":{"source":"iana"},"application/vnd.radisys.moml+xml":{"source":"iana"},"application/vnd.radisys.msml+xml":{"source":"iana"},"application/vnd.radisys.msml-audit+xml":{"source":"iana"},"application/vnd.radisys.msml-audit-conf+xml":{"source":"iana"},"application/vnd.radisys.msml-audit-conn+xml":{"source":"iana"},"application/vnd.radisys.msml-audit-dialog+xml":{"source":"iana"},"application/vnd.radisys.msml-audit-stream+xml":{"source":"iana"},"application/vnd.radisys.msml-conf+xml":{"source":"iana"},"application/vnd.radisys.msml-dialog+xml":{"source":"iana"},"application/vnd.radisys.msml-dialog-base+xml":{"source":"iana"},"application/vnd.radisys.msml-dialog-fax-detect+xml":{"source":"iana"},"application/vnd.radisys.msml-dialog-fax-sendrecv+xml":{"source":"iana"},"application/vnd.radisys.msml-dialog-group+xml":{"source":"iana"},"application/vnd.radisys.msml-dialog-speech+xml":{"source":"iana"},"application/vnd.radisys.msml-dialog-transform+xml":{"source":"iana"},"application/vnd.rainstor.data":{"source":"iana"},"application/vnd.rapid":{"source":"iana"},"application/vnd.rar":{"source":"iana"},"application/vnd.realvnc.bed":{"source":"iana","extensions":["bed"]},"application/vnd.recordare.musicxml":{"source":"iana","extensions":["mxl"]},"application/vnd.recordare.musicxml+xml":{"source":"iana","extensions":["musicxml"]},"application/vnd.renlearn.rlprint":{"source":"iana"},"application/vnd.rig.cryptonote":{"source":"iana","extensions":["cryptonote"]},"application/vnd.rim.cod":{"source":"apache","extensions":["cod"]},"application/vnd.rn-realmedia":{"source":"apache","extensions":["rm"]},"application/vnd.rn-realmedia-vbr":{"source":"apache","extensions":["rmvb"]},"application/vnd.route66.link66+xml":{"source":"iana","extensions":["link66"]},"application/vnd.rs-274x":{"source":"iana"},"application/vnd.ruckus.download":{"source":"iana"},"application/vnd.s3sms":{"source":"iana"},"application/vnd.sailingtracker.track":{"source":"iana","extensions":["st"]},"application/vnd.sbm.cid":{"source":"iana"},"application/vnd.sbm.mid2":{"source":"iana"},"application/vnd.scribus":{"source":"iana"},"application/vnd.sealed.3df":{"source":"iana"},"application/vnd.sealed.csf":{"source":"iana"},"application/vnd.sealed.doc":{"source":"iana"},"application/vnd.sealed.eml":{"source":"iana"},"application/vnd.sealed.mht":{"source":"iana"},"application/vnd.sealed.net":{"source":"iana"},"application/vnd.sealed.ppt":{"source":"iana"},"application/vnd.sealed.tiff":{"source":"iana"},"application/vnd.sealed.xls":{"source":"iana"},"application/vnd.sealedmedia.softseal.html":{"source":"iana"},"application/vnd.sealedmedia.softseal.pdf":{"source":"iana"},"application/vnd.seemail":{"source":"iana","extensions":["see"]},"application/vnd.sema":{"source":"iana","extensions":["sema"]},"application/vnd.semd":{"source":"iana","extensions":["semd"]},"application/vnd.semf":{"source":"iana","extensions":["semf"]},"application/vnd.shana.informed.formdata":{"source":"iana","extensions":["ifm"]},"application/vnd.shana.informed.formtemplate":{"source":"iana","extensions":["itp"]},"application/vnd.shana.informed.interchange":{"source":"iana","extensions":["iif"]},"application/vnd.shana.informed.package":{"source":"iana","extensions":["ipk"]},"application/vnd.sigrok.session":{"source":"iana"},"application/vnd.simtech-mindmapper":{"source":"iana","extensions":["twd","twds"]},"application/vnd.siren+json":{"source":"iana","compressible":true},"application/vnd.smaf":{"source":"iana","extensions":["mmf"]},"application/vnd.smart.notebook":{"source":"iana"},"application/vnd.smart.teacher":{"source":"iana","extensions":["teacher"]},"application/vnd.software602.filler.form+xml":{"source":"iana"},"application/vnd.software602.filler.form-xml-zip":{"source":"iana"},"application/vnd.solent.sdkm+xml":{"source":"iana","extensions":["sdkm","sdkd"]},"application/vnd.spotfire.dxp":{"source":"iana","extensions":["dxp"]},"application/vnd.spotfire.sfs":{"source":"iana","extensions":["sfs"]},"application/vnd.sss-cod":{"source":"iana"},"application/vnd.sss-dtf":{"source":"iana"},"application/vnd.sss-ntf":{"source":"iana"},"application/vnd.stardivision.calc":{"source":"apache","extensions":["sdc"]},"application/vnd.stardivision.draw":{"source":"apache","extensions":["sda"]},"application/vnd.stardivision.impress":{"source":"apache","extensions":["sdd"]},"application/vnd.stardivision.math":{"source":"apache","extensions":["smf"]},"application/vnd.stardivision.writer":{"source":"apache","extensions":["sdw","vor"]},"application/vnd.stardivision.writer-global":{"source":"apache","extensions":["sgl"]},"application/vnd.stepmania.package":{"source":"iana","extensions":["smzip"]},"application/vnd.stepmania.stepchart":{"source":"iana","extensions":["sm"]},"application/vnd.street-stream":{"source":"iana"},"application/vnd.sun.wadl+xml":{"source":"iana","compressible":true,"extensions":["wadl"]},"application/vnd.sun.xml.calc":{"source":"apache","extensions":["sxc"]},"application/vnd.sun.xml.calc.template":{"source":"apache","extensions":["stc"]},"application/vnd.sun.xml.draw":{"source":"apache","extensions":["sxd"]},"application/vnd.sun.xml.draw.template":{"source":"apache","extensions":["std"]},"application/vnd.sun.xml.impress":{"source":"apache","extensions":["sxi"]},"application/vnd.sun.xml.impress.template":{"source":"apache","extensions":["sti"]},"application/vnd.sun.xml.math":{"source":"apache","extensions":["sxm"]},"application/vnd.sun.xml.writer":{"source":"apache","extensions":["sxw"]},"application/vnd.sun.xml.writer.global":{"source":"apache","extensions":["sxg"]},"application/vnd.sun.xml.writer.template":{"source":"apache","extensions":["stw"]},"application/vnd.sus-calendar":{"source":"iana","extensions":["sus","susp"]},"application/vnd.svd":{"source":"iana","extensions":["svd"]},"application/vnd.swiftview-ics":{"source":"iana"},"application/vnd.symbian.install":{"source":"apache","extensions":["sis","sisx"]},"application/vnd.syncml+xml":{"source":"iana","extensions":["xsm"]},"application/vnd.syncml.dm+wbxml":{"source":"iana","extensions":["bdm"]},"application/vnd.syncml.dm+xml":{"source":"iana","extensions":["xdm"]},"application/vnd.syncml.dm.notification":{"source":"iana"},"application/vnd.syncml.dmddf+wbxml":{"source":"iana"},"application/vnd.syncml.dmddf+xml":{"source":"iana"},"application/vnd.syncml.dmtnds+wbxml":{"source":"iana"},"application/vnd.syncml.dmtnds+xml":{"source":"iana"},"application/vnd.syncml.ds.notification":{"source":"iana"},"application/vnd.tableschema+json":{"source":"iana","compressible":true},"application/vnd.tao.intent-module-archive":{"source":"iana","extensions":["tao"]},"application/vnd.tcpdump.pcap":{"source":"iana","extensions":["pcap","cap","dmp"]},"application/vnd.tmd.mediaflex.api+xml":{"source":"iana"},"application/vnd.tml":{"source":"iana"},"application/vnd.tmobile-livetv":{"source":"iana","extensions":["tmo"]},"application/vnd.tri.onesource":{"source":"iana"},"application/vnd.trid.tpt":{"source":"iana","extensions":["tpt"]},"application/vnd.triscape.mxs":{"source":"iana","extensions":["mxs"]},"application/vnd.trueapp":{"source":"iana","extensions":["tra"]},"application/vnd.truedoc":{"source":"iana"},"application/vnd.ubisoft.webplayer":{"source":"iana"},"application/vnd.ufdl":{"source":"iana","extensions":["ufd","ufdl"]},"application/vnd.uiq.theme":{"source":"iana","extensions":["utz"]},"application/vnd.umajin":{"source":"iana","extensions":["umj"]},"application/vnd.unity":{"source":"iana","extensions":["unityweb"]},"application/vnd.uoml+xml":{"source":"iana","extensions":["uoml"]},"application/vnd.uplanet.alert":{"source":"iana"},"application/vnd.uplanet.alert-wbxml":{"source":"iana"},"application/vnd.uplanet.bearer-choice":{"source":"iana"},"application/vnd.uplanet.bearer-choice-wbxml":{"source":"iana"},"application/vnd.uplanet.cacheop":{"source":"iana"},"application/vnd.uplanet.cacheop-wbxml":{"source":"iana"},"application/vnd.uplanet.channel":{"source":"iana"},"application/vnd.uplanet.channel-wbxml":{"source":"iana"},"application/vnd.uplanet.list":{"source":"iana"},"application/vnd.uplanet.list-wbxml":{"source":"iana"},"application/vnd.uplanet.listcmd":{"source":"iana"},"application/vnd.uplanet.listcmd-wbxml":{"source":"iana"},"application/vnd.uplanet.signal":{"source":"iana"},"application/vnd.uri-map":{"source":"iana"},"application/vnd.valve.source.material":{"source":"iana"},"application/vnd.vcx":{"source":"iana","extensions":["vcx"]},"application/vnd.vd-study":{"source":"iana"},"application/vnd.vectorworks":{"source":"iana"},"application/vnd.vel+json":{"source":"iana","compressible":true},"application/vnd.verimatrix.vcas":{"source":"iana"},"application/vnd.vidsoft.vidconference":{"source":"iana"},"application/vnd.visio":{"source":"iana","extensions":["vsd","vst","vss","vsw"]},"application/vnd.visionary":{"source":"iana","extensions":["vis"]},"application/vnd.vividence.scriptfile":{"source":"iana"},"application/vnd.vsf":{"source":"iana","extensions":["vsf"]},"application/vnd.wap.sic":{"source":"iana"},"application/vnd.wap.slc":{"source":"iana"},"application/vnd.wap.wbxml":{"source":"iana","extensions":["wbxml"]},"application/vnd.wap.wmlc":{"source":"iana","extensions":["wmlc"]},"application/vnd.wap.wmlscriptc":{"source":"iana","extensions":["wmlsc"]},"application/vnd.webturbo":{"source":"iana","extensions":["wtb"]},"application/vnd.wfa.p2p":{"source":"iana"},"application/vnd.wfa.wsc":{"source":"iana"},"application/vnd.windows.devicepairing":{"source":"iana"},"application/vnd.wmc":{"source":"iana"},"application/vnd.wmf.bootstrap":{"source":"iana"},"application/vnd.wolfram.mathematica":{"source":"iana"},"application/vnd.wolfram.mathematica.package":{"source":"iana"},"application/vnd.wolfram.player":{"source":"iana","extensions":["nbp"]},"application/vnd.wordperfect":{"source":"iana","extensions":["wpd"]},"application/vnd.wqd":{"source":"iana","extensions":["wqd"]},"application/vnd.wrq-hp3000-labelled":{"source":"iana"},"application/vnd.wt.stf":{"source":"iana","extensions":["stf"]},"application/vnd.wv.csp+wbxml":{"source":"iana"},"application/vnd.wv.csp+xml":{"source":"iana"},"application/vnd.wv.ssp+xml":{"source":"iana"},"application/vnd.xacml+json":{"source":"iana","compressible":true},"application/vnd.xara":{"source":"iana","extensions":["xar"]},"application/vnd.xfdl":{"source":"iana","extensions":["xfdl"]},"application/vnd.xfdl.webform":{"source":"iana"},"application/vnd.xmi+xml":{"source":"iana"},"application/vnd.xmpie.cpkg":{"source":"iana"},"application/vnd.xmpie.dpkg":{"source":"iana"},"application/vnd.xmpie.plan":{"source":"iana"},"application/vnd.xmpie.ppkg":{"source":"iana"},"application/vnd.xmpie.xlim":{"source":"iana"},"application/vnd.yamaha.hv-dic":{"source":"iana","extensions":["hvd"]},"application/vnd.yamaha.hv-script":{"source":"iana","extensions":["hvs"]},"application/vnd.yamaha.hv-voice":{"source":"iana","extensions":["hvp"]},"application/vnd.yamaha.openscoreformat":{"source":"iana","extensions":["osf"]},"application/vnd.yamaha.openscoreformat.osfpvg+xml":{"source":"iana","extensions":["osfpvg"]},"application/vnd.yamaha.remote-setup":{"source":"iana"},"application/vnd.yamaha.smaf-audio":{"source":"iana","extensions":["saf"]},"application/vnd.yamaha.smaf-phrase":{"source":"iana","extensions":["spf"]},"application/vnd.yamaha.through-ngn":{"source":"iana"},"application/vnd.yamaha.tunnel-udpencap":{"source":"iana"},"application/vnd.yaoweme":{"source":"iana"},"application/vnd.yellowriver-custom-menu":{"source":"iana","extensions":["cmp"]},"application/vnd.zul":{"source":"iana","extensions":["zir","zirz"]},"application/vnd.zzazz.deck+xml":{"source":"iana","extensions":["zaz"]},"application/voicexml+xml":{"source":"iana","extensions":["vxml"]},"application/vq-rtcpxr":{"source":"iana"},"application/watcherinfo+xml":{"source":"iana"},"application/whoispp-query":{"source":"iana"},"application/whoispp-response":{"source":"iana"},"application/widget":{"source":"iana","extensions":["wgt"]},"application/winhlp":{"source":"apache","extensions":["hlp"]},"application/wita":{"source":"iana"},"application/wordperfect5.1":{"source":"iana"},"application/wsdl+xml":{"source":"iana","extensions":["wsdl"]},"application/wspolicy+xml":{"source":"iana","extensions":["wspolicy"]},"application/x-7z-compressed":{"source":"apache","compressible":false,"extensions":["7z"]},"application/x-abiword":{"source":"apache","extensions":["abw"]},"application/x-ace-compressed":{"source":"apache","extensions":["ace"]},"application/x-amf":{"source":"apache"},"application/x-apple-diskimage":{"source":"apache","extensions":["dmg"]},"application/x-arj":{"compressible":false,"extensions":["arj"]},"application/x-authorware-bin":{"source":"apache","extensions":["aab","x32","u32","vox"]},"application/x-authorware-map":{"source":"apache","extensions":["aam"]},"application/x-authorware-seg":{"source":"apache","extensions":["aas"]},"application/x-bcpio":{"source":"apache","extensions":["bcpio"]},"application/x-bdoc":{"compressible":false,"extensions":["bdoc"]},"application/x-bittorrent":{"source":"apache","extensions":["torrent"]},"application/x-blorb":{"source":"apache","extensions":["blb","blorb"]},"application/x-bzip":{"source":"apache","compressible":false,"extensions":["bz"]},"application/x-bzip2":{"source":"apache","compressible":false,"extensions":["bz2","boz"]},"application/x-cbr":{"source":"apache","extensions":["cbr","cba","cbt","cbz","cb7"]},"application/x-cdlink":{"source":"apache","extensions":["vcd"]},"application/x-cfs-compressed":{"source":"apache","extensions":["cfs"]},"application/x-chat":{"source":"apache","extensions":["chat"]},"application/x-chess-pgn":{"source":"apache","extensions":["pgn"]},"application/x-chrome-extension":{"extensions":["crx"]},"application/x-cocoa":{"source":"nginx","extensions":["cco"]},"application/x-compress":{"source":"apache"},"application/x-conference":{"source":"apache","extensions":["nsc"]},"application/x-cpio":{"source":"apache","extensions":["cpio"]},"application/x-csh":{"source":"apache","extensions":["csh"]},"application/x-deb":{"compressible":false},"application/x-debian-package":{"source":"apache","extensions":["deb","udeb"]},"application/x-dgc-compressed":{"source":"apache","extensions":["dgc"]},"application/x-director":{"source":"apache","extensions":["dir","dcr","dxr","cst","cct","cxt","w3d","fgd","swa"]},"application/x-doom":{"source":"apache","extensions":["wad"]},"application/x-dtbncx+xml":{"source":"apache","extensions":["ncx"]},"application/x-dtbook+xml":{"source":"apache","extensions":["dtb"]},"application/x-dtbresource+xml":{"source":"apache","extensions":["res"]},"application/x-dvi":{"source":"apache","compressible":false,"extensions":["dvi"]},"application/x-envoy":{"source":"apache","extensions":["evy"]},"application/x-eva":{"source":"apache","extensions":["eva"]},"application/x-font-bdf":{"source":"apache","extensions":["bdf"]},"application/x-font-dos":{"source":"apache"},"application/x-font-framemaker":{"source":"apache"},"application/x-font-ghostscript":{"source":"apache","extensions":["gsf"]},"application/x-font-libgrx":{"source":"apache"},"application/x-font-linux-psf":{"source":"apache","extensions":["psf"]},"application/x-font-otf":{"source":"apache","compressible":true,"extensions":["otf"]},"application/x-font-pcf":{"source":"apache","extensions":["pcf"]},"application/x-font-snf":{"source":"apache","extensions":["snf"]},"application/x-font-speedo":{"source":"apache"},"application/x-font-sunos-news":{"source":"apache"},"application/x-font-ttf":{"source":"apache","compressible":true,"extensions":["ttf","ttc"]},"application/x-font-type1":{"source":"apache","extensions":["pfa","pfb","pfm","afm"]},"application/x-font-vfont":{"source":"apache"},"application/x-freearc":{"source":"apache","extensions":["arc"]},"application/x-futuresplash":{"source":"apache","extensions":["spl"]},"application/x-gca-compressed":{"source":"apache","extensions":["gca"]},"application/x-glulx":{"source":"apache","extensions":["ulx"]},"application/x-gnumeric":{"source":"apache","extensions":["gnumeric"]},"application/x-gramps-xml":{"source":"apache","extensions":["gramps"]},"application/x-gtar":{"source":"apache","extensions":["gtar"]},"application/x-gzip":{"source":"apache"},"application/x-hdf":{"source":"apache","extensions":["hdf"]},"application/x-httpd-php":{"compressible":true,"extensions":["php"]},"application/x-install-instructions":{"source":"apache","extensions":["install"]},"application/x-iso9660-image":{"source":"apache","extensions":["iso"]},"application/x-java-archive-diff":{"source":"nginx","extensions":["jardiff"]},"application/x-java-jnlp-file":{"source":"apache","compressible":false,"extensions":["jnlp"]},"application/x-javascript":{"compressible":true},"application/x-latex":{"source":"apache","compressible":false,"extensions":["latex"]},"application/x-lua-bytecode":{"extensions":["luac"]},"application/x-lzh-compressed":{"source":"apache","extensions":["lzh","lha"]},"application/x-makeself":{"source":"nginx","extensions":["run"]},"application/x-mie":{"source":"apache","extensions":["mie"]},"application/x-mobipocket-ebook":{"source":"apache","extensions":["prc","mobi"]},"application/x-mpegurl":{"compressible":false},"application/x-ms-application":{"source":"apache","extensions":["application"]},"application/x-ms-shortcut":{"source":"apache","extensions":["lnk"]},"application/x-ms-wmd":{"source":"apache","extensions":["wmd"]},"application/x-ms-wmz":{"source":"apache","extensions":["wmz"]},"application/x-ms-xbap":{"source":"apache","extensions":["xbap"]},"application/x-msaccess":{"source":"apache","extensions":["mdb"]},"application/x-msbinder":{"source":"apache","extensions":["obd"]},"application/x-mscardfile":{"source":"apache","extensions":["crd"]},"application/x-msclip":{"source":"apache","extensions":["clp"]},"application/x-msdos-program":{"extensions":["exe"]},"application/x-msdownload":{"source":"apache","extensions":["exe","dll","com","bat","msi"]},"application/x-msmediaview":{"source":"apache","extensions":["mvb","m13","m14"]},"application/x-msmetafile":{"source":"apache","extensions":["wmf","wmz","emf","emz"]},"application/x-msmoney":{"source":"apache","extensions":["mny"]},"application/x-mspublisher":{"source":"apache","extensions":["pub"]},"application/x-msschedule":{"source":"apache","extensions":["scd"]},"application/x-msterminal":{"source":"apache","extensions":["trm"]},"application/x-mswrite":{"source":"apache","extensions":["wri"]},"application/x-netcdf":{"source":"apache","extensions":["nc","cdf"]},"application/x-ns-proxy-autoconfig":{"compressible":true,"extensions":["pac"]},"application/x-nzb":{"source":"apache","extensions":["nzb"]},"application/x-perl":{"source":"nginx","extensions":["pl","pm"]},"application/x-pilot":{"source":"nginx","extensions":["prc","pdb"]},"application/x-pkcs12":{"source":"apache","compressible":false,"extensions":["p12","pfx"]},"application/x-pkcs7-certificates":{"source":"apache","extensions":["p7b","spc"]},"application/x-pkcs7-certreqresp":{"source":"apache","extensions":["p7r"]},"application/x-rar-compressed":{"source":"apache","compressible":false,"extensions":["rar"]},"application/x-redhat-package-manager":{"source":"nginx","extensions":["rpm"]},"application/x-research-info-systems":{"source":"apache","extensions":["ris"]},"application/x-sea":{"source":"nginx","extensions":["sea"]},"application/x-sh":{"source":"apache","compressible":true,"extensions":["sh"]},"application/x-shar":{"source":"apache","extensions":["shar"]},"application/x-shockwave-flash":{"source":"apache","compressible":false,"extensions":["swf"]},"application/x-silverlight-app":{"source":"apache","extensions":["xap"]},"application/x-sql":{"source":"apache","extensions":["sql"]},"application/x-stuffit":{"source":"apache","compressible":false,"extensions":["sit"]},"application/x-stuffitx":{"source":"apache","extensions":["sitx"]},"application/x-subrip":{"source":"apache","extensions":["srt"]},"application/x-sv4cpio":{"source":"apache","extensions":["sv4cpio"]},"application/x-sv4crc":{"source":"apache","extensions":["sv4crc"]},"application/x-t3vm-image":{"source":"apache","extensions":["t3"]},"application/x-tads":{"source":"apache","extensions":["gam"]},"application/x-tar":{"source":"apache","compressible":true,"extensions":["tar"]},"application/x-tcl":{"source":"apache","extensions":["tcl","tk"]},"application/x-tex":{"source":"apache","extensions":["tex"]},"application/x-tex-tfm":{"source":"apache","extensions":["tfm"]},"application/x-texinfo":{"source":"apache","extensions":["texinfo","texi"]},"application/x-tgif":{"source":"apache","extensions":["obj"]},"application/x-ustar":{"source":"apache","extensions":["ustar"]},"application/x-virtualbox-hdd":{"compressible":true,"extensions":["hdd"]},"application/x-virtualbox-ova":{"compressible":true,"extensions":["ova"]},"application/x-virtualbox-ovf":{"compressible":true,"extensions":["ovf"]},"application/x-virtualbox-vbox":{"compressible":true,"extensions":["vbox"]},"application/x-virtualbox-vbox-extpack":{"compressible":false,"extensions":["vbox-extpack"]},"application/x-virtualbox-vdi":{"compressible":true,"extensions":["vdi"]},"application/x-virtualbox-vhd":{"compressible":true,"extensions":["vhd"]},"application/x-virtualbox-vmdk":{"compressible":true,"extensions":["vmdk"]},"application/x-wais-source":{"source":"apache","extensions":["src"]},"application/x-web-app-manifest+json":{"compressible":true,"extensions":["webapp"]},"application/x-www-form-urlencoded":{"source":"iana","compressible":true},"application/x-x509-ca-cert":{"source":"apache","extensions":["der","crt","pem"]},"application/x-xfig":{"source":"apache","extensions":["fig"]},"application/x-xliff+xml":{"source":"apache","extensions":["xlf"]},"application/x-xpinstall":{"source":"apache","compressible":false,"extensions":["xpi"]},"application/x-xz":{"source":"apache","extensions":["xz"]},"application/x-zmachine":{"source":"apache","extensions":["z1","z2","z3","z4","z5","z6","z7","z8"]},"application/x400-bp":{"source":"iana"},"application/xacml+xml":{"source":"iana"},"application/xaml+xml":{"source":"apache","extensions":["xaml"]},"application/xcap-att+xml":{"source":"iana"},"application/xcap-caps+xml":{"source":"iana"},"application/xcap-diff+xml":{"source":"iana","extensions":["xdf"]},"application/xcap-el+xml":{"source":"iana"},"application/xcap-error+xml":{"source":"iana"},"application/xcap-ns+xml":{"source":"iana"},"application/xcon-conference-info+xml":{"source":"iana"},"application/xcon-conference-info-diff+xml":{"source":"iana"},"application/xenc+xml":{"source":"iana","extensions":["xenc"]},"application/xhtml+xml":{"source":"iana","compressible":true,"extensions":["xhtml","xht"]},"application/xhtml-voice+xml":{"source":"apache"},"application/xml":{"source":"iana","compressible":true,"extensions":["xml","xsl","xsd","rng"]},"application/xml-dtd":{"source":"iana","compressible":true,"extensions":["dtd"]},"application/xml-external-parsed-entity":{"source":"iana"},"application/xml-patch+xml":{"source":"iana"},"application/xmpp+xml":{"source":"iana"},"application/xop+xml":{"source":"iana","compressible":true,"extensions":["xop"]},"application/xproc+xml":{"source":"apache","extensions":["xpl"]},"application/xslt+xml":{"source":"iana","extensions":["xslt"]},"application/xspf+xml":{"source":"apache","extensions":["xspf"]},"application/xv+xml":{"source":"iana","extensions":["mxml","xhvml","xvml","xvm"]},"application/yang":{"source":"iana","extensions":["yang"]},"application/yang-data+json":{"source":"iana","compressible":true},"application/yang-data+xml":{"source":"iana"},"application/yang-patch+json":{"source":"iana","compressible":true},"application/yang-patch+xml":{"source":"iana"},"application/yin+xml":{"source":"iana","extensions":["yin"]},"application/zip":{"source":"iana","compressible":false,"extensions":["zip"]},"application/zlib":{"source":"iana"},"audio/1d-interleaved-parityfec":{"source":"iana"},"audio/32kadpcm":{"source":"iana"},"audio/3gpp":{"source":"iana","compressible":false,"extensions":["3gpp"]},"audio/3gpp2":{"source":"iana"},"audio/ac3":{"source":"iana"},"audio/adpcm":{"source":"apache","extensions":["adp"]},"audio/amr":{"source":"iana"},"audio/amr-wb":{"source":"iana"},"audio/amr-wb+":{"source":"iana"},"audio/aptx":{"source":"iana"},"audio/asc":{"source":"iana"},"audio/atrac-advanced-lossless":{"source":"iana"},"audio/atrac-x":{"source":"iana"},"audio/atrac3":{"source":"iana"},"audio/basic":{"source":"iana","compressible":false,"extensions":["au","snd"]},"audio/bv16":{"source":"iana"},"audio/bv32":{"source":"iana"},"audio/clearmode":{"source":"iana"},"audio/cn":{"source":"iana"},"audio/dat12":{"source":"iana"},"audio/dls":{"source":"iana"},"audio/dsr-es201108":{"source":"iana"},"audio/dsr-es202050":{"source":"iana"},"audio/dsr-es202211":{"source":"iana"},"audio/dsr-es202212":{"source":"iana"},"audio/dv":{"source":"iana"},"audio/dvi4":{"source":"iana"},"audio/eac3":{"source":"iana"},"audio/encaprtp":{"source":"iana"},"audio/evrc":{"source":"iana"},"audio/evrc-qcp":{"source":"iana"},"audio/evrc0":{"source":"iana"},"audio/evrc1":{"source":"iana"},"audio/evrcb":{"source":"iana"},"audio/evrcb0":{"source":"iana"},"audio/evrcb1":{"source":"iana"},"audio/evrcnw":{"source":"iana"},"audio/evrcnw0":{"source":"iana"},"audio/evrcnw1":{"source":"iana"},"audio/evrcwb":{"source":"iana"},"audio/evrcwb0":{"source":"iana"},"audio/evrcwb1":{"source":"iana"},"audio/evs":{"source":"iana"},"audio/fwdred":{"source":"iana"},"audio/g711-0":{"source":"iana"},"audio/g719":{"source":"iana"},"audio/g722":{"source":"iana"},"audio/g7221":{"source":"iana"},"audio/g723":{"source":"iana"},"audio/g726-16":{"source":"iana"},"audio/g726-24":{"source":"iana"},"audio/g726-32":{"source":"iana"},"audio/g726-40":{"source":"iana"},"audio/g728":{"source":"iana"},"audio/g729":{"source":"iana"},"audio/g7291":{"source":"iana"},"audio/g729d":{"source":"iana"},"audio/g729e":{"source":"iana"},"audio/gsm":{"source":"iana"},"audio/gsm-efr":{"source":"iana"},"audio/gsm-hr-08":{"source":"iana"},"audio/ilbc":{"source":"iana"},"audio/ip-mr_v2.5":{"source":"iana"},"audio/isac":{"source":"apache"},"audio/l16":{"source":"iana"},"audio/l20":{"source":"iana"},"audio/l24":{"source":"iana","compressible":false},"audio/l8":{"source":"iana"},"audio/lpc":{"source":"iana"},"audio/melp":{"source":"iana"},"audio/melp1200":{"source":"iana"},"audio/melp2400":{"source":"iana"},"audio/melp600":{"source":"iana"},"audio/midi":{"source":"apache","extensions":["mid","midi","kar","rmi"]},"audio/mobile-xmf":{"source":"iana"},"audio/mp3":{"compressible":false,"extensions":["mp3"]},"audio/mp4":{"source":"iana","compressible":false,"extensions":["m4a","mp4a"]},"audio/mp4a-latm":{"source":"iana"},"audio/mpa":{"source":"iana"},"audio/mpa-robust":{"source":"iana"},"audio/mpeg":{"source":"iana","compressible":false,"extensions":["mpga","mp2","mp2a","mp3","m2a","m3a"]},"audio/mpeg4-generic":{"source":"iana"},"audio/musepack":{"source":"apache"},"audio/ogg":{"source":"iana","compressible":false,"extensions":["oga","ogg","spx"]},"audio/opus":{"source":"iana"},"audio/parityfec":{"source":"iana"},"audio/pcma":{"source":"iana"},"audio/pcma-wb":{"source":"iana"},"audio/pcmu":{"source":"iana"},"audio/pcmu-wb":{"source":"iana"},"audio/prs.sid":{"source":"iana"},"audio/qcelp":{"source":"iana"},"audio/raptorfec":{"source":"iana"},"audio/red":{"source":"iana"},"audio/rtp-enc-aescm128":{"source":"iana"},"audio/rtp-midi":{"source":"iana"},"audio/rtploopback":{"source":"iana"},"audio/rtx":{"source":"iana"},"audio/s3m":{"source":"apache","extensions":["s3m"]},"audio/silk":{"source":"apache","extensions":["sil"]},"audio/smv":{"source":"iana"},"audio/smv-qcp":{"source":"iana"},"audio/smv0":{"source":"iana"},"audio/sp-midi":{"source":"iana"},"audio/speex":{"source":"iana"},"audio/t140c":{"source":"iana"},"audio/t38":{"source":"iana"},"audio/telephone-event":{"source":"iana"},"audio/tone":{"source":"iana"},"audio/uemclip":{"source":"iana"},"audio/ulpfec":{"source":"iana"},"audio/vdvi":{"source":"iana"},"audio/vmr-wb":{"source":"iana"},"audio/vnd.3gpp.iufp":{"source":"iana"},"audio/vnd.4sb":{"source":"iana"},"audio/vnd.audiokoz":{"source":"iana"},"audio/vnd.celp":{"source":"iana"},"audio/vnd.cisco.nse":{"source":"iana"},"audio/vnd.cmles.radio-events":{"source":"iana"},"audio/vnd.cns.anp1":{"source":"iana"},"audio/vnd.cns.inf1":{"source":"iana"},"audio/vnd.dece.audio":{"source":"iana","extensions":["uva","uvva"]},"audio/vnd.digital-winds":{"source":"iana","extensions":["eol"]},"audio/vnd.dlna.adts":{"source":"iana"},"audio/vnd.dolby.heaac.1":{"source":"iana"},"audio/vnd.dolby.heaac.2":{"source":"iana"},"audio/vnd.dolby.mlp":{"source":"iana"},"audio/vnd.dolby.mps":{"source":"iana"},"audio/vnd.dolby.pl2":{"source":"iana"},"audio/vnd.dolby.pl2x":{"source":"iana"},"audio/vnd.dolby.pl2z":{"source":"iana"},"audio/vnd.dolby.pulse.1":{"source":"iana"},"audio/vnd.dra":{"source":"iana","extensions":["dra"]},"audio/vnd.dts":{"source":"iana","extensions":["dts"]},"audio/vnd.dts.hd":{"source":"iana","extensions":["dtshd"]},"audio/vnd.dvb.file":{"source":"iana"},"audio/vnd.everad.plj":{"source":"iana"},"audio/vnd.hns.audio":{"source":"iana"},"audio/vnd.lucent.voice":{"source":"iana","extensions":["lvp"]},"audio/vnd.ms-playready.media.pya":{"source":"iana","extensions":["pya"]},"audio/vnd.nokia.mobile-xmf":{"source":"iana"},"audio/vnd.nortel.vbk":{"source":"iana"},"audio/vnd.nuera.ecelp4800":{"source":"iana","extensions":["ecelp4800"]},"audio/vnd.nuera.ecelp7470":{"source":"iana","extensions":["ecelp7470"]},"audio/vnd.nuera.ecelp9600":{"source":"iana","extensions":["ecelp9600"]},"audio/vnd.octel.sbc":{"source":"iana"},"audio/vnd.presonus.multitrack":{"source":"iana"},"audio/vnd.qcelp":{"source":"iana"},"audio/vnd.rhetorex.32kadpcm":{"source":"iana"},"audio/vnd.rip":{"source":"iana","extensions":["rip"]},"audio/vnd.rn-realaudio":{"compressible":false},"audio/vnd.sealedmedia.softseal.mpeg":{"source":"iana"},"audio/vnd.vmx.cvsd":{"source":"iana"},"audio/vnd.wave":{"compressible":false},"audio/vorbis":{"source":"iana","compressible":false},"audio/vorbis-config":{"source":"iana"},"audio/wav":{"compressible":false,"extensions":["wav"]},"audio/wave":{"compressible":false,"extensions":["wav"]},"audio/webm":{"source":"apache","compressible":false,"extensions":["weba"]},"audio/x-aac":{"source":"apache","compressible":false,"extensions":["aac"]},"audio/x-aiff":{"source":"apache","extensions":["aif","aiff","aifc"]},"audio/x-caf":{"source":"apache","compressible":false,"extensions":["caf"]},"audio/x-flac":{"source":"apache","extensions":["flac"]},"audio/x-m4a":{"source":"nginx","extensions":["m4a"]},"audio/x-matroska":{"source":"apache","extensions":["mka"]},"audio/x-mpegurl":{"source":"apache","extensions":["m3u"]},"audio/x-ms-wax":{"source":"apache","extensions":["wax"]},"audio/x-ms-wma":{"source":"apache","extensions":["wma"]},"audio/x-pn-realaudio":{"source":"apache","extensions":["ram","ra"]},"audio/x-pn-realaudio-plugin":{"source":"apache","extensions":["rmp"]},"audio/x-realaudio":{"source":"nginx","extensions":["ra"]},"audio/x-tta":{"source":"apache"},"audio/x-wav":{"source":"apache","extensions":["wav"]},"audio/xm":{"source":"apache","extensions":["xm"]},"chemical/x-cdx":{"source":"apache","extensions":["cdx"]},"chemical/x-cif":{"source":"apache","extensions":["cif"]},"chemical/x-cmdf":{"source":"apache","extensions":["cmdf"]},"chemical/x-cml":{"source":"apache","extensions":["cml"]},"chemical/x-csml":{"source":"apache","extensions":["csml"]},"chemical/x-pdb":{"source":"apache"},"chemical/x-xyz":{"source":"apache","extensions":["xyz"]},"font/otf":{"compressible":true,"extensions":["otf"]},"image/apng":{"compressible":false,"extensions":["apng"]},"image/bmp":{"source":"iana","compressible":true,"extensions":["bmp"]},"image/cgm":{"source":"iana","extensions":["cgm"]},"image/dicom-rle":{"source":"iana"},"image/emf":{"source":"iana"},"image/fits":{"source":"iana"},"image/g3fax":{"source":"iana","extensions":["g3"]},"image/gif":{"source":"iana","compressible":false,"extensions":["gif"]},"image/ief":{"source":"iana","extensions":["ief"]},"image/jls":{"source":"iana"},"image/jp2":{"source":"iana"},"image/jpeg":{"source":"iana","compressible":false,"extensions":["jpeg","jpg","jpe"]},"image/jpm":{"source":"iana"},"image/jpx":{"source":"iana"},"image/ktx":{"source":"iana","extensions":["ktx"]},"image/naplps":{"source":"iana"},"image/pjpeg":{"compressible":false},"image/png":{"source":"iana","compressible":false,"extensions":["png"]},"image/prs.btif":{"source":"iana","extensions":["btif"]},"image/prs.pti":{"source":"iana"},"image/pwg-raster":{"source":"iana"},"image/sgi":{"source":"apache","extensions":["sgi"]},"image/svg+xml":{"source":"iana","compressible":true,"extensions":["svg","svgz"]},"image/t38":{"source":"iana"},"image/tiff":{"source":"iana","compressible":false,"extensions":["tiff","tif"]},"image/tiff-fx":{"source":"iana"},"image/vnd.adobe.photoshop":{"source":"iana","compressible":true,"extensions":["psd"]},"image/vnd.airzip.accelerator.azv":{"source":"iana"},"image/vnd.cns.inf2":{"source":"iana"},"image/vnd.dece.graphic":{"source":"iana","extensions":["uvi","uvvi","uvg","uvvg"]},"image/vnd.djvu":{"source":"iana","extensions":["djvu","djv"]},"image/vnd.dvb.subtitle":{"source":"iana","extensions":["sub"]},"image/vnd.dwg":{"source":"iana","extensions":["dwg"]},"image/vnd.dxf":{"source":"iana","extensions":["dxf"]},"image/vnd.fastbidsheet":{"source":"iana","extensions":["fbs"]},"image/vnd.fpx":{"source":"iana","extensions":["fpx"]},"image/vnd.fst":{"source":"iana","extensions":["fst"]},"image/vnd.fujixerox.edmics-mmr":{"source":"iana","extensions":["mmr"]},"image/vnd.fujixerox.edmics-rlc":{"source":"iana","extensions":["rlc"]},"image/vnd.globalgraphics.pgb":{"source":"iana"},"image/vnd.microsoft.icon":{"source":"iana"},"image/vnd.mix":{"source":"iana"},"image/vnd.mozilla.apng":{"source":"iana"},"image/vnd.ms-modi":{"source":"iana","extensions":["mdi"]},"image/vnd.ms-photo":{"source":"apache","extensions":["wdp"]},"image/vnd.net-fpx":{"source":"iana","extensions":["npx"]},"image/vnd.radiance":{"source":"iana"},"image/vnd.sealed.png":{"source":"iana"},"image/vnd.sealedmedia.softseal.gif":{"source":"iana"},"image/vnd.sealedmedia.softseal.jpg":{"source":"iana"},"image/vnd.svf":{"source":"iana"},"image/vnd.tencent.tap":{"source":"iana"},"image/vnd.valve.source.texture":{"source":"iana"},"image/vnd.wap.wbmp":{"source":"iana","extensions":["wbmp"]},"image/vnd.xiff":{"source":"iana","extensions":["xif"]},"image/vnd.zbrush.pcx":{"source":"iana"},"image/webp":{"source":"apache","extensions":["webp"]},"image/wmf":{"source":"iana"},"image/x-3ds":{"source":"apache","extensions":["3ds"]},"image/x-cmu-raster":{"source":"apache","extensions":["ras"]},"image/x-cmx":{"source":"apache","extensions":["cmx"]},"image/x-freehand":{"source":"apache","extensions":["fh","fhc","fh4","fh5","fh7"]},"image/x-icon":{"source":"apache","compressible":true,"extensions":["ico"]},"image/x-jng":{"source":"nginx","extensions":["jng"]},"image/x-mrsid-image":{"source":"apache","extensions":["sid"]},"image/x-ms-bmp":{"source":"nginx","compressible":true,"extensions":["bmp"]},"image/x-pcx":{"source":"apache","extensions":["pcx"]},"image/x-pict":{"source":"apache","extensions":["pic","pct"]},"image/x-portable-anymap":{"source":"apache","extensions":["pnm"]},"image/x-portable-bitmap":{"source":"apache","extensions":["pbm"]},"image/x-portable-graymap":{"source":"apache","extensions":["pgm"]},"image/x-portable-pixmap":{"source":"apache","extensions":["ppm"]},"image/x-rgb":{"source":"apache","extensions":["rgb"]},"image/x-tga":{"source":"apache","extensions":["tga"]},"image/x-xbitmap":{"source":"apache","extensions":["xbm"]},"image/x-xcf":{"compressible":false},"image/x-xpixmap":{"source":"apache","extensions":["xpm"]},"image/x-xwindowdump":{"source":"apache","extensions":["xwd"]},"message/cpim":{"source":"iana"},"message/delivery-status":{"source":"iana"},"message/disposition-notification":{"source":"iana"},"message/external-body":{"source":"iana"},"message/feedback-report":{"source":"iana"},"message/global":{"source":"iana"},"message/global-delivery-status":{"source":"iana"},"message/global-disposition-notification":{"source":"iana"},"message/global-headers":{"source":"iana"},"message/http":{"source":"iana","compressible":false},"message/imdn+xml":{"source":"iana","compressible":true},"message/news":{"source":"iana"},"message/partial":{"source":"iana","compressible":false},"message/rfc822":{"source":"iana","compressible":true,"extensions":["eml","mime"]},"message/s-http":{"source":"iana"},"message/sip":{"source":"iana"},"message/sipfrag":{"source":"iana"},"message/tracking-status":{"source":"iana"},"message/vnd.si.simp":{"source":"iana"},"message/vnd.wfa.wsc":{"source":"iana"},"model/3mf":{"source":"iana"},"model/gltf+json":{"source":"iana","compressible":true,"extensions":["gltf"]},"model/gltf-binary":{"compressible":true,"extensions":["glb"]},"model/iges":{"source":"iana","compressible":false,"extensions":["igs","iges"]},"model/mesh":{"source":"iana","compressible":false,"extensions":["msh","mesh","silo"]},"model/vnd.collada+xml":{"source":"iana","extensions":["dae"]},"model/vnd.dwf":{"source":"iana","extensions":["dwf"]},"model/vnd.flatland.3dml":{"source":"iana"},"model/vnd.gdl":{"source":"iana","extensions":["gdl"]},"model/vnd.gs-gdl":{"source":"apache"},"model/vnd.gs.gdl":{"source":"iana"},"model/vnd.gtw":{"source":"iana","extensions":["gtw"]},"model/vnd.moml+xml":{"source":"iana"},"model/vnd.mts":{"source":"iana","extensions":["mts"]},"model/vnd.opengex":{"source":"iana"},"model/vnd.parasolid.transmit.binary":{"source":"iana"},"model/vnd.parasolid.transmit.text":{"source":"iana"},"model/vnd.rosette.annotated-data-model":{"source":"iana"},"model/vnd.valve.source.compiled-map":{"source":"iana"},"model/vnd.vtu":{"source":"iana","extensions":["vtu"]},"model/vrml":{"source":"iana","compressible":false,"extensions":["wrl","vrml"]},"model/x3d+binary":{"source":"apache","compressible":false,"extensions":["x3db","x3dbz"]},"model/x3d+fastinfoset":{"source":"iana"},"model/x3d+vrml":{"source":"apache","compressible":false,"extensions":["x3dv","x3dvz"]},"model/x3d+xml":{"source":"iana","compressible":true,"extensions":["x3d","x3dz"]},"model/x3d-vrml":{"source":"iana"},"multipart/alternative":{"source":"iana","compressible":false},"multipart/appledouble":{"source":"iana"},"multipart/byteranges":{"source":"iana"},"multipart/digest":{"source":"iana"},"multipart/encrypted":{"source":"iana","compressible":false},"multipart/form-data":{"source":"iana","compressible":false},"multipart/header-set":{"source":"iana"},"multipart/mixed":{"source":"iana","compressible":false},"multipart/parallel":{"source":"iana"},"multipart/related":{"source":"iana","compressible":false},"multipart/report":{"source":"iana"},"multipart/signed":{"source":"iana","compressible":false},"multipart/vnd.bint.med-plus":{"source":"iana"},"multipart/voice-message":{"source":"iana"},"multipart/x-mixed-replace":{"source":"iana"},"text/1d-interleaved-parityfec":{"source":"iana"},"text/cache-manifest":{"source":"iana","compressible":true,"extensions":["appcache","manifest"]},"text/calendar":{"source":"iana","extensions":["ics","ifb"]},"text/calender":{"compressible":true},"text/cmd":{"compressible":true},"text/coffeescript":{"extensions":["coffee","litcoffee"]},"text/css":{"source":"iana","charset":"UTF-8","compressible":true,"extensions":["css"]},"text/csv":{"source":"iana","compressible":true,"extensions":["csv"]},"text/csv-schema":{"source":"iana"},"text/directory":{"source":"iana"},"text/dns":{"source":"iana"},"text/ecmascript":{"source":"iana"},"text/encaprtp":{"source":"iana"},"text/enriched":{"source":"iana"},"text/fwdred":{"source":"iana"},"text/grammar-ref-list":{"source":"iana"},"text/hjson":{"extensions":["hjson"]},"text/html":{"source":"iana","compressible":true,"extensions":["html","htm","shtml"]},"text/jade":{"extensions":["jade"]},"text/javascript":{"source":"iana","compressible":true},"text/jcr-cnd":{"source":"iana"},"text/jsx":{"compressible":true,"extensions":["jsx"]},"text/less":{"extensions":["less"]},"text/markdown":{"source":"iana","compressible":true,"extensions":["markdown","md"]},"text/mathml":{"source":"nginx","extensions":["mml"]},"text/mizar":{"source":"iana"},"text/n3":{"source":"iana","compressible":true,"extensions":["n3"]},"text/parameters":{"source":"iana"},"text/parityfec":{"source":"iana"},"text/plain":{"source":"iana","compressible":true,"extensions":["txt","text","conf","def","list","log","in","ini"]},"text/provenance-notation":{"source":"iana"},"text/prs.fallenstein.rst":{"source":"iana"},"text/prs.lines.tag":{"source":"iana","extensions":["dsc"]},"text/prs.prop.logic":{"source":"iana"},"text/raptorfec":{"source":"iana"},"text/red":{"source":"iana"},"text/rfc822-headers":{"source":"iana"},"text/richtext":{"source":"iana","compressible":true,"extensions":["rtx"]},"text/rtf":{"source":"iana","compressible":true,"extensions":["rtf"]},"text/rtp-enc-aescm128":{"source":"iana"},"text/rtploopback":{"source":"iana"},"text/rtx":{"source":"iana"},"text/sgml":{"source":"iana","extensions":["sgml","sgm"]},"text/slim":{"extensions":["slim","slm"]},"text/strings":{"source":"iana"},"text/stylus":{"extensions":["stylus","styl"]},"text/t140":{"source":"iana"},"text/tab-separated-values":{"source":"iana","compressible":true,"extensions":["tsv"]},"text/troff":{"source":"iana","extensions":["t","tr","roff","man","me","ms"]},"text/turtle":{"source":"iana","extensions":["ttl"]},"text/ulpfec":{"source":"iana"},"text/uri-list":{"source":"iana","compressible":true,"extensions":["uri","uris","urls"]},"text/vcard":{"source":"iana","compressible":true,"extensions":["vcard"]},"text/vnd.a":{"source":"iana"},"text/vnd.abc":{"source":"iana"},"text/vnd.ascii-art":{"source":"iana"},"text/vnd.curl":{"source":"iana","extensions":["curl"]},"text/vnd.curl.dcurl":{"source":"apache","extensions":["dcurl"]},"text/vnd.curl.mcurl":{"source":"apache","extensions":["mcurl"]},"text/vnd.curl.scurl":{"source":"apache","extensions":["scurl"]},"text/vnd.debian.copyright":{"source":"iana"},"text/vnd.dmclientscript":{"source":"iana"},"text/vnd.dvb.subtitle":{"source":"iana","extensions":["sub"]},"text/vnd.esmertec.theme-descriptor":{"source":"iana"},"text/vnd.fly":{"source":"iana","extensions":["fly"]},"text/vnd.fmi.flexstor":{"source":"iana","extensions":["flx"]},"text/vnd.graphviz":{"source":"iana","extensions":["gv"]},"text/vnd.in3d.3dml":{"source":"iana","extensions":["3dml"]},"text/vnd.in3d.spot":{"source":"iana","extensions":["spot"]},"text/vnd.iptc.newsml":{"source":"iana"},"text/vnd.iptc.nitf":{"source":"iana"},"text/vnd.latex-z":{"source":"iana"},"text/vnd.motorola.reflex":{"source":"iana"},"text/vnd.ms-mediapackage":{"source":"iana"},"text/vnd.net2phone.commcenter.command":{"source":"iana"},"text/vnd.radisys.msml-basic-layout":{"source":"iana"},"text/vnd.si.uricatalogue":{"source":"iana"},"text/vnd.sun.j2me.app-descriptor":{"source":"iana","extensions":["jad"]},"text/vnd.trolltech.linguist":{"source":"iana"},"text/vnd.wap.si":{"source":"iana"},"text/vnd.wap.sl":{"source":"iana"},"text/vnd.wap.wml":{"source":"iana","extensions":["wml"]},"text/vnd.wap.wmlscript":{"source":"iana","extensions":["wmls"]},"text/vtt":{"charset":"UTF-8","compressible":true,"extensions":["vtt"]},"text/x-asm":{"source":"apache","extensions":["s","asm"]},"text/x-c":{"source":"apache","extensions":["c","cc","cxx","cpp","h","hh","dic"]},"text/x-component":{"source":"nginx","extensions":["htc"]},"text/x-fortran":{"source":"apache","extensions":["f","for","f77","f90"]},"text/x-gwt-rpc":{"compressible":true},"text/x-handlebars-template":{"extensions":["hbs"]},"text/x-java-source":{"source":"apache","extensions":["java"]},"text/x-jquery-tmpl":{"compressible":true},"text/x-lua":{"extensions":["lua"]},"text/x-markdown":{"compressible":true,"extensions":["mkd"]},"text/x-nfo":{"source":"apache","extensions":["nfo"]},"text/x-opml":{"source":"apache","extensions":["opml"]},"text/x-org":{"compressible":true,"extensions":["org"]},"text/x-pascal":{"source":"apache","extensions":["p","pas"]},"text/x-processing":{"compressible":true,"extensions":["pde"]},"text/x-sass":{"extensions":["sass"]},"text/x-scss":{"extensions":["scss"]},"text/x-setext":{"source":"apache","extensions":["etx"]},"text/x-sfv":{"source":"apache","extensions":["sfv"]},"text/x-suse-ymp":{"compressible":true,"extensions":["ymp"]},"text/x-uuencode":{"source":"apache","extensions":["uu"]},"text/x-vcalendar":{"source":"apache","extensions":["vcs"]},"text/x-vcard":{"source":"apache","extensions":["vcf"]},"text/xml":{"source":"iana","compressible":true,"extensions":["xml"]},"text/xml-external-parsed-entity":{"source":"iana"},"text/yaml":{"extensions":["yaml","yml"]},"video/1d-interleaved-parityfec":{"source":"iana"},"video/3gpp":{"source":"iana","extensions":["3gp","3gpp"]},"video/3gpp-tt":{"source":"iana"},"video/3gpp2":{"source":"iana","extensions":["3g2"]},"video/bmpeg":{"source":"iana"},"video/bt656":{"source":"iana"},"video/celb":{"source":"iana"},"video/dv":{"source":"iana"},"video/encaprtp":{"source":"iana"},"video/h261":{"source":"iana","extensions":["h261"]},"video/h263":{"source":"iana","extensions":["h263"]},"video/h263-1998":{"source":"iana"},"video/h263-2000":{"source":"iana"},"video/h264":{"source":"iana","extensions":["h264"]},"video/h264-rcdo":{"source":"iana"},"video/h264-svc":{"source":"iana"},"video/h265":{"source":"iana"},"video/iso.segment":{"source":"iana"},"video/jpeg":{"source":"iana","extensions":["jpgv"]},"video/jpeg2000":{"source":"iana"},"video/jpm":{"source":"apache","extensions":["jpm","jpgm"]},"video/mj2":{"source":"iana","extensions":["mj2","mjp2"]},"video/mp1s":{"source":"iana"},"video/mp2p":{"source":"iana"},"video/mp2t":{"source":"iana","extensions":["ts"]},"video/mp4":{"source":"iana","compressible":false,"extensions":["mp4","mp4v","mpg4"]},"video/mp4v-es":{"source":"iana"},"video/mpeg":{"source":"iana","compressible":false,"extensions":["mpeg","mpg","mpe","m1v","m2v"]},"video/mpeg4-generic":{"source":"iana"},"video/mpv":{"source":"iana"},"video/nv":{"source":"iana"},"video/ogg":{"source":"iana","compressible":false,"extensions":["ogv"]},"video/parityfec":{"source":"iana"},"video/pointer":{"source":"iana"},"video/quicktime":{"source":"iana","compressible":false,"extensions":["qt","mov"]},"video/raptorfec":{"source":"iana"},"video/raw":{"source":"iana"},"video/rtp-enc-aescm128":{"source":"iana"},"video/rtploopback":{"source":"iana"},"video/rtx":{"source":"iana"},"video/smpte292m":{"source":"iana"},"video/ulpfec":{"source":"iana"},"video/vc1":{"source":"iana"},"video/vnd.cctv":{"source":"iana"},"video/vnd.dece.hd":{"source":"iana","extensions":["uvh","uvvh"]},"video/vnd.dece.mobile":{"source":"iana","extensions":["uvm","uvvm"]},"video/vnd.dece.mp4":{"source":"iana"},"video/vnd.dece.pd":{"source":"iana","extensions":["uvp","uvvp"]},"video/vnd.dece.sd":{"source":"iana","extensions":["uvs","uvvs"]},"video/vnd.dece.video":{"source":"iana","extensions":["uvv","uvvv"]},"video/vnd.directv.mpeg":{"source":"iana"},"video/vnd.directv.mpeg-tts":{"source":"iana"},"video/vnd.dlna.mpeg-tts":{"source":"iana"},"video/vnd.dvb.file":{"source":"iana","extensions":["dvb"]},"video/vnd.fvt":{"source":"iana","extensions":["fvt"]},"video/vnd.hns.video":{"source":"iana"},"video/vnd.iptvforum.1dparityfec-1010":{"source":"iana"},"video/vnd.iptvforum.1dparityfec-2005":{"source":"iana"},"video/vnd.iptvforum.2dparityfec-1010":{"source":"iana"},"video/vnd.iptvforum.2dparityfec-2005":{"source":"iana"},"video/vnd.iptvforum.ttsavc":{"source":"iana"},"video/vnd.iptvforum.ttsmpeg2":{"source":"iana"},"video/vnd.motorola.video":{"source":"iana"},"video/vnd.motorola.videop":{"source":"iana"},"video/vnd.mpegurl":{"source":"iana","extensions":["mxu","m4u"]},"video/vnd.ms-playready.media.pyv":{"source":"iana","extensions":["pyv"]},"video/vnd.nokia.interleaved-multimedia":{"source":"iana"},"video/vnd.nokia.videovoip":{"source":"iana"},"video/vnd.objectvideo":{"source":"iana"},"video/vnd.radgamettools.bink":{"source":"iana"},"video/vnd.radgamettools.smacker":{"source":"iana"},"video/vnd.sealed.mpeg1":{"source":"iana"},"video/vnd.sealed.mpeg4":{"source":"iana"},"video/vnd.sealed.swf":{"source":"iana"},"video/vnd.sealedmedia.softseal.mov":{"source":"iana"},"video/vnd.uvvu.mp4":{"source":"iana","extensions":["uvu","uvvu"]},"video/vnd.vivo":{"source":"iana","extensions":["viv"]},"video/vp8":{"source":"iana"},"video/webm":{"source":"apache","compressible":false,"extensions":["webm"]},"video/x-f4v":{"source":"apache","extensions":["f4v"]},"video/x-fli":{"source":"apache","extensions":["fli"]},"video/x-flv":{"source":"apache","compressible":false,"extensions":["flv"]},"video/x-m4v":{"source":"apache","extensions":["m4v"]},"video/x-matroska":{"source":"apache","compressible":false,"extensions":["mkv","mk3d","mks"]},"video/x-mng":{"source":"apache","extensions":["mng"]},"video/x-ms-asf":{"source":"apache","extensions":["asf","asx"]},"video/x-ms-vob":{"source":"apache","extensions":["vob"]},"video/x-ms-wm":{"source":"apache","extensions":["wm"]},"video/x-ms-wmv":{"source":"apache","compressible":false,"extensions":["wmv"]},"video/x-ms-wmx":{"source":"apache","extensions":["wmx"]},"video/x-ms-wvx":{"source":"apache","extensions":["wvx"]},"video/x-msvideo":{"source":"apache","extensions":["avi"]},"video/x-sgi-movie":{"source":"apache","extensions":["movie"]},"video/x-smv":{"source":"apache","extensions":["smv"]},"x-conference/x-cooltalk":{"source":"apache","extensions":["ice"]},"x-shader/x-fragment":{"compressible":true},"x-shader/x-vertex":{"compressible":true}}
 
 /***/ }),
-/* 437 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -101485,10 +112611,10 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
 
 /***/ }),
-/* 438 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -101496,8 +112622,8 @@ var substr = 'ab'.substr(-1) === 'b'
 
 //  The tools pane is for managing and debugging and maintaining solid contacts databases
 //
-var UI = __webpack_require__(1);
-var mime = __webpack_require__(130);
+var UI = __webpack_require__(2);
+var mime = __webpack_require__(144);
 
 // var toolsPane
 var toolsPane = function toolsPane(selectAllGroups, selectedGroups, groupsMainTable, book, dom, me) {
@@ -102101,7 +113227,7 @@ module.exports = {};
 module.exports.toolsPane = toolsPane;
 
 /***/ }),
-/* 439 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -102110,7 +113236,7 @@ module.exports.toolsPane = toolsPane;
 module.exports = "\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.\n@prefix ui: <http://www.w3.org/ns/ui#>.\n@prefix : <#>.\n\n<http://www.w3.org/2006/vcard/ns#Individual>\n    ui:creationForm <#form1> .\n\n\n<#form1>\n    <http://purl.org/dc/elements/1.1/title> \"Contact Details\" ;\n    a ui:Form ;\n    ui:part\n        <#fullNameField>,   <#roleField>,   <#fullNameFieldC>, <#addressesComment>, <#addresses>,\n        <#emailComment>, <#eMails>,\n        <#telephoneComment>, <#telephones>, <#noteComment>, <#noteField> ;\n    ui:parts (\n                <#fullNameField>  <#roleField> <#fullNameFieldC>\n                 <#addressesComment> <#addresses>\n                <#emailComment> <#eMails>\n                <#telephoneComment> <#telephones> <#noteComment> <#noteField> ) .\n\n    <#fullNameField>\n        a <http://www.w3.org/ns/ui#SingleLineTextField> ;\n        ui:label \"Name\";\n        <http://www.w3.org/ns/ui#maxLength> \"128\" ;\n        <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#fn> ;\n        <http://www.w3.org/ns/ui#size> \"40\" .\n\n    <#roleField>\n        a <http://www.w3.org/ns/ui#SingleLineTextField> ;\n        <http://www.w3.org/ns/ui#maxLength> \"128\" ;\n        <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#role> ;\n        <http://www.w3.org/ns/ui#size> \"40\" .\n\n      <#fullNameFieldC>\n          a <http://www.w3.org/ns/ui#SingleLineTextField> ;\n          <http://www.w3.org/ns/ui#maxLength> \"128\" ;\n          <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#organization-name> ;\n          <http://www.w3.org/ns/ui#size> \"40\" .\n\n\n<#addressesComment>\n    a <http://www.w3.org/ns/ui#Comment> ;\n    <http://www.w3.org/ns/ui#contents> \"Address\" .\n\n\n<#addresses>\n    <http://purl.org/dc/elements/1.1/title> \"Address details\" ;\n    a <http://www.w3.org/ns/ui#Multiple> ;\n    <http://www.w3.org/ns/ui#part> <#oneAddress> ;\n    <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#hasAddress> .\n\n<#oneAddress>\n    a <http://www.w3.org/ns/ui#Group> ;\n    <http://www.w3.org/ns/ui#parts> ( <#id1409437207443> <#id1409437292400> <#id1409437421996> <#id1409437467649> <#id1409437569420> <#id1409437646712> ).\n\n<#id1409437207443>\n    a <http://www.w3.org/ns/ui#SingleLineTextField> ;\n    <http://www.w3.org/ns/ui#maxLength> \"128\" ;\n    <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#street-address> ;\n    <http://www.w3.org/ns/ui#size> \"40\" .\n\n<#id1409437292400>\n    a <http://www.w3.org/ns/ui#SingleLineTextField> ;\n    <http://www.w3.org/ns/ui#maxLength> \"128\" ;\n    <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#locality> ;\n    <http://www.w3.org/ns/ui#size> \"40\" .\n\n<#id1409437421996>\n    a <http://www.w3.org/ns/ui#SingleLineTextField> ;\n    <http://www.w3.org/ns/ui#maxLength> \"25\" ;\n    <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#postal-code> ;\n    <http://www.w3.org/ns/ui#size> \"25\" .\n\n<#id1409437467649>\n    a <http://www.w3.org/ns/ui#SingleLineTextField> ;\n    <http://www.w3.org/ns/ui#maxLength> \"128\" ;\n    <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#region> ;\n    <http://www.w3.org/ns/ui#size> \"40\" .\n\n<#id1409437569420>\n    a <http://www.w3.org/ns/ui#SingleLineTextField> ;\n    <http://www.w3.org/ns/ui#maxLength> \"128\" ;\n    <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#country-name> ;\n    <http://www.w3.org/ns/ui#size> \"40\" .\n\n<#id1409437646712>\n    a <http://www.w3.org/ns/ui#Classifier> ;\n    <http://www.w3.org/ns/ui#from> rdf:Class ;\n    <http://www.w3.org/ns/ui#property> <http://purl.org/dc/terms/type> .\n\n\n##############################\n\n<#emailComment>\n    a <http://www.w3.org/ns/ui#Comment> ;\n    <http://www.w3.org/ns/ui#contents> \"Email\" .\n\n\n<#eMails>\n    a <http://www.w3.org/ns/ui#Multiple> ;\n    <http://www.w3.org/ns/ui#part> <#oneEMail> ;\n    <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#hasEmail> .\n\n<#oneEMail>\n    a <http://www.w3.org/ns/ui#Group> ;\n    <http://www.w3.org/ns/ui#part> <#emailValue>, <#emailType> .\n\n<#emailValue>\n    a <http://www.w3.org/ns/ui#EmailField> ; ui:label \"email\";\n    <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#value> ;\n    <http://www.w3.org/ns/ui#size> \"50\" .\n\n<#emailType>\n    a <http://www.w3.org/ns/ui#Classifier> ;\n    <http://www.w3.org/ns/ui#canMintNew> \"0\" ;\n    <http://www.w3.org/ns/ui#category> <http://www.w3.org/2006/vcard/ns#Type> ;\n    <http://www.w3.org/ns/ui#from> <http://www.w3.org/2006/vcard/ns#Type> ;\n    <http://www.w3.org/ns/ui#property> <http://purl.org/dc/terms/type> .\n\n##############################\n\n<#telephoneComment>\n    a <http://www.w3.org/ns/ui#Comment> ;\n    <http://www.w3.org/ns/ui#contents> \"Phones\" .\n\n\n<#telephones>\n    a <http://www.w3.org/ns/ui#Multiple> ;\n    <http://www.w3.org/ns/ui#part> <#onetelephone> ;\n    <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#hasTelephone> .\n\n<#onetelephone>\n    a <http://www.w3.org/ns/ui#Group> ;\n    <http://www.w3.org/ns/ui#part> <#telephoneValue>, <#telephoneType> .\n\n<#telephoneValue>\n    a <http://www.w3.org/ns/ui#PhoneField> ;\n    <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#value> ;\n    <http://www.w3.org/ns/ui#size> \"50\" .\n\n<#telephoneType>\n    a <http://www.w3.org/ns/ui#Classifier> ;\n    <http://www.w3.org/ns/ui#canMintNew> \"0\" ;\n    <http://www.w3.org/ns/ui#category> <http://www.w3.org/2006/vcard/ns#Type> ;\n    <http://www.w3.org/ns/ui#from> <http://www.w3.org/2006/vcard/ns#Type> ;\n    <http://www.w3.org/ns/ui#property> <http://purl.org/dc/terms/type> .\n\n##############################\n\n<#noteComment>\n    a <http://www.w3.org/ns/ui#Comment> ;\n    <http://www.w3.org/ns/ui#contents> \"General Notes\" .\n\n<#noteField>\n    a <http://www.w3.org/ns/ui#MultiLineTextField> ;\n    <http://www.w3.org/ns/ui#property> <http://www.w3.org/2006/vcard/ns#note> .\n";
 
 /***/ }),
-/* 440 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -102119,7 +113245,7 @@ module.exports = "\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.\
 module.exports = "\n@prefix : <http://www.w3.org/2006/vcard/ns#> .\n@prefix owl: <http://www.w3.org/2002/07/owl#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix xml: <http://www.w3.org/XML/1998/namespace> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n:Acquaintance a owl:Class ;\n    rdfs:label \"Acquaintance\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Agent a owl:Class ;\n    rdfs:label \"Agent\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:BBS a owl:Class ;\n    rdfs:label \"BBS\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :TelephoneType ;\n    owl:deprecated true .\n\n:Car a owl:Class ;\n    rdfs:label \"Car\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :TelephoneType ;\n    owl:deprecated true .\n\n:Cell a owl:Class ;\n    rdfs:label \"Cell\"@en ;\n    rdfs:comment \"Also called mobile telephone\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :TelephoneType .\n\n:Child a owl:Class ;\n    rdfs:label \"Child\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Colleague a owl:Class ;\n    rdfs:label \"Colleague\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Contact a owl:Class ;\n    rdfs:label \"Contact\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Coresident a owl:Class ;\n    rdfs:label \"Coresident\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Coworker a owl:Class ;\n    rdfs:label \"Coworker\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Crush a owl:Class ;\n    rdfs:label \"Crush\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Date a owl:Class ;\n    rdfs:label \"Date\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Dom a owl:Class ;\n    rdfs:label \"Dom\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Type ;\n    owl:deprecated true .\n\n:Emergency a owl:Class ;\n    rdfs:label \"Emergency\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Fax a owl:Class ;\n    rdfs:label \"Fax\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :TelephoneType .\n\n:Female a owl:Class ;\n    rdfs:label \"Female\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Gender .\n\n:Friend a owl:Class ;\n    rdfs:label \"Friend\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Home a owl:Class ;\n    rdfs:label \"Home\"@en ;\n    rdfs:comment \"This implies that the property is related to an individual's personal life\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Type .\n\n:ISDN a owl:Class ;\n    rdfs:label \"ISDN\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Type ;\n    owl:deprecated true .\n\n:Internet a owl:Class ;\n    rdfs:label \"Internet\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Type ;\n    owl:deprecated true .\n\n:Intl a owl:Class ;\n    rdfs:label \"Intl\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Type ;\n    owl:deprecated true .\n\n:Kin a owl:Class ;\n    rdfs:label \"Kin\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Label a owl:Class ;\n    rdfs:label \"Label\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Type ;\n    owl:deprecated true .\n\n:Male a owl:Class ;\n    rdfs:label \"Male\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Gender .\n\n:Me a owl:Class ;\n    rdfs:label \"Me\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Met a owl:Class ;\n    rdfs:label \"Met\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Modem a owl:Class ;\n    rdfs:label \"Modem\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :TelephoneType ;\n    owl:deprecated true .\n\n:Msg a owl:Class ;\n    rdfs:label \"Msg\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :TelephoneType ;\n    owl:deprecated true .\n\n:Muse a owl:Class ;\n    rdfs:label \"Muse\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Neighbor a owl:Class ;\n    rdfs:label \"Neighbor\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:None a owl:Class ;\n    rdfs:label \"None\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Gender .\n\n:Other a owl:Class ;\n    rdfs:label \"Other\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Gender .\n\n:PCS a owl:Class ;\n    rdfs:label \"PCS\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :TelephoneType ;\n    owl:deprecated true .\n\n:Pager a owl:Class ;\n    rdfs:label \"Pager\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :TelephoneType .\n\n:Parcel a owl:Class ;\n    rdfs:label \"Parcel\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Type ;\n    owl:deprecated true .\n\n:Parent a owl:Class ;\n    rdfs:label \"Parent\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Postal a owl:Class ;\n    rdfs:label \"Postal\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Type ;\n    owl:deprecated true .\n\n:Pref a owl:Class ;\n    rdfs:label \"Pref\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Type ;\n    owl:deprecated true .\n\n:Sibling a owl:Class ;\n    rdfs:label \"Sibling\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Spouse a owl:Class ;\n    rdfs:label \"Spouse\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Sweetheart a owl:Class ;\n    rdfs:label \"Sweetheart\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :RelatedType .\n\n:Tel a owl:Class ;\n    rdfs:label \"Tel\"@en ;\n    rdfs:comment \"This class is deprecated. Use the hasTelephone object property.\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:deprecated true .\n\n:Text a owl:Class ;\n    rdfs:label \"Text\"@en ;\n    rdfs:comment \"Also called sms telephone\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :TelephoneType .\n\n:TextPhone a owl:Class ;\n    rdfs:label \"Text phone\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :TelephoneType .\n\n:Unknown a owl:Class ;\n    rdfs:label \"Unknown\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Gender .\n\n:Video a owl:Class ;\n    rdfs:label \"Video\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :TelephoneType .\n\n:Voice a owl:Class ;\n    rdfs:label \"Voice\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :TelephoneType .\n\n:Work a owl:Class ;\n    rdfs:label \"Work\"@en ;\n    rdfs:comment \"This implies that the property is related to an individual's work place\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Type .\n\n:X400 a owl:Class ;\n    rdfs:label \"X400\"@en ;\n    rdfs:comment \"This class is deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Type ;\n    owl:deprecated true .\n\n:adr a owl:ObjectProperty ;\n    rdfs:label \"address\"@en ;\n    rdfs:comment \"This object property has been mapped\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :hasAddress .\n\n:agent a owl:ObjectProperty ;\n    rdfs:label \"agent\"@en ;\n    rdfs:comment \"This object property has been deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:deprecated true .\n\n:anniversary a owl:DatatypeProperty ;\n    rdfs:label \"anniversary\"@en ;\n    rdfs:comment \"The date of marriage, or equivalent, of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range [ a rdfs:Datatype ;\n            owl:unionOf ( xsd:dateTime xsd:gYear ) ] .\n\n:bday a owl:DatatypeProperty ;\n    rdfs:label \"birth date\"@en ;\n    rdfs:comment \"To specify the birth date of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range [ a rdfs:Datatype ;\n            owl:unionOf ( xsd:dateTime xsd:dateTimeStamp xsd:gYear ) ] .\n\n:category a owl:DatatypeProperty ;\n    rdfs:label \"category\"@en ;\n    rdfs:comment \"The category information about the object, also known as tags\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:class a owl:DatatypeProperty ;\n    rdfs:label \"class\"@en ;\n    rdfs:comment \"This data property has been deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:deprecated true .\n\n:email a owl:ObjectProperty ;\n    rdfs:label \"email\"@en ;\n    rdfs:comment \"This object property has been mapped\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :hasEmail .\n\n:extended-address a owl:DatatypeProperty ;\n    rdfs:label \"extended address\"@en ;\n    rdfs:comment \"This data property has been deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:deprecated true .\n\n:geo a owl:ObjectProperty ;\n    rdfs:label \"geo\"@en ;\n    rdfs:comment \"This object property has been mapped\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :hasGeo .\n\n:hasAdditionalName a owl:ObjectProperty ;\n    rdfs:label \"has additional name\"@en ;\n    rdfs:comment \"Used to support property parameters for the additional name data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasCalendarBusy a owl:ObjectProperty ;\n    rdfs:label \"has calendar busy\"@en ;\n    rdfs:comment \"To specify the busy time associated with the object. (Was called FBURL in RFC6350)\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasCalendarLink a owl:ObjectProperty ;\n    rdfs:label \"has calendar link\"@en ;\n    rdfs:comment \"To specify the calendar associated with the object. (Was called CALURI in RFC6350)\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasCalendarRequest a owl:ObjectProperty ;\n    rdfs:label \"has calendar request\"@en ;\n    rdfs:comment \"To specify the calendar user address to which a scheduling request be sent for the object. (Was called CALADRURI in RFC6350)\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasCategory a owl:ObjectProperty ;\n    rdfs:label \"has category\"@en ;\n    rdfs:comment \"Used to support property parameters for the category data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasCountryName a owl:ObjectProperty ;\n    rdfs:label \"has country name\"@en ;\n    rdfs:comment \"Used to support property parameters for the country name data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasFN a owl:ObjectProperty ;\n    rdfs:label \"has formatted name\"@en ;\n    rdfs:comment \"Used to support property parameters for the formatted name data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasFamilyName a owl:ObjectProperty ;\n    rdfs:label \"has family name\"@en ;\n    rdfs:comment \"Used to support property parameters for the family name data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasGender a owl:ObjectProperty ;\n    rdfs:label \"has gender\"@en ;\n    rdfs:comment \"To specify  the sex or gender identity of the object. URIs are recommended to enable interoperable sex and gender codes to be used.\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasGivenName a owl:ObjectProperty ;\n    rdfs:label \"has given name\"@en ;\n    rdfs:comment \"Used to support property parameters for the given name data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasHonorificPrefix a owl:ObjectProperty ;\n    rdfs:label \"has honorific prefix\"@en ;\n    rdfs:comment \"Used to support property parameters for the honorific prefix data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasHonorificSuffix a owl:ObjectProperty ;\n    rdfs:label \"has honorific suffix\"@en ;\n    rdfs:comment \"Used to support property parameters for the honorific suffix data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasInstantMessage a owl:ObjectProperty ;\n    rdfs:label \"has messaging\"@en ;\n    rdfs:comment \"To specify the instant messaging and presence protocol communications with the object. (Was called IMPP in RFC6350)\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasLanguage a owl:ObjectProperty ;\n    rdfs:label \"has language\"@en ;\n    rdfs:comment \"Used to support property parameters for the language data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasLocality a owl:ObjectProperty ;\n    rdfs:label \"has locality\"@en ;\n    rdfs:comment \"Used to support property parameters for the locality data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasNickname a owl:ObjectProperty ;\n    rdfs:label \"has nickname\"@en ;\n    rdfs:comment \"Used to support property parameters for the nickname data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:seeAlso :nickname .\n\n:hasNote a owl:ObjectProperty ;\n    rdfs:label \"has note\"@en ;\n    rdfs:comment \"Used to support property parameters for the note data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasOrganizationName a owl:ObjectProperty ;\n    rdfs:label \"has organization name\"@en ;\n    rdfs:comment \"Used to support property parameters for the organization name data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasOrganizationUnit a owl:ObjectProperty ;\n    rdfs:label \"has organization unit name\"@en ;\n    rdfs:comment \"Used to support property parameters for the organization unit name data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasPostalCode a owl:ObjectProperty ;\n    rdfs:label \"has postal code\"@en ;\n    rdfs:comment \"Used to support property parameters for the postal code data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasRegion a owl:ObjectProperty ;\n    rdfs:label \"has region\"@en ;\n    rdfs:comment \"Used to support property parameters for the region data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasRelated a owl:ObjectProperty ;\n    rdfs:label \"has related\"@en ;\n    rdfs:comment \"To specify a relationship between another entity and the entity represented by this object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasRole a owl:ObjectProperty ;\n    rdfs:label \"has role\"@en ;\n    rdfs:comment \"Used to support property parameters for the role data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasSource a owl:ObjectProperty ;\n    rdfs:label \"has source\"@en ;\n    rdfs:comment \"To identify the source of directory information of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasStreetAddress a owl:ObjectProperty ;\n    rdfs:label \"has street address\"@en ;\n    rdfs:comment \"Used to support property parameters for the street address data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasTitle a owl:ObjectProperty ;\n    rdfs:label \"has title\"@en ;\n    rdfs:comment \"Used to support property parameters for the title data property\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasUID a owl:ObjectProperty ;\n    rdfs:label \"has uid\"@en ;\n    rdfs:comment \"To specify a value that represents a globally unique identifier corresponding to the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasValue a owl:ObjectProperty ;\n    rdfs:label \"has value\"@en ;\n    rdfs:comment \"Used to indicate the resource value of an object property that requires property parameters\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:label a owl:DatatypeProperty ;\n    rdfs:label \"label\"@en ;\n    rdfs:comment \"This data property has been deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:deprecated true .\n\n:language a owl:DatatypeProperty ;\n    rdfs:label \"language\"@en ;\n    rdfs:comment \"To specify the language that may be used for contacting the object. May also be used as a property parameter.\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:latitude a owl:DatatypeProperty ;\n    rdfs:label \"latitude\"@en ;\n    rdfs:comment \"This data property has been deprecated. See hasGeo\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:deprecated true .\n\n:longitude a owl:DatatypeProperty ;\n    rdfs:label \"longitude\"@en ;\n    rdfs:comment \"This data property has been deprecated. See hasGeo\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:deprecated true .\n\n:mailer a owl:DatatypeProperty ;\n    rdfs:label \"mailer\"@en ;\n    rdfs:comment \"This data property has been deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:deprecated true .\n\n:note a owl:DatatypeProperty ;\n    rdfs:label \"note\"@en ;\n    rdfs:comment \"A note associated with the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:org a owl:ObjectProperty ;\n    rdfs:label \"organization\"@en ;\n    rdfs:comment \"This object property has been mapped. Use the organization-name data property.\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :organization-name .\n\n:organization-unit a owl:DatatypeProperty ;\n    rdfs:label \"organizational unit name\"@en ;\n    rdfs:comment \"To specify the organizational unit name associated with the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string ;\n    rdfs:subPropertyOf :organization-name .\n\n:post-office-box a owl:DatatypeProperty ;\n    rdfs:label \"post office box\"@en ;\n    rdfs:comment \"This data property has been deprecated\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:deprecated true .\n\n:prodid a owl:DatatypeProperty ;\n    rdfs:label \"product id\"@en ;\n    rdfs:comment \"To specify the identifier for the product that created the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:rev a owl:DatatypeProperty ;\n    rdfs:label \"revision\"@en ;\n    rdfs:comment \"To specify revision information about the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:dateTime .\n\n:role a owl:DatatypeProperty ;\n    rdfs:label \"role\"@en ;\n    rdfs:comment \"To specify the function or part played in a particular situation by the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:sort-string a owl:DatatypeProperty ;\n    rdfs:label \"sort as\"@en ;\n    rdfs:comment \"To specify the string to be used for national-language-specific sorting. Used as a property parameter only.\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:title a owl:DatatypeProperty ;\n    rdfs:label \"title\"@en ;\n    rdfs:comment \"To specify the position or job of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:tz a owl:DatatypeProperty ;\n    rdfs:label \"time zone\"@en ;\n    rdfs:comment \"To indicate time zone information that is specific to the object. May also be used as a property parameter.\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:value a owl:DatatypeProperty ;\n    rdfs:label \"value\"@en ;\n    rdfs:comment \"Used to indicate the literal value of a data property that requires property parameters\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:Address a owl:Class ;\n    rdfs:label \"Address\"@en ;\n    rdfs:comment \"To specify the components of the delivery address for the  object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentClass [ a owl:Class ;\n            owl:unionOf ( [ a owl:Class ;\n                        owl:intersectionOf ( [ a owl:Restriction ;\n                                    owl:onProperty :country-name ;\n                                    owl:someValuesFrom xsd:string ] [ a owl:Restriction ;\n                                    owl:maxCardinality \"1\"^^xsd:nonNegativeInteger ;\n                                    owl:onProperty :country-name ] ) ] [ a owl:Class ;\n                        owl:intersectionOf ( [ a owl:Restriction ;\n                                    owl:onProperty :locality ;\n                                    owl:someValuesFrom xsd:string ] [ a owl:Restriction ;\n                                    owl:maxCardinality \"1\"^^xsd:nonNegativeInteger ;\n                                    owl:onProperty :locality ] ) ] [ a owl:Class ;\n                        owl:intersectionOf ( [ a owl:Restriction ;\n                                    owl:onProperty :postal-code ;\n                                    owl:someValuesFrom xsd:string ] [ a owl:Restriction ;\n                                    owl:maxCardinality \"1\"^^xsd:nonNegativeInteger ;\n                                    owl:onProperty :postal-code ] ) ] [ a owl:Class ;\n                        owl:intersectionOf ( [ a owl:Restriction ;\n                                    owl:onProperty :region ;\n                                    owl:someValuesFrom xsd:string ] [ a owl:Restriction ;\n                                    owl:maxCardinality \"1\"^^xsd:nonNegativeInteger ;\n                                    owl:onProperty :region ] ) ] [ a owl:Class ;\n                        owl:intersectionOf ( [ a owl:Restriction ;\n                                    owl:onProperty :street-address ;\n                                    owl:someValuesFrom xsd:string ] [ a owl:Restriction ;\n                                    owl:maxCardinality \"1\"^^xsd:nonNegativeInteger ;\n                                    owl:onProperty :street-address ] ) ] ) ] .\n\n:Email a owl:Class ;\n    rdfs:label \"Email\"@en ;\n    rdfs:comment \"To specify the electronic mail address for communication with the object the vCard represents. Use the hasEmail object property.\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:deprecated true .\n\n:Group a owl:Class ;\n    rdfs:label \"Group\"@en ;\n    rdfs:comment \"Object representing a group of persons or entities.  A group object will usually contain hasMember properties to specify the members of the group.\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Kind ;\n    owl:disjointWith :Individual,\n        :Location,\n        :Organization ;\n    owl:equivalentClass [ a owl:Class ;\n            owl:intersectionOf ( [ a owl:Restriction ;\n                        owl:onProperty :hasMember ;\n                        owl:someValuesFrom :Kind ] [ a owl:Restriction ;\n                        owl:minQualifiedCardinality \"1\"^^xsd:nonNegativeInteger ;\n                        owl:onClass :Kind ;\n                        owl:onProperty :hasMember ] ) ] .\n\n:Individual a owl:Class ;\n    rdfs:label \"Individual\"@en ;\n    rdfs:comment \"An object representing a single person or entity\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Kind ;\n    owl:disjointWith :Location,\n        :Organization .\n\n:Name a owl:Class ;\n    rdfs:label \"Name\"@en ;\n    rdfs:comment \"To specify the components of the name of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentClass [ a owl:Class ;\n            owl:unionOf ( [ a owl:Class ;\n                        owl:intersectionOf ( [ a owl:Restriction ;\n                                    owl:onProperty :additional-name ;\n                                    owl:someValuesFrom xsd:string ] [ a owl:Restriction ;\n                                    owl:minCardinality \"0\"^^xsd:nonNegativeInteger ;\n                                    owl:onProperty :additional-name ] ) ] [ a owl:Class ;\n                        owl:intersectionOf ( [ a owl:Restriction ;\n                                    owl:onProperty :family-name ;\n                                    owl:someValuesFrom xsd:string ] [ a owl:Restriction ;\n                                    owl:maxCardinality \"1\"^^xsd:nonNegativeInteger ;\n                                    owl:onProperty :family-name ] ) ] [ a owl:Class ;\n                        owl:intersectionOf ( [ a owl:Restriction ;\n                                    owl:onProperty :given-name ;\n                                    owl:someValuesFrom xsd:string ] [ a owl:Restriction ;\n                                    owl:maxCardinality \"1\"^^xsd:nonNegativeInteger ;\n                                    owl:onProperty :given-name ] ) ] [ a owl:Class ;\n                        owl:intersectionOf ( [ a owl:Restriction ;\n                                    owl:onProperty :honorific-prefix ;\n                                    owl:someValuesFrom xsd:string ] [ a owl:Restriction ;\n                                    owl:minCardinality \"0\"^^xsd:nonNegativeInteger ;\n                                    owl:onProperty :honorific-prefix ] ) ] [ a owl:Class ;\n                        owl:intersectionOf ( [ a owl:Restriction ;\n                                    owl:onProperty :honorific-suffix ;\n                                    owl:someValuesFrom xsd:string ] [ a owl:Restriction ;\n                                    owl:minCardinality \"0\"^^xsd:nonNegativeInteger ;\n                                    owl:onProperty :honorific-suffix ] ) ] ) ] .\n\n:VCard a owl:Class ;\n    rdfs:label \"VCard\"@en ;\n    rdfs:comment \"The vCard class is  equivalent to the new Kind class, which is the parent for the four explicit types of vCards (Individual, Organization, Location, Group)\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentClass :Kind .\n\n:fn a owl:DatatypeProperty ;\n    rdfs:label \"formatted name\"@en ;\n    rdfs:comment \"The formatted text corresponding to the name of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:hasAddress a owl:ObjectProperty ;\n    rdfs:label \"has address\"@en ;\n    rdfs:comment \"To specify the components of the delivery address for the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range :Address .\n\n:hasEmail a owl:ObjectProperty ;\n    rdfs:label \"has email\"@en ;\n    rdfs:comment \"To specify the electronic mail address for communication with the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range :Email .\n\n:hasGeo a owl:ObjectProperty ;\n    rdfs:label \"has geo\"@en ;\n    rdfs:comment \"To specify information related to the global positioning of the object. May also be used as a property parameter.\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:hasKey a owl:ObjectProperty ;\n    rdfs:label \"has key\"@en ;\n    rdfs:comment \"To specify a public key or authentication certificate associated with the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :key .\n\n:hasLogo a owl:ObjectProperty ;\n    rdfs:label \"has logo\"@en ;\n    rdfs:comment \"To specify a graphic image of a logo associated with the object \"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :logo .\n\n:hasName a owl:ObjectProperty ;\n    rdfs:label \"has name\"@en ;\n    rdfs:comment \"To specify the components of the name of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range :Name ;\n    owl:equivalentProperty :n .\n\n:hasPhoto a owl:ObjectProperty ;\n    rdfs:label \"has photo\"@en ;\n    rdfs:comment \"To specify an image or photograph information that annotates some aspect of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :photo .\n\n:hasSound a owl:ObjectProperty ;\n    rdfs:label \"has sound\"@en ;\n    rdfs:comment \"To specify a digital sound content information that annotates some aspect of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :sound .\n\n:hasTelephone a owl:ObjectProperty ;\n    rdfs:label \"has telephone\"@en ;\n    rdfs:comment \"To specify the telephone number for telephony communication with the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :tel .\n\n:hasURL a owl:ObjectProperty ;\n    rdfs:label \"has url\"@en ;\n    rdfs:comment \"To specify a uniform resource locator associated with the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :url .\n\n:key a owl:ObjectProperty ;\n    rdfs:label \"key\"@en ;\n    rdfs:comment \"This object property has been mapped\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :hasKey .\n\n:logo a owl:ObjectProperty ;\n    rdfs:label \"logo\"@en ;\n    rdfs:comment \"This object property has been mapped\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :hasLogo .\n\n:n a owl:ObjectProperty ;\n    rdfs:label \"name\"@en ;\n    rdfs:comment \"This object property has been mapped\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :hasName .\n\n:nickname a owl:DatatypeProperty ;\n    rdfs:label \"nickname\"@en ;\n    rdfs:comment \"The nick name associated with the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:photo a owl:ObjectProperty ;\n    rdfs:label \"photo\"@en ;\n    rdfs:comment \"This object property has been mapped\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :hasPhoto .\n\n:sound a owl:ObjectProperty ;\n    rdfs:label \"sound\"@en ;\n    rdfs:comment \"This object property has been mapped\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :hasSound .\n\n:tel a owl:ObjectProperty ;\n    rdfs:label \"telephone\"@en ;\n    rdfs:comment \"This object property has been mapped\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :hasTelephone .\n\n:url a owl:ObjectProperty ;\n    rdfs:label \"url\"@en ;\n    rdfs:comment \"This object property has been mapped\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentProperty :hasURL .\n\n:Location a owl:Class ;\n    rdfs:label \"Location\"@en ;\n    rdfs:comment \"An object representing a named geographical place\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Kind ;\n    owl:disjointWith :Organization .\n\n:additional-name a owl:DatatypeProperty ;\n    rdfs:label \"additional name\"@en ;\n    rdfs:comment \"The additional name associated with the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:country-name a owl:DatatypeProperty ;\n    rdfs:label \"country name\"@en ;\n    rdfs:comment \"The country name associated with the address of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:family-name a owl:DatatypeProperty ;\n    rdfs:label \"family name\"@en ;\n    rdfs:comment \"The family name associated with the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:given-name a owl:DatatypeProperty ;\n    rdfs:label \"given name\"@en ;\n    rdfs:comment \"The given name associated with the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:hasMember a owl:ObjectProperty ;\n    rdfs:label \"has member\"@en ;\n    rdfs:comment \"To include a member in the group this object represents. (This property can only be used by Group individuals)\"@en ;\n    rdfs:domain :Group ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range :Kind .\n\n:honorific-prefix a owl:DatatypeProperty ;\n    rdfs:label \"honorific prefix\"@en ;\n    rdfs:comment \"The honorific prefix of the name associated with the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:honorific-suffix a owl:DatatypeProperty ;\n    rdfs:label \"honorific suffix\"@en ;\n    rdfs:comment \"The honorific suffix of the name associated with the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:locality a owl:DatatypeProperty ;\n    rdfs:label \"locality\"@en ;\n    rdfs:comment \"The locality (e.g. city or town) associated with the address of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:organization-name a owl:DatatypeProperty ;\n    rdfs:label \"organization name\"@en ;\n    rdfs:comment \"To specify the organizational name associated with the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:postal-code a owl:DatatypeProperty ;\n    rdfs:label \"postal code\"@en ;\n    rdfs:comment \"The postal code associated with the address of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:region a owl:DatatypeProperty ;\n    rdfs:label \"region\"@en ;\n    rdfs:comment \"The region (e.g. state or province) associated with the address of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:street-address a owl:DatatypeProperty ;\n    rdfs:label \"street address\"@en ;\n    rdfs:comment \"The street address associated with the address of the object\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:range xsd:string .\n\n:Organization a owl:Class ;\n    rdfs:label \"Organization\"@en ;\n    rdfs:comment \"\"\"An object representing an organization.  An organization is a single entity, and might represent a business or government, a department or division within a business or government, a club, an association, or the like.\n\"\"\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    rdfs:subClassOf :Kind .\n\n:Gender a owl:Class ;\n    rdfs:label \"Gender\"@en ;\n    rdfs:comment \"Used for gender codes. The URI of the gender code must be used as the value for Gender.\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:Kind a owl:Class ;\n    rdfs:label \"Kind\"@en ;\n    rdfs:comment \"The parent class for all objects\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> ;\n    owl:equivalentClass [ a owl:Restriction ;\n            owl:minQualifiedCardinality \"1\"^^xsd:nonNegativeInteger ;\n            owl:onDataRange xsd:string ;\n            owl:onProperty :fn ],\n        :VCard .\n\n:Type a owl:Class ;\n    rdfs:label \"Type\"@en ;\n    rdfs:comment \"Used for type codes. The URI of the type code must be used as the value for Type.\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:TelephoneType a owl:Class ;\n    rdfs:label \"Phone\"@en ;\n    rdfs:comment \"Used for telephone type codes. The URI of the telephone type code must be used as the value for the Telephone Type.\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n:RelatedType a owl:Class ;\n    rdfs:label \"Relation Type\"@en ;\n    rdfs:comment \"Used for relation type codes. The URI of the relation type code must be used as the value for the Relation Type.\"@en ;\n    rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .\n\n<http://www.w3.org/2006/vcard/ns> a owl:Ontology ;\n    rdfs:label \"Ontology for vCard\"@en ;\n    rdfs:comment \"Ontology for vCard based on RFC6350\"@en ;\n    owl:versionInfo \"Final\"@en .\n\n\n";
 
 /***/ }),
-/* 441 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -102128,7 +113254,7 @@ module.exports = "\n@prefix : <http://www.w3.org/2006/vcard/ns#> .\n@prefix owl:
 /*   pad Pane
 **
 */
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 var ns = UI.ns;
 
 module.exports = {
@@ -102538,7 +113664,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 442 */
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -102599,10 +113725,10 @@ module.exports = {
   // ends
 
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module), "/"))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module), "/"))
 
 /***/ }),
-/* 443 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -102615,7 +113741,7 @@ module.exports = {
 ** trips, etc
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
   // icon:  (module.__dirname || __dirname) + '22-pixel-068010-3d-transparent-glass-icon-alphanumeric-dollar-sign.png',
@@ -103128,7 +114254,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 444 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -103141,7 +114267,7 @@ module.exports = {
 ** trips, etc
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
 
@@ -103480,7 +114606,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 445 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -103492,7 +114618,7 @@ module.exports = {
 ** and investigate the interop between them.
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 var ns = UI.ns;
 var kb = UI.store;
 
@@ -103616,7 +114742,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 446 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -103628,10 +114754,10 @@ module.exports = {
 */
 /* global FileReader */
 
-var UI = __webpack_require__(1);
-var mime = __webpack_require__(130);
+var UI = __webpack_require__(2);
+var mime = __webpack_require__(144);
 
-var meetingDetailsFormText = __webpack_require__(447);
+var meetingDetailsFormText = __webpack_require__(477);
 
 module.exports = {
   icon: UI.icons.iconBase + 'noun_66617.svg',
@@ -104506,7 +115632,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 447 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -104515,7 +115641,7 @@ module.exports = {
 module.exports = "@prefix : <http://www.w3.org/ns/ui#> .\n@prefix f: <#> .\n@prefix dc: <http://purl.org/dc/elements/1.1/>.\n@prefix cal: <http://www.w3.org/2002/12/cal/ical#>.\n@prefix meeting: <http://www.w3.org/ns/pim/meeting#>.\n@prefix ns: <http://www.w3.org/2006/vcard/ns#> .\n@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.\n@prefix te: <http://purl.org/dc/terms/> .\n@prefix dc: <http://purl.org/dc/elements/1.1/>.\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.\n@prefix ui: <http://www.w3.org/ns/ui#>.\n\n  f:main    a :Form;\n      cal:summary \"Meeting Details\";\n      :part f:titleField, f:locationField, f:startField,\n                    f:endField, f:eventComment, f:colorField .\n\n  f:titleField     a :SingleLineTextField;\n       :maxLength 256;\n       :property cal:summary;\n       :label \"Name of meeting\";\n       :size 80 .\n\n   f:locationField     a :SingleLineTextField;\n        :maxLength 128;\n        :property cal:location;\n        :size 40 .\n\n    f:startField     a :DateField;\n        :label \"Start\";\n         :property cal:dtstart .\n\n   f:endField     a :DateField;\n       :label \"End\";\n          :property cal:dtend .\n\n    f:colorField     a :ColorField;\n        :label \"Tab color\";\n  #      :default \"#ddddcc\"^^xsd:color;\n           :property ui:backgroundColor .\n\n      f:eventComment\n           a    ui:MultiLineTextField;\n       #    ui:maxLength\n       #       \"1048\";\n       #    ui:size\n       #       \"40\".\n           ui:property\n              cal:comment.\n\n###################################################\n\nf:settings a :Form;\n    dc:title \"Tab settings\";\n    :part f:labelField, f:targetField, f:viewField.\n\n    f:labelField     a :SingleLineTextField;\n         :maxLength 128;\n         :property rdfs:label;\n         :label \"Label on tab\";\n         :size 40 .\n\n   f:targetField     a :NamedNodeURIField;\n     :maxLength 1024;  # Longer?\n     :property meeting:target;\n     :label \"URL of resource\";\n     :size 80 .\n\n   f:colorField2     a :ColorField;\n       :label \"Tab color\";\n #      :default \"#ddddcc\"^^xsd:color;\n          :property ui:backgroundColor .\n\n   f:viewField     a :SingleLineTextField;\n        :maxLength 128;\n        :property meeting:view;\n        :label \"View mode (experts only)\";\n        :size 40 .\n\n#\n";
 
 /***/ }),
-/* 448 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -104526,7 +115652,7 @@ module.exports = "@prefix : <http://www.w3.org/ns/ui#> .\n@prefix f: <#> .\n@pre
 ** data-driven
 **
 */
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 var ns = UI.ns;
 var kb = UI.store;
 
@@ -104583,7 +115709,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 449 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -104595,7 +115721,7 @@ module.exports = {
 */
 /* global alert */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 var $rdf = UI.rdf;
 var ns = UI.ns;
 
@@ -105512,7 +116638,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 450 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -105521,7 +116647,7 @@ module.exports = {
 /*   Single audio play Pane
 **
 */
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 var ns = UI.ns;
 var kb = UI.store;
 
@@ -105571,7 +116697,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 451 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -105587,7 +116713,7 @@ module.exports = {
 **  trips, etc
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
 
@@ -105766,7 +116892,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 452 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -105784,7 +116910,7 @@ module.exports = {
 * human-redable justification of the result.
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 // moved to airpane.js from paneutils.js 2014 tbl
 
@@ -106760,7 +117886,7 @@ airPane.renderExplanationForStatement = function renderExplanationForStatement(s
 // ends
 
 /***/ }),
-/* 453 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -106770,7 +117896,7 @@ airPane.renderExplanationForStatement = function renderExplanationForStatement(s
 **
 **  This outline pane contains the document contents for an Image document
 */
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
     icon: UI.icons.originalIconBase + 'tango/22-image-x-generic.png',
@@ -106825,7 +117951,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 454 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -106836,7 +117962,7 @@ module.exports = {
 **  This pane allows playlists and playlists slots to be viewed
 **  seeAlso: http://smiy.sourceforge.net/pbo/spec/playbackontology.html
 */
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
   icon: UI.icons.iconBase + 'noun_1619.svg',
@@ -106968,7 +118094,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 455 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -106977,7 +118103,7 @@ module.exports = {
 /*   Single video play Pane
 **
 */
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
 
@@ -107018,7 +118144,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 456 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -107027,7 +118153,7 @@ module.exports = {
 /*   Single audio play Pane
 **
 */
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 var ns = UI.ns;
 var kb = UI.store;
 
@@ -107205,7 +118331,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 457 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -107217,11 +118343,11 @@ module.exports = {
 ** The dokeili system allows the user to edit a document including anotations
 ** review.   It does not use turtle, but RDF/a
 */
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 var DOKIELI_TEMPLATE_URI = 'https://dokie.li/new'; // Copy to make new dok
 
-var DOKIELI_TEMPLATE = __webpack_require__(458); // Distributed with this library
+var DOKIELI_TEMPLATE = __webpack_require__(488); // Distributed with this library
 
 module.exports = {
 
@@ -107354,7 +118480,7 @@ module.exports = {
 //ends
 
 /***/ }),
-/* 458 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -107363,7 +118489,7 @@ module.exports = {
 module.exports = "\n<!DOCTYPE html>\n<html lang=\"en\" xml:lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\">\n    <head>\n        <meta charset=\"utf-8\" />\n        <title></title>\n        <meta content=\"width=device-width, initial-scale=1\" name=\"viewport\" />\n        <link href=\"https://dokie.li/media/css/basic.css\" media=\"all\" rel=\"stylesheet\" title=\"Basic\" />\n        <link href=\"https://dokie.li/media/css/do.css\" media=\"all\" rel=\"stylesheet\" />\n        <link href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\" media=\"all\" rel=\"stylesheet\" />\n        <script src=\"https://dokie.li/scripts/simplerdf.js\"></script>\n        <script src=\"https://dokie.li/scripts/medium-editor.min.js\"></script>\n        <script src=\"https://dokie.li/scripts/medium-editor-tables.min.js\"></script>\n        <script src=\"https://dokie.li/scripts/do.js\"></script>\n    </head>\n\n    <body about=\"\" prefix=\"rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ dctypes: http://purl.org/dc/dcmitype/ foaf: http://xmlns.com/foaf/0.1/ pimspace: http://www.w3.org/ns/pim/space# cc: https://creativecommons.org/ns# skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ void: http://rdfs.org/ns/void# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# bibo: http://purl.org/ontology/bibo/ sioc: http://rdfs.org/sioc/ns# doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ oa: http://www.w3.org/ns/oa# as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio#\" typeof=\"schema:CreativeWork sioc:Post prov:Entity\">\n        <main>\n            <article about=\"\" typeof=\"schema:Article\">\n\n            </article>\n        </main>\n    </body>\n</html>\n";
 
 /***/ }),
-/* 459 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -107375,7 +118501,7 @@ module.exports = "\n<!DOCTYPE html>\n<html lang=\"en\" xml:lang=\"en\" xmlns=\"h
 */
 /* global FileReader, alert */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 // var Solid = require('solid-client')
 
 var ns = UI.ns;
@@ -107562,7 +118688,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 460 */
+/* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -107573,7 +118699,7 @@ module.exports = {
 **  This outline pane lists the members of a class
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 // var Solid = require('solid-client')
 
 var ns = UI.ns;
@@ -107661,7 +118787,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 461 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -107670,11 +118796,11 @@ module.exports = {
 /*   slideshow Pane
 **
 */
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 // tabulator.loadScript("js/panes/slideshow/better-simple-slideshow/js/better-simple-slideshow.js")
 
-var makeBSS = __webpack_require__(462);
+var makeBSS = __webpack_require__(492);
 // load also js/panes/slideshow/better-simple-slideshow/css/simple-slideshow-styles.css
 
 module.exports = {
@@ -107739,7 +118865,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 462 */
+/* 492 */
 /***/ (function(module, exports) {
 
 
@@ -107914,7 +119040,7 @@ if (typeof module !== 'undefined' && module.exports) {
 
 
 /***/ }),
-/* 463 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -107930,7 +119056,7 @@ if (typeof module !== 'undefined' && module.exports) {
 **  -- todo: use common code to get username and load profile and set 'me'
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
   icon: UI.icons.originalIconBase + 'foaf/foafTiny.gif',
@@ -108361,7 +119487,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 464 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -108372,7 +119498,7 @@ module.exports = {
 **  This outline pane contains the document contents for an HTML document
 **  This is for peeking at a page, because the user might not want to leave the tabulator.
 */
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
 
@@ -108463,7 +119589,7 @@ module.exports = {
 //ends
 
 /***/ }),
-/* 465 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -108480,7 +119606,7 @@ module.exports = {
 //         - Expand automatically all the way down
 //         - original source view?  Use ffox view source
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
 
@@ -108709,7 +119835,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 466 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -108721,7 +119847,7 @@ module.exports = {
 ** or at least the RDF semantics we attribute to that resource,
 ** in generated N3 syntax.
 */
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
   icon: UI.icons.originalIconBase + 'w3c/n3_smaller.png',
@@ -108762,7 +119888,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 467 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -108775,7 +119901,7 @@ module.exports = {
 ** in generated N3 syntax.
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
   icon: UI.icons.originalIconBase + '22-text-xml4.png',
@@ -108820,7 +119946,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 468 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -108831,7 +119957,7 @@ module.exports = {
 **
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 module.exports = {
 
   icon: UI.icons.iconBase + 'noun_122196.svg',
@@ -109032,7 +120158,7 @@ the file system (file:///) to store application data.\n");
 };
 
 /***/ }),
-/* 469 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -109048,7 +120174,7 @@ the file system (file:///) to store application data.\n");
 **
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
   icon: UI.icons.iconBase + 'noun_25830.svg', // noun_25830
@@ -109475,7 +120601,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 470 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -109499,7 +120625,7 @@ module.exports = {
 /////////////////////////////////////////////////////////////////////
 
 /* Table view pane  -- view of a class*/
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
     icon: UI.icons.originalIconBase + "table.png",
@@ -109524,7 +120650,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 471 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -109537,7 +120663,7 @@ module.exports = {
 ** This pane hides the ones considered too low-level for the normal user.
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
     icon: UI.icons.originalIconBase + 'about.png',
@@ -109639,7 +120765,7 @@ module.exports = {
 // ends
 
 /***/ }),
-/* 472 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -109649,7 +120775,7 @@ module.exports = {
 **
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
 
@@ -109801,10 +120927,10 @@ module.exports = {
   // ends
 
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module), "/"))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module), "/"))
 
 /***/ }),
-/* 473 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -109815,7 +120941,7 @@ module.exports = {
  Charles McKenzie <charles2@mit.edu>
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
 
@@ -110874,7 +122000,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 474 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -110891,7 +122017,7 @@ module.exports = {
 */
 
 // These used to be in js/init/icons.js but are better in the pane.
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
 
@@ -110952,7 +122078,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 475 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -110963,7 +122089,7 @@ module.exports = {
 **  This outline pane contains the properties which are
 ** internal to the user's interaction with the web, and are not normaly displayed
 */
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
 
@@ -111037,7 +122163,7 @@ module.exports = {
 //ends
 
 /***/ }),
-/* 476 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -111053,7 +122179,7 @@ module.exports = {
 **
 */
 
-var UI = __webpack_require__(1);
+var UI = __webpack_require__(2);
 
 module.exports = {
   icon: UI.icons.iconBase + 'noun_547570.svg', // noun_25830
