@@ -39305,10 +39305,10 @@ utils.intFromLE = intFromLE;
 /*!********************************************!*\
   !*** ./node_modules/elliptic/package.json ***!
   \********************************************/
-/*! exports provided: _args, _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _spec, _where, author, bugs, dependencies, description, devDependencies, files, homepage, keywords, license, main, name, repository, scripts, version, default */
+/*! exports provided: _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _spec, _where, author, bugs, bundleDependencies, dependencies, deprecated, description, devDependencies, files, homepage, keywords, license, main, name, repository, scripts, version, default */
 /***/ (function(module) {
 
-module.exports = {"_args":[["elliptic@6.4.0","/home/travis/build/linkeddata/mashlib"]],"_from":"elliptic@6.4.0","_id":"elliptic@6.4.0","_inBundle":false,"_integrity":"sha1-ysmvh2LIWDYYcAPI3+GT5eLq5d8=","_location":"/elliptic","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"elliptic@6.4.0","name":"elliptic","escapedName":"elliptic","rawSpec":"6.4.0","saveSpec":null,"fetchSpec":"6.4.0"},"_requiredBy":["/@trust/keyto","/browserify-sign","/create-ecdh"],"_resolved":"https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz","_spec":"6.4.0","_where":"/home/travis/build/linkeddata/mashlib","author":{"name":"Fedor Indutny","email":"fedor@indutny.com"},"bugs":{"url":"https://github.com/indutny/elliptic/issues"},"dependencies":{"bn.js":"^4.4.0","brorand":"^1.0.1","hash.js":"^1.0.0","hmac-drbg":"^1.0.0","inherits":"^2.0.1","minimalistic-assert":"^1.0.0","minimalistic-crypto-utils":"^1.0.0"},"description":"EC cryptography","devDependencies":{"brfs":"^1.4.3","coveralls":"^2.11.3","grunt":"^0.4.5","grunt-browserify":"^5.0.0","grunt-cli":"^1.2.0","grunt-contrib-connect":"^1.0.0","grunt-contrib-copy":"^1.0.0","grunt-contrib-uglify":"^1.0.1","grunt-mocha-istanbul":"^3.0.1","grunt-saucelabs":"^8.6.2","istanbul":"^0.4.2","jscs":"^2.9.0","jshint":"^2.6.0","mocha":"^2.1.0"},"files":["lib"],"homepage":"https://github.com/indutny/elliptic","keywords":["EC","Elliptic","curve","Cryptography"],"license":"MIT","main":"lib/elliptic.js","name":"elliptic","repository":{"type":"git","url":"git+ssh://git@github.com/indutny/elliptic.git"},"scripts":{"jscs":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","jshint":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","lint":"npm run jscs && npm run jshint","test":"npm run lint && npm run unit","unit":"istanbul test _mocha --reporter=spec test/index.js","version":"grunt dist && git add dist/"},"version":"6.4.0"};
+module.exports = {"_from":"elliptic@^6.4.0","_id":"elliptic@6.4.0","_inBundle":false,"_integrity":"sha1-ysmvh2LIWDYYcAPI3+GT5eLq5d8=","_location":"/elliptic","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"elliptic@^6.4.0","name":"elliptic","escapedName":"elliptic","rawSpec":"^6.4.0","saveSpec":null,"fetchSpec":"^6.4.0"},"_requiredBy":["/@trust/keyto","/browserify-sign","/create-ecdh"],"_resolved":"https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz","_shasum":"cac9af8762c85836187003c8dfe193e5e2eae5df","_spec":"elliptic@^6.4.0","_where":"/home/melvin/tim/mashlib/node_modules/@trust/keyto","author":{"name":"Fedor Indutny","email":"fedor@indutny.com"},"bugs":{"url":"https://github.com/indutny/elliptic/issues"},"bundleDependencies":false,"dependencies":{"bn.js":"^4.4.0","brorand":"^1.0.1","hash.js":"^1.0.0","hmac-drbg":"^1.0.0","inherits":"^2.0.1","minimalistic-assert":"^1.0.0","minimalistic-crypto-utils":"^1.0.0"},"deprecated":false,"description":"EC cryptography","devDependencies":{"brfs":"^1.4.3","coveralls":"^2.11.3","grunt":"^0.4.5","grunt-browserify":"^5.0.0","grunt-cli":"^1.2.0","grunt-contrib-connect":"^1.0.0","grunt-contrib-copy":"^1.0.0","grunt-contrib-uglify":"^1.0.1","grunt-mocha-istanbul":"^3.0.1","grunt-saucelabs":"^8.6.2","istanbul":"^0.4.2","jscs":"^2.9.0","jshint":"^2.6.0","mocha":"^2.1.0"},"files":["lib"],"homepage":"https://github.com/indutny/elliptic","keywords":["EC","Elliptic","curve","Cryptography"],"license":"MIT","main":"lib/elliptic.js","name":"elliptic","repository":{"type":"git","url":"git+ssh://git@github.com/indutny/elliptic.git"},"scripts":{"jscs":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","jshint":"jscs benchmarks/*.js lib/*.js lib/**/*.js lib/**/**/*.js test/index.js","lint":"npm run jscs && npm run jshint","test":"npm run lint && npm run unit","unit":"istanbul test _mocha --reporter=spec test/index.js","version":"grunt dist && git add dist/"},"version":"6.4.0"};
 
 /***/ }),
 
@@ -68321,7 +68321,7 @@ var Fetcher = function () {
     this.store = store;
     this.timeout = options.timeout || 30000;
 
-    console.log('@@ Creating new Fetcher. Store size: ' + store.statements.length);
+    // console.log('@@ Creating new Fetcher. Store size: ' + store.statements.length)
 
     this._fetch = options.fetch || fetch;
 
@@ -68561,7 +68561,7 @@ var Fetcher = function () {
       if (!options.force) {
         if (state === 'fetched') {
           // URI already fetched and added to store
-          return Promise.resolve(this.doneFetch(options, { status: 200, ok: true }));
+          return Promise.resolve(this.doneFetch(options, { status: 200, ok: true, statusText: 'Already loaded into quadstore.' }));
         }
         if (state === 'failed') {
           return this.failFetch(options, 'Previously failed: ' + this.requested[docuri], this.requested[docuri]);
@@ -68584,7 +68584,7 @@ var Fetcher = function () {
 
       return this._fetch(actualProxyURI, options).then(function (response) {
         return _this10.handleResponse(response, docuri, options);
-      }).catch(function (error) {
+      }, function (error) {
         return _this10.handleError(error, docuri, options);
       });
     }
@@ -68605,6 +68605,16 @@ var Fetcher = function () {
      *                    load this from scratch.
      *   forceContentType Override the incoming header to force the data to be
      *                    treated as this content-type.
+     *
+     *  Callback function takes:
+     *
+     *    ok               True if the fetch worked, and got a 200 response.
+     *                     False if any error happened
+     *
+     *    errmessage       Text error message if not OK.
+     *
+     *    response         The fetch Response object (was: XHR) if there was was one
+     *                     includes response.status as the HTTP status if any.
      */
 
   }, {
@@ -68627,20 +68637,27 @@ var Fetcher = function () {
         options = p2;
       }
 
-      console.log('@@ Fetcher: call this.fetch : ' + uri + ': ' + options);
-      this.fetch(uri, options).then(function (result) {
-        console.log('@@ Fetcher: result: ' + result);
+      // console.log('@@ Fetcher: call this.fetch : ' + uri)
+      this.fetch(uri, options).then(function (fetchResponse) {
+        console.log('@@ nowOrWhenFetched: Resolved fetch: ok ' + fetchResponse.ok);
         if (userCallback) {
-          if (result) {
-            userCallback(result.ok, result.status, result);
+          if (fetchResponse) {
+            if (fetchResponse.ok) {
+              userCallback(fetchResponse.ok, fetchResponse.status, fetchResponse);
+            } else {
+              var oops = 'HTTP error: Status ' + fetchResponse.status + ' (' + fetchResponse.statusText + ') ' + fetchResponse.responseText;
+              console.log(oops + ' fetching ' + uri);
+              userCallback(false, oops, fetchResponse);
+            }
           } else {
-            console.log('@@ Fetcher: result: ' + result);
-            userCallback(false);
+            var _oops = '@@ nowOrWhenFetched:  no response object: ' + fetchResponse;
+            console.log(_oops);
+            userCallback(false, _oops);
           }
         }
-      }).catch(function (err) {
-        // console.log(err)
-        userCallback(false, err.message);
+      }, function (err) {
+        console.log('@@ nowOrWhenFetched: REJECTED from fetch ' + err.message);
+        userCallback(false, 'Rejection from fetch?! ' + err.message, null);
       });
     }
 
@@ -68710,7 +68727,8 @@ var Fetcher = function () {
 
       return Promise.resolve({
         ok: false,
-        error: errorMessage,
+        error: errorMessage, // @@ Why does a response object have an "error" property?
+        statusText: errorMessage,
         status: statusCode
       });
     }
@@ -68753,7 +68771,7 @@ var Fetcher = function () {
         return;
       }
 
-      var linkexp = /<[^>]*>\s*(\s*;\s*[^\(\)<>@,;:"\/\[\]\?={} \t]+=(([^\(\)<>@,;:"\/\[\]\?={} \t]+)|("[^"]*")))*(,|$)/g;
+      var linkexp = /<[^>]*>\s*(\s*;\s*[^()<>@,;:"/[\]?={} \t]+=(([^\(\)<>@,;:"\/\[\]\?={} \t]+)|("[^"]*")))*(,|$)/g;
       var paramexp = /[^\(\)<>@,;:"\/\[\]\?={} \t]+=(([^\(\)<>@,;:"\/\[\]\?={} \t]+)|("[^"]*"))/g;
 
       var matches = linkHeader.match(linkexp);
@@ -68888,7 +68906,7 @@ var Fetcher = function () {
     }
 
     /**
-     * Returns promise of XHR
+     * Returns promise of Response
      *
      * @param method
      * @param uri
@@ -69166,10 +69184,15 @@ var Fetcher = function () {
         }
       }
 
-      var message = response.message || response.status + ' ' + response.statusText;
+      var message;
+      if (response.message) {
+        message = 'Fetch error: ' + response.message;
+      } else {
+        message = 'HTTP Error: ' + response.status + ' (' + response.statusText + ') ' + response.responseText;
+      }
 
       // This is either not a CORS error, or retries have been made
-      return this.failFetch(options, 'Request failed: ' + message, response.status);
+      return this.failFetch(options, message, response.status || 998);
     }
 
     // deduce some things from the HTTP transaction
@@ -69499,7 +69522,8 @@ var Fetcher = function () {
       // Do not remove without checking with TimBL
       var requestedURI = uri;
 
-      if (typeof UI !== 'undefined' && UI.preferences && UI.preferences.get('offlineModeUsingLocalhost')) {
+      var UI;
+      if (typeof window !== 'undefined' && window.panes && (UI = window.panes.UI) && UI.preferences && UI.preferences.get('offlineModeUsingLocalhost')) {
         if (requestedURI.slice(0, 7) === 'http://' && requestedURI.slice(7, 17) !== 'localhost/') {
           requestedURI = 'http://localhost/' + requestedURI.slice(7);
           log.warn('Localhost kludge for offline use: actually getting <' + requestedURI + '>');
@@ -69516,7 +69540,8 @@ var Fetcher = function () {
   }, {
     key: 'proxyIfNecessary',
     value: function proxyIfNecessary(uri) {
-      if (typeof UI !== 'undefined' && UI.isExtension) {
+      var UI;
+      if (typeof window !== 'undefined' && window.panes && (UI = window.panes.UI) && UI.isExtension) {
         return uri;
       } // Extension does not need proxy
 
@@ -78074,7 +78099,7 @@ var UpdateManager = function () {
 
           this.fire(doc.uri, query, function (uri, success, body, response) {
             response.elapsedTimeMs = Date.now() - startTime;
-            console.log( true ? 'success' : undefined);
+            console.log('    sparql: Return ' + (success ? 'success ' : 'FAILURE ') + response.status + ' elapsed ' + response.elapsedTimeMs + 'ms');
             if (success) {
               try {
                 kb.remove(ds);
@@ -79366,7 +79391,7 @@ module.exports = __webpack_require__(/*! ./lib/_stream_duplex.js */ "./node_modu
 
 /*<replacement>*/
 
-var processNextTick = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js").nextTick;
+var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
 /*</replacement>*/
 
 /*<replacement>*/
@@ -79420,7 +79445,7 @@ function onend() {
 
   // no more data can be written.
   // But allow more writes to happen in this tick.
-  processNextTick(onEndNT, this);
+  pna.nextTick(onEndNT, this);
 }
 
 function onEndNT(self) {
@@ -79452,7 +79477,7 @@ Duplex.prototype._destroy = function (err, cb) {
   this.push(null);
   this.end();
 
-  processNextTick(cb, err);
+  pna.nextTick(cb, err);
 };
 
 function forEach(xs, f) {
@@ -79554,7 +79579,7 @@ PassThrough.prototype._transform = function (chunk, encoding, cb) {
 
 /*<replacement>*/
 
-var processNextTick = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js").nextTick;
+var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
 /*</replacement>*/
 
 module.exports = Readable;
@@ -80026,7 +80051,7 @@ function emitReadable(stream) {
   if (!state.emittedReadable) {
     debug('emitReadable', state.flowing);
     state.emittedReadable = true;
-    if (state.sync) processNextTick(emitReadable_, stream);else emitReadable_(stream);
+    if (state.sync) pna.nextTick(emitReadable_, stream);else emitReadable_(stream);
   }
 }
 
@@ -80045,7 +80070,7 @@ function emitReadable_(stream) {
 function maybeReadMore(stream, state) {
   if (!state.readingMore) {
     state.readingMore = true;
-    processNextTick(maybeReadMore_, stream, state);
+    pna.nextTick(maybeReadMore_, stream, state);
   }
 }
 
@@ -80090,7 +80115,7 @@ Readable.prototype.pipe = function (dest, pipeOpts) {
   var doEnd = (!pipeOpts || pipeOpts.end !== false) && dest !== process.stdout && dest !== process.stderr;
 
   var endFn = doEnd ? onend : unpipe;
-  if (state.endEmitted) processNextTick(endFn);else src.once('end', endFn);
+  if (state.endEmitted) pna.nextTick(endFn);else src.once('end', endFn);
 
   dest.on('unpipe', onunpipe);
   function onunpipe(readable, unpipeInfo) {
@@ -80280,7 +80305,7 @@ Readable.prototype.on = function (ev, fn) {
       state.readableListening = state.needReadable = true;
       state.emittedReadable = false;
       if (!state.reading) {
-        processNextTick(nReadingNextTick, this);
+        pna.nextTick(nReadingNextTick, this);
       } else if (state.length) {
         emitReadable(this);
       }
@@ -80311,7 +80336,7 @@ Readable.prototype.resume = function () {
 function resume(stream, state) {
   if (!state.resumeScheduled) {
     state.resumeScheduled = true;
-    processNextTick(resume_, stream, state);
+    pna.nextTick(resume_, stream, state);
   }
 }
 
@@ -80519,7 +80544,7 @@ function endReadable(stream) {
 
   if (!state.endEmitted) {
     state.ended = true;
-    processNextTick(endReadableNT, state, stream);
+    pna.nextTick(endReadableNT, state, stream);
   }
 }
 
@@ -80810,7 +80835,7 @@ function done(stream, er, data) {
 
 /*<replacement>*/
 
-var processNextTick = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js").nextTick;
+var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
 /*</replacement>*/
 
 module.exports = Writable;
@@ -80837,7 +80862,7 @@ function CorkedRequest(state) {
 /* </replacement> */
 
 /*<replacement>*/
-var asyncWrite = !process.browser && ['v0.10', 'v0.9.'].indexOf(process.version.slice(0, 5)) > -1 ? setImmediate : processNextTick;
+var asyncWrite = !process.browser && ['v0.10', 'v0.9.'].indexOf(process.version.slice(0, 5)) > -1 ? setImmediate : pna.nextTick;
 /*</replacement>*/
 
 /*<replacement>*/
@@ -81071,7 +81096,7 @@ function writeAfterEnd(stream, cb) {
   var er = new Error('write after end');
   // TODO: defer error events consistently everywhere, not just the cb
   stream.emit('error', er);
-  processNextTick(cb, er);
+  pna.nextTick(cb, er);
 }
 
 // Checks that a user-supplied chunk is valid, especially for the particular
@@ -81088,7 +81113,7 @@ function validChunk(stream, state, chunk, cb) {
   }
   if (er) {
     stream.emit('error', er);
-    processNextTick(cb, er);
+    pna.nextTick(cb, er);
     valid = false;
   }
   return valid;
@@ -81208,10 +81233,10 @@ function onwriteError(stream, state, sync, er, cb) {
   if (sync) {
     // defer the callback if we are being called synchronously
     // to avoid piling up things on the stack
-    processNextTick(cb, er);
+    pna.nextTick(cb, er);
     // this can emit finish, and it will always happen
     // after error
-    processNextTick(finishMaybe, stream, state);
+    pna.nextTick(finishMaybe, stream, state);
     stream._writableState.errorEmitted = true;
     stream.emit('error', er);
   } else {
@@ -81386,7 +81411,7 @@ function prefinish(stream, state) {
     if (typeof stream._final === 'function') {
       state.pendingcb++;
       state.finalCalled = true;
-      processNextTick(callFinal, stream, state);
+      pna.nextTick(callFinal, stream, state);
     } else {
       state.prefinished = true;
       stream.emit('prefinish');
@@ -81410,7 +81435,7 @@ function endWritable(stream, state, cb) {
   state.ending = true;
   finishMaybe(stream, state);
   if (cb) {
-    if (state.finished) processNextTick(cb);else stream.once('finish', cb);
+    if (state.finished) pna.nextTick(cb);else stream.once('finish', cb);
   }
   state.ended = true;
   stream.writable = false;
@@ -81564,7 +81589,7 @@ if (util && util.inspect && util.inspect.custom) {
 
 /*<replacement>*/
 
-var processNextTick = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js").nextTick;
+var pna = __webpack_require__(/*! process-nextick-args */ "./node_modules/process-nextick-args/index.js");
 /*</replacement>*/
 
 // undocumented cb() API, needed for core, not for public API
@@ -81578,7 +81603,7 @@ function destroy(err, cb) {
     if (cb) {
       cb(err);
     } else if (err && (!this._writableState || !this._writableState.errorEmitted)) {
-      processNextTick(emitErrorNT, this, err);
+      pna.nextTick(emitErrorNT, this, err);
     }
     return this;
   }
@@ -81597,7 +81622,7 @@ function destroy(err, cb) {
 
   this._destroy(err || null, function (err) {
     if (!cb && err) {
-      processNextTick(emitErrorNT, _this, err);
+      pna.nextTick(emitErrorNT, _this, err);
       if (_this._writableState) {
         _this._writableState.errorEmitted = true;
       }
@@ -102990,15 +103015,13 @@ UI.aclControl.ACLControlBox5 = function (subject, dom, noun, kb, callback) {
       // An Origin URI is one like https://fred.github.io eith no trailing slash
       if (uri.startsWith('http') && uri.split('/').length === 3) {
         // there is no third slash
-        return { pred: 'origin', obj: obj // The only way to know an origin alas
-        };
+        return { pred: 'origin', obj: obj }; // The only way to know an origin alas
       }
 
       if (ns.vcard('WebID').uri in types) return { pred: 'agent', obj: obj };
 
       if (ns.vcard('Group').uri in types) {
-        return { pred: 'agentGroup', obj: obj // @@ note vcard membership not RDFs
-        };
+        return { pred: 'agentGroup', obj: obj }; // @@ note vcard membership not RDFs
       }
       if (obj.sameTerm(ns.foaf('Agent')) || obj.sameTerm(ns.rdf('Resource')) || obj.sameTerm(ns.owl('Thing'))) {
         return { pred: 'agentClass', obj: obj };
@@ -103839,15 +103862,16 @@ var kb = UI.store;
 
 module.exports = {
   newThingUI: newThingUI
+};
 
-  /*  newThingUI -- return UI for user to select a new object, folder, etc
-  **
-  ** context must include:  dom, div,
-  **     optional:   folder: NamedNode -- the folder where the thing is bring put
-  **                (suppresses asking for a full URI or workspace)
-  **
-  */
-};function newThingUI(context, thePanes) {
+/*  newThingUI -- return UI for user to select a new object, folder, etc
+**
+** context must include:  dom, div,
+**     optional:   folder: NamedNode -- the folder where the thing is bring put
+**                (suppresses asking for a full URI or workspace)
+**
+*/
+function newThingUI(context, thePanes) {
   var dom = context.dom;
   var div = context.div;
   if (context.me && !context.me.uri) throw new Error('newThingUI:  Invalid userid: ' + context.me);
@@ -104064,7 +104088,7 @@ if (module.scriptURI) {
   module.exports.originalIconBase = '' + module.scriptURI.slice(0, module.scriptURI.lastIndexOf('/')) + '/originalIcons/';
 } else {
   // Node or browserify
-  var iconsOnGithub = 'https://linkeddata.github.io/solid-ui/src';
+  var iconsOnGithub = 'https://solid.github.io/solid-ui/src';
 
   if (typeof $SolidTestEnvironment !== 'undefined' && $SolidTestEnvironment.iconBase) {
     module.exports.iconBase = $SolidTestEnvironment.iconBase;
@@ -104595,10 +104619,11 @@ module.exports = function (dom, kb, subject, messageStore, options) {
     error: function error(message) {
       mention(message, 'color: #800;');
     }
+  };
 
-    //       Form for a new message
-    //
-  };var newMessageForm = function newMessageForm() {
+  //       Form for a new message
+  //
+  var newMessageForm = function newMessageForm() {
     var form = dom.createElement('tr');
     var lhs = dom.createElement('td');
     var middle = dom.createElement('td');
@@ -105685,9 +105710,8 @@ module.exports = { // used for storing user name
     }
     this.value[k] = v;
   }
-  // ends
-
 };
+// ends
 
 /***/ }),
 
@@ -105704,7 +105728,10 @@ module.exports = { // used for storing user name
 /**
  * signin.js
  *
- * Signing in, signing up, workspace selection, app spawning
+ * Signing in, signing up, profile and preferences reloading
+ * Type index management
+ *
+ *  Many functions in this module take a context object, add to it, and return a promise of it.
  */
 /* global $SOLID_GLOBAL_config localStorage confirm alert */
 
@@ -105739,11 +105766,12 @@ module.exports = {
   setACLUserPublic: setACLUserPublic,
   saveUser: saveUser,
   solidAuthClient: solidAuthClient
+};
 
-  // const userCheckSite = 'https://databox.me/'
+// const userCheckSite = 'https://databox.me/'
 
-  // Look for and load the User who has control over it
-};function findOriginOwner(doc, callback) {
+// Look for and load the User who has control over it
+function findOriginOwner(doc, callback) {
   var uri = doc.uri || doc;
   var i = uri.indexOf('://');
   if (i < 0) return false;
@@ -105777,19 +105805,17 @@ module.exports = {
  * @returns {NamedNode|null} Returns the Web ID, after setting it
  */
 function saveUser(webId, context) {
-  if (context) {
-    context.me = $rdf.namedNode(webId);
-  }
-
-  var webIdUri = void 0;
-
+  var webIdUri = void 0,
+      me = void 0;
   if (webId) {
     webIdUri = webId.uri || webId;
+    var _me = $rdf.namedNode(webIdUri);
+    if (context) {
+      context.me = _me;
+    }
+    return _me;
   }
-
-  // UI.preferences.set('me', webIdUri || '')
-
-  return webIdUri ? $rdf.namedNode(webIdUri) : null;
+  return me || null;
 }
 
 /**
@@ -105869,31 +105895,29 @@ function logInLoadProfile(context) {
   if (context.publicProfile) {
     return Promise.resolve(context);
   } // already done
-
   var fetcher = UI.store.fetcher;
-  var profileDocument = void 0;
-
-  return logIn(context).then(function (context) {
-    var webID = context.me;
-    if (!webID) {
-      throw new Error('Could not log in');
-    }
-
-    profileDocument = webID.doc();
-
-    // Load the profile into the knowledge base (fetcher.store)
-    return fetcher.fetch(profileDocument);
-  }).then(function (result) {
-    if (!result.ok) {
-      throw new Error(result.error);
-    }
-
-    context.publicProfile = profileDocument;
-    return context;
-  }).catch(function (err) {
-    var message = 'Cannot load profile ' + profileDocument + ' : ' + err;
-    context.div.appendChild(error.errorMessageBlock(context.dom, message));
-    return context;
+  var profileDocument;
+  return new Promise(function (resolve, reject) {
+    logIn(context).then(function (context) {
+      var webID = context.me;
+      if (!webID) {
+        throw new Error('Could not log in');
+      }
+      profileDocument = webID.doc();
+      // Load the profile into the knowledge base (fetcher.store)
+      //   withCredentials: Web arch should let us just load by turning off creds helps CORS
+      //   reload: Gets around a specifc old Chrome bug caching/origin/cors
+      fetcher.load(profileDocument, { withCredentials: false, cache: 'reload' }).then(function (response) {
+        context.publicProfile = profileDocument;
+        resolve(context);
+      }, function (err) {
+        var message = 'Logged in but cannot load profile ' + profileDocument + ' : ' + err;
+        context.div.appendChild(error.errorMessageBlock(context.dom, message));
+        reject(message);
+      });
+    }, function (err) {
+      reject(new Error("Can't log in: " + err));
+    });
   });
 }
 
@@ -105911,56 +105935,60 @@ function loadPreferences(context) {
   if (context.preferencesFile) return Promise.resolve(context); // already done
 
   var kb = UI.store;
-  var box = context.statusArea || context.div || null;
+  var statusArea = context.statusArea || context.div || null;
   var progressDisplay;
-
   return new Promise(function (resolve, reject) {
-    var preferencesFile = kb.any(context.me, UI.ns.space('preferencesFile'));
-    function complain(message) {
-      message = 'loadPreferences: ' + message;
-      if (box) {
-        box.innerHTML = '';
-        box.appendChild(error.errorMessageBlock(context.dom, message));
-      }
-      console.log(message);
-      reject(new Error(message));
-    }
-    if (!preferencesFile) {
-      var message = "Can't find a preferences file pointer in profile " + context.profile;
-      return complain(message);
-    }
-
-    context.preferencesFile = preferencesFile;
-    if (box) {
-      progressDisplay = error.errorMessageBlock(context.dom, '(loading preferences ' + preferencesFile + ')', 'straw');
-      box.appendChild(progressDisplay);
-    }
-
-    kb.fetcher.load(preferencesFile).then(function () {
-      if (progressDisplay) {
-        progressDisplay.parentNode.removeChild(progressDisplay);
-      }
-      return resolve(context);
-    }).catch(function (ok, message, response) {
-      // Really important to look at why
-      var status = response.status;
-      console.log('HTTP status ' + status + ' for pref file ' + preferencesFile);
-      var m2 = void 0;
-      if (status === 401) {
-        m2 = 'Strange - you are not authenticated (properly logged on) to read preferences file.';
-      } else if (status === 403) {
-        m2 = 'Strange - you are not authorized to read your preferences file.';
-      } else if (status === 404) {
-        if (confirm('You do not currently have a Preferences file. Ok for me to create an empty one? ' + preferencesFile)) {
-          // @@@ code me  ... weird to have a name o fthe file but no file
-          return complain(new Error('Sorry No code yet to craete a preferences fille at '));
-        } else {
-          reject(new Error('User declined to craete a preferences fille at '));
+    logInLoadProfile(context).then(function (context) {
+      var preferencesFile = kb.any(context.me, UI.ns.space('preferencesFile'));
+      function complain(message) {
+        message = 'loadPreferences: ' + message;
+        if (statusArea) {
+          // statusArea.innerHTML = ''
+          statusArea.appendChild(error.errorMessageBlock(context.dom, message));
         }
-      } else {
-        m2 = 'Strange: Error ' + status + ' trying to read your preferences file.' + message;
+        console.log(message);
+        reject(new Error(message));
       }
-      alert(m2);
+
+      if (!preferencesFile) {
+        var message = "Can't find a preferences file pointer in profile " + context.publicProfile;
+        return reject(new Error(message));
+      }
+
+      // //// Load preferences file
+      kb.fetcher.load(preferencesFile, { withCredentials: true }).then(function () {
+        if (progressDisplay) {
+          progressDisplay.parentNode.removeChild(progressDisplay);
+        }
+        context.preferencesFile = preferencesFile;
+        return resolve(context);
+      }, function (err) {
+        // Really important to look at why
+        var status = err.status;
+        var message = err.message;
+        console.log('HTTP status ' + status + ' for pref file ' + preferencesFile);
+        var m2 = void 0;
+        if (status === 401) {
+          m2 = 'Strange - you are not authenticated (properly logged on) to read preferences file.';
+        } else if (status === 403) {
+          m2 = 'Strange - you are not authorized to read your preferences file.';
+        } else if (status === 404) {
+          if (confirm('You do not currently have a Preferences file. Ok for me to create an empty one? ' + preferencesFile)) {
+            // @@@ code me  ... weird to have a name o fthe file but no file
+            return complain(new Error('Sorry No code yet to craete a preferences fille at '));
+          } else {
+            reject(new Error('User declined to craete a preferences fille at '));
+          }
+        } else {
+          m2 = 'Strange: Error ' + status + ' trying to read your preferences file.' + message;
+        }
+        alert(m2);
+      }); // load prefs file then
+    }, function (err) {
+      // Fail initial login load prefs
+      reject(new Error('(via loadPrefs) ' + err));
+    }, function (err) {
+      return reject(err);
     });
   });
 }
@@ -105979,26 +106007,27 @@ function loadTypeIndexes(context) {
   var ns = UI.ns;
   var kb = UI.store;
 
-  return logInLoadProfile(context).then(loadPreferences).catch(function (e) {
-    widgets.complain(context, e);
-    throw new Error('Error loading preferences (for type index): ' + e);
-  }).then(function (context) {
-    var me = context.me;
-    context.index = context.index || {};
-    context.index.private = kb.each(me, ns.solid('privateTypeIndex'), undefined, context.preferencesFile);
-    context.index.public = kb.each(me, ns.solid('publicTypeIndex'), undefined, context.publicProfile);
-
-    var ix = context.index.private.concat(context.index.public);
-    if (ix.length === 0) {
-      return context;
-    } else {
-      return kb.fetcher.load(ix);
-    }
-  }).then(function () {
-    return context;
-  }).catch(function (e) {
-    widgets.complain(context, e);
-    throw new Error('Error loading type indexes: ' + e);
+  return new Promise(function (resolve, reject) {
+    loadPreferences(context).then(function (context) {
+      var me = context.me;
+      context.index = context.index || {};
+      context.index.private = kb.each(me, ns.solid('privateTypeIndex'), undefined, context.preferencesFile);
+      if (context.index.private.length === 0) {
+        return reject(new Error('Your preference file ' + context.preferencesFile + ' does not point to a private type index.'));
+      }
+      context.index.public = kb.each(me, ns.solid('publicTypeIndex'), undefined, context.publicProfile);
+      if (context.index.public.length === 0) {
+        return reject(new Error('Your preference file ' + context.preferencesFile + ' does not point to a public type index.'));
+      }
+      var ix = context.index.private.concat(context.index.public);
+      kb.fetcher.load(ix).then(function (responses) {
+        resolve(context);
+      }, function (err) {
+        reject(new Error('Error loading type indexes: ' + err));
+      });
+    }, function (err) {
+      reject(new Error('[LTI] ' + err));
+    });
   });
 }
 
@@ -106021,21 +106050,35 @@ function ensureTypeIndexes(context) {
     return loadTypeIndexes(context).then(function (context) {
       console.log('ensureTypeIndexes: Type indexes exist already');
       resolve(context);
-    }) // .then
-    .catch(function (error) {
-      if (confirm('You don\'t have, or you couldn\'t acess,  type indexes --lists of things of different types. Create new empty ones?' + error)) {
+    }, function (error) {
+      if (confirm('You don\'t have, or you couldn\'t acess,  type indexes --lists of things of different types. Create new empty ones? ' + error)) {
         var ns = UI.ns;
         var kb = UI.store;
         var me = context.me;
         var newIndex;
 
-        var makeIndex = function makeIndex(context, visibility) {
+        var makeIndexIfNecesary = function makeIndexIfNecesary(context, visibility) {
           return new Promise(function (resolve, reject) {
             var relevant = { 'private': context.preferencesFile, 'public': context.publicProfile }[visibility];
 
+            function putIndex(newIndex) {
+              kb.fetcher.webOperation('PUT', newIndex, { data: '# ' + new Date() + ' Blank initial Type index\n' }).then(function (xhr) {
+                resolve(context);
+              }, function (e) {
+                var msg = 'Creating new index file ' + e;
+                widgets.complain(context, msg);
+                reject(new Error(msg));
+              });
+            }
+
+            context.index = context.index || {};
+            context.index[visibility] = context.index[visibility] || [];
             if (context.index[visibility].length === 0) {
-              newIndex = $rdf.sym(context.preferencesFile.dir().uri + visibility + 'TypeIndex.ttl');
+              newIndex = $rdf.sym(relevant.dir().uri + visibility + 'TypeIndex.ttl');
               console.log('Linking to new fresh type index ' + newIndex);
+              if (!confirm('Ok to create a new empty index file at ' + newIndex + ', overwriting anything that was there?')) {
+                reject(new Error('cancelled by user'));
+              }
               var addMe = [$rdf.st(me, ns.solid(visibility + 'TypeIndex'), newIndex, relevant)];
 
               UI.store.updater.update([], addMe, function (uri, ok, body) {
@@ -106044,26 +106087,30 @@ function ensureTypeIndexes(context) {
                 } else {
                   context.index[visibility].push(newIndex);
                   console.log('Creating new fresh type index ' + newIndex);
-                  if (!window.confirm('Creating new list of things  ' + newIndex)) {
-                    return reject(new Error('Cancelled by user: writing of ' + newIndex));
-                  }
-
-                  kb.fetcher.webOperation('PUT', newIndex, { data: '# ' + new Date() + ' Blank initial Type index\n' }).then(function (xhr) {
-                    resolve(context);
-                  }).catch(function (e) {
-                    var msg = 'Creating new index file ' + e;
-                    widgets.complain(context, msg);
-                    reject(new Error(msg));
-                  });
+                  putIndex(newIndex);
                 }
               });
             } else {
-              resolve(context); // exists
+              // officially exists
+              var ix = context.index[visibility][0];
+              kb.fetcher.load(ix).then(function (response) {
+                //  physically exists
+                resolve(context);
+              }, function (err) {
+                if (err.status === 404) {
+                  if (!confirm('Ok to create a new empty index file at ' + ix + ', overwriting anything that was there?')) {
+                    reject(new Error('cancelled by user'));
+                  }
+                  putIndex(ix);
+                } else {
+                  reject(new Error('You should have a type index file ' + ix + ', but ' + err));
+                }
+              });
             }
           }); // promise
-        }; // makeIndex
+        }; // makeIndexIfNecesary
 
-        var ps = [makeIndex(context, 'private'), makeIndex(context, 'public')];
+        var ps = [makeIndexIfNecesary(context, 'private'), makeIndexIfNecesary(context, 'public')];
 
         return Promise.all(ps).then(function () {
           resolve(context);
@@ -106085,41 +106132,41 @@ function ensureTypeIndexes(context) {
  * @param context.instances
  * @param context.containers
  * @param klass
- * @returns {Promise}
+ * @returns {Promise}  of context
  */
 function findAppInstances(context, klass) {
   var kb = UI.store;
   var ns = UI.ns;
   var fetcher = UI.store.fetcher;
-  var registrations = kb.each(undefined, ns.solid('forClass'), klass);
-  var instances = [];
-  var containers = [];
 
-  return loadTypeIndexes(context).then(function (indexes) {
-    // var ix = context.index.private.concat(context.index.public)
-
-    for (var r = 0; r < registrations.length; r++) {
-      instances = instances.concat(kb.each(klass, ns.solid('instance')));
-      containers = containers.concat(kb.each(klass, ns.solid('instanceContainer')));
-    }
-
-    if (!containers.length) {
-      return;
-    }
-
-    return fetcher.load(containers).then(function () {
-      for (var i = 0; i < containers.length; i++) {
-        var cont = containers[i];
-        instances = instances.concat(kb.each(cont, ns.ldp('contains')));
+  return new Promise(function (resolve, reject) {
+    loadTypeIndexes(context).then(function (indexes) {
+      var registrations = kb.each(undefined, ns.solid('forClass'), klass);
+      var instances = [];
+      var containers = [];
+      for (var r = 0; r < registrations.length; r++) {
+        instances = instances.concat(kb.each(klass, ns.solid('instance')));
+        containers = containers.concat(kb.each(klass, ns.solid('instanceContainer')));
       }
+      if (!containers.length) {
+        context.instances = [];
+        context.containers = [];
+        resolve(context);
+      }
+      fetcher.load(containers).then(function (responses) {
+        for (var i = 0; i < containers.length; i++) {
+          var cont = containers[i];
+          instances = instances.concat(kb.each(cont, ns.ldp('contains')));
+        }
+        context.instances = instances;
+        context.containers = containers;
+        resolve(context);
+      }, function (err) {
+        reject(new Error('[FAI] Unable to load containers' + err));
+      });
+    }, function (err) {
+      return reject(new Error('Error looking for instances of ' + klass + ': ' + err));
     });
-  }).then(function () {
-    context.instances = instances;
-    context.containers = containers;
-
-    return context;
-  }).catch(function (e) {
-    throw new Error('Error looking for instances of ' + klass + ': ' + e);
   });
 }
 
@@ -106140,11 +106187,7 @@ function registrationControl(context, instance, klass) {
   var box = dom.createElement('div');
   context.div.appendChild(box);
 
-  return ensureTypeIndexes(context).catch(function (e) {
-    var msg = 'registrationControl: Type indexes not available: ' + e;
-    context.div.appendChild(UI.error.errorMessageBlock(context.dom, e));
-    console.log(msg);
-  }).then(function (context) {
+  return ensureTypeIndexes(context).then(function (context) {
     box.innerHTML = '<table><tbody><tr></tr><tr></tr></tbody></table>'; // tbody will be inserted anyway
     box.setAttribute('style', 'font-size: 120%; text-align: right; padding: 1em; border: solid gray 0.05em;');
     var tbody = box.children[0].children[0];
@@ -106174,6 +106217,10 @@ function registrationControl(context, instance, klass) {
 
     // widgets.buildCheckboxForm(dom, kb, lab, del, ins, form, store)
     return context;
+  }, function (e) {
+    var msg = 'registrationControl: Type indexes not available: ' + e;
+    context.div.appendChild(UI.error.errorMessageBlock(context.dom, e));
+    console.log(msg);
   }).catch(function (e) {
     var msg = 'registrationControl: Error making panel:' + e;
     context.div.appendChild(UI.error.errorMessageBlock(context.dom, e));
@@ -106480,7 +106527,7 @@ function checkUser(setUserCallback) {
 
   // doc = kb.any(doc, UI.ns.link('userMirror')) || doc
 
-  return solidAuthClient.currentSession().then(webIdFromSession).catch(function (err) {
+  return solidAuthClient.currentSession().then(webIdFromSession, function (err) {
     console.log('Error fetching currentSession:', err);
     return null;
   }).then(function (webId) {
@@ -106781,8 +106828,10 @@ function selectWorkspace(dom, appDetails, callbackWS) {
     table.appendChild(trLast);
   }; // displayOptions
 
-  logInLoadProfile(context) // kick off async operation
-  .then(loadPreferences).then(displayOptions);
+  loadPreferences(context) // kick off async operation
+  .then(displayOptions, function (err) {
+    box.appendChild(UI.utils.errorMessageBlock(err));
+  });
 
   return box; // return the box element, while login proceeds
 } // selectWorkspace
@@ -106879,6 +106928,8 @@ module.exports = {
 "use strict";
 
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 // Table Widget: Format an array of RDF statements as an HTML table.
 //
 // This can operate in one of three modes: when the class of object is given
@@ -106921,10 +106972,11 @@ module.exports = function renderTableViewPane(doc, options) {
   var FORBIDDEN_COLUMNS = {
     'http://www.w3.org/2002/07/owl#sameAs': true,
     'http://www.w3.org/1999/02/22-rdf-syntax-ns#type': true
+  };
 
-    // Number types defined in the XML schema:
+  // Number types defined in the XML schema:
 
-  };var XSD_NUMBER_TYPES = {
+  var XSD_NUMBER_TYPES = {
     'http://www.w3.org/2001/XMLSchema#decimal': true,
     'http://www.w3.org/2001/XMLSchema#float': true,
     'http://www.w3.org/2001/XMLSchema#double': true,
@@ -106946,21 +106998,23 @@ module.exports = function renderTableViewPane(doc, options) {
   var XSD_DATE_TYPES = {
     'http://www.w3.org/2001/XMLSchema#dateTime': true,
     'http://www.w3.org/2001/XMLSchema#date': true
+  };
 
-    // Classes that indicate an image:
+  // Classes that indicate an image:
 
-  };var IMAGE_TYPES = {
+  var IMAGE_TYPES = {
     'http://xmlns.com/foaf/0.1/Image': true,
     'http://purl.org/dc/terms/Image': true
+  };
 
-    // Name of the column used as a "key" value to look up the row.
-    // This is necessary because in the normal view, the columns are
-    // all "optional" values, meaning that we will get a result set
-    // for every individual value that is found.  The row key acts
-    // as an anchor that can be used to combine this information
-    // back into the same row.
+  // Name of the column used as a "key" value to look up the row.
+  // This is necessary because in the normal view, the columns are
+  // all "optional" values, meaning that we will get a result set
+  // for every individual value that is found.  The row key acts
+  // as an anchor that can be used to combine this information
+  // back into the same row.
 
-  };var keyVariable = options.keyVariable || '?_row';
+  var keyVariable = options.keyVariable || '?_row';
 
   var subjectIdCounter = 0;
   var allType, types;
@@ -108193,15 +108247,21 @@ module.exports = function renderTableViewPane(doc, options) {
       } else if (obj.termType === 'NamedNode' || obj.termType === 'BlankNode') {
         return linkToObject(obj, hints);
       } else if (obj.termType === 'Collection') {
-        var _span = doc.createElement('span');
-        _span.appendChild(doc.createTextNode('['));
-        obj.elements.map(function (x) {
-          _span.appendChild(renderValue(x, column));
-          _span.appendChild(doc.createTextNode(', '));
-        });
-        _span.removeChild(_span.lastChild);
-        _span.appendChild(doc.createTextNode(']'));
-        return _span;
+        var _ret = function () {
+          var span = doc.createElement('span');
+          span.appendChild(doc.createTextNode('['));
+          obj.elements.map(function (x) {
+            span.appendChild(renderValue(x, column));
+            span.appendChild(doc.createTextNode(', '));
+          });
+          span.removeChild(span.lastChild);
+          span.appendChild(doc.createTextNode(']'));
+          return {
+            v: span
+          };
+        }();
+
+        if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
       } else {
         return doc.createTextNode("unknown termtype '" + obj.termType + "'!");
       }
@@ -110398,8 +110458,8 @@ UI.widgets.field[UI.ns.ui('Multiple').uri] = function (dom, container, already, 
 UI.widgets.fieldParams = {};
 
 UI.widgets.fieldParams[UI.ns.ui('ColorField').uri] = {
-  'size': 9, 'type': 'color', dt: 'color' // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color
-};UI.widgets.fieldParams[UI.ns.ui('ColorField').uri].pattern = /^\s*#[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]([0-9a-f][0-9a-f])?\s*$/;
+  'size': 9, 'type': 'color', dt: 'color' }; // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color
+UI.widgets.fieldParams[UI.ns.ui('ColorField').uri].pattern = /^\s*#[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]([0-9a-f][0-9a-f])?\s*$/;
 
 UI.widgets.fieldParams[UI.ns.ui('DateField').uri] = {
   'size': 20, 'type': 'date', 'dt': 'date' };
