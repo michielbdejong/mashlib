@@ -86572,6 +86572,100 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/solid-panes/chat/longChatPane.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/solid-panes/chat/longChatPane.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*   Long Chat Pane
+**
+**  A long chat consists a of a series of chat files saved by date.
+*/
+
+const UI = __webpack_require__(/*! solid-ui */ "./node_modules/solid-ui/lib/index.js")
+const ns = UI.ns
+const kb = UI.store
+
+module.exports = { // noun_704.svg Canoe   noun_346319.svg = 1 Chat  noun_1689339.svg = three chat
+  icon: UI.icons.iconBase + 'noun_1689339.svg',
+
+  name: 'long chat',
+
+  label: function (subject) {
+    if (kb.holds(subject, ns.rdf('type'), ns.meeting('LongChat'))) { // subject is the object
+      return 'Chat channnel'
+    }
+    return null // Suppress pane otherwise
+  },
+
+  mintClass: ns.meeting('LongChat'),
+
+  mintNew: function (newPaneOptions) {
+    var updater = kb.updater
+    if (newPaneOptions.me && !newPaneOptions.me.uri) throw new Error('chat mintNew:  Invalid userid ' + newPaneOptions.me)
+
+    var newInstance = newPaneOptions.newInstance = newPaneOptions.newInstance || kb.sym(newPaneOptions.newBase + 'index.ttl#this')
+    var newChatDoc = newInstance.doc()
+
+    kb.add(newInstance, ns.rdf('type'), ns.meeting('LongChat'), newChatDoc)
+    kb.add(newInstance, ns.dc('title'), 'Chat channel', newChatDoc)
+    kb.add(newInstance, ns.dc('created'), new Date(), newChatDoc)
+    if (newPaneOptions.me) {
+      kb.add(newInstance, ns.dc('author'), newPaneOptions.me, newChatDoc)
+    }
+
+    return new Promise(function (resolve, reject) {
+      updater.put(
+        newChatDoc,
+        kb.statementsMatching(undefined, undefined, undefined, newChatDoc),
+        'text/turtle',
+        function (uri2, ok, message) {
+          if (ok) {
+            resolve(newPaneOptions)
+          } else {
+            reject(new Error('FAILED to save new chat channel at: ' + uri2 + ' : ' +
+              message))
+          };
+        })
+    })
+  },
+
+  render: function (subject, dom) {
+    var complain = function complain (message, color) {
+      var pre = dom.createElement('pre')
+      pre.setAttribute('style', 'background-color: ' + color || '#eed' + ';')
+      div.appendChild(pre)
+      pre.appendChild(dom.createTextNode(message))
+    }
+
+    var div = dom.createElement('div')
+    div.setAttribute('class', 'chatPane')
+    let options = {infinite: true} // Like newestFirst
+
+    var messageStore
+    if (kb.holds(subject, ns.rdf('type'), ns.meeting('LongChat'))) { // subject may be the file
+      messageStore = subject.doc()
+    } else {
+      complain('Unknown chat type')
+    }
+
+    div.appendChild(UI.infiniteMessageArea(dom, kb, subject, options))
+    /*
+    kb.updater.addDownstreamChangeListener(messageStore, function () {
+      UI.widgets.refreshTree(div)
+    }) // Live update
+    */
+//    })
+
+    return div
+  }
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/solid-panes/classInstancePane.js":
 /*!*******************************************************!*\
   !*** ./node_modules/solid-panes/classInstancePane.js ***!
@@ -87700,24 +87794,22 @@ module.exports = {
           }
           filename = prefix + n + '.' + extension
         }
-        kb.add(subject, predicate, pic, subject.doc())
-        console.log('Putting ' + data.length + ' bytes of ' + contentType + ' to ' + pic)
-        kb.fetcher.webOperation('PUT', pic, {data: data, contentType: contentType})
+        console.log('Putting ' + data.byteLength + ' bytes of ' + contentType + ' to ' + pic)
+        kb.fetcher.webOperation('PUT', pic.uri, {data: data, contentType: contentType})
           .then(function (response) {
             if (!response.ok) {
               complain('Error uploading ' + pic + ':' + response.status)
               return
             }
             console.log(' Upload: put OK: ' + pic)
-            return kb.fetcher.putBack(subject.doc())
-          })
-          .then(function () {
-            if (isImage) {
-              mugshotDiv.refresh()
-            }
-          })
-          .catch(function (status) {
-            console.log(' Upload: FAIL ' + pic + ', Error: ' + status)
+            kb.add(subject, predicate, pic, subject.doc())
+            kb.fetcher.putBack(subject.doc(), {contentType: 'text/turtle'}).then(function (response) {
+              if (isImage) {
+                mugshotDiv.refresh()
+              }
+            }, function (err) {
+              console.log(' Write back image link FAIL ' + pic + ', Error: ' + err)
+            })
           })
       }
 
@@ -91047,6 +91139,7 @@ register(__webpack_require__(/*! ./pad/padPane.js */ "./node_modules/solid-panes
 register(__webpack_require__(/*! ./transaction/pane.js */ "./node_modules/solid-panes/transaction/pane.js"))
 register(__webpack_require__(/*! ./transaction/period.js */ "./node_modules/solid-panes/transaction/period.js"))
 register(__webpack_require__(/*! ./chat/chatPane.js */ "./node_modules/solid-panes/chat/chatPane.js"))
+register(__webpack_require__(/*! ./chat/longChatPane.js */ "./node_modules/solid-panes/chat/longChatPane.js"))
 // register(require('./publication/publicationPane.js'))
 register(__webpack_require__(/*! ./meeting/meetingPane.js */ "./node_modules/solid-panes/meeting/meetingPane.js"))
 register(__webpack_require__(/*! ./tabbed/tabbedPane.js */ "./node_modules/solid-panes/tabbed/tabbedPane.js"))
