@@ -87018,117 +87018,123 @@ module.exports = {
 
   mintNew: function mintNew (context) {
     return new Promise(function (resolve, reject) {
-      var dom = context.dom
-      var me = context.me
-      var div = context.div
-      var kb = UI.store
-      var ns = UI.ns
-      var newBase = context.newBase || context.newInstance.dir().uri
-      var instanceClass = context.instanceClass || ns.vcard('AddressBook')
+      UI.authn.logInLoadProfile(context).then(context => { // 20180713
+        console.log('Logged in as ' + context.me)
+        var me = context.me
 
-      if (instanceClass.sameTerm(ns.vcard('Group'))) {
-        // Make a group not an address book
-        var g = context.newInstance || kb.sym(context.newBase + 'index.ttl#this')
-        var doc = g.doc()
-        kb.add(g, ns.rdf('type'), ns.vcard('Group'), doc)
-        kb.add(g, ns.vcard('fn'), context.instanceName || 'untitled group', doc) // @@ write doc back
-        kb.fetcher.putBack(doc, {contentType: 'text/turtle'})
-          .then(function (xhr) {
-            resolve(context)
-          })
-          .catch(function (err) {
-            reject(new Error('Error creating document for new group ' + err))
-          })
-        return
-      }
-      var appInstanceNoun = 'address book'
+        var dom = context.dom
+        var div = context.div
+        var kb = UI.store
+        var ns = UI.ns
+        var newBase = context.newBase || context.newInstance.dir().uri
+        var instanceClass = context.instanceClass || ns.vcard('AddressBook')
 
-      function complain (message) {
-        div.appendChild(UI.widgets.errorMessageBlock(dom, message, 'pink'))
-      }
+        if (instanceClass.sameTerm(ns.vcard('Group'))) {
+          // Make a group not an address book
+          var g = context.newInstance || kb.sym(context.newBase + 'index.ttl#this')
+          var doc = g.doc()
+          kb.add(g, ns.rdf('type'), ns.vcard('Group'), doc)
+          kb.add(g, ns.vcard('fn'), context.instanceName || 'untitled group', doc) // @@ write doc back
+          kb.fetcher.putBack(doc, {contentType: 'text/turtle'})
+            .then(function (xhr) {
+              resolve(context)
+            })
+            .catch(function (err) {
+              reject(new Error('Error creating document for new group ' + err))
+            })
+          return
+        }
+        var appInstanceNoun = 'address book'
 
-      var bookContents = `@prefix vcard: <http://www.w3.org/2006/vcard/ns#>.
-  @prefix ab: <http://www.w3.org/ns/pim/ab#>.
-  @prefix dc: <http://purl.org/dc/elements/1.1/>.
-  @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+        function complain (message) {
+          div.appendChild(UI.widgets.errorMessageBlock(dom, message, 'pink'))
+        }
 
-  <#this> a vcard:AddressBook;
-      dc:title "New address Book";
-      vcard:nameEmailIndex <people.ttl>;
-      vcard:groupIndex <groups.ttl>.
-`
+        var bookContents = `@prefix vcard: <http://www.w3.org/2006/vcard/ns#>.
+    @prefix ab: <http://www.w3.org/ns/pim/ab#>.
+    @prefix dc: <http://purl.org/dc/elements/1.1/>.
+    @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
-      bookContents += '<#this> <http://www.w3.org/ns/auth/acl#owner> <' + me.uri + '>.\n\n'
+    <#this> a vcard:AddressBook;
+        dc:title "New address Book";
+        vcard:nameEmailIndex <people.ttl>;
+        vcard:groupIndex <groups.ttl>.
+  `
 
-      var toBeWritten = [
-        // { to: 'index.html', contentType: 'text/html' },
-        { to: 'index.ttl', content: bookContents, contentType: 'text/turtle' },
-        { to: 'groups.ttl', content: '', contentType: 'text/turtle' },
-        { to: 'people.ttl', content: '', contentType: 'text/turtle' },
-        { to: '', existing: true, aclOptions: { defaultForNew: true } }
-      ]
+        bookContents += '<#this> <http://www.w3.org/ns/auth/acl#owner> <' + me.uri + '>.\n\n'
 
-      var newAppPointer = newBase + 'index.html' // @@ assuming we can't trust server with bare dir
+        var toBeWritten = [
+          // { to: 'index.html', contentType: 'text/html' },
+          { to: 'index.ttl', content: bookContents, contentType: 'text/turtle' },
+          { to: 'groups.ttl', content: '', contentType: 'text/turtle' },
+          { to: 'people.ttl', content: '', contentType: 'text/turtle' },
+          { to: '', existing: true, aclOptions: { defaultForNew: true } }
+        ]
 
-      var offline = UI.authn.offlineTestID()
-      if (offline) {
-        toBeWritten.push({ to: 'local.html', from: 'local.html', contentType: 'text/html' })
-        newAppPointer = newBase + 'local.html' // kludge for testing
-      }
+        var newAppPointer = newBase + 'index.html' // @@ assuming we can't trust server with bare dir
 
-      // @@ Ask user abut ACLs?
+        var offline = UI.authn.offlineTestID()
+        if (offline) {
+          toBeWritten.push({ to: 'local.html', from: 'local.html', contentType: 'text/html' })
+          newAppPointer = newBase + 'local.html' // kludge for testing
+        }
 
-      //
-      //   @@ Add header to PUT     If-None-Match: *       to prevent overwrite
-      //
+        // @@ Ask user abut ACLs?
 
-      var claimSuccess = function (uri, appInstanceNoun) { // @@ delete or grey other stuff
-        console.log('Files created. App ready at ' + uri)
-        var p = div.appendChild(dom.createElement('p'))
-        p.setAttribute('style', 'font-size: 140%;')
-        p.innerHTML =
-          "Your <a href='" + uri + "'><b>new " + appInstanceNoun + '</b></a> is ready. ' +
-          "<br/><br/><a href='" + uri + "'>Go to new " + appInstanceNoun + '</a>'
-        resolve(context)
-      }
+        //
+        //   @@ Add header to PUT     If-None-Match: *       to prevent overwrite
+        //
 
-      var doNextTask = function () {
-        if (toBeWritten.length === 0) {
-          claimSuccess(newAppPointer, appInstanceNoun)
-        } else {
-          var task = toBeWritten.shift()
-          console.log('Creating new file ' + task.to + ' in new instance ')
-          var dest = $rdf.uri.join(task.to, newBase) //
-          var aclOptions = task.aclOptions || {}
-          var checkOKSetACL = function (uri, ok) {
-            if (!ok) {
-              complain('Error writing new file ' + task.to)
-              return reject(new Error('Error writing new file ' + task.to))
+        var claimSuccess = function (uri, appInstanceNoun) { // @@ delete or grey other stuff
+          console.log('Files created. App ready at ' + uri)
+          var p = div.appendChild(dom.createElement('p'))
+          p.setAttribute('style', 'font-size: 140%;')
+          p.innerHTML =
+            "Your <a href='" + uri + "'><b>new " + appInstanceNoun + '</b></a> is ready. ' +
+            "<br/><br/><a href='" + uri + "'>Go to new " + appInstanceNoun + '</a>'
+          resolve(context)
+        }
+
+        var doNextTask = function () {
+          if (toBeWritten.length === 0) {
+            claimSuccess(newAppPointer, appInstanceNoun)
+          } else {
+            var task = toBeWritten.shift()
+            console.log('Creating new file ' + task.to + ' in new instance ')
+            var dest = $rdf.uri.join(task.to, newBase) //
+            var aclOptions = task.aclOptions || {}
+            var checkOKSetACL = function (uri, ok) {
+              if (!ok) {
+                complain('Error writing new file ' + task.to)
+                return reject(new Error('Error writing new file ' + task.to))
+              }
+
+              UI.authn.setACLUserPublic(dest, me, aclOptions)
+                .then(() => doNextTask())
+                .catch(err => {
+                  let message = 'Error setting access permissions for ' +
+                    task.to + ' : ' + err.message
+                  complain(message)
+                  return reject(new Error(message))
+                })
             }
 
-            UI.authn.setACLUserPublic(dest, me, aclOptions)
-              .then(() => doNextTask())
-              .catch(err => {
-                let message = 'Error setting access permissions for ' +
-                  task.to + ' : ' + err.message
-                complain(message)
-                return reject(new Error(message))
-              })
-          }
-
-          if ('content' in task) {
-            kb.fetcher.webOperation('PUT', dest, { data: task.content, saveMetadata: true, contentType: task.contentType })
-              .then(() => checkOKSetACL(dest, true))
-          } else if ('existing' in task) {
-            checkOKSetACL(dest, true)
-          } else {
-            reject(new Error('copy not expected buiding new app'))
-            // var from = task.from || task.to // default source to be same as dest
-            // UI.widgets.webCopy(base + from, dest, task.contentType, checkOKSetACL)
+            if ('content' in task) {
+              kb.fetcher.webOperation('PUT', dest, { data: task.content, saveMetadata: true, contentType: task.contentType })
+                .then(() => checkOKSetACL(dest, true))
+            } else if ('existing' in task) {
+              checkOKSetACL(dest, true)
+            } else {
+              reject(new Error('copy not expected buiding new app'))
+              // var from = task.from || task.to // default source to be same as dest
+              // UI.widgets.webCopy(base + from, dest, task.contentType, checkOKSetACL)
+            }
           }
         }
-      }
-      doNextTask()
+        doNextTask()
+      }, err => { // log in then
+        context.div.appendChild(UI.widgets.errorMessageBlock(err))
+      })
     })
   },
 
@@ -90926,125 +90932,23 @@ module.exports = {
   },
 
   render: function (subject, dom) {
-    // ////////////////////////////////////////////////////////////////////////////
-
-    /*
-    var newThingUI = function (context) {
-      var iconStyle = 'padding: 1em; width: 3em; height: 3em;'
-      var star = context.div.appendChild(dom.createElement('img'))
-      var visible = false // the inividual tools tools
-      star.setAttribute('src', UI.icons.iconBase + 'noun_272948.svg')
-      star.setAttribute('style', iconStyle)
-      star.setAttribute('title', 'Add another tool to the meeting')
-
-      var selectNewTool = function (event) {
-        visible = !visible
-        star.setAttribute('style', iconStyle + (visible ? 'background-color: yellow;' : ''))
-        styleTheIcons(visible ? '' : 'display: none;')
-      }
-      star.addEventListener('click', selectNewTool)
-      var makeNewAppInstance = function (options) {
-        return new Promise(function (resolve, reject) {
-          var callbackWS = function (ws, newBase) {
-            var newPaneOptions = {
-              newBase: newBase,
-              workspace: ws,
-              pane: options.pane
-            }
-            for (var opt in options) { // get div, dom, me
-              newPaneOptions[opt] = options[opt]
-            }
-            options.pane.mintNew(newPaneOptions)
-              .then(function (newPaneOptions) {
-                if (!newPaneOptions || !newPaneOptions.newInstance) {
-                  throw new Error('Cannot mint new - missing newInstance')
-                }
-                var p = options.div.appendChild(dom.createElement('p'))
-                p.setAttribute('style', 'font-size: 120%;')
-                // Make link to new thing
-                p.innerHTML =
-                  "Your <a target='_blank' href='" + newPaneOptions.newInstance.uri + "'><b>new " + options.noun + '</b></a> is ready to be set up. ' +
-                  "<br/><br/><a target='_blank' href='" + newPaneOptions.newInstance.uri + "'>Go to your new " + options.noun + '.</a>'
-                selectUI.parentNode.removeChild(selectUI) // Clean up
-                selectNewTool() // toggle star to plain and menu vanish again
-              })
-              .catch(function (err) {
-                complain(err)
-                reject(err)
-              })
-          }
-
-          var pa = options.pane
-          options.appPathSegment = 'edu.mit.solid.pane.' + pa.name
-          options.noun = pa.mintClass ? UI.utils.label(pa.mintClass) : (pa.name + ' @@')
-
-          var selectUI = UI.authn.selectWorkspace(dom, options, callbackWS)
-          options.div.appendChild(selectUI)
-        })
-      } // newAppInstance
-
-      var iconArray = []
-      for (var pn in panes) {
-        var pane = panes[pn]
-        if (pane.mintNew) {
-          var icon = context.div.appendChild(dom.createElement('img'))
-          icon.setAttribute('src', pane.icon)
-          var noun = pane.mintClass ? UI.utils.label(pane.mintClass) : (pane.name + ' @@')
-          icon.setAttribute('title', 'Make new ' + noun)
-          icon.setAttribute('style', iconStyle + 'display: none;')
-          iconArray.push(icon)
-          var foo = function (pane, icon, noun) {
-            var iconEle = icon
-            var thisPane = pane
-            var thisNoun = noun
-            if (!icon.disabled) {
-              icon.addEventListener('click', function (e) {
-                selectTool(iconEle)
-                var options = {
-                  event: e,
-                  iconEle: iconEle,
-                  pane: thisPane,
-                  noun: thisNoun,
-                  noIndexHTML: true, // do NOT @@ for now write a HTML file
-                  div: context.div,
-                  me: context.me,
-                  dom: context.dom
-                }
-                makeNewAppInstance(options)
-              })
-            }
-          } // foo
-          foo(pane, icon, noun)
-        }
-      }
-
-      var styleTheIcons = function (style) {
-        for (var i = 0; i < iconArray.length; i++) {
-          var st = iconStyle + style
-          if (iconArray[i].disabled) { // @@ unused
-            st += 'opacity: 0.3;'
-          }
-          iconArray[i].setAttribute('style', st) // eg 'background-color: #ccc;'
-        }
-      }
-      var selectTool = function (icon) {
-        styleTheIcons('display: none;') // 'background-color: #ccc;'
-        icon.setAttribute('style', iconStyle + 'background-color: yellow;')
-      }
-    }
-    */
-
     var showContent = function () {
       var context = {div: div, dom: dom, statusArea: div, me: me}
 
+      div.appendChild(dom.createElement('h4')).textContent = 'Login status'
+      var loginStatusDiv = div.appendChild(dom.createElement('div'))
+      loginStatusDiv.appendChild(UI.authn.loginStatusBox(dom, uri => {
+        // Here we know new log in status
+      }))
+
+      div.appendChild(dom.createElement('h4')).textContent = 'Create new thing somewhere'
       var creationDiv = div.appendChild(dom.createElement('div'))
       var creationContext = {div: creationDiv, dom: dom, statusArea: div, me: me}
-      creationDiv.appendChild(dom.createElement('h4')).textContent = 'Make a new tool'
       UI.create.newThingUI(creationContext, panes) // newUI Have to pass panes down
 
-      div.appendChild(dom.createElement('h4')).textContent = 'Private:'
+      div.appendChild(dom.createElement('h4')).textContent = 'Private things'
       UI.authn.registrationList(context, {private: true}).then(function (context) {
-        div.appendChild(dom.createElement('h4')).textContent = 'Public:'
+        div.appendChild(dom.createElement('h4')).textContent = 'Public things'
         UI.authn.registrationList(context, {public: true}).then(function (context) {
           // done
         })
@@ -92078,8 +91982,13 @@ module.exports = {
       div.appendChild(refreshButton)
     } // singleIssueUI
 
-    //              Render a single issue
+    // Whatever we are rendering, lets load the ontology
+    var flowOntology = UI.ns.wf('').doc()
+    if (!kb.holds(undefined, undefined, undefined, flowOntology)) { // If not loaded already
+      $rdf.parse(__webpack_require__(/*! ./wf.js */ "./node_modules/solid-panes/issue/wf.js"), kb, flowOntology.uri, 'text/turtle') // Load ontology directly
+    }
 
+    // Render a single issue
     if (t['http://www.w3.org/2005/01/wf/flow#Task'] ||
       kb.holds(subject, UI.ns.wf('tracker'))) {
       tracker = kb.any(subject, WF('tracker'))
@@ -92087,7 +91996,8 @@ module.exports = {
 
       var trackerURI = tracker.uri.split('#')[0]
       // Much data is in the tracker instance, so wait for the data from it
-      UI.store.fetcher.load([tracker.doc(), ns.wf('').doc()]).then(function (xhrs) {
+
+      UI.store.fetcher.load(tracker.doc()).then(function (xhrs) {
         var stateStore = kb.any(tracker, WF('stateStore'))
         UI.store.fetcher.nowOrWhenFetched(stateStore, subject, function drawIssuePane2 (ok, body) {
           if (!ok) return console.log('Failed to load state ' + stateStore + ' ' + body)
@@ -92146,7 +92056,7 @@ module.exports = {
       // Table of issues - when we have the main issue list
       // We also need the ontology loaded
       //
-      UI.store.fetcher.load([stateStore, ns.wf('').doc()]).then(function (xhrs) {
+      UI.store.fetcher.load([stateStore]).then(function (xhrs) {
         var query = new $rdf.Query(UI.utils.label(subject))
         var cats = kb.each(tracker, WF('issueCategory')) // zero or more
         var vars = ['issue', 'state', 'created']
@@ -92277,6 +92187,379 @@ module.exports = {
 }
 
 // ends
+
+
+/***/ }),
+
+/***/ "./node_modules/solid-panes/issue/wf.js":
+/*!**********************************************!*\
+  !*** ./node_modules/solid-panes/issue/wf.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = `
+#   Issue tracking - Worksflow application definiion ontology
+#
+# Finite state automaton ontology
+#
+# See requirements for tracking tools http://www.w3.org/2005/01/06-tool-req.html
+#
+@keywords a, is, of.
+
+@prefix :    <http://www.w3.org/2005/01/wf/flow#>.
+@prefix wf:    <http://www.w3.org/2005/01/wf/flow#>.
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix s: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+@prefix doc: <http://www.w3.org/2000/10/swap/pim/doc#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix contact: <http://www.w3.org/2000/10/swap/pim/contact#> .
+@prefix doap: <http://usefulinc.com/ns/doap#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+
+<> dc:title "Issue Tracking Ontology";
+
+    dct:creator <http://www.w3.org/People/Berners-Lee/card#i>;
+
+    s:comment """This ontology defines a very general class (Task)
+    which can used for any kind of bug tracking, issue tracking,
+    to-do-list management, action items, goal depednency, and so on.
+    It captures the state of a task as a subclass, so that
+    subsumption can be used.
+    It captures a discussion thread about a task.
+    It captures subtasks structure if necessary.
+    A "Tracker" defines actual set of states, categories, etc.,
+    which  a task can be in. The data about the tracker
+    guides the software managing the task.
+
+    There is some workflow modeling finite state machine
+    terms which are optional for  more complex definition
+    of the transitions allowed.
+    """.
+
+Task a s:Class;
+    s:label "task"@en; owl:disjointUnionOf (Open Closed);
+    s:comment """Something to be done in a wide sense,
+    an agenda item at a meeting is one example, but any
+    issue, task, action item, goal, product, deliverable, milestone, can such a thing.
+    The requirement for this framework was that it would allow
+    one to customize ontologies for things such as agenda items,
+    action items, working group issues with a spec, w3c Last Call issues,
+    software bugs and administrative requests.
+    In π-calculus, a process.
+    Make your type of issue a subclass of Task.
+    """.
+
+Open a s:Class; s:subClassOf Task;
+    s:label "open"@en, "ouvert"@fr;
+    s:comment """A task which needs attention. The very crude states of Open and Closed all
+        interoperatbility between different systems if the states for a given
+        application are made subclasses of either Open or Closed. This allows
+        tasks from different systems to be mixed and treatd together with
+        limited but valuable functionality.
+    """.
+
+Closed a s:Class; s:subClassOf Task;
+    s:label "closed"@en, "fermé"@fr;
+    s:comment """A task which does not neeed attention. It may be closed because
+        has been abandonned or completed, for example.
+    """.
+
+
+
+description a rdf:Property;
+        s:label "description";
+        s:comment """The description, definition,
+        or abstract. Information explaining what this is.
+        Not arbitrary comment about anything, only about the subject.
+        (Use this property for anything. There is no domain restriction.).""".
+
+dependent a rdf:Property;
+        s:label "how";  owl:inverseOf [ s:label "why"];
+        s:domain Task; s:range Task;
+        s:comment """Another task upon which this depends, in the sense that
+        this task cannot be completed without that task being done.
+        You can't use this for dependencies on anything other than other tasks.
+        (Note the US spelling of the URI. In the UK, a dependant is a something
+        which is dependent on somehing else.)""".
+
+assignee    a        rdf:Property;
+        s:label        "assigned to"; owl:inverseOf [s:label "assignment"];
+#        s:domain    Task;
+        s:range        foaf:Agent;
+        s:comment    """The person or group to whom this has been assigned.""".
+
+# use dct:modified
+#modified        a               rdf:Property;
+#                s:label         "last changed".
+
+modifiedBy      a               rdf:Property;
+                s:range         foaf:Agent;
+                s:label         "changed by".
+
+# use dct:created instead
+#created         a               rdf:Property;
+#                s:range         xsd:dateTime;
+#
+# Use foaf:maker instead
+#creator         a               rdf:Property;
+#                s:range         foaf:Agent;
+#                s:label         "changed by".
+
+subscriber      a               rdf:Property;
+                s:label         "subscriber";
+                s:range         foaf:Agent.
+
+
+################## Products
+#
+#
+# History:  The Tracker system included a cocept of a product,
+# such that an action  could be associated with *either* an issue *or* a product.
+# Noah Mendelsohn for the TAG needed to be able make
+# and to give products: Goals, scuuess criteria,
+#  deliverables with dates, schedules, TAG members assigned, related issues.
+#
+
+
+Product         a s:Class; s:subClassOf Task;
+                s:label "product";
+                s:comment """A product is a task which monitors something
+                which must be produced.""".
+
+deliverable     a rdf:Property; s:subPropertyOf dependent;
+                s:range Product;
+                s:label "deliverable"@en;
+                s:comment """Something which must be deliverered to accomplish this""".
+
+
+goalDescription a rdf:Property, owl:DatatypeProperty;
+                s:domain Task; s:range xsd:string;
+                s:label "goals";
+                s:comment """A textual description of the goals of this product, etc.""".
+
+successCriteria a rdf:Property, owl:DatatypeProperty;
+                s:domain Task; s:range xsd:string;
+                s:label "success criteria";
+                s:comment """A textual description of the successs critera.
+                How when we know this is done?""".
+
+dateDue         a rdf:Property, owl:DatatypeProperty;
+                s:domain Task; s:range xsd:date;
+                s:label "due"@en;
+                s:comment """The date this task is due.
+                """.
+
+##################  Attachments
+
+attachment      a rdf:Property;
+                s:label "attachment";
+                s:comment """Something related is attached for information.""".
+
+screenShot      a rdf:Property; s:subPropertyOf attachment;
+                s:label "screen shot"@en;
+                s:comment """An image taken by capturing the state of a
+                 computer screen, for example to demonstrate a problem""".
+
+testData        a rdf:Property; s:subPropertyOf attachment;
+                s:label "test data"@en;
+                s:comment """A file which can be used as inpiut to a test
+                or to demonstrate a problem. """.
+
+
+terminalOutput      a rdf:Property; s:subPropertyOf attachment;
+                s:label "terminal output"@en;
+                s:comment """A file showing user interaction from a
+                text terminal or console etc. """.
+
+
+message         a rdf:Property; s:subPropertyOf attachment;
+                s:label "message"@en;
+                s:comment """A message about this. Attached for information.""".
+
+
+Message         a s:Class; s:label "message"@en.
+recipent a rdf:Property; s:label "to"; s:domain Message; s:range foaf:Agent.
+sender a rdf:Property; s:label "from"; s:domain Message; s:range foaf:Agent.
+
+############################# A Tracker connects and manages issues
+
+tracker         a rdf:Property;
+                s:label "tracker";
+                owl:inverseOf [ s:label "issue"];
+                s:domain Task;
+                s:range Tracker.
+
+Tracker         a s:Class;
+                s:label "tracker";
+                s:comment """A set of issues and
+                the constraints on how they evolve.
+                To use this ontology, craete a new tracker.
+                Copy an existing one or make up your own.""".
+
+issueClass      a rdf:Property;
+                s:label "all issues must be in";
+                s:domain Tracker;
+                s:range s:Class, State;
+                s:comment """The class of issues which are allowed in this tracker.
+                This is essemtial to the operation of the tracker,
+                as it defines which states an issue can be in.
+                (The issueClass must be a disjointUnionOf the state classes)""".
+
+issueCategory   a rdf:Property;
+                s:label "issue category";
+                s:domain Tracker;
+                s:range s:Class;
+                s:comment """Issues may be categorized according to the
+                subclasses of this class""".
+
+stateStore      a rdf:Property;
+                s:label "state store";
+                s:domain Tracker;
+                s:range doc:Document;
+                s:comment """A read-write document.
+                The state of the issues is modified here.
+                When you set up a trcaker, thgis must be set to point
+                to a writeble data resource on the web.""".
+
+transactionStore
+                a rdf:Property;
+                s:label "transaction store";
+                s:domain Tracker;
+                s:range doc:Document;
+                s:comment """An appendable document. Transactions and messsages
+                    can be written into here""".
+
+asigneeClass
+                a rdf:Property;
+                s:label "assignees must be";
+                s:domain Tracker;
+                s:range s:Class;  # Subclass of foaf:Agent
+                s:comment """When an issue is assigned, the assignee must be from this class""".
+
+initialState
+                a rdf:Property;
+                s:label "initial state"@en;
+                s:label "état initial"@fr;
+                s:domain Tracker;
+                s:range State;
+                s:comment """The initial state for a new issue""".
+
+# Use this to link a project to a tracker
+doap:bug-database owl:inverseOf [ s:label "project"@en ].
+
+
+
+
+############################################################
+#
+#           Finite state machines
+#
+Change        a s:Class;
+        s:label "change";
+        s:comment """The universal class of things which
+change the state of a task.
+Included now: Creation, Transition. (Maybe in the future
+more π-calculus constructions such as splitting & merging tasks,
+and import/export of obligations to a foreign opaque system.)
+""".
+
+Transition     a s:Class; s:subClassOf Change;
+        s:label        "transition";
+        s:comment """A transition is a change of state of
+a task. Typical properties include date and/or source
+(a document causing the transition), and a final state.""".
+
+Creation     a s:Class; s:subClassOf Change;
+        s:label        "creation";
+        s:comment """A creation is a change from existence
+to non-existence
+a task. Typical properties include date and/or source
+(a document causing the transition), and a final state.""".
+
+
+date    s:range    DateTime.
+
+final    a         rdf:Property;
+        s:label        "to";
+        s:domain    Transition;
+        s:range    State.
+
+task        a        rdf:Property;
+        s:range        Task;
+        s:label        "task".
+
+requires    a rdf:Property;
+        s:label "requires";
+        s:domain    Transition;
+        s:range        rdf:List; # Of properties for validation
+        s:comment    """To be a valid transition,
+        a necessary (but not necessarily sufficuent) condition
+        is that there be recorded these properties for the record""".
+
+affects        a rdf:Property;
+        s:label "affects";
+        s:domain    doc:Work;
+        s:range        Task.
+
+
+# { ?x a Transition; task ?t; source ?doc } => { ?doc affects ?t }.
+
+
+creates        a rdf:Property;
+        s:label "creates";
+        s:domain    doc:Work;
+        s:range        Task.
+
+
+allowedTransitions a rdf:Property;
+        s:domain    State;
+        s:range        rdf:List; # @@@ of Action
+        s:label        "allowed transitions";
+        s:comment    """The state machine is defined
+    by these lists of transition allowed for each issue.
+    (An interesting option in the Web is to make an allowed transition
+    to a state in soemone else's ontology, which in turn allows
+    transitions into many ontologies.  So a finite state maxchine
+    may become very large. In practice this means that a task handed
+    off to another organization may be processed on all kinds of ways.)""".
+
+#    { ?x a TerminalState} => { ?x allowedTransitions () }.
+
+final         a rdf:Property;
+        s:label        "to";
+        s:range    State.
+
+issue        a        rdf:Property;
+        s:label        "issue";
+        s:comment
+        """A transition changes the state of the given issue.""".
+
+source    a        rdf:Property;
+        s:label        "source";
+        s:comment    """The source of a transition is
+                the document by which it happened""";
+        s:range        doc:Work.
+TerminalState a s:Class;
+    s:subClassOf State;
+    s:label "terminal state";
+    s:comment """A state from which there are no transisions.""".
+
+NonTerminalState a s:Class;
+    s:label "non-terminal state";
+    owl:disjointWith TerminalState;
+    s:comment """A state from which there are transisions.""".
+
+######################################################
+
+#ends
+`
 
 
 /***/ }),
@@ -93055,7 +93338,7 @@ module.exports = {
             parameterCell.appendChild(UI.widgets.errorMessageBlock(dom, err))
           })
       }
-      var mintUI = UI.widgets.selectWorkspace(dom, appDetails, gotWS)
+      var mintUI = UI.authn.selectWorkspace(dom, appDetails, gotWS)
       parameterCell.appendChild(mintUI)
     }
 
@@ -104099,40 +104382,45 @@ module.exports = {
   function makeNewAppInstance(options) {
     return new Promise(function (resolve, reject) {
       var selectUI; // , selectUIParent
-      var callbackWS = function callbackWS(ws, newBase) {
-        var newPaneOptions = {
-          newBase: newBase,
-          workspace: ws
-        };
-        for (var opt in options) {
-          // get div, dom, me, folder, pane, refreshTable
-          newPaneOptions[opt] = options[opt];
-        }
-        console.log('newThingUI: Minting new ' + newPaneOptions.pane.name + ' at ' + newPaneOptions.newBase);
-        options.pane.mintNew(newPaneOptions).then(function (newPaneOptions) {
-          if (!newPaneOptions || !newPaneOptions.newInstance) {
-            throw new Error('Cannot mint new - missing newInstance');
+      function callbackWS(ws, newBase) {
+        UI.authn.logInLoadProfile(context).then(function (context) {
+          var newPaneOptions = {
+            newBase: newBase,
+            workspace: ws
+          };
+          for (var opt in options) {
+            // get div, dom, me, folder, pane, refreshTable
+            newPaneOptions[opt] = options[opt];
           }
-          if (newPaneOptions.folder) {
-            kb.add(newPaneOptions.folder, UI.ns.ldp('contains'), kb.sym(newPaneOptions.newBase), newPaneOptions.folder.doc()); // Ping the patch system?
-            if (newPaneOptions.refreshTarget) {
-              newPaneOptions.refreshTarget.refresh(); // Refresh the cntaining display
+          console.log('newThingUI: Minting new ' + newPaneOptions.pane.name + ' at ' + newPaneOptions.newBase);
+          options.pane.mintNew(newPaneOptions).then(function (newPaneOptions) {
+            if (!newPaneOptions || !newPaneOptions.newInstance) {
+              throw new Error('Cannot mint new - missing newInstance');
             }
-            // selectUI.parentNode.removeChild(selectUI) It removes itself
-          } else {
-            var p = options.div.appendChild(dom.createElement('p'));
-            p.setAttribute('style', 'font-size: 120%;');
-            // Make link to new thing
-            p.innerHTML = "Your <a target='_blank' href='" + newPaneOptions.newInstance.uri + "'><b>new " + options.noun + '</b></a> is ready to be set up. ' + "<br/><br/><a target='_blank' href='" + newPaneOptions.newInstance.uri + "'>Go to your new " + options.noun + '.</a>';
-            // selectUI.parentNode.removeChild(selectUI) // Clean up
-            // selectUIParent.removeChild(selectUI) // Clean up
-          }
-          selectNewTool(); // toggle star to plain and menu vanish again
-        }).catch(function (err) {
-          complain(err);
-          reject(err);
+            if (newPaneOptions.folder) {
+              kb.add(newPaneOptions.folder, UI.ns.ldp('contains'), kb.sym(newPaneOptions.newBase), newPaneOptions.folder.doc()); // Ping the patch system?
+              if (newPaneOptions.refreshTarget) {
+                newPaneOptions.refreshTarget.refresh(); // Refresh the cntaining display
+              }
+              // selectUI.parentNode.removeChild(selectUI) It removes itself
+            } else {
+              var p = options.div.appendChild(dom.createElement('p'));
+              p.setAttribute('style', 'font-size: 120%;');
+              // Make link to new thing
+              p.innerHTML = "Your <a target='_blank' href='" + newPaneOptions.newInstance.uri + "'><b>new " + options.noun + '</b></a> is ready to be set up. ' + "<br/><br/><a target='_blank' href='" + newPaneOptions.newInstance.uri + "'>Go to your new " + options.noun + '.</a>';
+              // selectUI.parentNode.removeChild(selectUI) // Clean up
+              // selectUIParent.removeChild(selectUI) // Clean up
+            }
+            selectNewTool(); // toggle star to plain and menu vanish again
+          }).catch(function (err) {
+            complain(err);
+            reject(err);
+          });
+        }, function (err) {
+          // login fails
+          complain('Error logging on: ' + err);
         });
-      };
+      } // callbackWS
 
       var pa = options.pane;
       options.appPathSegment = 'edu.mit.solid.pane.' + pa.name;
@@ -106561,7 +106849,7 @@ function recordPersonalDefaults(klass, context) {
       } else {
         // no regs fo class
         reg = widgets.newThing(context.preferencesFile);
-        ins = [$rdf.st(reg, ns.rdf('type'), ns.solid('Regsitration'), context.preferencesFile), $rdf.st(reg, ns.solid('forClass'), klass, context.preferencesFile)];
+        ins = [$rdf.st(reg, ns.rdf('type'), ns.solid('Registration'), context.preferencesFile), $rdf.st(reg, ns.solid('forClass'), klass, context.preferencesFile)];
       }
       prefs = widgets.newThing(context.preferencesFile);
       ins.push($rdf.st(reg, ns.solid('personalDefaults'), prefs, context.preferencesFile));
@@ -106697,7 +106985,7 @@ var $rdf = __webpack_require__(/*! rdflib */ "./node_modules/rdflib/lib/index.js
 var error = __webpack_require__(/*! ./widgets/error */ "./node_modules/solid-ui/lib/widgets/error.js");
 var widgets = __webpack_require__(/*! ./widgets/index */ "./node_modules/solid-ui/lib/widgets/index.js");
 // const utils = require('./utils')
-var solidAuthClient = __webpack_require__(/*! solid-auth-client */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/index.js");
+var solidAuthClient = __webpack_require__(/*! solid-auth-client */ "./node_modules/solid-auth-client/lib/index.js");
 
 var UI = {
   log: __webpack_require__(/*! ./log */ "./node_modules/solid-ui/lib/log.js"),
@@ -107019,7 +107307,9 @@ function ensureTypeIndexes(context) {
             var relevant = { 'private': context.preferencesFile, 'public': context.publicProfile }[visibility];
 
             function putIndex(newIndex) {
-              kb.fetcher.webOperation('PUT', newIndex.uri, { data: '# ' + new Date() + ' Blank initial Type index\n' }).then(function (xhr) {
+              kb.fetcher.webOperation('PUT', newIndex.uri, {
+                data: '# ' + new Date() + ' Blank initial Type index\n',
+                contentType: 'text/turtle' }).then(function (xhr) {
                 resolve(context);
               }, function (e) {
                 var msg = 'Error creating new index ' + e;
@@ -107507,7 +107797,7 @@ function checkUser(setUserCallback) {
  * A big sign-up/sign in box or a logout box depending on the state
  *
  * @param dom
- * @param listener
+ * @param listener(uri)
  *
  * @returns {Element}
  */
@@ -107530,17 +107820,19 @@ function loginStatusBox(dom, listener) {
 
   var zapIt = function zapIt() {
     // UI.preferences.set('me', '')
-    var message = 'Your Web ID was ' + me + '. It has been forgotten.';
-    me = null;
-    try {
-      UI.log.alert(message);
-    } catch (e) {
+    solidAuthClient.logout().then(function () {
+      var message = 'Your Web ID was ' + me + '. It has been forgotten.';
+      me = null;
       try {
-        window.alert(message);
-      } catch (e) {}
-    }
-    box.refresh();
-    if (listener) listener(null);
+        UI.log.alert(message);
+      } catch (e) {
+        try {
+          window.alert(message);
+        } catch (e) {}
+      }
+      box.refresh();
+      if (listener) listener(null);
+    });
   };
 
   var logoutButton = function logoutButton(me) {
@@ -112536,8 +112828,8 @@ function buildCheckboxForm(dom, kb, lab, del, ins, form, store, tristate) {
     var toDelete = input.state === true ? ins : input.state === false ? del : [];
     input.newState = input.state === null ? true : input.state === true ? false : tristate ? null : true;
     var toInsert = input.newState === true ? ins : input.newState === false ? del : [];
-    console.log('  Deleting  ' + toDelete + ' @ ' + toDelete.why);
-    console.log('  Inserting ' + toInsert + ' @ ' + toInsert.why);
+    console.log('  Deleting  ' + toDelete);
+    console.log('  Inserting ' + toInsert);
     UI.store.updater.update(toDelete, toInsert, function (uri, success, errorBody) {
       if (!success) {
         if (toDelete.why) {
@@ -113558,1896 +113850,6 @@ function indexes(book) {
 })('undefined' !== typeof window ? window : null);
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
-
-/***/ }),
-
-/***/ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/api.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/solid-ui/node_modules/solid-auth-client/lib/api.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.logout = exports.currentSession = exports.popupLogin = exports.login = exports.fetch = undefined;
-
-var _extends2 = __webpack_require__(/*! babel-runtime/helpers/extends */ "./node_modules/babel-runtime/helpers/extends.js");
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "./node_modules/babel-runtime/helpers/asyncToGenerator.js");
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var firstSession = function () {
-  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(storage, authFns) {
-    var _session;
-
-    return _regenerator2.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            if (!(authFns.length === 0)) {
-              _context.next = 2;
-              break;
-            }
-
-            return _context.abrupt('return', null);
-
-          case 2:
-            _context.prev = 2;
-            _context.next = 5;
-            return authFns[0]();
-
-          case 5:
-            _session = _context.sent;
-
-            if (!_session) {
-              _context.next = 8;
-              break;
-            }
-
-            return _context.abrupt('return', (0, _session2.saveSession)(storage)(_session));
-
-          case 8:
-            _context.next = 13;
-            break;
-
-          case 10:
-            _context.prev = 10;
-            _context.t0 = _context['catch'](2);
-
-            console.error(_context.t0);
-
-          case 13:
-            return _context.abrupt('return', firstSession(storage, authFns.slice(1)));
-
-          case 14:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, this, [[2, 10]]);
-  }));
-
-  return function firstSession(_x, _x2) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-var login = exports.login = function () {
-  var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(idp, options) {
-    var webIdTlsSession, webIdOidcLoginRedirectFn;
-    return _regenerator2.default.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            options = (0, _extends3.default)({}, defaultLoginOptions(), options);
-            _context2.next = 3;
-            return WebIdTls.login(idp);
-
-          case 3:
-            webIdTlsSession = _context2.sent;
-
-            if (!webIdTlsSession) {
-              _context2.next = 6;
-              break;
-            }
-
-            return _context2.abrupt('return', (0, _session2.saveSession)(options.storage)(webIdTlsSession));
-
-          case 6:
-            _context2.next = 8;
-            return WebIdOidc.login(idp, options);
-
-          case 8:
-            webIdOidcLoginRedirectFn = _context2.sent;
-            return _context2.abrupt('return', webIdOidcLoginRedirectFn);
-
-          case 10:
-          case 'end':
-            return _context2.stop();
-        }
-      }
-    }, _callee2, this);
-  }));
-
-  return function login(_x3, _x4) {
-    return _ref2.apply(this, arguments);
-  };
-}();
-
-var popupLogin = exports.popupLogin = function () {
-  var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(options) {
-    var childWindow, session;
-    return _regenerator2.default.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            if (options.popupUri) {
-              _context3.next = 2;
-              break;
-            }
-
-            throw new Error('Must provide options.popupUri');
-
-          case 2:
-            if (!options.callbackUri) {
-              options.callbackUri = options.popupUri;
-            }
-            options = (0, _extends3.default)({}, defaultLoginOptions(), options);
-            childWindow = (0, _popup.openIdpSelector)(options);
-            _context3.next = 7;
-            return (0, _popup.startPopupServer)(options.storage, childWindow, options);
-
-          case 7:
-            session = _context3.sent;
-            return _context3.abrupt('return', session);
-
-          case 9:
-          case 'end':
-            return _context3.stop();
-        }
-      }
-    }, _callee3, this);
-  }));
-
-  return function popupLogin(_x5) {
-    return _ref3.apply(this, arguments);
-  };
-}();
-
-var currentSession = exports.currentSession = function () {
-  var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4() {
-    var storage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _storage.defaultStorage)();
-    var session;
-    return _regenerator2.default.wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            _context4.next = 2;
-            return (0, _session2.getSession)(storage);
-
-          case 2:
-            session = _context4.sent;
-
-            if (!session) {
-              _context4.next = 5;
-              break;
-            }
-
-            return _context4.abrupt('return', session);
-
-          case 5:
-            return _context4.abrupt('return', firstSession(storage, [WebIdOidc.currentSession.bind(null, storage)]));
-
-          case 6:
-          case 'end':
-            return _context4.stop();
-        }
-      }
-    }, _callee4, this);
-  }));
-
-  return function currentSession() {
-    return _ref4.apply(this, arguments);
-  };
-}();
-
-var logout = exports.logout = function () {
-  var _ref5 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {
-    var storage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _storage.defaultStorage)();
-    var session;
-    return _regenerator2.default.wrap(function _callee5$(_context5) {
-      while (1) {
-        switch (_context5.prev = _context5.next) {
-          case 0:
-            _context5.next = 2;
-            return (0, _session2.getSession)(storage);
-
-          case 2:
-            session = _context5.sent;
-
-            if (session) {
-              _context5.next = 5;
-              break;
-            }
-
-            return _context5.abrupt('return');
-
-          case 5:
-            _context5.t0 = session.authType;
-            _context5.next = _context5.t0 === 'WebID-OIDC' ? 8 : _context5.t0 === 'WebID-TLS' ? 18 : 18;
-            break;
-
-          case 8:
-            _context5.prev = 8;
-            _context5.next = 11;
-            return WebIdOidc.logout(storage);
-
-          case 11:
-            _context5.next = 17;
-            break;
-
-          case 13:
-            _context5.prev = 13;
-            _context5.t1 = _context5['catch'](8);
-
-            console.warn('Error logging out:');
-            console.error(_context5.t1);
-
-          case 17:
-            return _context5.abrupt('break', 19);
-
-          case 18:
-            return _context5.abrupt('break', 19);
-
-          case 19:
-            return _context5.abrupt('return', (0, _session2.clearSession)(storage));
-
-          case 20:
-          case 'end':
-            return _context5.stop();
-        }
-      }
-    }, _callee5, this, [[8, 13]]);
-  }));
-
-  return function logout() {
-    return _ref5.apply(this, arguments);
-  };
-}();
-
-var _authnFetch = __webpack_require__(/*! ./authn-fetch */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/authn-fetch.js");
-
-var _popup = __webpack_require__(/*! ./popup */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/popup.js");
-
-var _session2 = __webpack_require__(/*! ./session */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/session.js");
-
-var _storage = __webpack_require__(/*! ./storage */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/storage.js");
-
-var _urlUtil = __webpack_require__(/*! ./url-util */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/url-util.js");
-
-var _webidTls = __webpack_require__(/*! ./webid-tls */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/webid-tls.js");
-
-var WebIdTls = _interopRequireWildcard(_webidTls);
-
-var _webidOidc = __webpack_require__(/*! ./webid-oidc */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/webid-oidc.js");
-
-var WebIdOidc = _interopRequireWildcard(_webidOidc);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var defaultLoginOptions = function defaultLoginOptions() {
-  var url = (0, _urlUtil.currentUrlNoParams)();
-  return {
-    callbackUri: url ? url.split('#')[0] : null,
-    popupUri: null,
-    storage: (0, _storage.defaultStorage)()
-  };
-};
-/* global RequestInfo, Response */
-var fetch = exports.fetch = function fetch(url, options) {
-  return (0, _authnFetch.authnFetch)((0, _storage.defaultStorage)())(url, options);
-};
-
-/***/ }),
-
-/***/ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/authn-fetch.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/solid-ui/node_modules/solid-auth-client/lib/authn-fetch.js ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "./node_modules/babel-runtime/helpers/asyncToGenerator.js");
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-exports.authnFetch = authnFetch;
-
-__webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
-
-var _host = __webpack_require__(/*! ./host */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/host.js");
-
-var _session = __webpack_require__(/*! ./session */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/session.js");
-
-var _webidOidc = __webpack_require__(/*! ./webid-oidc */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/webid-oidc.js");
-
-var WebIdOidc = _interopRequireWildcard(_webidOidc);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* global fetch, RequestInfo, Response */
-function authnFetch(storage) {
-  var _this = this;
-
-  return function () {
-    var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(url, options) {
-      var session, shouldShareCreds, resp, _shouldShareCreds;
-
-      return _regenerator2.default.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              options = options || {};
-              _context.next = 3;
-              return (0, _session.getSession)(storage);
-
-            case 3:
-              session = _context.sent;
-              _context.next = 6;
-              return shouldShareCredentials(storage)(url);
-
-            case 6:
-              shouldShareCreds = _context.sent;
-
-              if (!(session && shouldShareCreds)) {
-                _context.next = 9;
-                break;
-              }
-
-              return _context.abrupt('return', fetchWithCredentials(session, url, options));
-
-            case 9:
-              _context.next = 11;
-              return fetch(url, options);
-
-            case 11:
-              resp = _context.sent;
-
-              if (!(resp.status === 401)) {
-                _context.next = 20;
-                break;
-              }
-
-              _context.next = 15;
-              return (0, _host.updateHostFromResponse)(storage)(resp);
-
-            case 15:
-              _context.next = 17;
-              return shouldShareCredentials(storage)(url);
-
-            case 17:
-              _shouldShareCreds = _context.sent;
-
-              if (!(session && _shouldShareCreds)) {
-                _context.next = 20;
-                break;
-              }
-
-              return _context.abrupt('return', fetchWithCredentials(session, url, options));
-
-            case 20:
-              return _context.abrupt('return', resp);
-
-            case 21:
-            case 'end':
-              return _context.stop();
-          }
-        }
-      }, _callee, _this);
-    }));
-
-    return function (_x, _x2) {
-      return _ref.apply(this, arguments);
-    };
-  }();
-}
-
-function shouldShareCredentials(storage) {
-  var _this2 = this;
-
-  return function () {
-    var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(url) {
-      var session, requestHost;
-      return _regenerator2.default.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return (0, _session.getSession)(storage);
-
-            case 2:
-              session = _context2.sent;
-
-              if (session) {
-                _context2.next = 5;
-                break;
-              }
-
-              return _context2.abrupt('return', false);
-
-            case 5:
-              _context2.next = 7;
-              return (0, _host.getHost)(storage)(url);
-
-            case 7:
-              requestHost = _context2.sent;
-              return _context2.abrupt('return', requestHost != null && session.authType === requestHost.authType);
-
-            case 9:
-            case 'end':
-              return _context2.stop();
-          }
-        }
-      }, _callee2, _this2);
-    }));
-
-    return function (_x3) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-}
-
-var fetchWithCredentials = function () {
-  var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(session, url, options) {
-    return _regenerator2.default.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.t0 = session.authType;
-            _context3.next = _context3.t0 === 'WebID-OIDC' ? 3 : _context3.t0 === 'WebID-TLS' ? 4 : 4;
-            break;
-
-          case 3:
-            return _context3.abrupt('return', WebIdOidc.fetchWithCredentials(session)(url, options));
-
-          case 4:
-            return _context3.abrupt('return', fetch(url, options));
-
-          case 5:
-          case 'end':
-            return _context3.stop();
-        }
-      }
-    }, _callee3, undefined);
-  }));
-
-  return function fetchWithCredentials(_x4, _x5, _x6) {
-    return _ref3.apply(this, arguments);
-  };
-}();
-
-/***/ }),
-
-/***/ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/host.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/solid-ui/node_modules/solid-auth-client/lib/host.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.hostNameFromRequestInfo = undefined;
-
-var _defineProperty2 = __webpack_require__(/*! babel-runtime/helpers/defineProperty */ "./node_modules/babel-runtime/helpers/defineProperty.js");
-
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
-var _extends3 = __webpack_require__(/*! babel-runtime/helpers/extends */ "./node_modules/babel-runtime/helpers/extends.js");
-
-var _extends4 = _interopRequireDefault(_extends3);
-
-var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "./node_modules/babel-runtime/helpers/asyncToGenerator.js");
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-exports.getHost = getHost;
-exports.saveHost = saveHost;
-exports.updateHostFromResponse = updateHostFromResponse;
-
-var _session = __webpack_require__(/*! ./session */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/session.js");
-
-var _storage = __webpack_require__(/*! ./storage */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/storage.js");
-
-var _webidOidc = __webpack_require__(/*! ./webid-oidc */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/webid-oidc.js");
-
-var WebIdOidc = _interopRequireWildcard(_webidOidc);
-
-var _webidTls = __webpack_require__(/*! ./webid-tls */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/webid-tls.js");
-
-var WebIdTls = _interopRequireWildcard(_webidTls);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* global RequestInfo, Request, Response, URL */
-var hostNameFromRequestInfo = exports.hostNameFromRequestInfo = function hostNameFromRequestInfo(url) {
-  var _url = url instanceof URL ? url : url instanceof Request ? new URL(url.url) : new URL(url);
-  return _url.host;
-};
-
-function getHost(storage) {
-  var _this = this;
-
-  return function () {
-    var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(url) {
-      var requestHostName, session, _ref2, hosts;
-
-      return _regenerator2.default.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              requestHostName = hostNameFromRequestInfo(url);
-              _context.next = 3;
-              return (0, _session.getSession)(storage);
-
-            case 3:
-              session = _context.sent;
-
-              if (!(session && hostNameFromRequestInfo(session.idp) === requestHostName)) {
-                _context.next = 6;
-                break;
-              }
-
-              return _context.abrupt('return', { url: requestHostName, authType: session.authType });
-
-            case 6:
-              _context.next = 8;
-              return (0, _storage.getData)(storage);
-
-            case 8:
-              _ref2 = _context.sent;
-              hosts = _ref2.hosts;
-
-              if (hosts) {
-                _context.next = 12;
-                break;
-              }
-
-              return _context.abrupt('return', null);
-
-            case 12:
-              return _context.abrupt('return', hosts[requestHostName] || null);
-
-            case 13:
-            case 'end':
-              return _context.stop();
-          }
-        }
-      }, _callee, _this);
-    }));
-
-    return function (_x) {
-      return _ref.apply(this, arguments);
-    };
-  }();
-}
-
-function saveHost(storage) {
-  var _this2 = this;
-
-  return function () {
-    var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(_ref4) {
-      var url = _ref4.url,
-          authType = _ref4.authType;
-      return _regenerator2.default.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return (0, _storage.updateStorage)(storage, function (data) {
-                return (0, _extends4.default)({}, data, {
-                  hosts: (0, _extends4.default)({}, data.hosts, (0, _defineProperty3.default)({}, url, { authType: authType }))
-                });
-              });
-
-            case 2:
-              return _context2.abrupt('return', { url: url, authType: authType });
-
-            case 3:
-            case 'end':
-              return _context2.stop();
-          }
-        }
-      }, _callee2, _this2);
-    }));
-
-    return function (_x2) {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-}
-
-function updateHostFromResponse(storage) {
-  var _this3 = this;
-
-  return function () {
-    var _ref5 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(resp) {
-      var authType, hostName;
-      return _regenerator2.default.wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              authType = void 0;
-
-              if (WebIdOidc.requiresAuth(resp)) {
-                authType = 'WebID-OIDC';
-              } else if (WebIdTls.requiresAuth(resp)) {
-                authType = 'WebID-TLS';
-              } else {
-                authType = null;
-              }
-
-              hostName = hostNameFromRequestInfo(resp.url);
-
-              if (!authType) {
-                _context3.next = 6;
-                break;
-              }
-
-              _context3.next = 6;
-              return saveHost(storage)({ url: hostName, authType: authType });
-
-            case 6:
-            case 'end':
-              return _context3.stop();
-          }
-        }
-      }, _callee3, _this3);
-    }));
-
-    return function (_x3) {
-      return _ref5.apply(this, arguments);
-    };
-  }();
-}
-
-/***/ }),
-
-/***/ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/index.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/solid-ui/node_modules/solid-auth-client/lib/index.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _api = __webpack_require__(/*! ./api */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/api.js");
-
-Object.defineProperty(exports, 'login', {
-  enumerable: true,
-  get: function get() {
-    return _api.login;
-  }
-});
-Object.defineProperty(exports, 'popupLogin', {
-  enumerable: true,
-  get: function get() {
-    return _api.popupLogin;
-  }
-});
-Object.defineProperty(exports, 'currentSession', {
-  enumerable: true,
-  get: function get() {
-    return _api.currentSession;
-  }
-});
-Object.defineProperty(exports, 'logout', {
-  enumerable: true,
-  get: function get() {
-    return _api.logout;
-  }
-});
-Object.defineProperty(exports, 'fetch', {
-  enumerable: true,
-  get: function get() {
-    return _api.fetch;
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/ipc.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/solid-ui/node_modules/solid-auth-client/lib/ipc.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.combineHandlers = exports.server = exports.client = undefined;
-
-var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "./node_modules/babel-runtime/helpers/asyncToGenerator.js");
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var _promise = __webpack_require__(/*! babel-runtime/core-js/promise */ "./node_modules/babel-runtime/core-js/promise.js");
-
-var _promise2 = _interopRequireDefault(_promise);
-
-var _typeof2 = __webpack_require__(/*! babel-runtime/helpers/typeof */ "./node_modules/babel-runtime/helpers/typeof.js");
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
-var _defineProperty2 = __webpack_require__(/*! babel-runtime/helpers/defineProperty */ "./node_modules/babel-runtime/helpers/defineProperty.js");
-
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
-var _v = __webpack_require__(/*! uuid/v4 */ "./node_modules/uuid/v4.js");
-
-var _v2 = _interopRequireDefault(_v);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/*
-  This module describes a simple IPC interface for communicating between browser windows.
-  Window.postMessage() is the transport interface, and a request/response interface
-  is defined on top of it as follows:
-
-  const request = {
-    'solid-auth-client': {
-      id: 'abcd-efgh-ijkl',
-      method: 'doSomethingPlease',
-      args: [ 'one', 'two', 'three' ]
-    }
-  }
-
-  const response = {
-    'solid-auth-client': {
-      id: 'abcd-efgh-ijkl',
-      ret: 'the_value'
-    }
-  }
-*/
-
-var NAMESPACE = 'solid-auth-client';
-
-
-var namespace = function namespace(data) {
-  return (0, _defineProperty3.default)({}, NAMESPACE, data);
-};
-
-var getNamespacedPayload = function getNamespacedPayload(eventData) {
-  if (!eventData || (typeof eventData === 'undefined' ? 'undefined' : (0, _typeof3.default)(eventData)) !== 'object') {
-    return null;
-  }
-  var payload = eventData[NAMESPACE];
-  if (!payload || (typeof payload === 'undefined' ? 'undefined' : (0, _typeof3.default)(payload)) !== 'object') {
-    return null;
-  }
-  return payload;
-};
-
-var getResponse = function getResponse(eventData) {
-  var resp = getNamespacedPayload(eventData);
-  if (!resp) {
-    return null;
-  }
-  var id = resp.id,
-      ret = resp.ret;
-
-  return id != null && typeof id === 'string' && resp.hasOwnProperty('ret') ? { id: id, ret: ret } : null;
-};
-
-var getRequest = function getRequest(eventData) {
-  var req = getNamespacedPayload(eventData);
-  if (!req) {
-    return null;
-  }
-  var id = req.id,
-      method = req.method,
-      args = req.args;
-
-  return id != null && typeof id === 'string' && typeof method === 'string' && Array.isArray(args) ? { id: id, method: method, args: args } : null;
-};
-
-var client = exports.client = function client(serverWindow, serverOrigin) {
-  return function (request) {
-    return new _promise2.default(function (resolve, reject) {
-      var reqId = (0, _v2.default)();
-      var responseListener = function responseListener(event) {
-        var data = event.data,
-            origin = event.origin;
-
-        var resp = getResponse(data);
-        if (serverOrigin !== '*' && origin !== serverOrigin || !resp) {
-          return;
-        }
-        if (resp.id !== reqId) {
-          return;
-        }
-        resolve(resp.ret);
-        window.removeEventListener('message', responseListener);
-      };
-      window.addEventListener('message', responseListener);
-      serverWindow.postMessage({
-        'solid-auth-client': {
-          id: reqId,
-          method: request.method,
-          args: request.args
-        }
-      }, serverOrigin);
-    });
-  };
-};
-
-var server = exports.server = function server(clientWindow, clientOrigin) {
-  return function (handle) {
-    var messageListener = function () {
-      var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(event) {
-        var data, origin, req, resp;
-        return _regenerator2.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                data = event.data, origin = event.origin;
-                req = getRequest(data);
-
-                if (req) {
-                  _context.next = 4;
-                  break;
-                }
-
-                return _context.abrupt('return');
-
-              case 4:
-                if (!(origin !== clientOrigin)) {
-                  _context.next = 7;
-                  break;
-                }
-
-                console.warn('SECURITY WARNING: solid-auth-client is listening for messages from ' + clientOrigin + ', ' + ('but received a message from ' + origin + '.  Ignoring the message.'));
-                return _context.abrupt('return');
-
-              case 7:
-                _context.next = 9;
-                return handle(req);
-
-              case 9:
-                resp = _context.sent;
-
-                if (resp) {
-                  clientWindow.postMessage(namespace(resp), clientOrigin);
-                }
-
-              case 11:
-              case 'end':
-                return _context.stop();
-            }
-          }
-        }, _callee, undefined);
-      }));
-
-      return function messageListener(_x) {
-        return _ref2.apply(this, arguments);
-      };
-    }();
-
-    var _server = {
-      start: function start() {
-        window.addEventListener('message', messageListener);
-        return _server;
-      },
-      stop: function stop() {
-        window.removeEventListener('message', messageListener);
-        return _server;
-      }
-    };
-    return _server;
-  };
-};
-
-var combineHandlers = exports.combineHandlers = function combineHandlers() {
-  for (var _len = arguments.length, handlers = Array(_len), _key = 0; _key < _len; _key++) {
-    handlers[_key] = arguments[_key];
-  }
-
-  return function (req) {
-    return handlers.map(function (handler) {
-      return handler(req);
-    }).find(function (promise) {
-      return promise !== null;
-    });
-  };
-};
-
-/***/ }),
-
-/***/ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/popup.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/solid-ui/node_modules/solid-auth-client/lib/popup.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.openIdpSelector = exports.startPopupServer = exports.appOriginHandler = exports.loginHandler = exports.storageHandler = undefined;
-
-var _promise = __webpack_require__(/*! babel-runtime/core-js/promise */ "./node_modules/babel-runtime/core-js/promise.js");
-
-var _promise2 = _interopRequireDefault(_promise);
-
-var _toConsumableArray2 = __webpack_require__(/*! babel-runtime/helpers/toConsumableArray */ "./node_modules/babel-runtime/helpers/toConsumableArray.js");
-
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
-
-var _ipc = __webpack_require__(/*! ./ipc */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/ipc.js");
-
-var _urlUtil = __webpack_require__(/*! ./url-util */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/url-util.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var popupAppRequestHandler = function popupAppRequestHandler(store, options, foundSessionCb) {
-  return (0, _ipc.combineHandlers)(storageHandler(store), loginHandler(options, foundSessionCb), appOriginHandler);
-};
-
-var storageHandler = exports.storageHandler = function storageHandler(store) {
-  return function (req) {
-    var id = req.id,
-        method = req.method,
-        args = req.args;
-
-    switch (method) {
-      case 'storage/getItem':
-        return store.getItem.apply(store, (0, _toConsumableArray3.default)(args)).then(function (item) {
-          return { id: id, ret: item };
-        });
-      case 'storage/setItem':
-        return store.setItem.apply(store, (0, _toConsumableArray3.default)(args)).then(function () {
-          return { id: id, ret: null };
-        });
-      case 'storage/removeItem':
-        return store.removeItem.apply(store, (0, _toConsumableArray3.default)(args)).then(function () {
-          return { id: id, ret: null };
-        });
-      default:
-        return null;
-    }
-  };
-};
-
-var loginHandler = exports.loginHandler = function loginHandler(options, foundSessionCb) {
-  return function (req) {
-    var id = req.id,
-        method = req.method,
-        args = req.args;
-
-    switch (method) {
-      case 'getLoginOptions':
-        return _promise2.default.resolve({
-          id: id,
-          ret: {
-            popupUri: options.popupUri,
-            callbackUri: options.callbackUri
-          }
-        });
-      case 'foundSession':
-        foundSessionCb(args[0]);
-        return _promise2.default.resolve({ id: id, ret: null });
-      default:
-        return null;
-    }
-  };
-};
-
-var appOriginHandler = exports.appOriginHandler = function appOriginHandler(req) {
-  var id = req.id,
-      method = req.method;
-
-  return method === 'getAppOrigin' ? _promise2.default.resolve({ id: id, ret: window.location.origin }) : null;
-};
-
-var startPopupServer = exports.startPopupServer = function startPopupServer(store, childWindow, options) {
-  return new _promise2.default(function (resolve, reject) {
-    if (!(options.popupUri && options.callbackUri)) {
-      return reject(new Error('Cannot serve a popup without both "options.popupUri" and "options.callbackUri"'));
-    }
-    var popupServer = (0, _ipc.server)(childWindow, (0, _urlUtil.originOf)(options.popupUri))(popupAppRequestHandler(store, options, function (session) {
-      popupServer.stop();
-      resolve(session);
-    }));
-    popupServer.start();
-  });
-};
-
-var openIdpSelector = exports.openIdpSelector = function openIdpSelector(options) {
-  if (!(options.popupUri && options.callbackUri)) {
-    throw new Error('Cannot open IDP select UI.  Must provide both "options.popupUri" and "options.callbackUri".');
-  }
-  var width = 650;
-  var height = 400;
-  var w = window.open(options.popupUri, '_blank', 'width=' + width + ',height=' + height + ',left=' + (window.innerWidth - width) / 2 + ',top=' + (window.innerHeight - height) / 2);
-  return w;
-};
-
-/***/ }),
-
-/***/ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/session.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/solid-ui/node_modules/solid-auth-client/lib/session.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.clearSession = exports.getSession = undefined;
-
-var _extends2 = __webpack_require__(/*! babel-runtime/helpers/extends */ "./node_modules/babel-runtime/helpers/extends.js");
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "./node_modules/babel-runtime/helpers/asyncToGenerator.js");
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var getSession = exports.getSession = function () {
-  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(storage) {
-    var data;
-    return _regenerator2.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return (0, _storage.getData)(storage);
-
-          case 2:
-            data = _context.sent;
-            return _context.abrupt('return', data.session || null);
-
-          case 4:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, this);
-  }));
-
-  return function getSession(_x) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-var clearSession = exports.clearSession = function () {
-  var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(storage) {
-    return _regenerator2.default.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return (0, _storage.updateStorage)(storage, function (data) {
-              return (0, _extends3.default)({}, data, { session: null });
-            });
-
-          case 2:
-          case 'end':
-            return _context3.stop();
-        }
-      }
-    }, _callee3, this);
-  }));
-
-  return function clearSession(_x3) {
-    return _ref3.apply(this, arguments);
-  };
-}();
-
-exports.saveSession = saveSession;
-
-var _storage = __webpack_require__(/*! ./storage */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/storage.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function saveSession(storage) {
-  var _this = this;
-
-  return function () {
-    var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(session) {
-      var data;
-      return _regenerator2.default.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return (0, _storage.updateStorage)(storage, function (data) {
-                return (0, _extends3.default)({}, data, { session: session });
-              });
-
-            case 2:
-              data = _context2.sent;
-              return _context2.abrupt('return', data.session);
-
-            case 4:
-            case 'end':
-              return _context2.stop();
-          }
-        }
-      }, _callee2, _this);
-    }));
-
-    return function (_x2) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-}
-
-/***/ }),
-
-/***/ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/storage.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/solid-ui/node_modules/solid-auth-client/lib/storage.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.postMessageStorage = exports.memStorage = exports.updateStorage = exports.getData = exports.defaultStorage = exports.NAMESPACE = undefined;
-
-var _promise = __webpack_require__(/*! babel-runtime/core-js/promise */ "./node_modules/babel-runtime/core-js/promise.js");
-
-var _promise2 = _interopRequireDefault(_promise);
-
-var _stringify = __webpack_require__(/*! babel-runtime/core-js/json/stringify */ "./node_modules/babel-runtime/core-js/json/stringify.js");
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
-var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "./node_modules/babel-runtime/helpers/asyncToGenerator.js");
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-/**
- * Gets the deserialized stored data
- */
-var getData = exports.getData = function () {
-  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(store) {
-    var serialized, data;
-    return _regenerator2.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            serialized = void 0;
-            data = void 0;
-            _context.prev = 2;
-            _context.next = 5;
-            return store.getItem(NAMESPACE);
-
-          case 5:
-            serialized = _context.sent;
-
-            data = JSON.parse(serialized || '{}');
-            _context.next = 14;
-            break;
-
-          case 9:
-            _context.prev = 9;
-            _context.t0 = _context['catch'](2);
-
-            console.warn('Could not deserialize data:', serialized);
-            console.error(_context.t0);
-            data = {};
-
-          case 14:
-            return _context.abrupt('return', data);
-
-          case 15:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, this, [[2, 9]]);
-  }));
-
-  return function getData(_x) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-/**
- * Updates a Storage object without mutating its intermediate representation.
- */
-
-
-var updateStorage = exports.updateStorage = function () {
-  var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(store, update) {
-    var currentData, newData;
-    return _regenerator2.default.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.next = 2;
-            return getData(store);
-
-          case 2:
-            currentData = _context2.sent;
-            newData = update(currentData);
-            _context2.next = 6;
-            return store.setItem(NAMESPACE, (0, _stringify2.default)(newData));
-
-          case 6:
-            return _context2.abrupt('return', newData);
-
-          case 7:
-          case 'end':
-            return _context2.stop();
-        }
-      }
-    }, _callee2, this);
-  }));
-
-  return function updateStorage(_x2, _x3) {
-    return _ref2.apply(this, arguments);
-  };
-}();
-
-/**
- * Takes a synchronous storage interface and wraps it with an async interface.
- */
-
-
-exports.asyncStorage = asyncStorage;
-
-var _ipc = __webpack_require__(/*! ./ipc */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/ipc.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var NAMESPACE = exports.NAMESPACE = 'solid-auth-client';
-var defaultStorage = exports.defaultStorage = function defaultStorage() {
-  try {
-    if (window && window.localStorage) {
-      return asyncStorage(window.localStorage);
-    }
-  } catch (e) {
-    if (!(e instanceof ReferenceError)) {
-      throw e;
-    }
-  }
-  console.warn('\'window.localStorage\' unavailable.  ' + 'Creating a (not very useful) in-memory storage object as the default storage interface.');
-  return asyncStorage(memStorage());
-};function asyncStorage(storage) {
-  return {
-    getItem: function getItem(key) {
-      return _promise2.default.resolve(storage.getItem(key));
-    },
-
-    setItem: function setItem(key, val) {
-      return _promise2.default.resolve(storage.setItem(key, val));
-    },
-
-    removeItem: function removeItem(key) {
-      return _promise2.default.resolve(storage.removeItem(key));
-    }
-  };
-}
-
-var memStorage = exports.memStorage = function memStorage() {
-  var store = {};
-  return {
-    getItem: function getItem(key) {
-      if (typeof store[key] === 'undefined') return null;
-      return store[key];
-    },
-    setItem: function setItem(key, val) {
-      store[key] = val;
-    },
-    removeItem: function removeItem(key) {
-      delete store[key];
-    }
-  };
-};
-
-var postMessageStorage = exports.postMessageStorage = function postMessageStorage(storageWindow, storageOrigin) {
-  var request = (0, _ipc.client)(storageWindow, storageOrigin);
-  return {
-    getItem: function () {
-      var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(key) {
-        var ret;
-        return _regenerator2.default.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.next = 2;
-                return request({ method: 'storage/getItem', args: [key] });
-
-              case 2:
-                ret = _context3.sent;
-
-                if (!(typeof ret !== 'string')) {
-                  _context3.next = 5;
-                  break;
-                }
-
-                throw new Error('expected postMessage call for \'storage/getItem\' to return a string, but got value ' + ret);
-
-              case 5:
-                return _context3.abrupt('return', ret);
-
-              case 6:
-              case 'end':
-                return _context3.stop();
-            }
-          }
-        }, _callee3, undefined);
-      }));
-
-      return function getItem(_x4) {
-        return _ref3.apply(this, arguments);
-      };
-    }(),
-
-    setItem: function setItem(key, val) {
-      return request({ method: 'storage/setItem', args: [key, val] });
-    },
-
-    removeItem: function removeItem(key) {
-      return request({ method: 'storage/removeItem', args: [key] });
-    }
-  };
-};
-
-/***/ }),
-
-/***/ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/url-util.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/solid-ui/node_modules/solid-auth-client/lib/url-util.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-/* eslint-env browser */
-
-var currentUrl = exports.currentUrl = function currentUrl() {
-  return window.location.href;
-};
-
-var currentUrlNoParams = exports.currentUrlNoParams = function currentUrlNoParams() {
-  return window.location.origin + window.location.pathname;
-};
-
-var navigateTo = exports.navigateTo = function navigateTo(url) {
-  window.location.href = url;
-};
-
-var originOf = exports.originOf = function originOf(url) {
-  return new URL(url).origin;
-};
-
-/***/ }),
-
-/***/ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/webid-oidc.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/solid-ui/node_modules/solid-auth-client/lib/webid-oidc.js ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.fetchWithCredentials = exports.requiresAuth = exports.getRegisteredRp = exports.logout = exports.currentSession = exports.login = undefined;
-
-var _extends2 = __webpack_require__(/*! babel-runtime/helpers/extends */ "./node_modules/babel-runtime/helpers/extends.js");
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "./node_modules/babel-runtime/helpers/asyncToGenerator.js");
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var getStoredRp = function () {
-  var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(storage) {
-    var data, rpConfig;
-    return _regenerator2.default.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return (0, _storage.getData)(storage);
-
-          case 2:
-            data = _context3.sent;
-            rpConfig = data.rpConfig;
-
-            if (!rpConfig) {
-              _context3.next = 9;
-              break;
-            }
-
-            rpConfig.store = storage;
-            return _context3.abrupt('return', _oidcRp2.default.from(rpConfig));
-
-          case 9:
-            return _context3.abrupt('return', null);
-
-          case 10:
-          case 'end':
-            return _context3.stop();
-        }
-      }
-    }, _callee3, this);
-  }));
-
-  return function getStoredRp(_x4) {
-    return _ref3.apply(this, arguments);
-  };
-}();
-
-var storeRp = function () {
-  var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4(storage, idp, rp) {
-    return _regenerator2.default.wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            _context4.next = 2;
-            return (0, _storage.updateStorage)(storage, function (data) {
-              return (0, _extends3.default)({}, data, {
-                rpConfig: rp
-              });
-            });
-
-          case 2:
-            return _context4.abrupt('return', rp);
-
-          case 3:
-          case 'end':
-            return _context4.stop();
-        }
-      }
-    }, _callee4, this);
-  }));
-
-  return function storeRp(_x5, _x6, _x7) {
-    return _ref4.apply(this, arguments);
-  };
-}();
-
-__webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
-
-var _authHeader = __webpack_require__(/*! auth-header */ "./node_modules/auth-header/dist/index.js");
-
-var authorization = _interopRequireWildcard(_authHeader);
-
-var _oidcRp = __webpack_require__(/*! @trust/oidc-rp */ "./node_modules/@trust/oidc-rp/src/index.js");
-
-var _oidcRp2 = _interopRequireDefault(_oidcRp);
-
-var _PoPToken = __webpack_require__(/*! @trust/oidc-rp/lib/PoPToken */ "./node_modules/@trust/oidc-rp/lib/PoPToken.js");
-
-var _PoPToken2 = _interopRequireDefault(_PoPToken);
-
-var _urlUtil = __webpack_require__(/*! ./url-util */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/url-util.js");
-
-var _storage = __webpack_require__(/*! ./storage */ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/storage.js");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* global fetch, RequestInfo, Response */
-var login = exports.login = function () {
-  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(idp, options) {
-    var rp;
-    return _regenerator2.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.prev = 0;
-            _context.next = 3;
-            return getRegisteredRp(idp, options);
-
-          case 3:
-            rp = _context.sent;
-            _context.next = 6;
-            return saveAppHashFragment(options.storage);
-
-          case 6:
-            return _context.abrupt('return', function () {
-              return sendAuthRequest(rp, options);
-            });
-
-          case 9:
-            _context.prev = 9;
-            _context.t0 = _context['catch'](0);
-
-            console.warn('Error logging in with WebID-OIDC');
-            console.error(_context.t0);
-            return _context.abrupt('return', null);
-
-          case 14:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, undefined, [[0, 9]]);
-  }));
-
-  return function login(_x, _x2) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-var currentSession = exports.currentSession = function () {
-  var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
-    var storage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _storage.defaultStorage)();
-    var rp, url, storeData, resp, idp, idToken, accessToken, clientId, sessionKey;
-    return _regenerator2.default.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.prev = 0;
-            _context2.next = 3;
-            return getStoredRp(storage);
-
-          case 3:
-            rp = _context2.sent;
-
-            if (rp) {
-              _context2.next = 6;
-              break;
-            }
-
-            return _context2.abrupt('return', null);
-
-          case 6:
-            url = (0, _urlUtil.currentUrl)();
-
-            if (!(!url || !url.includes('#'))) {
-              _context2.next = 9;
-              break;
-            }
-
-            return _context2.abrupt('return', null);
-
-          case 9:
-            _context2.next = 11;
-            return (0, _storage.getData)(storage);
-
-          case 11:
-            storeData = _context2.sent;
-            _context2.next = 14;
-            return rp.validateResponse(url, storeData);
-
-          case 14:
-            resp = _context2.sent;
-
-            if (resp) {
-              _context2.next = 17;
-              break;
-            }
-
-            return _context2.abrupt('return', null);
-
-          case 17:
-            _context2.next = 19;
-            return restoreAppHashFragment(storage);
-
-          case 19:
-            idp = resp.idp, idToken = resp.idToken, accessToken = resp.accessToken, clientId = resp.clientId, sessionKey = resp.sessionKey;
-            return _context2.abrupt('return', {
-              authType: 'WebID-OIDC',
-              webId: resp.decoded.payload.sub,
-              idp: idp,
-              idToken: idToken,
-              accessToken: accessToken,
-              clientId: clientId,
-              sessionKey: sessionKey
-            });
-
-          case 23:
-            _context2.prev = 23;
-            _context2.t0 = _context2['catch'](0);
-
-            console.warn('Error finding a WebID-OIDC session');
-            console.error(_context2.t0);
-            return _context2.abrupt('return', null);
-
-          case 28:
-          case 'end':
-            return _context2.stop();
-        }
-      }
-    }, _callee2, undefined, [[0, 23]]);
-  }));
-
-  return function currentSession() {
-    return _ref2.apply(this, arguments);
-  };
-}();
-
-var logout = exports.logout = function logout(storage) {
-  return getStoredRp(storage).then(function (rp) {
-    return rp ? rp.logout() : undefined;
-  }).catch(function (err) {
-    console.warn('Error logging out of the WebID-OIDC session');
-    console.error(err);
-  });
-};
-
-var getRegisteredRp = exports.getRegisteredRp = function getRegisteredRp(idp, options) {
-  return getStoredRp(options.storage).then(function (rp) {
-    if (rp && rp.provider.url === idp) {
-      return rp;
-    }
-    return registerRp(idp, options).then(function (rp) {
-      return storeRp(options.storage, idp, rp);
-    });
-  });
-};
-
-var registerRp = function registerRp(idp, _ref5) {
-  var storage = _ref5.storage,
-      callbackUri = _ref5.callbackUri;
-
-  var responseType = 'id_token token';
-  var registration = {
-    issuer: idp,
-    grant_types: ['implicit'],
-    redirect_uris: [callbackUri],
-    response_types: [responseType],
-    scope: 'openid profile'
-  };
-  var options = {
-    defaults: {
-      authenticate: {
-        redirect_uri: callbackUri,
-        response_type: responseType
-      }
-    },
-    store: storage
-  };
-  return _oidcRp2.default.register(idp, registration, options);
-};
-
-var sendAuthRequest = function () {
-  var _ref6 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5(rp, _ref7) {
-    var callbackUri = _ref7.callbackUri,
-        storage = _ref7.storage;
-    var data, url;
-    return _regenerator2.default.wrap(function _callee5$(_context5) {
-      while (1) {
-        switch (_context5.prev = _context5.next) {
-          case 0:
-            _context5.next = 2;
-            return (0, _storage.getData)(storage);
-
-          case 2:
-            data = _context5.sent;
-            _context5.next = 5;
-            return rp.createRequest({ redirect_uri: callbackUri }, data);
-
-          case 5:
-            url = _context5.sent;
-            _context5.next = 8;
-            return (0, _storage.updateStorage)(storage, function () {
-              return data;
-            });
-
-          case 8:
-            return _context5.abrupt('return', (0, _urlUtil.navigateTo)(url));
-
-          case 9:
-          case 'end':
-            return _context5.stop();
-        }
-      }
-    }, _callee5, undefined);
-  }));
-
-  return function sendAuthRequest(_x8, _x9) {
-    return _ref6.apply(this, arguments);
-  };
-}();
-
-var saveAppHashFragment = function saveAppHashFragment(store) {
-  return (0, _storage.updateStorage)(store, function (data) {
-    return (0, _extends3.default)({}, data, {
-      appHashFragment: window.location.hash
-    });
-  });
-};
-
-var restoreAppHashFragment = function restoreAppHashFragment(store) {
-  return (0, _storage.updateStorage)(store, function (data) {
-    window.location.hash = data.appHashFragment;
-    delete data.appHashFragment;
-    return data;
-  });
-};
-
-/**
- * Answers whether a HTTP response requires WebID-OIDC authentication.
- */
-var requiresAuth = exports.requiresAuth = function requiresAuth(resp) {
-  if (resp.status !== 401) {
-    return false;
-  }
-  var wwwAuthHeader = resp.headers.get('www-authenticate');
-  if (!wwwAuthHeader) {
-    return false;
-  }
-  var auth = authorization.parse(wwwAuthHeader);
-  return auth.scheme === 'Bearer' && auth.params && auth.params.scope === 'openid webid';
-};
-
-/**
- * Fetches a resource, providing the WebID-OIDC ID Token as authentication.
- * Assumes that the resource has requested those tokens in a previous response.
- */
-var fetchWithCredentials = exports.fetchWithCredentials = function fetchWithCredentials(session) {
-  return function () {
-    var _ref8 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(url, options) {
-      var popToken, authenticatedOptions;
-      return _regenerator2.default.wrap(function _callee6$(_context6) {
-        while (1) {
-          switch (_context6.prev = _context6.next) {
-            case 0:
-              _context6.next = 2;
-              return _PoPToken2.default.issueFor(url, session);
-
-            case 2:
-              popToken = _context6.sent;
-              authenticatedOptions = (0, _extends3.default)({}, options, {
-                headers: (0, _extends3.default)({}, options && options.headers ? options.headers : {}, {
-                  authorization: 'Bearer ' + popToken
-                })
-              });
-              return _context6.abrupt('return', fetch(url, authenticatedOptions));
-
-            case 5:
-            case 'end':
-              return _context6.stop();
-          }
-        }
-      }, _callee6, undefined);
-    }));
-
-    return function (_x10, _x11) {
-      return _ref8.apply(this, arguments);
-    };
-  }();
-};
-
-/***/ }),
-
-/***/ "./node_modules/solid-ui/node_modules/solid-auth-client/lib/webid-tls.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/solid-ui/node_modules/solid-auth-client/lib/webid-tls.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.requiresAuth = exports.login = undefined;
-
-__webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
-
-var _authHeader = __webpack_require__(/*! auth-header */ "./node_modules/auth-header/dist/index.js");
-
-var authorization = _interopRequireWildcard(_authHeader);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-/* global fetch, Response */
-var login = exports.login = function login(idp) {
-  return fetch(idp, { method: 'HEAD', credentials: 'include' }).then(function (resp) {
-    return resp.headers.get('user');
-  }).then(function (webId) {
-    return webId ? { authType: 'WebID-TLS', idp: idp, webId: webId } : null;
-  });
-};
-
-var requiresAuth = exports.requiresAuth = function requiresAuth(resp) {
-  if (resp.status !== 401) {
-    return false;
-  }
-  var wwwAuthHeader = resp.headers.get('www-authenticate');
-  if (!wwwAuthHeader) {
-    return false;
-  }
-  var auth = authorization.parse(wwwAuthHeader);
-  return auth.scheme === 'WebID-TLS';
-};
 
 /***/ }),
 
