@@ -153,9 +153,9 @@ module.exports = panes;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/algorithms/HMAC.js":
+/***/ "./node_modules/@solid/jose/lib/algorithms/HMAC.js":
 /*!*********************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/algorithms/HMAC.js ***!
+  !*** ./node_modules/@solid/jose/lib/algorithms/HMAC.js ***!
   \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -172,14 +172,14 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var base64url = __webpack_require__(/*! base64url */ "./node_modules/base64url/index.js");
+var base64url = __webpack_require__(/*! base64url */ "./node_modules/@solid/jose/node_modules/base64url/index.js");
 var crypto = __webpack_require__(/*! @trust/webcrypto */ "@trust/webcrypto");
-var TextEncoder = __webpack_require__(/*! ../text-encoder */ "./node_modules/@trust/jose/lib/text-encoder/index.js"
+var TextEncoder = __webpack_require__(/*! ../text-encoder */ "./node_modules/@solid/jose/lib/text-encoder/index.js");
 
 /**
  * HMAC with SHA-2 Functions
  */
-);
+
 var HMAC = function () {
 
   /**
@@ -280,9 +280,9 @@ module.exports = HMAC;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/algorithms/NONE.js":
+/***/ "./node_modules/@solid/jose/lib/algorithms/NONE.js":
 /*!*********************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/algorithms/NONE.js ***!
+  !*** ./node_modules/@solid/jose/lib/algorithms/NONE.js ***!
   \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -335,9 +335,9 @@ module.exports = None;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/algorithms/RSASSA-PKCS1-v1_5.js":
+/***/ "./node_modules/@solid/jose/lib/algorithms/RSASSA-PKCS1-v1_5.js":
 /*!**********************************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/algorithms/RSASSA-PKCS1-v1_5.js ***!
+  !*** ./node_modules/@solid/jose/lib/algorithms/RSASSA-PKCS1-v1_5.js ***!
   \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -354,14 +354,14 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var base64url = __webpack_require__(/*! base64url */ "./node_modules/base64url/index.js");
+var base64url = __webpack_require__(/*! base64url */ "./node_modules/@solid/jose/node_modules/base64url/index.js");
 var crypto = __webpack_require__(/*! @trust/webcrypto */ "@trust/webcrypto");
-var TextEncoder = __webpack_require__(/*! ../text-encoder */ "./node_modules/@trust/jose/lib/text-encoder/index.js"
+var TextEncoder = __webpack_require__(/*! ../text-encoder */ "./node_modules/@solid/jose/lib/text-encoder/index.js");
 
 /**
  * RSASSA-PKCS1-v1_5
  */
-);
+
 var RSASSA_PKCS1_v1_5 = function () {
 
   /**
@@ -490,9 +490,9 @@ module.exports = RSASSA_PKCS1_v1_5;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/algorithms/SupportedAlgorithms.js":
+/***/ "./node_modules/@solid/jose/lib/algorithms/SupportedAlgorithms.js":
 /*!************************************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/algorithms/SupportedAlgorithms.js ***!
+  !*** ./node_modules/@solid/jose/lib/algorithms/SupportedAlgorithms.js ***!
   \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -507,12 +507,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Dependencies
  */
-var NotSupportedError = __webpack_require__(/*! ../errors/NotSupportedError */ "./node_modules/@trust/jose/lib/errors/NotSupportedError.js"
+var NotSupportedError = __webpack_require__(/*! ../errors/NotSupportedError */ "./node_modules/@solid/jose/lib/errors/NotSupportedError.js");
 
 /**
  * Operations
  */
-);var operations = ['sign', 'verify', 'encrypt', 'decrypt', 'importKey'];
+var operations = ['sign', 'verify', 'encrypt', 'decrypt', 'importKey'];
 
 /**
  * SupportedAlgorithms
@@ -606,9 +606,9 @@ module.exports = SupportedAlgorithms;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/algorithms/index.js":
+/***/ "./node_modules/@solid/jose/lib/algorithms/index.js":
 /*!**********************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/algorithms/index.js ***!
+  !*** ./node_modules/@solid/jose/lib/algorithms/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -619,15 +619,15 @@ module.exports = SupportedAlgorithms;
 /**
  * Local dependencies
  */
-var None = __webpack_require__(/*! ./NONE */ "./node_modules/@trust/jose/lib/algorithms/NONE.js");
-var HMAC = __webpack_require__(/*! ./HMAC */ "./node_modules/@trust/jose/lib/algorithms/HMAC.js");
-var RSASSA_PKCS1_v1_5 = __webpack_require__(/*! ./RSASSA-PKCS1-v1_5 */ "./node_modules/@trust/jose/lib/algorithms/RSASSA-PKCS1-v1_5.js");
-var SupportedAlgorithms = __webpack_require__(/*! ./SupportedAlgorithms */ "./node_modules/@trust/jose/lib/algorithms/SupportedAlgorithms.js"
+var None = __webpack_require__(/*! ./NONE */ "./node_modules/@solid/jose/lib/algorithms/NONE.js");
+var HMAC = __webpack_require__(/*! ./HMAC */ "./node_modules/@solid/jose/lib/algorithms/HMAC.js");
+var RSASSA_PKCS1_v1_5 = __webpack_require__(/*! ./RSASSA-PKCS1-v1_5 */ "./node_modules/@solid/jose/lib/algorithms/RSASSA-PKCS1-v1_5.js");
+var SupportedAlgorithms = __webpack_require__(/*! ./SupportedAlgorithms */ "./node_modules/@solid/jose/lib/algorithms/SupportedAlgorithms.js");
 
 /**
  * Register Supported Algorithms
  */
-);var supportedAlgorithms = new SupportedAlgorithms();
+var supportedAlgorithms = new SupportedAlgorithms();
 
 /**
  * Sign
@@ -672,7 +672,7 @@ supportedAlgorithms.define('RS512', 'sign', new RSASSA_PKCS1_v1_5({
   hash: {
     name: 'SHA-512'
   }
-})
+}));
 //supportedAlgorithms.define('ES256', 'sign', {})
 //supportedAlgorithms.define('ES384', 'sign', {})
 //supportedAlgorithms.define('ES512', 'sign', {})
@@ -680,14 +680,14 @@ supportedAlgorithms.define('RS512', 'sign', new RSASSA_PKCS1_v1_5({
 //supportedAlgorithms.define('PS384', 'sign', {})
 //supportedAlgorithms.define('PS512', 'sign', {})
 
-);supportedAlgorithms.define('none', 'sign', new None({
+supportedAlgorithms.define('none', 'sign', new None({
   // nothing goes here
-})
+}));
 
 /**
  * Verify
  */
-);supportedAlgorithms.define('HS256', 'verify', new HMAC({
+supportedAlgorithms.define('HS256', 'verify', new HMAC({
   name: 'HMAC',
   hash: {
     name: 'SHA-256'
@@ -727,7 +727,7 @@ supportedAlgorithms.define('RS512', 'verify', new RSASSA_PKCS1_v1_5({
   hash: {
     name: 'SHA-512'
   }
-})
+}));
 //supportedAlgorithms.define('ES256', 'verify', {})
 //supportedAlgorithms.define('ES384', 'verify', {})
 //supportedAlgorithms.define('ES512', 'verify', {})
@@ -735,7 +735,7 @@ supportedAlgorithms.define('RS512', 'verify', new RSASSA_PKCS1_v1_5({
 //supportedAlgorithms.define('PS384', 'verify', {})
 //supportedAlgorithms.define('PS512', 'verify', {})
 
-);supportedAlgorithms.define('none', 'verify', new None({
+supportedAlgorithms.define('none', 'verify', new None({
   // nothing goes here
 }));
 
@@ -758,18 +758,18 @@ supportedAlgorithms.define('RS512', 'importKey', new RSASSA_PKCS1_v1_5({
   hash: {
     name: 'SHA-512'
   }
-})
+}));
 
 /**
  * Export
  */
-);module.exports = supportedAlgorithms;
+module.exports = supportedAlgorithms;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/errors/DataError.js":
+/***/ "./node_modules/@solid/jose/lib/errors/DataError.js":
 /*!**********************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/errors/DataError.js ***!
+  !*** ./node_modules/@solid/jose/lib/errors/DataError.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -807,9 +807,9 @@ module.exports = DataError;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/errors/NotSupportedError.js":
+/***/ "./node_modules/@solid/jose/lib/errors/NotSupportedError.js":
 /*!******************************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/errors/NotSupportedError.js ***!
+  !*** ./node_modules/@solid/jose/lib/errors/NotSupportedError.js ***!
   \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -850,9 +850,9 @@ module.exports = NotSupportedError;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/errors/index.js":
+/***/ "./node_modules/@solid/jose/lib/errors/index.js":
 /*!******************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/errors/index.js ***!
+  !*** ./node_modules/@solid/jose/lib/errors/index.js ***!
   \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -861,15 +861,15 @@ module.exports = NotSupportedError;
 
 
 module.exports = {
-  DataError: __webpack_require__(/*! ./DataError */ "./node_modules/@trust/jose/lib/errors/DataError.js"),
-  NotSupportedError: __webpack_require__(/*! ./NotSupportedError */ "./node_modules/@trust/jose/lib/errors/NotSupportedError.js")
+  DataError: __webpack_require__(/*! ./DataError */ "./node_modules/@solid/jose/lib/errors/DataError.js"),
+  NotSupportedError: __webpack_require__(/*! ./NotSupportedError */ "./node_modules/@solid/jose/lib/errors/NotSupportedError.js")
 };
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/formats/index.js":
+/***/ "./node_modules/@solid/jose/lib/formats/index.js":
 /*!*******************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/formats/index.js ***!
+  !*** ./node_modules/@solid/jose/lib/formats/index.js ***!
   \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -880,13 +880,13 @@ module.exports = {
 /**
  * Package dependencies
  */
-var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"
+var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"),
+    Formats = _require.Formats;
 
 /**
  * Format extensions
  */
-),
-    Formats = _require.Formats;
+
 
 Formats.register('StringOrURI', new RegExp());
 Formats.register('NumericDate', new RegExp());
@@ -898,9 +898,9 @@ Formats.register('MediaType', new RegExp());
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/index.js":
+/***/ "./node_modules/@solid/jose/lib/index.js":
 /*!***********************************************!*\
-  !*** ./node_modules/@trust/jose/lib/index.js ***!
+  !*** ./node_modules/@solid/jose/lib/index.js ***!
   \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -911,22 +911,22 @@ Formats.register('MediaType', new RegExp());
 /**
  * @module JSON Object Signing and Encryption (JOSE)
  */
-var JWA = __webpack_require__(/*! ./jose/JWA */ "./node_modules/@trust/jose/lib/jose/JWA.js");
-var JWK = __webpack_require__(/*! ./jose/JWK */ "./node_modules/@trust/jose/lib/jose/JWK.js");
-var JWKSet = __webpack_require__(/*! ./jose/JWKSet */ "./node_modules/@trust/jose/lib/jose/JWKSet.js");
-var JWT = __webpack_require__(/*! ./jose/JWT */ "./node_modules/@trust/jose/lib/jose/JWT.js");
-var JWS = __webpack_require__(/*! ./jose/JWS */ "./node_modules/@trust/jose/lib/jose/JWS.js");
-var Base64URLSchema = __webpack_require__(/*! ./schemas/Base64URLSchema */ "./node_modules/@trust/jose/lib/schemas/Base64URLSchema.js");
-var JOSEHeaderSchema = __webpack_require__(/*! ./schemas/JOSEHeaderSchema */ "./node_modules/@trust/jose/lib/schemas/JOSEHeaderSchema.js");
-var JWKSchema = __webpack_require__(/*! ./schemas/JWKSchema */ "./node_modules/@trust/jose/lib/schemas/JWKSchema.js");
-var JWKSetSchema = __webpack_require__(/*! ./schemas/JWKSetSchema */ "./node_modules/@trust/jose/lib/schemas/JWKSetSchema.js");
-var JWTClaimsSetSchema = __webpack_require__(/*! ./schemas/JWTClaimsSetSchema */ "./node_modules/@trust/jose/lib/schemas/JWTClaimsSetSchema.js");
-var JWTSchema = __webpack_require__(/*! ./schemas/JWTSchema */ "./node_modules/@trust/jose/lib/schemas/JWTSchema.js"
+var JWA = __webpack_require__(/*! ./jose/JWA */ "./node_modules/@solid/jose/lib/jose/JWA.js");
+var JWK = __webpack_require__(/*! ./jose/JWK */ "./node_modules/@solid/jose/lib/jose/JWK.js");
+var JWKSet = __webpack_require__(/*! ./jose/JWKSet */ "./node_modules/@solid/jose/lib/jose/JWKSet.js");
+var JWT = __webpack_require__(/*! ./jose/JWT */ "./node_modules/@solid/jose/lib/jose/JWT.js");
+var JWS = __webpack_require__(/*! ./jose/JWS */ "./node_modules/@solid/jose/lib/jose/JWS.js");
+var Base64URLSchema = __webpack_require__(/*! ./schemas/Base64URLSchema */ "./node_modules/@solid/jose/lib/schemas/Base64URLSchema.js");
+var JOSEHeaderSchema = __webpack_require__(/*! ./schemas/JOSEHeaderSchema */ "./node_modules/@solid/jose/lib/schemas/JOSEHeaderSchema.js");
+var JWKSchema = __webpack_require__(/*! ./schemas/JWKSchema */ "./node_modules/@solid/jose/lib/schemas/JWKSchema.js");
+var JWKSetSchema = __webpack_require__(/*! ./schemas/JWKSetSchema */ "./node_modules/@solid/jose/lib/schemas/JWKSetSchema.js");
+var JWTClaimsSetSchema = __webpack_require__(/*! ./schemas/JWTClaimsSetSchema */ "./node_modules/@solid/jose/lib/schemas/JWTClaimsSetSchema.js");
+var JWTSchema = __webpack_require__(/*! ./schemas/JWTSchema */ "./node_modules/@solid/jose/lib/schemas/JWTSchema.js");
 
 /**
  * Export
  */
-);module.exports = {
+module.exports = {
   JWA: JWA,
   JWK: JWK,
   JWKSet: JWKSet,
@@ -942,9 +942,9 @@ var JWTSchema = __webpack_require__(/*! ./schemas/JWTSchema */ "./node_modules/@
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/jose/JWA.js":
+/***/ "./node_modules/@solid/jose/lib/jose/JWA.js":
 /*!**************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/jose/JWA.js ***!
+  !*** ./node_modules/@solid/jose/lib/jose/JWA.js ***!
   \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -962,17 +962,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * TODO
  * - switch between Node.js webcrypto package and browser implementation
  */
-var base64url = __webpack_require__(/*! base64url */ "./node_modules/base64url/index.js");
-var supportedAlgorithms = __webpack_require__(/*! ../algorithms */ "./node_modules/@trust/jose/lib/algorithms/index.js");
+var base64url = __webpack_require__(/*! base64url */ "./node_modules/@solid/jose/node_modules/base64url/index.js");
+var supportedAlgorithms = __webpack_require__(/*! ../algorithms */ "./node_modules/@solid/jose/lib/algorithms/index.js");
 
-var _require = __webpack_require__(/*! ../errors */ "./node_modules/@trust/jose/lib/errors/index.js"
+var _require = __webpack_require__(/*! ../errors */ "./node_modules/@solid/jose/lib/errors/index.js"),
+    NotSupportedError = _require.NotSupportedError;
 
 /**
  * JWA
  * https://tools.ietf.org/html/rfc7518
  */
-),
-    NotSupportedError = _require.NotSupportedError;
+
 
 var JWA = function () {
   function JWA() {
@@ -997,10 +997,10 @@ var JWA = function () {
      */
     value: function sign(alg, key, data) {
       // normalize the algorithm
-      var normalizedAlgorithm = supportedAlgorithms.normalize('sign', alg
+      var normalizedAlgorithm = supportedAlgorithms.normalize('sign', alg);
 
       // validate algorithm is supported
-      );if (normalizedAlgorithm instanceof Error) {
+      if (normalizedAlgorithm instanceof Error) {
         return Promise.reject(new NotSupportedError(alg));
       }
 
@@ -1078,9 +1078,9 @@ module.exports = JWA;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/jose/JWK.js":
+/***/ "./node_modules/@solid/jose/lib/jose/JWK.js":
 /*!**************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/jose/JWK.js ***!
+  !*** ./node_modules/@solid/jose/lib/jose/JWK.js ***!
   \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1104,13 +1104,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"),
     JSONDocument = _require.JSONDocument;
 
-var JWKSchema = __webpack_require__(/*! ../schemas/JWKSchema */ "./node_modules/@trust/jose/lib/schemas/JWKSchema.js");
-var JWA = __webpack_require__(/*! ./JWA */ "./node_modules/@trust/jose/lib/jose/JWA.js"
+var JWKSchema = __webpack_require__(/*! ../schemas/JWKSchema */ "./node_modules/@solid/jose/lib/schemas/JWKSchema.js");
+var JWA = __webpack_require__(/*! ./JWA */ "./node_modules/@solid/jose/lib/jose/JWA.js");
 
 /**
  * JWK Class
  */
-);
+
 var JWK = function (_JSONDocument) {
   _inherits(JWK, _JSONDocument);
 
@@ -1157,9 +1157,9 @@ module.exports = JWK;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/jose/JWKSet.js":
+/***/ "./node_modules/@solid/jose/lib/jose/JWKSet.js":
 /*!*****************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/jose/JWKSet.js ***!
+  !*** ./node_modules/@solid/jose/lib/jose/JWKSet.js ***!
   \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1182,8 +1182,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"),
     JSONDocument = _require.JSONDocument;
 
-var JWKSetSchema = __webpack_require__(/*! ../schemas/JWKSetSchema */ "./node_modules/@trust/jose/lib/schemas/JWKSetSchema.js");
-var JWK = __webpack_require__(/*! ./JWK */ "./node_modules/@trust/jose/lib/jose/JWK.js"
+var JWKSetSchema = __webpack_require__(/*! ../schemas/JWKSetSchema */ "./node_modules/@solid/jose/lib/schemas/JWKSetSchema.js");
+var JWK = __webpack_require__(/*! ./JWK */ "./node_modules/@solid/jose/lib/jose/JWK.js");
 
 /**
  * JWKSet
@@ -1192,7 +1192,7 @@ var JWK = __webpack_require__(/*! ./JWK */ "./node_modules/@trust/jose/lib/jose/
  * JWKSet represents a JSON Web Key Set as described in Section 5 of RFC 7517:
  * https://tools.ietf.org/html/rfc7517#section-5
  */
-);
+
 var JWKSet = function (_JSONDocument) {
   _inherits(JWKSet, _JSONDocument);
 
@@ -1261,9 +1261,9 @@ module.exports = JWKSet;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/jose/JWS.js":
+/***/ "./node_modules/@solid/jose/lib/jose/JWS.js":
 /*!**************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/jose/JWS.js ***!
+  !*** ./node_modules/@solid/jose/lib/jose/JWS.js ***!
   \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1280,16 +1280,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Dependencies
  */
-var base64url = __webpack_require__(/*! base64url */ "./node_modules/base64url/index.js");
-var JWA = __webpack_require__(/*! ./JWA */ "./node_modules/@trust/jose/lib/jose/JWA.js");
+var base64url = __webpack_require__(/*! base64url */ "./node_modules/@solid/jose/node_modules/base64url/index.js");
+var JWA = __webpack_require__(/*! ./JWA */ "./node_modules/@solid/jose/lib/jose/JWA.js");
 
-var _require = __webpack_require__(/*! ../errors */ "./node_modules/@trust/jose/lib/errors/index.js"
+var _require = __webpack_require__(/*! ../errors */ "./node_modules/@solid/jose/lib/errors/index.js"),
+    DataError = _require.DataError;
 
 /**
  * JWS
  */
-),
-    DataError = _require.DataError;
+
 
 var JWS = function () {
   function JWS() {
@@ -1310,10 +1310,10 @@ var JWS = function () {
      * @returns {Promise}
      */
     value: function sign(token) {
-      var payload = base64url(JSON.stringify(token.payload)
+      var payload = base64url(JSON.stringify(token.payload));
 
       // compact serialization
-      );if (token.serialization === 'compact') {
+      if (token.serialization === 'compact') {
         var key = token.key,
             alg = token.header.alg;
 
@@ -1398,9 +1398,9 @@ module.exports = JWS;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/jose/JWT.js":
+/***/ "./node_modules/@solid/jose/lib/jose/JWT.js":
 /*!**************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/jose/JWT.js ***!
+  !*** ./node_modules/@solid/jose/lib/jose/JWT.js ***!
   \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1421,19 +1421,19 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Dependencies
  */
-var base64url = __webpack_require__(/*! base64url */ "./node_modules/base64url/index.js");
+var base64url = __webpack_require__(/*! base64url */ "./node_modules/@solid/jose/node_modules/base64url/index.js");
 
 var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"),
     JSONDocument = _require.JSONDocument;
 
-var JWTSchema = __webpack_require__(/*! ../schemas/JWTSchema */ "./node_modules/@trust/jose/lib/schemas/JWTSchema.js");
-var JWS = __webpack_require__(/*! ./JWS */ "./node_modules/@trust/jose/lib/jose/JWS.js");
-var DataError = __webpack_require__(/*! ../errors/DataError */ "./node_modules/@trust/jose/lib/errors/DataError.js"
+var JWTSchema = __webpack_require__(/*! ../schemas/JWTSchema */ "./node_modules/@solid/jose/lib/schemas/JWTSchema.js");
+var JWS = __webpack_require__(/*! ./JWS */ "./node_modules/@solid/jose/lib/jose/JWS.js");
+var DataError = __webpack_require__(/*! ../errors/DataError */ "./node_modules/@solid/jose/lib/errors/DataError.js");
 
 /**
  * JWT
  */
-);
+
 var JWT = function (_JSONDocument) {
   _inherits(JWT, _JSONDocument);
 
@@ -1601,10 +1601,10 @@ var JWT = function (_JSONDocument) {
             throw new Error('Malformed JWT');
           }
 
-          var header = JSON.parse(base64url.decode(segments[0])
+          var header = JSON.parse(base64url.decode(segments[0]));
 
           // JSON Web Signature
-          );if (length === 3) {
+          if (length === 3) {
             var type = 'JWS';
             var payload = JSON.parse(base64url.decode(segments[1]));
             var signature = segments[2];
@@ -1699,9 +1699,9 @@ module.exports = JWT;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/schemas/Base64URLSchema.js":
+/***/ "./node_modules/@solid/jose/lib/schemas/Base64URLSchema.js":
 /*!*****************************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/schemas/Base64URLSchema.js ***!
+  !*** ./node_modules/@solid/jose/lib/schemas/Base64URLSchema.js ***!
   \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1712,13 +1712,13 @@ module.exports = JWT;
 /**
  * Dependencies
  */
-var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"
+var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"),
+    JSONSchema = _require.JSONSchema;
 
 /**
  * Base64URLSchema
  */
-),
-    JSONSchema = _require.JSONSchema;
+
 
 var Base64URLSchema = new JSONSchema({
   type: 'string',
@@ -1732,9 +1732,9 @@ module.exports = Base64URLSchema;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/schemas/JOSEHeaderSchema.js":
+/***/ "./node_modules/@solid/jose/lib/schemas/JOSEHeaderSchema.js":
 /*!******************************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/schemas/JOSEHeaderSchema.js ***!
+  !*** ./node_modules/@solid/jose/lib/schemas/JOSEHeaderSchema.js ***!
   \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1745,9 +1745,10 @@ module.exports = Base64URLSchema;
 /**
  * Dependencies
  */
-var JWKSchema = __webpack_require__(/*! ./JWKSchema */ "./node_modules/@trust/jose/lib/schemas/JWKSchema.js");
+var JWKSchema = __webpack_require__(/*! ./JWKSchema */ "./node_modules/@solid/jose/lib/schemas/JWKSchema.js");
 
-var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"
+var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"),
+    JSONSchema = _require.JSONSchema;
 
 /**
  * JOSEHeaderSchema
@@ -1763,8 +1764,7 @@ var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@
  *   whether the JWT is a JWS or JWE, the corresponding rules for the JOSE
  *   Header values apply.
  */
-),
-    JSONSchema = _require.JSONSchema;
+
 
 var JOSEHeaderSchema = new JSONSchema({
   type: 'object',
@@ -2322,9 +2322,9 @@ module.exports = JOSEHeaderSchema;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/schemas/JWKSchema.js":
+/***/ "./node_modules/@solid/jose/lib/schemas/JWKSchema.js":
 /*!***********************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/schemas/JWKSchema.js ***!
+  !*** ./node_modules/@solid/jose/lib/schemas/JWKSchema.js ***!
   \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -2340,13 +2340,13 @@ module.exports = JOSEHeaderSchema;
 var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"),
     JSONSchema = _require.JSONSchema;
 
-var _require2 = __webpack_require__(/*! ../formats */ "./node_modules/@trust/jose/lib/formats/index.js"
+var _require2 = __webpack_require__(/*! ../formats */ "./node_modules/@solid/jose/lib/formats/index.js"),
+    BASE64_REGEXP = _require2.BASE64_REGEXP;
 
 /**
  * JWK Schema
  */
-),
-    BASE64_REGEXP = _require2.BASE64_REGEXP;
+
 
 var JWKSchema = new JSONSchema({
   type: 'object',
@@ -2411,9 +2411,9 @@ module.exports = JWKSchema;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/schemas/JWKSetSchema.js":
+/***/ "./node_modules/@solid/jose/lib/schemas/JWKSetSchema.js":
 /*!**************************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/schemas/JWKSetSchema.js ***!
+  !*** ./node_modules/@solid/jose/lib/schemas/JWKSetSchema.js ***!
   \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -2428,12 +2428,12 @@ module.exports = JWKSchema;
 var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"),
     JSONSchema = _require.JSONSchema;
 
-var JWKSchema = __webpack_require__(/*! ./JWKSchema */ "./node_modules/@trust/jose/lib/schemas/JWKSchema.js"
+var JWKSchema = __webpack_require__(/*! ./JWKSchema */ "./node_modules/@solid/jose/lib/schemas/JWKSchema.js");
 
 /**
  * JWKSetSchema
  */
-);var JWKSetSchema = new JSONSchema({
+var JWKSetSchema = new JSONSchema({
   type: 'object',
   properties: {
     keys: {
@@ -2450,9 +2450,9 @@ module.exports = JWKSetSchema;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/schemas/JWTClaimsSetSchema.js":
+/***/ "./node_modules/@solid/jose/lib/schemas/JWTClaimsSetSchema.js":
 /*!********************************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/schemas/JWTClaimsSetSchema.js ***!
+  !*** ./node_modules/@solid/jose/lib/schemas/JWTClaimsSetSchema.js ***!
   \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -2463,7 +2463,8 @@ module.exports = JWKSetSchema;
 /**
  * Dependencies
  */
-var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"
+var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"),
+    JSONSchema = _require.JSONSchema;
 
 /**
  * JWTClaimsSetSchema
@@ -2490,8 +2491,7 @@ var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@
  *   There are three classes of JWT Claim Names: Registered Claim Names,
  *   Public Claim Names, and Private Claim Names.
  */
-),
-    JSONSchema = _require.JSONSchema;
+
 
 var JWTClaimsSetSchema = new JSONSchema({
   properties: {
@@ -2671,9 +2671,9 @@ module.exports = JWTClaimsSetSchema;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/schemas/JWTSchema.js":
+/***/ "./node_modules/@solid/jose/lib/schemas/JWTSchema.js":
 /*!***********************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/schemas/JWTSchema.js ***!
+  !*** ./node_modules/@solid/jose/lib/schemas/JWTSchema.js ***!
   \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -2684,11 +2684,12 @@ module.exports = JWTClaimsSetSchema;
 /**
  * Dependencies
  */
-var Base64URLSchema = __webpack_require__(/*! ./Base64URLSchema */ "./node_modules/@trust/jose/lib/schemas/Base64URLSchema.js");
-var JWTClaimsSetSchema = __webpack_require__(/*! ./JWTClaimsSetSchema */ "./node_modules/@trust/jose/lib/schemas/JWTClaimsSetSchema.js");
-var JOSEHeaderSchema = __webpack_require__(/*! ./JOSEHeaderSchema */ "./node_modules/@trust/jose/lib/schemas/JOSEHeaderSchema.js");
+var Base64URLSchema = __webpack_require__(/*! ./Base64URLSchema */ "./node_modules/@solid/jose/lib/schemas/Base64URLSchema.js");
+var JWTClaimsSetSchema = __webpack_require__(/*! ./JWTClaimsSetSchema */ "./node_modules/@solid/jose/lib/schemas/JWTClaimsSetSchema.js");
+var JOSEHeaderSchema = __webpack_require__(/*! ./JOSEHeaderSchema */ "./node_modules/@solid/jose/lib/schemas/JOSEHeaderSchema.js");
 
-var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"
+var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js"),
+    JSONSchema = _require.JSONSchema;
 
 /**
  * JWTSchema
@@ -2699,8 +2700,7 @@ var _require = __webpack_require__(/*! @trust/json-document */ "./node_modules/@
  * formedness for a given serialization is accomplished at the time of
  * encoding.
  */
-),
-    JSONSchema = _require.JSONSchema;
+
 
 var JWTSchema = new JSONSchema({
   type: 'object',
@@ -2829,9 +2829,9 @@ module.exports = JWTSchema;
 
 /***/ }),
 
-/***/ "./node_modules/@trust/jose/lib/text-encoder/index.js":
+/***/ "./node_modules/@solid/jose/lib/text-encoder/index.js":
 /*!************************************************************!*\
-  !*** ./node_modules/@trust/jose/lib/text-encoder/index.js ***!
+  !*** ./node_modules/@solid/jose/lib/text-encoder/index.js ***!
   \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -2843,6 +2843,2333 @@ var TextEncoder = global.TextEncoder ? global.TextEncoder // browser
 : __webpack_require__(/*! text-encoding */ "text-encoding").TextEncoder; // node shim
 module.exports = TextEncoder;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/@solid/jose/node_modules/base64url/dist/base64url.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@solid/jose/node_modules/base64url/dist/base64url.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(Buffer) {
+Object.defineProperty(exports, "__esModule", { value: true });
+const pad_string_1 = __webpack_require__(/*! ./pad-string */ "./node_modules/@solid/jose/node_modules/base64url/dist/pad-string.js");
+function encode(input, encoding = "utf8") {
+    if (Buffer.isBuffer(input)) {
+        return fromBase64(input.toString("base64"));
+    }
+    return fromBase64(Buffer.from(input, encoding).toString("base64"));
+}
+;
+function decode(base64url, encoding = "utf8") {
+    return Buffer.from(toBase64(base64url), "base64").toString(encoding);
+}
+function toBase64(base64url) {
+    base64url = base64url.toString();
+    return pad_string_1.default(base64url)
+        .replace(/\-/g, "+")
+        .replace(/_/g, "/");
+}
+function fromBase64(base64) {
+    return base64
+        .replace(/=/g, "")
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_");
+}
+function toBuffer(base64url) {
+    return Buffer.from(toBase64(base64url), "base64");
+}
+let base64url = encode;
+base64url.encode = encode;
+base64url.decode = decode;
+base64url.toBase64 = toBase64;
+base64url.fromBase64 = fromBase64;
+base64url.toBuffer = toBuffer;
+exports.default = base64url;
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
+
+/***/ }),
+
+/***/ "./node_modules/@solid/jose/node_modules/base64url/dist/pad-string.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@solid/jose/node_modules/base64url/dist/pad-string.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(Buffer) {
+Object.defineProperty(exports, "__esModule", { value: true });
+function padString(input) {
+    let segmentLength = 4;
+    let stringLength = input.length;
+    let diff = stringLength % segmentLength;
+    if (!diff) {
+        return input;
+    }
+    let position = stringLength;
+    let padLength = segmentLength - diff;
+    let paddedStringLength = stringLength + padLength;
+    let buffer = Buffer.alloc(paddedStringLength);
+    buffer.write(input);
+    while (padLength--) {
+        buffer.write("=", position++);
+    }
+    return buffer.toString();
+}
+exports.default = padString;
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
+
+/***/ }),
+
+/***/ "./node_modules/@solid/jose/node_modules/base64url/index.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@solid/jose/node_modules/base64url/index.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./dist/base64url */ "./node_modules/@solid/jose/node_modules/base64url/dist/base64url.js").default;
+module.exports.default = module.exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/lib/PoPToken.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/lib/PoPToken.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _require = __webpack_require__(/*! whatwg-url */ "xmldom"),
+    URL = _require.URL;
+
+var _require2 = __webpack_require__(/*! @solid/jose */ "./node_modules/@solid/jose/lib/index.js"),
+    JWT = _require2.JWT,
+    JWK = _require2.JWK;
+
+var DEFAULT_MAX_AGE = 3600; // Default token expiration, in seconds
+
+var PoPToken = function (_JWT) {
+  _inherits(PoPToken, _JWT);
+
+  function PoPToken() {
+    _classCallCheck(this, PoPToken);
+
+    return _possibleConstructorReturn(this, (PoPToken.__proto__ || Object.getPrototypeOf(PoPToken)).apply(this, arguments));
+  }
+
+  _createClass(PoPToken, null, [{
+    key: 'issueFor',
+
+    /**
+     * @param resourceServerUri {string} RS URI for which this token is intended
+     *
+     * @param session {Session}
+     * @param session.sessionKey {string}
+     * @param session.authorization.client_id {string}
+     * @param session.authorization.id_token {string}
+     *
+     * @returns {Promise<string>} PoPToken, encoded as compact JWT
+     */
+    value: function issueFor(resourceServerUri, session) {
+      if (!resourceServerUri) {
+        throw new Error('Cannot issue PoPToken - missing resource server URI');
+      }
+
+      if (!session.sessionKey) {
+        throw new Error('Cannot issue PoPToken - missing session key');
+      }
+
+      if (!session.authorization.id_token) {
+        throw new Error('Cannot issue PoPToken - missing id token');
+      }
+
+      var jwk = JSON.parse(session.sessionKey);
+
+      return JWK.importKey(jwk).then(function (importedSessionJwk) {
+        var options = {
+          aud: new URL(resourceServerUri).origin,
+          key: importedSessionJwk,
+          iss: session.authorization.client_id,
+          id_token: session.authorization.id_token
+        };
+
+        return PoPToken.issue(options);
+      }).then(function (jwt) {
+        return jwt.encode();
+      });
+    }
+
+    /**
+     * issue
+     *
+     * @param options {Object}
+     * @param options.iss {string} Token issuer (RP client_id)
+     * @param options.aud {string|Array<string>} Audience for the token
+     *   (such as the Resource Server url)
+     * @param options.key {JWK} Proof of Possession (private) signing key, see
+     *   https://tools.ietf.org/html/rfc7800#section-3.1
+     *
+     * @param options.id_token {string} JWT compact encoded ID Token
+     *
+     * Optional:
+     * @param [options.iat] {number} Issued at timestamp (in seconds)
+     * @param [options.max] {number} Max token lifetime in seconds
+     *
+     * @returns {PoPToken} Proof of Possession Token (JWT instance)
+     */
+
+  }, {
+    key: 'issue',
+    value: function issue(options) {
+      var aud = options.aud,
+          iss = options.iss,
+          key = options.key;
+
+
+      var alg = key.alg;
+      var iat = options.iat || Math.floor(Date.now() / 1000);
+      var max = options.max || DEFAULT_MAX_AGE;
+
+      var exp = iat + max; // token expiration
+
+      var header = { alg: alg };
+      var payload = { iss: iss, aud: aud, exp: exp, iat: iat, id_token: options.id_token, token_type: 'pop' };
+
+      var jwt = new PoPToken({ header: header, payload: payload, key: key.cryptoKey }, { filter: false });
+
+      return jwt;
+    }
+  }]);
+
+  return PoPToken;
+}(JWT);
+
+module.exports = PoPToken;
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/node_modules/base64url/dist/base64url.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/node_modules/base64url/dist/base64url.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(Buffer) {
+Object.defineProperty(exports, "__esModule", { value: true });
+const pad_string_1 = __webpack_require__(/*! ./pad-string */ "./node_modules/@solid/oidc-rp/node_modules/base64url/dist/pad-string.js");
+function encode(input, encoding = "utf8") {
+    if (Buffer.isBuffer(input)) {
+        return fromBase64(input.toString("base64"));
+    }
+    return fromBase64(Buffer.from(input, encoding).toString("base64"));
+}
+;
+function decode(base64url, encoding = "utf8") {
+    return Buffer.from(toBase64(base64url), "base64").toString(encoding);
+}
+function toBase64(base64url) {
+    base64url = base64url.toString();
+    return pad_string_1.default(base64url)
+        .replace(/\-/g, "+")
+        .replace(/_/g, "/");
+}
+function fromBase64(base64) {
+    return base64
+        .replace(/=/g, "")
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_");
+}
+function toBuffer(base64url) {
+    return Buffer.from(toBase64(base64url), "base64");
+}
+let base64url = encode;
+base64url.encode = encode;
+base64url.decode = decode;
+base64url.toBase64 = toBase64;
+base64url.fromBase64 = fromBase64;
+base64url.toBuffer = toBuffer;
+exports.default = base64url;
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/node_modules/base64url/dist/pad-string.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/node_modules/base64url/dist/pad-string.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(Buffer) {
+Object.defineProperty(exports, "__esModule", { value: true });
+function padString(input) {
+    let segmentLength = 4;
+    let stringLength = input.length;
+    let diff = stringLength % segmentLength;
+    if (!diff) {
+        return input;
+    }
+    let position = stringLength;
+    let padLength = segmentLength - diff;
+    let paddedStringLength = stringLength + padLength;
+    let buffer = Buffer.alloc(paddedStringLength);
+    buffer.write(input);
+    while (padLength--) {
+        buffer.write("=", position++);
+    }
+    return buffer.toString();
+}
+exports.default = padString;
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/node_modules/base64url/index.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/node_modules/base64url/index.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./dist/base64url */ "./node_modules/@solid/oidc-rp/node_modules/base64url/dist/base64url.js").default;
+module.exports.default = module.exports;
+
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/src/AuthenticationRequest.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/src/AuthenticationRequest.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(Buffer) {/**
+ * Dependencies
+ */
+const assert = __webpack_require__(/*! assert */ "./node_modules/assert/assert.js")
+const base64url = __webpack_require__(/*! base64url */ "./node_modules/@solid/oidc-rp/node_modules/base64url/index.js")
+const crypto = __webpack_require__(/*! @trust/webcrypto */ "@trust/webcrypto")
+const { JWT } = __webpack_require__(/*! @solid/jose */ "./node_modules/@solid/jose/lib/index.js")
+const FormUrlEncoded = __webpack_require__(/*! ./FormUrlEncoded */ "./node_modules/@solid/oidc-rp/src/FormUrlEncoded.js")
+const { URL } = __webpack_require__(/*! whatwg-url */ "xmldom")
+
+/**
+ * Authentication Request
+ */
+class AuthenticationRequest {
+  /**
+   * create
+   *
+   * @description
+   * Create a new authentication request with generated state and nonce,
+   * validate presence of required parameters, serialize the request data and
+   * persist it to the session, and return a promise for an authentication
+   * request URI.
+   *
+   * @param {RelyingParty} rp – instance of RelyingParty
+   * @param {Object} options - optional request parameters
+   * @param {Object} session – reference to localStorage or other session object
+   *
+   * @returns {Promise}
+   */
+  static create (rp, options, session) {
+    const {provider, defaults, registration} = rp
+
+    let issuer, endpoint, client, params
+
+    return Promise.resolve()
+      .then(() => {
+        // validate presence of OP configuration, RP client registration,
+        // and default parameters
+        assert(provider.configuration,
+          'RelyingParty provider OpenID Configuration is missing')
+
+        assert(defaults.authenticate,
+          'RelyingParty default authentication parameters are missing')
+
+        assert(registration,
+          'RelyingParty client registration is missing')
+
+        // define basic elements of the request
+        issuer = provider.configuration.issuer
+        endpoint = provider.configuration.authorization_endpoint
+        client = { client_id: registration.client_id}
+        params = Object.assign(defaults.authenticate, client, options)
+
+        // validate presence of required configuration and parameters
+        assert(issuer,
+          'Missing issuer in provider OpenID Configuration')
+
+        assert(endpoint,
+          'Missing authorization_endpoint in provider OpenID Configuration')
+
+        assert(params.scope,
+          'Missing scope parameter in authentication request')
+
+        assert(params.response_type,
+          'Missing response_type parameter in authentication request')
+
+        assert(params.client_id,
+          'Missing client_id parameter in authentication request')
+
+        assert(params.redirect_uri,
+          'Missing redirect_uri parameter in authentication request')
+
+        // generate state and nonce random octets
+        params.state = Array.from(crypto.getRandomValues(new Uint8Array(16)))
+        params.nonce = Array.from(crypto.getRandomValues(new Uint8Array(16)))
+
+        // hash the state and nonce parameter values
+        return Promise.all([
+          crypto.subtle.digest({ name: 'SHA-256' }, new Uint8Array(params.state)),
+          crypto.subtle.digest({ name: 'SHA-256' }, new Uint8Array(params.nonce))
+        ])
+      })
+
+      // serialize the request with original values, store in session by
+      // encoded state param, and replace state/nonce octets with encoded
+      // digests
+      .then(digests => {
+        let state = base64url(Buffer.from(digests[0]))
+        let nonce = base64url(Buffer.from(digests[1]))
+        let key = `${issuer}/requestHistory/${state}`
+
+        // store the request params for response validation
+        // with serialized octet values for state and nonce
+        session[key] = JSON.stringify(params)
+
+        // replace state and nonce octets with base64url encoded digests
+        params.state = state
+        params.nonce = nonce
+      })
+
+      .then(() => AuthenticationRequest.generateSessionKeys())
+
+      .then(sessionKeys => {
+        AuthenticationRequest.storeSessionKeys(sessionKeys, params, session)
+      })
+
+      // optionally encode a JWT with the request parameters
+      // and replace params with `{ request: <jwt> }
+      .then(() => {
+        if (provider.configuration.request_parameter_supported) {
+          return AuthenticationRequest.encodeRequestParams(params)
+
+            .then(encodedParams => { params = encodedParams })
+        }
+      })
+
+      // render the request URI and terminate the algorithm
+      .then(() => {
+        let url = new URL(endpoint)
+        url.search = FormUrlEncoded.encode(params)
+
+        return url.href
+      })
+  }
+
+  static generateSessionKeys () {
+    return crypto.subtle.generateKey(
+      {
+        name: "RSASSA-PKCS1-v1_5",
+        modulusLength: 2048,
+        publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
+        hash: { name: "SHA-256" },
+      },
+      true,
+      ["sign", "verify"]
+    )
+      .then((keyPair) => {
+        // returns a keypair object
+        return Promise.all([
+          crypto.subtle.exportKey('jwk', keyPair.publicKey),
+          crypto.subtle.exportKey('jwk', keyPair.privateKey)
+        ])
+      })
+      .then(jwkPair => {
+        let [ publicJwk, privateJwk ] = jwkPair
+
+        return { public: publicJwk, private: privateJwk }
+      })
+  }
+
+  static storeSessionKeys (sessionKeys, params, session) {
+    // store the private one in session, public one goes into params
+    session['oidc.session.privateKey'] = JSON.stringify(sessionKeys.private)
+    params.key = sessionKeys.public
+  }
+
+  static encodeRequestParams (params) {
+    const excludeParams = ['scope', 'client_id', 'response_type', 'state']
+
+    const keysToEncode = Object.keys(params).filter(key => !excludeParams.includes(key))
+
+    let payload = {}
+
+    keysToEncode.forEach(key => {
+      payload[key] = params[key]
+    })
+
+    let requestParamJwt = new JWT({
+      header: { alg: 'none' },
+      payload
+    }, { filter: false })
+
+    return requestParamJwt.encode()
+      .then(requestParamCompact => {
+        let newParams = {
+          scope: params['scope'],
+          client_id: params['client_id'],
+          response_type: params['response_type'],
+          request: requestParamCompact,
+          state: params['state']
+        }
+
+        return newParams
+      })
+  }
+}
+
+/**
+ * Export
+ */
+module.exports = AuthenticationRequest
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/src/AuthenticationResponse.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/src/AuthenticationResponse.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global, Buffer) {/**
+ * Dependencies
+ */
+const { URL } = __webpack_require__(/*! whatwg-url */ "xmldom")
+const assert = __webpack_require__(/*! assert */ "./node_modules/assert/assert.js")
+const crypto = __webpack_require__(/*! @trust/webcrypto */ "@trust/webcrypto")
+const base64url = __webpack_require__(/*! base64url */ "./node_modules/@solid/oidc-rp/node_modules/base64url/index.js")
+const fetch = __webpack_require__(/*! node-fetch */ "isomorphic-fetch")
+const Headers = fetch.Headers ? fetch.Headers : global.Headers
+const FormUrlEncoded = __webpack_require__(/*! ./FormUrlEncoded */ "./node_modules/@solid/oidc-rp/src/FormUrlEncoded.js")
+const IDToken = __webpack_require__(/*! ./IDToken */ "./node_modules/@solid/oidc-rp/src/IDToken.js")
+const Session = __webpack_require__(/*! ./Session */ "./node_modules/@solid/oidc-rp/src/Session.js")
+const onHttpError = __webpack_require__(/*! ./onHttpError */ "./node_modules/@solid/oidc-rp/src/onHttpError.js")
+const HttpError = __webpack_require__(/*! standard-http-error */ "./node_modules/standard-http-error/index.js")
+
+/**
+ * AuthenticationResponse
+ */
+class AuthenticationResponse {
+  /**
+   * @param rp {RelyingParty}
+   * @param [redirect] {string} req.query
+   * @param [body] {string} req.body.text
+   * @param session {Session|Storage} req.session or localStorage or similar
+   * @param params {object} hashmap
+   * @param mode {string} 'query'/'fragment'/'form_post',
+   *   determined in `parseResponse()`
+   */
+  constructor ({rp, redirect, body, session, mode, params = {}}) {
+    this.rp = rp
+    this.redirect = redirect
+    this.body = body
+    this.session = session
+    this.mode = mode
+    this.params = params
+  }
+
+  /**
+   * validateResponse
+   *
+   * @description
+   * Authentication response validation.
+   *
+   * @param {string|Object} response
+   *
+   * @returns {Promise<Session>}
+   */
+  static validateResponse (response) {
+    return Promise.resolve(response)
+      .then(this.parseResponse)
+      .then(this.errorResponse)
+      .then(this.matchRequest)
+      .then(this.validateStateParam)
+      .then(this.validateResponseMode)
+      .then(this.validateResponseParams)
+      .then(this.exchangeAuthorizationCode)
+      .then(this.validateIDToken)
+      .then(Session.fromAuthResponse)
+  }
+
+  /**
+   * parseResponse
+   *
+   * @param {object} response
+   *
+   * @returns {object}
+   */
+  static parseResponse (response) {
+    let {redirect, body} = response
+
+    // response must be either a redirect uri or request body, but not both
+    if ((redirect && body) || (!redirect && !body)) {
+      throw new HttpError(400, 'Invalid response mode')
+    }
+
+    // parse redirect uri
+    if (redirect) {
+      let url = new URL(redirect)
+      let {search, hash} = url
+
+      if ((search && hash) || (!search && !hash)) {
+        throw new HttpError(400, 'Invalid response mode')
+      }
+
+      if (search) {
+        response.params = FormUrlEncoded.decode(search.substring(1))
+        response.mode = 'query'
+      }
+
+      if (hash) {
+        response.params = FormUrlEncoded.decode(hash.substring(1))
+        response.mode = 'fragment'
+      }
+    }
+
+    // parse request form body
+    if (body) {
+      response.params = FormUrlEncoded.decode(body)
+      response.mode = 'form_post'
+    }
+
+    return response
+  }
+
+  /**
+   * errorResponse
+   *
+   * @param {AuthenticationResponse} response
+   *
+   * @throws {Error} If response params include the OAuth2 'error' param,
+   *   throws an error based on it.
+   *
+   * @returns {AuthenticationResponse} Chainable
+   *
+   * @todo Figure out HTTP status code (typically 400, 401 or 403)
+   *   based on the OAuth2/OIDC `error` code, probably using an external library
+   */
+  static errorResponse (response) {
+    const errorCode = response.params.error
+
+    if (errorCode) {
+      const errorParams = {}
+      errorParams['error'] = errorCode
+      errorParams['error_description'] = response.params['error_description']
+      errorParams['error_uri'] = response.params['error_uri']
+      errorParams['state'] = response.params['state']
+
+      const error = new Error(`AuthenticationResponse error: ${errorCode}`)
+      error.info = errorParams
+      throw error
+    }
+
+    return response
+  }
+
+  /**
+   * matchRequest
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static matchRequest (response) {
+    let {rp, params, session} = response
+    let state = params.state
+    let issuer = rp.provider.configuration.issuer
+
+    if (!state) {
+      throw new Error(
+        'Missing state parameter in authentication response')
+    }
+
+    let key = `${issuer}/requestHistory/${state}`
+    let request = session[key]
+
+    if (!request) {
+      throw new Error(
+        'Mismatching state parameter in authentication response')
+    }
+
+    response.request = JSON.parse(request)
+    return response
+  }
+
+  /**
+   * validateStateParam
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static validateStateParam (response) {
+    let octets = new Uint8Array(response.request.state)
+    let encoded = response.params.state
+
+    return crypto.subtle.digest({ name: 'SHA-256' }, octets).then(digest => {
+      if (encoded !== base64url(Buffer.from(digest))) {
+        throw new Error(
+          'Mismatching state parameter in authentication response')
+      }
+
+      return response
+    })
+  }
+
+  /**
+   * validateResponseMode
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static validateResponseMode (response) {
+    if (response.request.response_type !== 'code' && response.mode === 'query') {
+      throw new Error('Invalid response mode')
+    }
+
+    return response
+  }
+
+  /**
+   * validateResponseParams
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static validateResponseParams (response) {
+    let {request, params} = response
+    let expectedParams = request.response_type.split(' ')
+
+    if (expectedParams.includes('code')) {
+      assert(params.code,
+        'Missing authorization code in authentication response')
+      // TODO assert novelty of code
+    }
+
+    if (expectedParams.includes('id_token')) {
+      assert(params.id_token,
+        'Missing id_token in authentication response')
+    }
+
+    if (expectedParams.includes('token')) {
+      assert(params.access_token,
+        'Missing access_token in authentication response')
+
+      assert(params.token_type,
+        'Missing token_type in authentication response')
+    }
+
+    return response
+  }
+
+  /**
+   * exchangeAuthorizationCode
+   *
+   * @param {Object} response
+   * @returns {Promise} response object
+   */
+  static exchangeAuthorizationCode (response) {
+    let {rp, params, request} = response
+    let code = params.code
+
+    // only exchange the authorization code when the response type is "code"
+    if (!code || request['response_type'] !== 'code') {
+      return Promise.resolve(response)
+    }
+
+    let {provider, registration} = rp
+    let id = registration['client_id']
+    let secret = registration['client_secret']
+
+    // verify the client is not public
+    if (!secret) {
+        return Promise.reject(new Error(
+          'Client cannot exchange authorization code because ' +
+          'it is not a confidential client'))
+    }
+
+    // initialize token request arguments
+    let endpoint = provider.configuration.token_endpoint
+    let method = 'POST'
+
+    // initialize headers
+    let headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    })
+
+    // initialize the token request parameters
+    let bodyContents = {
+      'grant_type': 'authorization_code',
+      'code': code,
+      'redirect_uri': request['redirect_uri']
+    }
+
+    // determine client authentication method
+    let authMethod = registration['token_endpoint_auth_method']
+      || 'client_secret_basic'
+
+    // client secret basic authentication
+    if (authMethod === 'client_secret_basic') {
+      let credentials = new Buffer(`${id}:${secret}`).toString('base64')
+      headers.set('Authorization', `Basic ${credentials}`)
+    }
+
+    // client secret post authentication
+    if (authMethod === 'client_secret_post') {
+      bodyContents['client_id'] = id
+      bodyContents['client_secret'] = secret
+    }
+
+    let body = FormUrlEncoded.encode(bodyContents)
+
+    // TODO
+    // client_secret_jwt authentication
+    // private_key_jwt
+
+    // make the token request
+
+    return fetch(endpoint, {method, headers, body})
+      .then(onHttpError('Error exchanging authorization code'))
+      .then(tokenResponse => tokenResponse.json())
+      .then(tokenResponse => {
+        assert(tokenResponse['access_token'],
+          'Missing access_token in token response')
+
+        assert(tokenResponse['token_type'],
+          'Missing token_type in token response')
+
+        assert(tokenResponse['id_token'],
+          'Missing id_token in token response')
+
+        // anything else?
+
+        // IS THIS THE RIGHT THING TO DO HERE?
+        response.params = Object.assign(response.params, tokenResponse)
+        return response
+      })
+  }
+
+
+  /**
+   * validateIDToken
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static validateIDToken (response) {
+    // only validate the ID Token if present in the response
+    if (!response.params.id_token) {
+      return Promise.resolve(response)
+    }
+
+    return Promise.resolve(response)
+      .then(AuthenticationResponse.decryptIDToken)
+      .then(AuthenticationResponse.decodeIDToken)
+      .then(AuthenticationResponse.validateIssuer)
+      .then(AuthenticationResponse.validateAudience)
+      .then(AuthenticationResponse.resolveKeys)
+      .then(AuthenticationResponse.verifySignature)
+      .then(AuthenticationResponse.validateExpires)
+      .then(AuthenticationResponse.verifyNonce)
+      .then(AuthenticationResponse.validateAcr)
+      .then(AuthenticationResponse.validateAuthTime)
+      .then(AuthenticationResponse.validateAccessTokenHash)
+      .then(AuthenticationResponse.validateAuthorizationCodeHash)
+  }
+
+  /**
+   * decryptIDToken
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static decryptIDToken (response) {
+    // TODO
+    return Promise.resolve(response)
+  }
+
+  /**
+   * decodeIDToken
+   *
+   * Note: If the `id_token` is not present in params, this method does not
+   * get called (short-circuited in `validateIDToken()`).
+   *
+   * @param response {AuthenticationResponse}
+   * @param response.params {object}
+   * @param [response.params.id_token] {string} IDToken encoded as a JWT
+   *
+   * @returns {AuthenticationResponse} Chainable
+   */
+  static decodeIDToken (response) {
+    let jwt = response.params.id_token
+
+    try {
+      response.decoded = IDToken.decode(jwt)
+    } catch (decodeError) {
+      const error = new HttpError(400, 'Error decoding ID Token')
+      error.cause = decodeError
+      error.info = { id_token: jwt }
+      throw error
+    }
+
+    return response
+  }
+
+
+  /**
+   * validateIssuer
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static validateIssuer (response) {
+    let configuration = response.rp.provider.configuration
+    let payload = response.decoded.payload
+
+    // validate issuer of token matches this relying party's provider
+    if (payload.iss !== configuration.issuer) {
+      throw new Error('Mismatching issuer in ID Token')
+    }
+
+    return response
+  }
+
+  /**
+   * validateAudience
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static validateAudience (response) {
+    let registration = response.rp.registration
+    let {aud, azp} = response.decoded.payload
+
+    // validate audience includes this relying party
+    if (typeof aud === 'string' && aud !== registration['client_id']) {
+      throw new Error('Mismatching audience in id_token')
+    }
+
+    // validate audience includes this relying party
+    if (Array.isArray(aud) && !aud.includes(registration['client_id'])) {
+      throw new Error('Mismatching audience in id_token')
+    }
+
+    // validate authorized party is present if required
+    if (Array.isArray(aud) && !azp) {
+      throw new Error('Missing azp claim in id_token')
+    }
+
+    // validate authorized party is this relying party
+    if (azp && azp !== registration['client_id']) {
+      throw new Error('Mismatching azp claim in id_token')
+    }
+
+    return response
+  }
+
+
+  /**
+   * resolveKeys
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static resolveKeys (response) {
+    let rp = response.rp
+    let provider = rp.provider
+    let decoded = response.decoded
+
+    return Promise.resolve(provider.jwks)
+
+      .then(jwks => jwks ? jwks : rp.jwks())
+
+      .then(jwks => {
+        if (decoded.resolveKeys(jwks)) {
+          return Promise.resolve(response)
+        } else {
+          throw new Error('Cannot resolve signing key for ID Token')
+        }
+      })
+  }
+
+  /**
+   * verifySignature
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static verifySignature (response) {
+    let alg = response.decoded.header.alg
+    let registration = response.rp.registration
+    let expectedAlgorithm = registration['id_token_signed_response_alg'] || 'RS256'
+
+    // validate signing algorithm matches expectation
+    if (alg !== expectedAlgorithm) {
+      throw new Error(
+        `Expected ID Token to be signed with ${expectedAlgorithm}`)
+    }
+
+    return response.decoded.verify().then(verified => {
+      if (!verified) {
+        throw new Error('Invalid ID Token signature')
+      }
+
+      return response
+    })
+  }
+
+  /**
+   * validateExpires
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static validateExpires (response) {
+    let exp = response.decoded.payload.exp
+
+    // validate expiration of token
+    if (exp <= Math.floor(Date.now() / 1000)) {
+      throw new Error('Expired ID Token')
+    }
+
+    return response
+  }
+
+  /**
+   * verifyNonce
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static verifyNonce (response) {
+    let octets = new Uint8Array(response.request.nonce)
+    let nonce = response.decoded.payload.nonce
+
+    if (!nonce) {
+      throw new Error('Missing nonce in ID Token')
+    }
+
+    return crypto.subtle.digest({ name: 'SHA-256' }, octets).then(digest => {
+      if (nonce !== base64url(Buffer.from(digest))) {
+        throw new Error('Mismatching nonce in ID Token')
+      }
+
+      return response
+    })
+  }
+
+  /**
+   * validateAcr
+   *
+   * @param {Object} response
+   * @returns {Object}
+   */
+  static validateAcr (response) {
+    // TODO
+    return response
+  }
+
+  /**
+   * validateAuthTime
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static validateAuthTime (response) {
+    // TODO
+    return response
+  }
+
+  /**
+   * validateAccessTokenHash
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static validateAccessTokenHash (response) {
+    // TODO
+    return response
+  }
+
+  /**
+   * validateAuthorizationCodeHash
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static validateAuthorizationCodeHash (response) {
+    // TODO
+    return response
+  }
+}
+
+/**
+ * Export
+ */
+module.exports = AuthenticationResponse
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/src/FormUrlEncoded.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/src/FormUrlEncoded.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * Dependencies
+ */
+
+/**
+ * FormUrlEncoded
+ */
+class FormUrlEncoded {
+
+  /**
+   * Encode
+   *
+   * @description
+   * Represent an object as x-www-form-urlencoded string.
+   *
+   * @param {Object} data
+   * @returns {string}
+   */
+  static encode (data) {
+     let pairs = []
+
+     Object.keys(data).forEach(function (key) {
+       pairs.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+     })
+
+     return pairs.join('&')
+  }
+
+  /**
+   * Decode
+   *
+   * @description
+   * Parse a x-www-form-urlencoded into an object.
+   *
+   * @param {string} data
+   * @returns {Object}
+   */
+  static decode (data) {
+    let obj = {}
+
+    data.split('&').forEach(function (property) {
+      let pair = property.split('=')
+      let key = decodeURIComponent(pair[0])
+      let val = decodeURIComponent(pair[1])
+
+      obj[key] = val
+    })
+
+    return obj
+  }
+}
+
+/**
+ * Export
+ */
+module.exports = FormUrlEncoded
+
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/src/IDToken.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/src/IDToken.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Local dependencies
+ */
+const {JWT} = __webpack_require__(/*! @solid/jose */ "./node_modules/@solid/jose/lib/index.js")
+const IDTokenSchema = __webpack_require__(/*! ./IDTokenSchema */ "./node_modules/@solid/oidc-rp/src/IDTokenSchema.js")
+
+/**
+ * IDToken
+ */
+class IDToken extends JWT {
+
+  /**
+   * Schema
+   */
+  static get schema () {
+    return IDTokenSchema
+  }
+}
+
+/**
+ * Export
+ */
+module.exports = IDToken
+
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/src/IDTokenSchema.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/src/IDTokenSchema.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Local dependencies
+ */
+const {JWTSchema} = __webpack_require__(/*! @solid/jose */ "./node_modules/@solid/jose/lib/index.js")
+
+/**
+ * IDToken Schema
+ */
+const IDTokenSchema = JWTSchema.extend({
+  properties: {
+
+    /**
+     * header
+     * http://openid.net/specs/openid-connect-core-1_0.html#IDToken
+     * ID Tokens SHOULD NOT use the JWS or JWE x5u, x5c, jku, or jwk Header
+     * Parameter fields. Instead, references to keys used are communicated in
+     * advance using Discovery and Registration parameters, per Section 10.
+     */
+    header: {
+      //not: { required: ['x5u', 'x5c', 'jku', 'jwk'] }
+    },
+
+    /**
+     * payload
+     */
+    payload: {
+      properties: {
+
+        /**
+         * iss
+         *
+         * REQUIRED. Issuer Identifier for the Issuer of the response.
+         * The iss value is a case sensitive URL using the https scheme
+         * that contains scheme, host, and optionally, port number and
+         * path components and no query or fragment components.
+         */
+        iss: { type: 'string', format: 'url' },
+
+        /**
+         * sub
+         *
+         * REQUIRED. Subject Identifier. A locally unique and never
+         * reassigned identifier within the Issuer for the End-User, which
+         * is intended to be consumed by the Client, e.g., 24400320 or
+         * AItOawmwtWwcT0k51BayewNvutrJUqsvl6qs7A4. It MUST NOT exceed 255
+         * ASCII characters in length. The sub value is a case sensitive
+         * string.
+         */
+        sub: { type: 'string', maxLength: 255 },
+
+        /**
+         * aud
+         *
+         * REQUIRED. Audience(s) that this ID Token is intended for. It
+         * MUST contain the OAuth 2.0 client_id of the Relying Party as an
+         * audience value. It MAY also contain identifiers for other audiences.
+         * In the general case, the aud value is an array of case sensitive
+         * strings. In the common special case when there is one audience,
+         * the aud value MAY be a single case sensitive string.
+         */
+        // inherited from JWTClaimsSetSchema
+
+        /**
+         * exp
+         *
+         * REQUIRED. Expiration time on or after which the ID Token MUST NOT
+         * be accepted for processing. The processing of this parameter
+         * requires that the current date/time MUST be before the expiration
+         * date/time listed in the value. Implementers MAY provide for some
+         * small leeway, usually no more than a few minutes, to account for
+         * clock skew. Its value is a JSON number representing the number of
+         * seconds from 1970-01-01T0:0:0Z as measured in UTC until the
+         * date/time. See RFC 3339 [RFC3339] for details regarding date/times
+         * in general and UTC in particular.
+         */
+        // inherited from JWTClaimsSetSchema
+
+        /**
+         * iat
+         *
+         * REQUIRED. Time at which the JWT was issued. Its value is a
+         * JSON number representing the number of seconds from
+         * 1970-01-01T0:0:0Z as measured in UTC until the date/time.
+         */
+        // inherited from JWTClaimsSetSchema
+
+        /**
+         * auth_time
+         *
+         * Time when the End-User authentication occurred. Its value is a
+         * JSON number representing the number of seconds from
+         * 1970-01-01T0:0:0Z as measured in UTC until the date/time. When a
+         * max_age request is made or when auth_time is requested as an
+         * Essential Claim, then this Claim is REQUIRED; otherwise, its
+         * inclusion is OPTIONAL. (The auth_time Claim semantically
+         * corresponds to the OpenID 2.0 PAPE [OpenID.PAPE] auth_time
+         * response parameter.)
+         */
+        auth_time: { type: 'integer', format: 'NumericDate' },
+
+        /**
+         * nonce
+         *
+         * String value used to associate a Client session with an ID Token,
+         * and to mitigate replay attacks. The value is passed through
+         * unmodified from the Authentication Request to the ID Token. If
+         * present in the ID Token, Clients MUST verify that the nonce Claim
+         * Value is equal to the value of the nonce parameter sent in the
+         * Authentication Request. If present in the Authentication Request,
+         * Authorization Servers MUST include a nonce Claim in the ID Token
+         * with the Claim Value being the nonce value sent in the
+         * Authentication Request. Authorization Servers SHOULD perform no
+         * other processing on nonce values used. The nonce value is a case
+         * sensitive string.
+         */
+        nonce: { type: 'string' },
+
+        /**
+         * acr
+         *
+         * OPTIONAL. Authentication Context Class Reference. String
+         * specifying an Authentication Context Class Reference value that
+         * identifies the Authentication Context Class that the authentication
+         * performed satisfied. The value "0" indicates the End-User
+         * authentication did not meet the requirements of ISO/IEC 29115
+         * [ISO29115] level 1. Authentication using a long-lived browser
+         * cookie, for instance, is one example where the use of "level 0" is
+         * appropriate. Authentications with level 0 SHOULD NOT be used to
+         * authorize access to any resource of any monetary value. (This
+         * corresponds to the OpenID 2.0 PAPE [OpenID.PAPE] nist_auth_level
+         * 0.) An absolute URI or an RFC 6711 [RFC6711] registered name
+         * SHOULD be used as the acr value; registered names MUST NOT be used
+         * with a different meaning than that which is registered. Parties
+         * using this claim will need to agree upon the meanings of the
+         * values used, which may be context-specific. The acr value is a
+         * case sensitive string.
+         */
+        acr: { type: 'string' },
+
+        /**
+         * amr
+         * OPTIONAL. Authentication Methods References. JSON array of strings
+         * that are identifiers for authentication methods used in the
+         * authentication. For instance, values might indicate that both
+         * password and OTP authentication methods were used. The definition
+         * of particular values to be used in the amr Claim is beyond the
+         * scope of this specification. Parties using this claim will need to
+         * agree upon the meanings of the values used, which may be context-
+         * specific. The amr value is an array of case sensitive strings.
+         */
+        amr: { type: 'array', items: { type: 'string' } },
+
+        /**
+         * azp
+         * OPTIONAL. Authorized party - the party to which the ID Token was
+         * issued. If present, it MUST contain the OAuth 2.0 Client ID of this
+         * party. This Claim is only needed when the ID Token has a single
+         * audience value and that audience is different than the authorized
+         * party. It MAY be included even when the authorized party is the
+         * same as the sole audience. The azp value is a case sensitive string
+         * containing a StringOrURI value.
+         */
+        azp: { type: 'string', format: 'StringOrURI' }
+      },
+
+      /**
+       * Required Claims
+       */
+      required: ['iss', 'sub', 'aud', 'exp', 'iat']
+    }
+  }
+})
+
+/**
+ * Export
+ */
+module.exports = IDTokenSchema
+
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/src/PoPToken.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/src/PoPToken.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+const { URL } = __webpack_require__(/*! whatwg-url */ "xmldom")
+const {JWT, JWK} = __webpack_require__(/*! @solid/jose */ "./node_modules/@solid/jose/lib/index.js")
+
+const DEFAULT_MAX_AGE = 3600  // Default token expiration, in seconds
+
+class PoPToken extends JWT {
+  /**
+   * @param resourceServerUri {string} RS URI for which this token is intended
+   *
+   * @param session {Session}
+   * @param session.sessionKey {string}
+   * @param session.authorization.client_id {string}
+   * @param session.authorization.id_token {string}
+   *
+   * @returns {Promise<string>} PoPToken, encoded as compact JWT
+   */
+  static issueFor (resourceServerUri, session) {
+    if (!resourceServerUri) {
+      throw new Error('Cannot issue PoPToken - missing resource server URI')
+    }
+
+    if (!session.sessionKey) {
+      throw new Error('Cannot issue PoPToken - missing session key')
+    }
+
+    if (!session.authorization.id_token) {
+      throw new Error('Cannot issue PoPToken - missing id token')
+    }
+
+    let jwk = JSON.parse(session.sessionKey)
+
+    return JWK.importKey(jwk)
+      .then(importedSessionJwk => {
+        let options = {
+          aud: (new URL(resourceServerUri)).origin,
+          key: importedSessionJwk,
+          iss: session.authorization.client_id,
+          id_token: session.authorization.id_token
+        }
+
+        return PoPToken.issue(options)
+      })
+      .then(jwt => {
+        return jwt.encode()
+      })
+  }
+
+  /**
+   * issue
+   *
+   * @param options {Object}
+   * @param options.iss {string} Token issuer (RP client_id)
+   * @param options.aud {string|Array<string>} Audience for the token
+   *   (such as the Resource Server url)
+   * @param options.key {JWK} Proof of Possession (private) signing key, see
+   *   https://tools.ietf.org/html/rfc7800#section-3.1
+   *
+   * @param options.id_token {string} JWT compact encoded ID Token
+   *
+   * Optional:
+   * @param [options.iat] {number} Issued at timestamp (in seconds)
+   * @param [options.max] {number} Max token lifetime in seconds
+   *
+   * @returns {PoPToken} Proof of Possession Token (JWT instance)
+   */
+  static issue (options) {
+    let { aud, iss, key } = options
+
+    let alg = key.alg
+    let iat = options.iat || Math.floor(Date.now() / 1000)
+    let max = options.max || DEFAULT_MAX_AGE
+
+    let exp = iat + max  // token expiration
+
+    let header = { alg }
+    let payload = { iss, aud, exp, iat, id_token: options.id_token, token_type: 'pop' }
+
+    let jwt = new PoPToken({ header, payload, key: key.cryptoKey }, { filter: false })
+
+    return jwt
+  }
+}
+
+module.exports = PoPToken
+
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/src/RelyingParty.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/src/RelyingParty.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {/**
+ * Dependencies
+ */
+const assert = __webpack_require__(/*! assert */ "./node_modules/assert/assert.js")
+const fetch = __webpack_require__(/*! node-fetch */ "isomorphic-fetch")
+const { URL } = __webpack_require__(/*! whatwg-url */ "xmldom")
+const Headers = fetch.Headers ? fetch.Headers : global.Headers
+const {JSONDocument} = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js")
+const {JWKSet} = __webpack_require__(/*! @solid/jose */ "./node_modules/@solid/jose/lib/index.js")
+const AuthenticationRequest = __webpack_require__(/*! ./AuthenticationRequest */ "./node_modules/@solid/oidc-rp/src/AuthenticationRequest.js")
+const AuthenticationResponse = __webpack_require__(/*! ./AuthenticationResponse */ "./node_modules/@solid/oidc-rp/src/AuthenticationResponse.js")
+const RelyingPartySchema = __webpack_require__(/*! ./RelyingPartySchema */ "./node_modules/@solid/oidc-rp/src/RelyingPartySchema.js")
+const onHttpError = __webpack_require__(/*! ./onHttpError */ "./node_modules/@solid/oidc-rp/src/onHttpError.js")
+const FormUrlEncoded = __webpack_require__(/*! ./FormUrlEncoded */ "./node_modules/@solid/oidc-rp/src/FormUrlEncoded.js")
+
+/**
+ * RelyingParty
+ *
+ * @class
+ * Client interface for OpenID Connect Relying Party.
+ *
+ * @example
+ *  let client = RelyingParty({
+ *    provider: {
+ *      name: 'Anvil Research, Inc.',
+ *      url: 'https://forge.anvil.io'
+ *      // configuration
+ *      // jwks
+ *    },
+ *    defaults: {
+ *      popToken: false,
+ *      authenticate: {
+ *        response_type: 'code',
+ *        display: 'popup',
+ *        scope: 'openid profile email'
+ *      },
+ *      register: {
+ *        client_name: 'Example',
+ *        client_uri: 'https://example.com',
+ *        logo_uri: 'https://example.com/assets/logo.png',
+ *        redirect_uris: ['https://app.example.com/callback'],
+ *        response_types: ['code', 'code id_token token'],
+ *        grant_types: ['authorization_code'],
+ *        default_max_age: 7200,
+ *        post_logout_redirect_uris: ['https://app.example.com']
+ *      },
+ *    },
+ *    registration: {
+ *      // if you have it saved somewhere
+ *    },
+ *    store: localStorage || req.session
+ *  })
+ *
+ *  client.discover() => Promise
+ *  client.jwks() => Promise
+ *  client.authenticate()
+ *  client.authenticateUri()
+ *  client.validateResponse(uri) => Promise
+ *  client.userinfo() => Promise
+ *  client.logout()
+ */
+class RelyingParty extends JSONDocument {
+
+  /**
+   * Schema
+   */
+  static get schema () {
+    return RelyingPartySchema
+  }
+
+  /**
+   * from
+   *
+   * @description
+   * Create a RelyingParty instance from a previously registered client.
+   *
+   * @param {Object} data
+   * @returns {Promise<RelyingParty>}
+   */
+  static from (data) {
+    let rp = new RelyingParty(data)
+    let validation = rp.validate()
+
+    // schema validation
+    if (!validation.valid) {
+      return Promise.reject(new Error(JSON.stringify(validation)))
+    }
+
+    let jwks = rp.provider.jwks
+
+    // request the JWK Set if missing
+    if (!jwks) {
+      return rp.jwks().then(() => rp)
+    }
+
+    // otherwise import the JWK Set to webcrypto
+    return JWKSet.importKeys(jwks).then(jwks => {
+      rp.provider.jwks = jwks
+      return rp
+    })
+  }
+
+  /**
+   * register
+   *
+   * @param issuer {string} Provider URL
+   * @param registration {Object} Client dynamic registration options
+   * @param options {Object}
+   * @param options.defaults
+   * @param [options.store] {Session|Storage}
+   * @returns {Promise<RelyingParty>} RelyingParty instance, registered.
+   */
+  static register (issuer, registration, options) {
+    let rp = new RelyingParty({
+      provider: { url: issuer },
+      defaults: Object.assign({}, options.defaults),
+      store: options.store
+    })
+
+    return Promise.resolve()
+      .then(() => rp.discover())
+      .then(() => rp.jwks())
+      .then(() => rp.register(registration))
+      .then(() => rp)
+  }
+
+  /**
+   * Discover
+   *
+   * @description Fetches the issuer's OpenID Configuration.
+   * @returns {Promise<Object>} Resolves with the provider configuration response
+   */
+  discover () {
+    try {
+      let issuer = this.provider.url
+
+      assert(issuer, 'RelyingParty provider must define "url"')
+
+      let url = new URL(issuer)
+      url.pathname = '.well-known/openid-configuration'
+
+      return fetch(url.toString())
+        .then(onHttpError('Error fetching openid configuration'))
+        .then(response => {
+          return response.json().then(json => this.provider.configuration = json)
+        })
+
+    } catch (error) {
+      return Promise.reject(error)
+    }
+  }
+
+  /**
+   * Register
+   *
+   * @description Register's a client with provider as a Relying Party
+   *
+   * @param options {Object}
+   * @returns {Promise<Object>} Resolves with the registration response object
+   */
+  register (options) {
+    try {
+      let configuration = this.provider.configuration
+
+      assert(configuration, 'OpenID Configuration is not initialized.')
+      assert(configuration.registration_endpoint, 'OpenID Configuration is missing registration_endpoint.')
+
+      let uri = configuration.registration_endpoint
+      let method = 'post'
+      let headers = new Headers({ 'Content-Type': 'application/json' })
+      let params = this.defaults.register
+      let body = JSON.stringify(Object.assign({}, params, options))
+
+      return fetch(uri, {method, headers, body})
+        .then(onHttpError('Error registering client'))
+        .then(response => {
+          return response.json().then(json => this.registration = json)
+        })
+
+    } catch (error) {
+      return Promise.reject(error)
+    }
+  }
+
+  serialize () {
+    return JSON.stringify(this)
+  }
+
+  /**
+   * jwks
+   *
+   * @description Promises the issuer's JWK Set.
+   * @returns {Promise}
+   */
+  jwks () {
+    try {
+      let configuration = this.provider.configuration
+
+      assert(configuration, 'OpenID Configuration is not initialized.')
+      assert(configuration.jwks_uri, 'OpenID Configuration is missing jwks_uri.')
+
+      let uri = configuration.jwks_uri
+
+      return fetch(uri)
+        .then(onHttpError('Error resolving provider keys'))
+        .then(response => {
+          return response
+            .json()
+            .then(json => JWKSet.importKeys(json))
+            .then(jwks => this.provider.jwks = jwks)
+        })
+
+    } catch (error) {
+      return Promise.reject(error)
+    }
+  }
+
+  /**
+   * createRequest
+   *
+   * @param options {Object} Authn request options hashmap
+   * @param options.redirect_uri {string}
+   * @param options.response_type {string} e.g. 'code' or 'id_token token'
+   * @param session {Session|Storage} req.session or localStorage
+   * @returns {Promise<string>} Authn request URL
+   */
+  createRequest (options, session) {
+    return AuthenticationRequest.create(this, options, session || this.store)
+  }
+
+  /**
+   * Validate Response
+   *
+   * @param response {string} req.query or req.body.text
+   * @param session {Session|Storage} req.session or localStorage or similar
+   *
+   * @returns {Promise<Session>}
+   */
+  validateResponse (response, session = this.store) {
+    let options
+
+    if (response.match(/^http(s?):\/\//)) {
+      options = { rp: this, redirect: response, session }
+    } else {
+      options = { rp: this, body: response, session }
+    }
+
+    const authResponse = new AuthenticationResponse(options)
+
+    return AuthenticationResponse.validateResponse(authResponse)
+  }
+
+  /**
+   * userinfo
+   *
+   * @description Promises the authenticated user's claims.
+   * @returns {Promise}
+   */
+  userinfo () {
+    try {
+      let configuration = this.provider.configuration
+
+      assert(configuration, 'OpenID Configuration is not initialized.')
+      assert(configuration.userinfo_endpoint, 'OpenID Configuration is missing userinfo_endpoint.')
+
+      let uri = configuration.userinfo_endpoint
+      let access_token = this.store.access_token
+
+      assert(access_token, 'Missing access token.')
+
+      let headers = new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${access_token}`
+      })
+
+      return fetch(uri, {headers})
+        .then(onHttpError('Error fetching userinfo'))
+        .then(response => response.json())
+
+    } catch (error) {
+      return Promise.reject(error)
+    }
+  }
+
+  /**
+   * logoutRequest
+   *
+   * Composes and returns the logout request URI, based on the OP's
+   * `end_session_endpoint`, with appropriate parameters.
+   *
+   * Note: Calling client code has the responsibility to clear the local
+   * session state (for example, by calling `rp.clearSession()`). In addition,
+   * some IdPs (such as Google) may not provide an `end_session_endpoint`,
+   * in which case, this method will return null.
+   *
+   * @see https://openid.net/specs/openid-connect-session-1_0.html#RPLogout
+   *
+   * @throws {Error} If provider config is not initialized
+   *
+   * @throws {Error} If `post_logout_redirect_uri` was provided without a
+   *   corresponding `id_token_hint`
+   *
+   * @param [options={}] {object}
+   *
+   * @param [options.id_token_hint] {string} RECOMMENDED.
+   *   Previously issued ID Token passed to the logout endpoint as
+   *   a hint about the End-User's current authenticated session with the
+   *   Client. This is used as an indication of the identity of the End-User
+   *   that the RP is requesting be logged out by the OP. The OP *need not* be
+   *   listed as an audience of the ID Token when it is used as an
+   *   `id_token_hint` value.
+   *
+   * @param [options.post_logout_redirect_uri] {string} OPTIONAL. URL to which
+   *   the RP is requesting that the End-User's User Agent be redirected after
+   *   a logout has been performed. The value MUST have been previously
+   *   registered with the OP, either using the `post_logout_redirect_uris`
+   *   Registration parameter or via another mechanism. If supplied, the OP
+   *   SHOULD honor this request following the logout.
+   *
+   *   Note: The requirement to validate the uri for previous registration means
+   *   that, in practice, the `id_token_hint` is REQUIRED if
+   *   `post_logout_redirect_uri` is used. Otherwise, the OP has no way to get
+   *   the `client_id` to load the saved client registration, to validate the
+   *   uri. The only way it can get it is by decoding the `id_token_hint`.
+   *
+   * @param [options.state] {string} OPTIONAL. Opaque value used by the RP to
+   *   maintain state between the logout request and the callback to the
+   *   endpoint specified by the `post_logout_redirect_uri` query parameter. If
+   *   included in the logout request, the OP passes this value back to the RP
+   *   using the `state` query parameter when redirecting the User Agent back to
+   *   the RP.
+   *
+   * TODO: In the future, consider adding `response_mode` param, for the OP to
+   *   determine how to return the `state` back the RP.
+   *   @see http://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#ResponseModes
+   *
+   * TODO: Handle special cases for popular providers (Google, MSFT)
+   *
+   * @returns {string|null} Logout uri (or null if no end_session_endpoint was
+   *   provided in the IdP config)
+   */
+  logoutRequest (options = {}) {
+    const { id_token_hint, post_logout_redirect_uri, state } = options
+    let configuration
+
+    assert(this.provider, 'OpenID Configuration is not initialized')
+    configuration = this.provider.configuration
+    assert(configuration, 'OpenID Configuration is not initialized')
+
+    if (!configuration.end_session_endpoint) {
+      console.log(`OpenId Configuration for ` +
+        `${configuration.issuer} is missing end_session_endpoint`)
+      return null
+    }
+
+    if (post_logout_redirect_uri && !id_token_hint) {
+      throw new Error('id_token_hint is required when using post_logout_redirect_uri')
+    }
+
+    const params = {}
+
+    if (id_token_hint) {
+      params.id_token_hint = id_token_hint
+    }
+    if (post_logout_redirect_uri) {
+      params.post_logout_redirect_uri = post_logout_redirect_uri
+    }
+    if (state) {
+      params.state = state
+    }
+
+    const url = new URL(configuration.end_session_endpoint)
+    url.search = FormUrlEncoded.encode(params)
+
+    return url.href
+  }
+
+  /**
+   * Logout
+   *
+   * @deprecated
+   *
+   * TODO: Add deprecation warnings, then remove. Client code should
+   *   use `logoutRequest()` instead
+   *
+   * @returns {Promise}
+   */
+  logout () {
+    let configuration
+    try {
+      assert(this.provider, 'OpenID Configuration is not initialized.')
+      configuration = this.provider.configuration
+      assert(configuration, 'OpenID Configuration is not initialized.')
+      assert(configuration.end_session_endpoint,
+        'OpenID Configuration is missing end_session_endpoint.')
+    } catch (error) {
+      return Promise.reject(error)
+    }
+
+    this.clearSession()
+
+    let uri = configuration.end_session_endpoint
+    let method = 'get'
+
+    return fetch(uri, {method})
+      .then(onHttpError('Error logging out'))
+
+    // TODO: Validate `frontchannel_logout_uri` if necessary
+    /**
+     * frontchannel_logout_uri - OPTIONAL. RP URL that will cause the RP to log
+     * itself out when rendered in an iframe by the OP.
+     *
+     * An `iss` (issuer) query parameter and a `sid`
+     * (session ID) query parameter MAY be included by the OP to enable the RP
+     * to validate the request and to determine which of the potentially
+     * multiple sessions is to be logged out. If a sid (session ID) query
+     * parameter is included, an iss (issuer) query parameter MUST also be
+     * included.
+     * @see https://openid.net/specs/openid-connect-frontchannel-1_0.html#RPLogout
+     */
+  }
+
+  clearSession () {
+    let session = this.store
+
+    if (!session) { return }
+
+    delete session[SESSION_PRIVATE_KEY]
+  }
+
+  /**
+   * @param uri {string} Target Resource Server URI
+   * @param idToken {IDToken} ID Token to be embedded in the PoP token
+   *
+   * @returns {Promise<PoPToken>}
+   */
+  popTokenFor (uri, idToken) {
+    return PoPToken.issueFor(uri, idToken)
+  }
+}
+
+const SESSION_PRIVATE_KEY = 'oidc.session.privateKey'
+
+RelyingParty.SESSION_PRIVATE_KEY = SESSION_PRIVATE_KEY
+
+module.exports = RelyingParty
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/src/RelyingPartySchema.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/src/RelyingPartySchema.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Dependencies
+ */
+const {JSONSchema} = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js")
+
+/**
+ * RelyingParty Schema
+ *
+ * This schema initializes and verifies Relying Party client configuration.
+ * RelyingParty objects can be persisted and rehydrated. By encapsulating this data in
+ * it's own class, it's possible to have multiple RP configurations running
+ * simultaneously.
+ */
+const RelyingPartySchema = new JSONSchema({
+  type: 'object',
+  properties: {
+
+    /**
+     * provider
+     *
+     * Information about the provider, including issuer URL, human readable name,
+     * and any configuration or provider metadata retrieved from the OP.
+     */
+    provider: {
+      type: 'object',
+      properties: {
+        name: { type: 'string' },
+        url: { type: 'string', format: 'uri' },
+        // NOTE:
+        // OpenID Configuration (discovery response) and JSON Web Keys Set for an
+        // issuer can be cached here. However the cache should not be persisted or
+        // relied upon.
+        //
+        configuration: {}, // .well-known/openid-configuration
+        jwks: {}           // /jwks
+      },
+      required: ['url']
+    },
+
+    /**
+     * defaults
+     *
+     * Default request parameters for authentication and dynamic registration requests.
+     * These values can be extended or overridden via arguments to the respective
+     * request methods.
+     *
+     * These are part of the relying party client configuration and can be serialized
+     * and persisted.
+     */
+    defaults: {
+      type: 'object',
+      properties: {
+
+        /**
+         * Use Proof of Possession token semantics for the ID Token
+         */
+        popToken: {
+          type: 'boolean',
+          default: false
+        },
+
+        /**
+         * Default authentication request parameters
+         */
+        authenticate: {
+          type: 'object',
+          properties: {
+            redirect_uri: {
+              type: 'string',
+              format: 'uri'
+            },
+            response_type: {
+              type: 'string',
+              default: 'id_token token', // browser detection
+              enum: [
+                'code',
+                'token',
+                'id_token token',
+                'id_token token code'
+              ]
+            },
+            display: {
+              type: 'string',
+              default: 'page',
+              enum: [
+                'page',
+                'popup'
+              ]
+            },
+            scope: {
+              type: ['string', 'array'],
+              default: ['openid']
+            }
+          }
+        },
+
+        /**
+         * Default client registration parameters
+         */
+        register: {}
+      }
+    },
+
+    /**
+     * registration
+     *
+     * This is the client registration response from dynamic registration. It should
+     * always reflect the client configuration on the openid provider. A client access
+     * token is stored here
+     */
+    registration: {},// ClientMetadataSchema
+
+    /**
+     * store
+     */
+    store: {
+      type: 'object',
+      default: {}
+    }
+  }
+})
+
+/**
+ * Export
+ */
+module.exports = RelyingPartySchema
+
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/src/Session.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/src/Session.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+const fetch = __webpack_require__(/*! node-fetch */ "isomorphic-fetch")
+const onHttpError = __webpack_require__(/*! ./onHttpError */ "./node_modules/@solid/oidc-rp/src/onHttpError.js")
+const PoPToken = __webpack_require__(/*! ./PoPToken */ "./node_modules/@solid/oidc-rp/src/PoPToken.js")
+
+class Session {
+  /**
+   * @param options {Object}
+   *
+   * @param options.credentialType {string} 'access_token' or 'pop_token'
+   *
+   * @param options.issuer {string} Identity provider (issuer of ID/Access Token)
+   *
+   * @param options.authorization {object}
+   * @param options.authorization.client_id {string} OIDC/OAuth2 client id
+   * @param [options.authorization.id_token] {string} Compact-serialized id_token param
+   * @param [options.authorization.access_token] {string} Compact-serialized access_token param
+   * @param [options.authorization.refresh_token] {string} Compact-serialized refresh_token
+   *
+   * @param [options.sessionKey] {string} Serialized client session key generated
+   *   during the Authentication Request, used to issue PoPTokens
+   *
+   * @param [options.idClaims] {object} Decoded/verified ID Token JWT payload
+   *
+   * @param [options.accessClaims] {object} Decoded/verified Access Token JWT payload
+   */
+  constructor (options) {
+    this.credentialType = options.credentialType || 'access_token'
+
+    this.issuer = options.issuer
+
+    this.authorization = options.authorization || {}
+
+    this.sessionKey = options.sessionKey
+
+    this.idClaims = options.idClaims
+    this.accessClaims = options.accessClaims
+  }
+
+  static from (options) {
+    return new Session(options)
+  }
+
+  /**
+   * @param response {AuthenticationResponse}
+   *
+   * @returns {Session} RelyingParty Session object
+   */
+  static fromAuthResponse (response) {
+    const RelyingParty = __webpack_require__(/*! ./RelyingParty */ "./node_modules/@solid/oidc-rp/src/RelyingParty.js")  // import here due to circular dep
+
+    let idClaims = response.decoded && response.decoded.payload || {}
+
+    let { rp } = response
+
+    let registration = rp.registration
+    let rpAuthOptions = rp.defaults.authenticate || {}
+
+    let credentialType = rpAuthOptions['credential_type'] ||
+      rp.defaults.popToken ? 'pop_token' : 'access_token'
+
+    let sessionKey = response.session[RelyingParty.SESSION_PRIVATE_KEY]
+
+    let options = {
+      credentialType,
+      sessionKey,
+      issuer: idClaims.iss,
+      idClaims,
+      authorization: {
+        client_id: registration['client_id'],
+        access_token: response.params['access_token'],
+        id_token: response.params['id_token'],
+        refresh_token: response.params['refresh_token']
+      }
+    }
+
+    return Session.from(options)
+  }
+
+  /**
+   * Authenticated fetch() getter
+   *
+   * @returns {function}
+   */
+  get fetch () {
+    /**
+     * fetch() function signature
+     *
+     * @param url {RequestInfo|string}
+     * @param options {object}
+     *
+     * @returns {Function<Promise<Response>>}
+     */
+    return (url, options) => {
+      return Promise.resolve()
+
+        .then(() => {
+          if (this.hasCredentials()) {
+            return this.fetchWithCredentials(url, options)
+          } else {
+            return fetch(url, options)
+          }
+        })
+
+        .then(onHttpError('Error while fetching resource'))
+    }
+  }
+
+  /**
+   * bearerTokenFor
+   *
+   * @param url {string}
+   *
+   * @returns {Promise<string>}
+   */
+  bearerTokenFor (url) {
+    switch (this.credentialType) {
+      case 'pop_token':
+        return PoPToken.issueFor(url, this)
+
+      default:  // 'access_token' etc
+        return Promise.resolve(this.authorization[this.credentialType])
+    }
+  }
+
+  /**
+   * hasCredentials
+   *
+   * @returns {boolean}
+   */
+  hasCredentials () {
+    switch (this.credentialType) {
+      case 'pop_token':
+        return !!this.authorization['id_token']
+
+      default:  // 'access_token' etc
+        return !!this.authorization[this.credentialType]
+    }
+  }
+
+  /**
+   * fetchWithCredentials
+   *
+   * @param url {RequestInfo|string}
+   * @param options {object}
+   *
+   * @returns {Promise<Response>}
+   */
+  fetchWithCredentials (url, options = {}) {
+    options.headers = options.headers || {}
+
+    return this.bearerTokenFor(url)
+
+      .then(token => {
+        options.headers.authorization = `Bearer ${token}`
+
+        return fetch(url, options)
+      })
+  }
+}
+
+module.exports = Session
+
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/src/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/src/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(/*! ./RelyingParty */ "./node_modules/@solid/oidc-rp/src/RelyingParty.js")
+
+
+/***/ }),
+
+/***/ "./node_modules/@solid/oidc-rp/src/onHttpError.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@solid/oidc-rp/src/onHttpError.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Throws an error when a fetch response status code indicates a 400 or 500
+ * HTTP error. (The whatwg fetch api does not normally reject on http error
+ * responses).
+ *
+ * Usage:
+ *
+ * ```
+ * return fetch(url)
+ *   .then(onHttpError('Error while fetching resource')
+ *   .catch(err => console.log(err))
+ *
+ * // -> 'Error while fetching resource: 404 Not Found' error
+ * // if a 404 response is encountered
+ * ```
+ *
+ * @param [message] {string} Optional error message to clarify context
+ *
+ * @throws {Error} For http status codes > 300
+ *
+ * @return {Object} fetch response object (passed through if no error)
+ */
+function onHttpError (message = 'fetch error') {
+  return (response) => {
+    if (response.status >= 200 && response.status < 300) {
+      return response
+    }
+
+    let errorMessage = `${message}: ${response.status} ${response.statusText}`
+    let error = new Error(errorMessage)
+    error.response = response
+    error.statusCode = response.status
+    throw error
+  }
+}
+
+module.exports = onHttpError
+
 
 /***/ }),
 
@@ -5542,1783 +7869,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/@trust/oidc-rp/lib/PoPToken.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/@trust/oidc-rp/lib/PoPToken.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _require = __webpack_require__(/*! whatwg-url */ "xmldom"),
-    URL = _require.URL;
-
-var _require2 = __webpack_require__(/*! @trust/jose */ "./node_modules/@trust/jose/lib/index.js"),
-    JWT = _require2.JWT,
-    JWK = _require2.JWK;
-
-var DEFAULT_MAX_AGE = 3600; // Default token expiration, in seconds
-
-var PoPToken = function (_JWT) {
-  _inherits(PoPToken, _JWT);
-
-  function PoPToken() {
-    _classCallCheck(this, PoPToken);
-
-    return _possibleConstructorReturn(this, (PoPToken.__proto__ || Object.getPrototypeOf(PoPToken)).apply(this, arguments));
-  }
-
-  _createClass(PoPToken, null, [{
-    key: 'issueFor',
-
-    /**
-     * @param resourceServerUri {string} RS URI for which this token is intended
-     *
-     * @param session {Session}
-     * @param session.clientId {string}
-     * @param session.idToken {string}
-     * @param session.sessionKey {string}
-     *
-     * @returns {Promise<string>} PoPToken, encoded as compact JWT
-     */
-    value: function issueFor(resourceServerUri, session) {
-      if (!resourceServerUri) {
-        throw new Error('Cannot issue PoPToken - missing resource server URI');
-      }
-
-      if (!session.sessionKey) {
-        throw new Error('Cannot issue PoPToken - missing session key');
-      }
-
-      if (!session.idToken) {
-        throw new Error('Cannot issue PoPToken - missing id token');
-      }
-
-      var jwk = JSON.parse(session.sessionKey);
-
-      return JWK.importKey(jwk).then(function (importedSessionJwk) {
-        var options = {
-          aud: new URL(resourceServerUri).origin,
-          key: importedSessionJwk,
-          iss: session.clientId,
-          id_token: session.idToken
-        };
-
-        return PoPToken.issue(options);
-      }).then(function (jwt) {
-        return jwt.encode();
-      });
-    }
-
-    /**
-     * issue
-     *
-     * @param options {Object}
-     * @param options.iss {string} Token issuer (RP client_id)
-     * @param options.aud {string|Array<string>} Audience for the token
-     *   (such as the Resource Server url)
-     * @param options.key {JWK} Proof of Possession (private) signing key, see
-     *   https://tools.ietf.org/html/rfc7800#section-3.1
-     *
-     * @param options.id_token {string} JWT compact encoded ID Token
-     *
-     * Optional:
-     * @param [options.iat] {number} Issued at timestamp (in seconds)
-     * @param [options.max] {number} Max token lifetime in seconds
-     *
-     * @returns {PoPToken} Proof of Possession Token (JWT instance)
-     */
-
-  }, {
-    key: 'issue',
-    value: function issue(options) {
-      var aud = options.aud,
-          iss = options.iss,
-          key = options.key;
-
-
-      var alg = key.alg;
-      var iat = options.iat || Math.floor(Date.now() / 1000);
-      var max = options.max || DEFAULT_MAX_AGE;
-
-      var exp = iat + max; // token expiration
-
-      var header = { alg: alg };
-      var payload = { iss: iss, aud: aud, exp: exp, iat: iat, id_token: options.id_token, token_type: 'pop' };
-
-      var jwt = new PoPToken({ header: header, payload: payload, key: key.cryptoKey }, { filter: false });
-
-      return jwt;
-    }
-  }]);
-
-  return PoPToken;
-}(JWT);
-
-module.exports = PoPToken;
-
-/***/ }),
-
-/***/ "./node_modules/@trust/oidc-rp/src/AuthenticationRequest.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/@trust/oidc-rp/src/AuthenticationRequest.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(Buffer) {/**
- * Dependencies
- */
-const assert = __webpack_require__(/*! assert */ "./node_modules/assert/assert.js")
-const base64url = __webpack_require__(/*! base64url */ "./node_modules/base64url/index.js")
-const crypto = __webpack_require__(/*! @trust/webcrypto */ "@trust/webcrypto")
-const { JWT } = __webpack_require__(/*! @trust/jose */ "./node_modules/@trust/jose/lib/index.js")
-const FormUrlEncoded = __webpack_require__(/*! ./FormUrlEncoded */ "./node_modules/@trust/oidc-rp/src/FormUrlEncoded.js")
-const { URL } = __webpack_require__(/*! whatwg-url */ "xmldom")
-
-/**
- * Authentication Request
- */
-class AuthenticationRequest {
-  /**
-   * create
-   *
-   * @description
-   * Create a new authentication request with generated state and nonce,
-   * validate presence of required parameters, serialize the request data and
-   * persist it to the session, and return a promise for an authentication
-   * request URI.
-   *
-   * @param {RelyingParty} rp – instance of RelyingParty
-   * @param {Object} options - optional request parameters
-   * @param {Object} session – reference to localStorage or other session object
-   *
-   * @returns {Promise}
-   */
-  static create (rp, options, session) {
-    const {provider, defaults, registration} = rp
-
-    let issuer, endpoint, client, params
-
-    return Promise.resolve()
-      .then(() => {
-        // validate presence of OP configuration, RP client registration,
-        // and default parameters
-        assert(provider.configuration,
-          'RelyingParty provider OpenID Configuration is missing')
-
-        assert(defaults.authenticate,
-          'RelyingParty default authentication parameters are missing')
-
-        assert(registration,
-          'RelyingParty client registration is missing')
-
-        // define basic elements of the request
-        issuer = provider.configuration.issuer
-        endpoint = provider.configuration.authorization_endpoint
-        client = { client_id: registration.client_id}
-        params = Object.assign(defaults.authenticate, client, options)
-
-        // validate presence of required configuration and parameters
-        assert(issuer,
-          'Missing issuer in provider OpenID Configuration')
-
-        assert(endpoint,
-          'Missing authorization_endpoint in provider OpenID Configuration')
-
-        assert(params.scope,
-          'Missing scope parameter in authentication request')
-
-        assert(params.response_type,
-          'Missing response_type parameter in authentication request')
-
-        assert(params.client_id,
-          'Missing client_id parameter in authentication request')
-
-        assert(params.redirect_uri,
-          'Missing redirect_uri parameter in authentication request')
-
-        // generate state and nonce random octets
-        params.state = Array.from(crypto.getRandomValues(new Uint8Array(16)))
-        params.nonce = Array.from(crypto.getRandomValues(new Uint8Array(16)))
-
-        // hash the state and nonce parameter values
-        return Promise.all([
-          crypto.subtle.digest({ name: 'SHA-256' }, new Uint8Array(params.state)),
-          crypto.subtle.digest({ name: 'SHA-256' }, new Uint8Array(params.nonce))
-        ])
-      })
-
-      // serialize the request with original values, store in session by
-      // encoded state param, and replace state/nonce octets with encoded
-      // digests
-      .then(digests => {
-        let state = base64url(Buffer.from(digests[0]))
-        let nonce = base64url(Buffer.from(digests[1]))
-        let key = `${issuer}/requestHistory/${state}`
-
-        // store the request params for response validation
-        // with serialized octet values for state and nonce
-        session[key] = JSON.stringify(params)
-
-        // replace state and nonce octets with base64url encoded digests
-        params.state = state
-        params.nonce = nonce
-      })
-
-      .then(() => AuthenticationRequest.generateSessionKeys())
-
-      .then(sessionKeys => {
-        AuthenticationRequest.storeSessionKeys(sessionKeys, params, session)
-      })
-
-      // optionally encode a JWT with the request parameters
-      // and replace params with `{ request: <jwt> }
-      .then(() => {
-        if (provider.configuration.request_parameter_supported) {
-          return AuthenticationRequest.encodeRequestParams(params)
-
-            .then(encodedParams => { params = encodedParams })
-        }
-      })
-
-      // render the request URI and terminate the algorithm
-      .then(() => {
-        let url = new URL(endpoint)
-        url.search = FormUrlEncoded.encode(params)
-
-        return url.href
-      })
-  }
-
-  static generateSessionKeys () {
-    return crypto.subtle.generateKey(
-      {
-        name: "RSASSA-PKCS1-v1_5",
-        modulusLength: 2048,
-        publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
-        hash: { name: "SHA-256" },
-      },
-      true,
-      ["sign", "verify"]
-    )
-      .then((keyPair) => {
-        // returns a keypair object
-        return Promise.all([
-          crypto.subtle.exportKey('jwk', keyPair.publicKey),
-          crypto.subtle.exportKey('jwk', keyPair.privateKey)
-        ])
-      })
-      .then(jwkPair => {
-        let [ publicJwk, privateJwk ] = jwkPair
-
-        return { public: publicJwk, private: privateJwk }
-      })
-  }
-
-  static storeSessionKeys (sessionKeys, params, session) {
-    // store the private one in session, public one goes into params
-    session['oidc.session.privateKey'] = JSON.stringify(sessionKeys.private)
-    params.key = sessionKeys.public
-  }
-
-  static encodeRequestParams (params) {
-    const excludeParams = ['scope', 'client_id', 'response_type', 'state']
-
-    const keysToEncode = Object.keys(params).filter(key => !excludeParams.includes(key))
-
-    let payload = {}
-
-    keysToEncode.forEach(key => {
-      payload[key] = params[key]
-    })
-
-    let requestParamJwt = new JWT({
-      header: { alg: 'none' },
-      payload
-    }, { filter: false })
-
-    return requestParamJwt.encode()
-      .then(requestParamCompact => {
-        let newParams = {
-          scope: params['scope'],
-          client_id: params['client_id'],
-          response_type: params['response_type'],
-          request: requestParamCompact,
-          state: params['state']
-        }
-
-        return newParams
-      })
-  }
-}
-
-/**
- * Export
- */
-module.exports = AuthenticationRequest
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
-
-/***/ }),
-
-/***/ "./node_modules/@trust/oidc-rp/src/AuthenticationResponse.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@trust/oidc-rp/src/AuthenticationResponse.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global, Buffer) {/**
- * Dependencies
- */
-const { URL } = __webpack_require__(/*! whatwg-url */ "xmldom")
-const assert = __webpack_require__(/*! assert */ "./node_modules/assert/assert.js")
-const crypto = __webpack_require__(/*! @trust/webcrypto */ "@trust/webcrypto")
-const base64url = __webpack_require__(/*! base64url */ "./node_modules/base64url/index.js")
-const fetch = __webpack_require__(/*! node-fetch */ "isomorphic-fetch")
-const Headers = fetch.Headers ? fetch.Headers : global.Headers
-const FormUrlEncoded = __webpack_require__(/*! ./FormUrlEncoded */ "./node_modules/@trust/oidc-rp/src/FormUrlEncoded.js")
-const IDToken = __webpack_require__(/*! ./IDToken */ "./node_modules/@trust/oidc-rp/src/IDToken.js")
-const Session = __webpack_require__(/*! ./Session */ "./node_modules/@trust/oidc-rp/src/Session.js")
-const onHttpError = __webpack_require__(/*! ./onHttpError */ "./node_modules/@trust/oidc-rp/src/onHttpError.js")
-
-/**
- * AuthenticationResponse
- */
-class AuthenticationResponse {
-
-  /**
-   * validateResponse
-   *
-   * @description
-   * Authentication response validation.
-   *
-   * @param {string|Object} response
-   * @returns {Promise}
-   */
-  static validateResponse (response) {
-    return Promise.resolve(response)
-      .then(this.parseResponse)
-      .then(this.matchRequest)
-      .then(this.validateStateParam)
-      .then(this.errorResponse)
-      .then(this.validateResponseMode)
-      .then(this.validateResponseParams)
-      .then(this.exchangeAuthorizationCode)
-      .then(this.validateIDToken)
-      .then(Session.fromAuthResponse)
-  }
-
-  /**
-   * parseResponse
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static parseResponse (response) {
-    let {redirect, body} = response
-
-    // response must be either a redirect uri or request body, but not both
-    if ((redirect && body) || (!redirect && !body)) {
-      throw new Error('Invalid response mode')
-    }
-
-    // parse redirect uri
-    if (redirect) {
-      let url = new URL(redirect)
-      let {search, hash} = url
-
-      if ((search && hash) || (!search && !hash)) {
-        throw new Error('Invalid response mode')
-      }
-
-      if (search) {
-        response.params = FormUrlEncoded.decode(search.substring(1))
-        response.mode = 'query'
-      }
-
-      if (hash) {
-        response.params = FormUrlEncoded.decode(hash.substring(1))
-        response.mode = 'fragment'
-      }
-    }
-
-    // parse request form body
-    if (body) {
-      response.params = FormUrlEncoded.decode(body)
-      response.mode = 'form_post'
-    }
-
-    return response
-  }
-
-  /**
-   * matchRequest
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static matchRequest (response) {
-    let {rp, params, session} = response
-    let state = params.state
-    let issuer = rp.provider.configuration.issuer
-
-    if (!state) {
-      throw new Error(
-        'Missing state parameter in authentication response')
-    }
-
-    let key = `${issuer}/requestHistory/${state}`
-    let request = session[key]
-
-    if (!request) {
-      throw new Error(
-        'Mismatching state parameter in authentication response')
-    }
-
-    response.request = JSON.parse(request)
-    return response
-  }
-
-  /**
-   * validateStateParam
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static validateStateParam (response) {
-    let octets = new Uint8Array(response.request.state)
-    let encoded = response.params.state
-
-    return crypto.subtle.digest({ name: 'SHA-256' }, octets).then(digest => {
-      if (encoded !== base64url(Buffer.from(digest))) {
-        throw new Error(
-          'Mismatching state parameter in authentication response')
-      }
-
-      return response
-    })
-  }
-
-  /**
-   * errorResponse
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static errorResponse (response) {
-    let error = response.params.error
-
-    if (error) {
-      return Promise.reject(error)
-    }
-
-    return Promise.resolve(response)
-  }
-
-  /**
-   * validateResponseMode
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static validateResponseMode (response) {
-    if (response.request.response_type !== 'code' && response.mode === 'query') {
-      throw new Error('Invalid response mode')
-    }
-
-    return response
-  }
-
-  /**
-   * validateResponseParams
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static validateResponseParams (response) {
-    let {request, params} = response
-    let expectedParams = request.response_type.split(' ')
-
-    if (expectedParams.includes('code')) {
-      assert(params.code,
-        'Missing authorization code in authentication response')
-      // TODO assert novelty of code
-    }
-
-    if (expectedParams.includes('id_token')) {
-      assert(params.id_token,
-        'Missing id_token in authentication response')
-    }
-
-    if (expectedParams.includes('token')) {
-      assert(params.access_token,
-        'Missing access_token in authentication response')
-
-      assert(params.token_type,
-        'Missing token_type in authentication response')
-    }
-
-    return response
-  }
-
-  /**
-   * exchangeAuthorizationCode
-   *
-   * @param {Object} response
-   * @returns {Promise} response object
-   */
-  static exchangeAuthorizationCode (response) {
-    let {rp, params, request} = response
-    let code = params.code
-
-    // only exchange the authorization code when the response type is "code"
-    if (!code || request['response_type'] !== 'code') {
-      return Promise.resolve(response)
-    }
-
-    let {provider, registration} = rp
-    let id = registration['client_id']
-    let secret = registration['client_secret']
-
-    // verify the client is not public
-    if (!secret) {
-        return Promise.reject(new Error(
-          'Client cannot exchange authorization code because ' +
-          'it is not a confidential client'))
-    }
-
-    // initialize token request arguments
-    let endpoint = provider.configuration.token_endpoint
-    let method = 'POST'
-
-    // initialize headers
-    let headers = new Headers({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    })
-
-    // initialize the token request parameters
-    let bodyContents = {
-      'grant_type': 'authorization_code',
-      'code': code,
-      'redirect_uri': request['redirect_uri']
-    }
-
-    // determine client authentication method
-    let authMethod = registration['token_endpoint_auth_method']
-      || 'client_secret_basic'
-
-    // client secret basic authentication
-    if (authMethod === 'client_secret_basic') {
-      let credentials = new Buffer(`${id}:${secret}`).toString('base64')
-      headers.set('Authorization', `Basic ${credentials}`)
-    }
-
-    // client secret post authentication
-    if (authMethod === 'client_secret_post') {
-      bodyContents['client_id'] = id
-      bodyContents['client_secret'] = secret
-    }
-
-    let body = FormUrlEncoded.encode(bodyContents)
-
-    // TODO
-    // client_secret_jwt authentication
-    // private_key_jwt
-
-    // make the token request
-
-    return fetch(endpoint, {method, headers, body})
-      .then(onHttpError('Error exchanging authorization code'))
-      .then(tokenResponse => tokenResponse.json())
-      .then(tokenResponse => {
-        assert(tokenResponse['access_token'],
-          'Missing access_token in token response')
-
-        assert(tokenResponse['token_type'],
-          'Missing token_type in token response')
-
-        assert(tokenResponse['id_token'],
-          'Missing id_token in token response')
-
-        // anything else?
-
-        // IS THIS THE RIGHT THING TO DO HERE?
-        response.params = Object.assign(response.params, tokenResponse)
-        return response
-      })
-  }
-
-
-  /**
-   * validateIDToken
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static validateIDToken (response) {
-    // only validate the ID Token if present in the response
-    if (!response.params.id_token) {
-      return Promise.resolve(response)
-    }
-
-    return Promise.resolve(response)
-      .then(AuthenticationResponse.decryptIDToken)
-      .then(AuthenticationResponse.decodeIDToken)
-      .then(AuthenticationResponse.validateIssuer)
-      .then(AuthenticationResponse.validateAudience)
-      .then(AuthenticationResponse.resolveKeys)
-      .then(AuthenticationResponse.verifySignature)
-      .then(AuthenticationResponse.validateExpires)
-      .then(AuthenticationResponse.verifyNonce)
-      .then(AuthenticationResponse.validateAcr)
-      .then(AuthenticationResponse.validateAuthTime)
-      .then(AuthenticationResponse.validateAccessTokenHash)
-      .then(AuthenticationResponse.validateAuthorizationCodeHash)
-  }
-
-  /**
-   * decryptIDToken
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static decryptIDToken (response) {
-    // TODO
-    return Promise.resolve(response)
-  }
-
-  /**
-   * decodeIDToken
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static decodeIDToken (response) {
-    let jwt = response.params.id_token
-
-    if (jwt) {
-      response.decoded = IDToken.decode(jwt)
-    }
-
-    return response
-  }
-
-
-  /**
-   * validateIssuer
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static validateIssuer (response) {
-    let configuration = response.rp.provider.configuration
-    let payload = response.decoded.payload
-
-    // validate issuer of token matches this relying party's provider
-    if (payload.iss !== configuration.issuer) {
-      throw new Error('Mismatching issuer in ID Token')
-    }
-
-    return response
-  }
-
-  /**
-   * validateAudience
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static validateAudience (response) {
-    let registration = response.rp.registration
-    let {aud, azp} = response.decoded.payload
-
-    // validate audience includes this relying party
-    if (typeof aud === 'string' && aud !== registration['client_id']) {
-      throw new Error('Mismatching audience in id_token')
-    }
-
-    // validate audience includes this relying party
-    if (Array.isArray(aud) && !aud.includes(registration['client_id'])) {
-      throw new Error('Mismatching audience in id_token')
-    }
-
-    // validate authorized party is present if required
-    if (Array.isArray(aud) && !azp) {
-      throw new Error('Missing azp claim in id_token')
-    }
-
-    // validate authorized party is this relying party
-    if (azp && azp !== registration['client_id']) {
-      throw new Error('Mismatching azp claim in id_token')
-    }
-
-    return response
-  }
-
-
-  /**
-   * resolveKeys
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static resolveKeys (response) {
-    let rp = response.rp
-    let provider = rp.provider
-    let decoded = response.decoded
-
-    return Promise.resolve(provider.jwks)
-
-      .then(jwks => jwks ? jwks : rp.jwks())
-
-      .then(jwks => {
-        if (decoded.resolveKeys(jwks)) {
-          return Promise.resolve(response)
-        } else {
-          throw new Error('Cannot resolve signing key for ID Token')
-        }
-      })
-  }
-
-  /**
-   * verifySignature
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static verifySignature (response) {
-    let alg = response.decoded.header.alg
-    let registration = response.rp.registration
-    let expectedAlgorithm = registration['id_token_signed_response_alg'] || 'RS256'
-
-    // validate signing algorithm matches expectation
-    if (alg !== expectedAlgorithm) {
-      throw new Error(
-        `Expected ID Token to be signed with ${expectedAlgorithm}`)
-    }
-
-    return response.decoded.verify().then(verified => {
-      if (!verified) {
-        throw new Error('Invalid ID Token signature')
-      }
-
-      return response
-    })
-  }
-
-  /**
-   * validateExpires
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static validateExpires (response) {
-    let exp = response.decoded.payload.exp
-
-    // validate expiration of token
-    if (exp <= Math.floor(Date.now() / 1000)) {
-      throw new Error('Expired ID Token')
-    }
-
-    return response
-  }
-
-  /**
-   * verifyNonce
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static verifyNonce (response) {
-    let octets = new Uint8Array(response.request.nonce)
-    let nonce = response.decoded.payload.nonce
-
-    if (!nonce) {
-      throw new Error('Missing nonce in ID Token')
-    }
-
-    return crypto.subtle.digest({ name: 'SHA-256' }, octets).then(digest => {
-      if (nonce !== base64url(Buffer.from(digest))) {
-        throw new Error('Mismatching nonce in ID Token')
-      }
-
-      return response
-    })
-  }
-
-  /**
-   * validateAcr
-   *
-   * @param {Object} response
-   * @returns {Object}
-   */
-  static validateAcr (response) {
-    // TODO
-    return response
-  }
-
-  /**
-   * validateAuthTime
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static validateAuthTime (response) {
-    // TODO
-    return response
-  }
-
-  /**
-   * validateAccessTokenHash
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static validateAccessTokenHash (response) {
-    // TODO
-    return response
-  }
-
-  /**
-   * validateAuthorizationCodeHash
-   *
-   * @param {Object} response
-   * @returns {Promise}
-   */
-  static validateAuthorizationCodeHash (response) {
-    // TODO
-    return response
-  }
-}
-
-/**
- * Export
- */
-module.exports = AuthenticationResponse
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
-
-/***/ }),
-
-/***/ "./node_modules/@trust/oidc-rp/src/FormUrlEncoded.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/@trust/oidc-rp/src/FormUrlEncoded.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/**
- * Dependencies
- */
-
-/**
- * FormUrlEncoded
- */
-class FormUrlEncoded {
-
-  /**
-   * Encode
-   *
-   * @description
-   * Represent an object as x-www-form-urlencoded string.
-   *
-   * @param {Object} data
-   * @returns {string}
-   */
-  static encode (data) {
-     let pairs = []
-
-     Object.keys(data).forEach(function (key) {
-       pairs.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-     })
-
-     return pairs.join('&')
-  }
-
-  /**
-   * Decode
-   *
-   * @description
-   * Parse a x-www-form-urlencoded into an object.
-   *
-   * @param {string} data
-   * @returns {Object}
-   */
-  static decode (data) {
-    let obj = {}
-
-    data.split('&').forEach(function (property) {
-      let pair = property.split('=')
-      let key = decodeURIComponent(pair[0])
-      let val = decodeURIComponent(pair[1])
-
-      obj[key] = val
-    })
-
-    return obj
-  }
-}
-
-/**
- * Export
- */
-module.exports = FormUrlEncoded
-
-
-/***/ }),
-
-/***/ "./node_modules/@trust/oidc-rp/src/IDToken.js":
-/*!****************************************************!*\
-  !*** ./node_modules/@trust/oidc-rp/src/IDToken.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Local dependencies
- */
-const {JWT} = __webpack_require__(/*! @trust/jose */ "./node_modules/@trust/jose/lib/index.js")
-const IDTokenSchema = __webpack_require__(/*! ./IDTokenSchema */ "./node_modules/@trust/oidc-rp/src/IDTokenSchema.js")
-
-/**
- * IDToken
- */
-class IDToken extends JWT {
-
-  /**
-   * Schema
-   */
-  static get schema () {
-    return IDTokenSchema
-  }
-}
-
-/**
- * Export
- */
-module.exports = IDToken
-
-
-/***/ }),
-
-/***/ "./node_modules/@trust/oidc-rp/src/IDTokenSchema.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/@trust/oidc-rp/src/IDTokenSchema.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Local dependencies
- */
-const {JWTSchema} = __webpack_require__(/*! @trust/jose */ "./node_modules/@trust/jose/lib/index.js")
-
-/**
- * IDToken Schema
- */
-const IDTokenSchema = JWTSchema.extend({
-  properties: {
-
-    /**
-     * header
-     * http://openid.net/specs/openid-connect-core-1_0.html#IDToken
-     * ID Tokens SHOULD NOT use the JWS or JWE x5u, x5c, jku, or jwk Header
-     * Parameter fields. Instead, references to keys used are communicated in
-     * advance using Discovery and Registration parameters, per Section 10.
-     */
-    header: {
-      //not: { required: ['x5u', 'x5c', 'jku', 'jwk'] }
-    },
-
-    /**
-     * payload
-     */
-    payload: {
-      properties: {
-
-        /**
-         * iss
-         *
-         * REQUIRED. Issuer Identifier for the Issuer of the response.
-         * The iss value is a case sensitive URL using the https scheme
-         * that contains scheme, host, and optionally, port number and
-         * path components and no query or fragment components.
-         */
-        iss: { type: 'string', format: 'url' },
-
-        /**
-         * sub
-         *
-         * REQUIRED. Subject Identifier. A locally unique and never
-         * reassigned identifier within the Issuer for the End-User, which
-         * is intended to be consumed by the Client, e.g., 24400320 or
-         * AItOawmwtWwcT0k51BayewNvutrJUqsvl6qs7A4. It MUST NOT exceed 255
-         * ASCII characters in length. The sub value is a case sensitive
-         * string.
-         */
-        sub: { type: 'string', maxLength: 255 },
-
-        /**
-         * aud
-         *
-         * REQUIRED. Audience(s) that this ID Token is intended for. It
-         * MUST contain the OAuth 2.0 client_id of the Relying Party as an
-         * audience value. It MAY also contain identifiers for other audiences.
-         * In the general case, the aud value is an array of case sensitive
-         * strings. In the common special case when there is one audience,
-         * the aud value MAY be a single case sensitive string.
-         */
-        // inherited from JWTClaimsSetSchema
-
-        /**
-         * exp
-         *
-         * REQUIRED. Expiration time on or after which the ID Token MUST NOT
-         * be accepted for processing. The processing of this parameter
-         * requires that the current date/time MUST be before the expiration
-         * date/time listed in the value. Implementers MAY provide for some
-         * small leeway, usually no more than a few minutes, to account for
-         * clock skew. Its value is a JSON number representing the number of
-         * seconds from 1970-01-01T0:0:0Z as measured in UTC until the
-         * date/time. See RFC 3339 [RFC3339] for details regarding date/times
-         * in general and UTC in particular.
-         */
-        // inherited from JWTClaimsSetSchema
-
-        /**
-         * iat
-         *
-         * REQUIRED. Time at which the JWT was issued. Its value is a
-         * JSON number representing the number of seconds from
-         * 1970-01-01T0:0:0Z as measured in UTC until the date/time.
-         */
-        // inherited from JWTClaimsSetSchema
-
-        /**
-         * auth_time
-         *
-         * Time when the End-User authentication occurred. Its value is a
-         * JSON number representing the number of seconds from
-         * 1970-01-01T0:0:0Z as measured in UTC until the date/time. When a
-         * max_age request is made or when auth_time is requested as an
-         * Essential Claim, then this Claim is REQUIRED; otherwise, its
-         * inclusion is OPTIONAL. (The auth_time Claim semantically
-         * corresponds to the OpenID 2.0 PAPE [OpenID.PAPE] auth_time
-         * response parameter.)
-         */
-        auth_time: { type: 'integer', format: 'NumericDate' },
-
-        /**
-         * nonce
-         *
-         * String value used to associate a Client session with an ID Token,
-         * and to mitigate replay attacks. The value is passed through
-         * unmodified from the Authentication Request to the ID Token. If
-         * present in the ID Token, Clients MUST verify that the nonce Claim
-         * Value is equal to the value of the nonce parameter sent in the
-         * Authentication Request. If present in the Authentication Request,
-         * Authorization Servers MUST include a nonce Claim in the ID Token
-         * with the Claim Value being the nonce value sent in the
-         * Authentication Request. Authorization Servers SHOULD perform no
-         * other processing on nonce values used. The nonce value is a case
-         * sensitive string.
-         */
-        nonce: { type: 'string' },
-
-        /**
-         * acr
-         *
-         * OPTIONAL. Authentication Context Class Reference. String
-         * specifying an Authentication Context Class Reference value that
-         * identifies the Authentication Context Class that the authentication
-         * performed satisfied. The value "0" indicates the End-User
-         * authentication did not meet the requirements of ISO/IEC 29115
-         * [ISO29115] level 1. Authentication using a long-lived browser
-         * cookie, for instance, is one example where the use of "level 0" is
-         * appropriate. Authentications with level 0 SHOULD NOT be used to
-         * authorize access to any resource of any monetary value. (This
-         * corresponds to the OpenID 2.0 PAPE [OpenID.PAPE] nist_auth_level
-         * 0.) An absolute URI or an RFC 6711 [RFC6711] registered name
-         * SHOULD be used as the acr value; registered names MUST NOT be used
-         * with a different meaning than that which is registered. Parties
-         * using this claim will need to agree upon the meanings of the
-         * values used, which may be context-specific. The acr value is a
-         * case sensitive string.
-         */
-        acr: { type: 'string' },
-
-        /**
-         * amr
-         * OPTIONAL. Authentication Methods References. JSON array of strings
-         * that are identifiers for authentication methods used in the
-         * authentication. For instance, values might indicate that both
-         * password and OTP authentication methods were used. The definition
-         * of particular values to be used in the amr Claim is beyond the
-         * scope of this specification. Parties using this claim will need to
-         * agree upon the meanings of the values used, which may be context-
-         * specific. The amr value is an array of case sensitive strings.
-         */
-        amr: { type: 'array', items: { type: 'string' } },
-
-        /**
-         * azp
-         * OPTIONAL. Authorized party - the party to which the ID Token was
-         * issued. If present, it MUST contain the OAuth 2.0 Client ID of this
-         * party. This Claim is only needed when the ID Token has a single
-         * audience value and that audience is different than the authorized
-         * party. It MAY be included even when the authorized party is the
-         * same as the sole audience. The azp value is a case sensitive string
-         * containing a StringOrURI value.
-         */
-        azp: { type: 'string', format: 'StringOrURI' }
-      },
-
-      /**
-       * Required Claims
-       */
-      required: ['iss', 'sub', 'aud', 'exp', 'iat']
-    }
-  }
-})
-
-/**
- * Export
- */
-module.exports = IDTokenSchema
-
-
-/***/ }),
-
-/***/ "./node_modules/@trust/oidc-rp/src/RelyingParty.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/@trust/oidc-rp/src/RelyingParty.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {/**
- * Dependencies
- */
-const assert = __webpack_require__(/*! assert */ "./node_modules/assert/assert.js")
-const fetch = __webpack_require__(/*! node-fetch */ "isomorphic-fetch")
-const { URL } = __webpack_require__(/*! whatwg-url */ "xmldom")
-const Headers = fetch.Headers ? fetch.Headers : global.Headers
-const {JSONDocument} = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js")
-const {JWKSet} = __webpack_require__(/*! @trust/jose */ "./node_modules/@trust/jose/lib/index.js")
-const AuthenticationRequest = __webpack_require__(/*! ./AuthenticationRequest */ "./node_modules/@trust/oidc-rp/src/AuthenticationRequest.js")
-const AuthenticationResponse = __webpack_require__(/*! ./AuthenticationResponse */ "./node_modules/@trust/oidc-rp/src/AuthenticationResponse.js")
-const RelyingPartySchema = __webpack_require__(/*! ./RelyingPartySchema */ "./node_modules/@trust/oidc-rp/src/RelyingPartySchema.js")
-const onHttpError = __webpack_require__(/*! ./onHttpError */ "./node_modules/@trust/oidc-rp/src/onHttpError.js")
-
-/**
- * RelyingParty
- *
- * @class
- * Client interface for OpenID Connect Relying Party.
- *
- * @example
- *  let client = RelyingParty({
- *    provider: {
- *      name: 'Anvil Research, Inc.',
- *      url: 'https://forge.anvil.io'
- *      // configuration
- *      // jwks
- *    },
- *    authenticate: {
- *      response_type: 'code',
- *      display: 'popup',
- *      scope: 'openid profile email'
- *    },
- *    register: {
- *      client_name: 'Example',
- *      client_uri: 'https://example.com',
- *      logo_uri: 'https://example.com/assets/logo.png',
- *      redirect_uris: ['https://app.example.com/callback'],
- *      response_types: ['code', 'code id_token token'],
- *      grant_types: ['authorization_code'],
- *      default_max_age: 7200,
- *      post_logout_redirect_uris: ['https://app.example.com']
- *    },
- *    registration: {
- *      // if you have it saved somewhere
- *    },
- *    store: localStorage || req.session,
- *    popup: { width: 400, height: 300 }
- *  })
- *
- *  client.discover() => Promise
- *  client.jwks() => Promise
- *  client.authenticate()
- *  client.authenticateUri()
- *  client.validateResponse(uri) => Promise
- *  client.userinfo() => Promise
- *  client.logout()
- */
-class RelyingParty extends JSONDocument {
-
-  /**
-   * Schema
-   */
-  static get schema () {
-    return RelyingPartySchema
-  }
-
-  /**
-   * from
-   *
-   * @description
-   * Create a RelyingParty instance from a previously registered client.
-   *
-   * @param {Object} data
-   * @returns {Promise<RelyingParty>}
-   */
-  static from (data) {
-    let rp = new RelyingParty(data)
-    let validation = rp.validate()
-
-    // schema validation
-    if (!validation.valid) {
-      return Promise.reject(new Error(JSON.stringify(validation)))
-    }
-
-    let jwks = rp.provider.jwks
-
-    // request the JWK Set if missing
-    if (!jwks) {
-      return rp.jwks().then(() => rp)
-    }
-
-    // otherwise import the JWK Set to webcrypto
-    return JWKSet.importKeys(jwks).then(jwks => {
-      rp.provider.jwks = jwks
-      return rp
-    })
-  }
-
-  /**
-   * register
-   *
-   * @param issuer {string} Provider URL
-   * @param registration {Object} Client dynamic registration options
-   * @param options {Object}
-   * @param options.defaults
-   * @param [options.store] {Session|Storage}
-   * @returns {Promise<RelyingParty>} RelyingParty instance, registered.
-   */
-  static register (issuer, registration, options) {
-    let rp = new RelyingParty({
-      provider: { url: issuer },
-      defaults: Object.assign({}, options.defaults),
-      store: options.store
-    })
-
-    return Promise.resolve()
-      .then(() => rp.discover())
-      .then(() => rp.jwks())
-      .then(() => rp.register(registration))
-      .then(() => rp)
-  }
-
-  /**
-   * Discover
-   *
-   * @description Fetches the issuer's OpenID Configuration.
-   * @returns {Promise<Object>} Resolves with the provider configuration response
-   */
-  discover () {
-    try {
-      let issuer = this.provider.url
-
-      assert(issuer, 'RelyingParty provider must define "url"')
-
-      let url = new URL(issuer)
-      url.pathname = '.well-known/openid-configuration'
-
-      return fetch(url.toString())
-        .then(onHttpError('Error fetching openid configuration'))
-        .then(response => {
-          return response.json().then(json => this.provider.configuration = json)
-        })
-
-    } catch (error) {
-      return Promise.reject(error)
-    }
-  }
-
-  /**
-   * Register
-   *
-   * @description Register's a client with provider as a Relying Party
-   *
-   * @param options {Object}
-   * @returns {Promise<Object>} Resolves with the registration response object
-   */
-  register (options) {
-    try {
-      let configuration = this.provider.configuration
-
-      assert(configuration, 'OpenID Configuration is not initialized.')
-      assert(configuration.registration_endpoint, 'OpenID Configuration is missing registration_endpoint.')
-
-      let uri = configuration.registration_endpoint
-      let method = 'post'
-      let headers = new Headers({ 'Content-Type': 'application/json' })
-      let params = this.defaults.register
-      let body = JSON.stringify(Object.assign({}, params, options))
-
-      return fetch(uri, {method, headers, body})
-        .then(onHttpError('Error registering client'))
-        .then(response => {
-          return response.json().then(json => this.registration = json)
-        })
-
-    } catch (error) {
-      return Promise.reject(error)
-    }
-  }
-
-  serialize () {
-    return JSON.stringify(this)
-  }
-
-  /**
-   * jwks
-   *
-   * @description Promises the issuer's JWK Set.
-   * @returns {Promise}
-   */
-  jwks () {
-    try {
-      let configuration = this.provider.configuration
-
-      assert(configuration, 'OpenID Configuration is not initialized.')
-      assert(configuration.jwks_uri, 'OpenID Configuration is missing jwks_uri.')
-
-      let uri = configuration.jwks_uri
-
-      return fetch(uri)
-        .then(onHttpError('Error resolving provider keys'))
-        .then(response => {
-          return response
-            .json()
-            .then(json => JWKSet.importKeys(json))
-            .then(jwks => this.provider.jwks = jwks)
-        })
-
-    } catch (error) {
-      return Promise.reject(error)
-    }
-  }
-
-  /**
-   * createRequest
-   *
-   * @param options {Object} Authn request options hashmap
-   * @param options.redirect_uri {string}
-   * @param options.response_type {string} e.g. 'code' or 'id_token token'
-   * @param session {Session|Storage} req.session or localStorage
-   * @returns {Promise<string>} Authn request URL
-   */
-  createRequest (options, session) {
-    return AuthenticationRequest.create(this, options, session || this.store)
-  }
-
-  /**
-   * Validate Response
-   *
-   * @param response {string} req.query or req.body.text
-   * @param session {Session|Storage} req.session or localStorage or similar
-   * @returns {Promise<Object>} Custom response object, with `params` and
-   *   `mode` properties
-   */
-  validateResponse (response, session) {
-    session = session || this.store
-
-    if (response.match(/^http(s?):\/\//)) {
-      response = { rp: this, redirect: response, session }
-    } else {
-      response = { rp: this, body: response, session }
-    }
-
-    return AuthenticationResponse.validateResponse(response)
-  }
-
-  /**
-   * userinfo
-   *
-   * @description Promises the authenticated user's claims.
-   * @returns {Promise}
-   */
-  userinfo () {
-    try {
-      let configuration = this.provider.configuration
-
-      assert(configuration, 'OpenID Configuration is not initialized.')
-      assert(configuration.userinfo_endpoint, 'OpenID Configuration is missing userinfo_endpoint.')
-
-      let uri = configuration.userinfo_endpoint
-      let access_token = this.store.access_token
-
-      assert(access_token, 'Missing access token.')
-
-      let headers = new Headers({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${access_token}`
-      })
-
-      return fetch(uri, {headers})
-        .then(onHttpError('Error fetching userinfo'))
-        .then(response => response.json())
-
-    } catch (error) {
-      return Promise.reject(error)
-    }
-  }
-
-  /**
-   * Logout
-   *
-   * @returns {Promise}
-   */
-  logout () {
-    let configuration
-    try {
-      assert(this.provider, 'OpenID Configuration is not initialized.')
-      configuration = this.provider.configuration
-      assert(configuration, 'OpenID Configuration is not initialized.')
-      assert(configuration.end_session_endpoint,
-        'OpenID Configuration is missing end_session_endpoint.')
-    } catch (error) {
-      return Promise.reject(error)
-    }
-
-    this.clearSession()
-
-    let uri = configuration.end_session_endpoint
-    let method = 'get'
-
-    return fetch(uri, {method})
-      .then(onHttpError('Error logging out'))
-
-    // TODO: Validate `frontchannel_logout_uri` if necessary
-    /**
-     * frontchannel_logout_uri - OPTIONAL. RP URL that will cause the RP to log
-     * itself out when rendered in an iframe by the OP.
-     *
-     * An `iss` (issuer) query parameter and a `sid`
-     * (session ID) query parameter MAY be included by the OP to enable the RP
-     * to validate the request and to determine which of the potentially
-     * multiple sessions is to be logged out. If a sid (session ID) query
-     * parameter is included, an iss (issuer) query parameter MUST also be
-     * included.
-     * @see https://openid.net/specs/openid-connect-frontchannel-1_0.html#RPLogout
-     */
-  }
-
-  clearSession () {
-    let session = this.store
-
-    if (!session) { return }
-
-    delete session[SESSION_PRIVATE_KEY]
-  }
-
-  /**
-   * @param uri {string} Target Resource Server URI
-   * @param idToken {IDToken} ID Token to be embedded in the PoP token
-   *
-   * @returns {Promise<PoPToken>}
-   */
-  popTokenFor (uri, idToken) {
-    return PoPToken.issueFor(uri, idToken, this)
-  }
-}
-
-const SESSION_PRIVATE_KEY = 'oidc.session.privateKey'
-
-RelyingParty.SESSION_PRIVATE_KEY = SESSION_PRIVATE_KEY
-
-module.exports = RelyingParty
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
-
-/***/ }),
-
-/***/ "./node_modules/@trust/oidc-rp/src/RelyingPartySchema.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@trust/oidc-rp/src/RelyingPartySchema.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Dependencies
- */
-const {JSONSchema} = __webpack_require__(/*! @trust/json-document */ "./node_modules/@trust/json-document/lib/index.js")
-
-/**
- * RelyingParty Schema
- *
- * This schema initializes and verifies Relying Party client configuration.
- * RelyingParty objects can be persisted and rehydrated. By encapsulating this data in
- * it's own class, it's possible to have multiple RP configurations running
- * simultaneously.
- */
-const RelyingPartySchema = new JSONSchema({
-  type: 'object',
-  properties: {
-
-    /**
-     * provider
-     *
-     * Information about the provider, including issuer URL, human readable name,
-     * and any configuration or provider metadata retrieved from the OP.
-     */
-    provider: {
-      type: 'object',
-      properties: {
-        name: { type: 'string' },
-        url: { type: 'string', format: 'uri' },
-        // NOTE:
-        // OpenID Configuration (discovery response) and JSON Web Keys Set for an
-        // issuer can be cached here. However the cache should not be persisted or
-        // relied upon.
-        //
-        configuration: {}, // .well-known/openid-configuration
-        jwks: {}           // /jwks
-      },
-      required: ['url']
-    },
-
-    /**
-     * defaults
-     *
-     * Default request parameters for authentication and dynamic registration requests.
-     * These values can be extended or overridden via arguments to the respective
-     * request methods.
-     *
-     * These are part of the relying party client configuration and can be serialized
-     * and persisted.
-     */
-    defaults: {
-      type: 'object',
-      properties: {
-
-        /**
-         * Default authentication request parameters
-         */
-        authenticate: {
-          type: 'object',
-          properties: {
-            redirect_uri: {
-              type: 'string',
-              format: 'uri'
-            },
-            response_type: {
-              type: 'string',
-              default: 'id_token token', // browser detection
-              enum: [
-                'code',
-                'token',
-                'id_token token',
-                'id_token token code'
-              ]
-            },
-            display: {
-              type: 'string',
-              default: 'page',
-              enum: [
-                'page',
-                'popup'
-              ]
-            },
-            scope: {
-              type: ['string', 'array'],
-              default: ['openid']
-            }
-          }
-        },
-
-        /**
-         * Default client registration parameters
-         */
-        register: {}
-      }
-    },
-
-    /**
-     * registration
-     *
-     * This is the client registration response from dynamic registration. It should
-     * always reflect the client configuration on the openid provider. A client access
-     * token is stored here
-     */
-    registration: {},// ClientMetadataSchema
-
-    /**
-     * store
-     */
-    store: {
-      type: 'object',
-      default: {}
-    }
-  }
-})
-
-/**
- * Export
- */
-module.exports = RelyingPartySchema
-
-
-/***/ }),
-
-/***/ "./node_modules/@trust/oidc-rp/src/Session.js":
-/*!****************************************************!*\
-  !*** ./node_modules/@trust/oidc-rp/src/Session.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-class Session {
-  /**
-   * @param options {Object}
-   *
-   * @param options.idp {string} Identity provider (issuer of ID Token)
-   *
-   * @param options.clientId {string} Relying Party client_id
-   *
-   * @param options.sessionKey {string} Serialized client session key generated
-   *   during the Authentication Request, used to issue PoPTokens
-   *
-   * @param options.decoded {IDToken} Decoded/verified ID Token JWT
-   *
-   * @param options.accessToken {string} Compact-serialized access_token param
-   *
-   * @param options.idToken {string} Compact-serialized id_token param
-   */
-  constructor (options) {
-    this.idp = options.idp
-    this.clientId = options.clientId
-    this.sessionKey = options.sessionKey
-    this.decoded = options.decoded
-
-    // Raw (string-encoded) tokens
-    this.accessToken = options.accessToken
-    this.idToken = options.idToken
-  }
-
-  /**
-   * @param response {AuthenticationResponse}
-   *
-   * @returns {Session}
-   */
-  static fromAuthResponse (response) {
-    const RelyingParty = __webpack_require__(/*! ./RelyingParty */ "./node_modules/@trust/oidc-rp/src/RelyingParty.js")  // import here due to circular dep
-
-    const payload = response.decoded.payload
-    const registration = response.rp.registration
-    const sessionKey = response.session[RelyingParty.SESSION_PRIVATE_KEY]
-
-    let options = {
-      sessionKey,
-      idp: payload.iss,
-      clientId: registration['client_id'],
-      decoded: response.decoded,
-      accessToken: response.params['access_token'],
-      idToken: response.params['id_token']
-    }
-
-    return new Session(options)
-  }
-}
-
-module.exports = Session
-
-
-/***/ }),
-
-/***/ "./node_modules/@trust/oidc-rp/src/index.js":
-/*!**************************************************!*\
-  !*** ./node_modules/@trust/oidc-rp/src/index.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(/*! ./RelyingParty */ "./node_modules/@trust/oidc-rp/src/RelyingParty.js")
-
-
-/***/ }),
-
-/***/ "./node_modules/@trust/oidc-rp/src/onHttpError.js":
-/*!********************************************************!*\
-  !*** ./node_modules/@trust/oidc-rp/src/onHttpError.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Throws an error when a fetch response status code indicates a 400 or 500
- * HTTP error. (The whatwg fetch api does not normally reject on http error
- * responses).
- *
- * Usage:
- *
- * ```
- * return fetch(url)
- *   .then(onHttpError('Error while fetching resource')
- *   .catch(err => console.log(err))
- *
- * // -> 'Error while fetching resource: 404 Not Found' error
- * // if a 404 response is encountered
- * ```
- *
- * @param [message] {string} Optional error message to clarify context
- *
- * @throws {Error} For http status codes > 300
- *
- * @return {Object} fetch response object (passed through if no error)
- */
-function onHttpError (message = 'fetch error') {
-  return (response) => {
-    if (response.status >= 200 && response.status < 300) {
-      return response
-    }
-
-    let errorMessage = `${message}: ${response.status} ${response.statusText}`
-    let error = new Error(errorMessage)
-    error.response = response
-    error.statusCode = response.status
-    throw error
-  }
-}
-
-module.exports = onHttpError
-
-
-/***/ }),
-
 /***/ "./node_modules/assert/assert.js":
 /*!***************************************!*\
   !*** ./node_modules/assert/assert.js ***!
@@ -9187,6 +9737,17 @@ module.exports = { "default": __webpack_require__(/*! core-js/library/fn/object/
 
 /***/ }),
 
+/***/ "./node_modules/babel-runtime/core-js/object/create.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/babel-runtime/core-js/object/create.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(/*! core-js/library/fn/object/create */ "./node_modules/core-js/library/fn/object/create.js"), __esModule: true };
+
+/***/ }),
+
 /***/ "./node_modules/babel-runtime/core-js/object/define-property.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/babel-runtime/core-js/object/define-property.js ***!
@@ -9195,6 +9756,39 @@ module.exports = { "default": __webpack_require__(/*! core-js/library/fn/object/
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(/*! core-js/library/fn/object/define-property */ "./node_modules/core-js/library/fn/object/define-property.js"), __esModule: true };
+
+/***/ }),
+
+/***/ "./node_modules/babel-runtime/core-js/object/get-own-property-names.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/babel-runtime/core-js/object/get-own-property-names.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(/*! core-js/library/fn/object/get-own-property-names */ "./node_modules/core-js/library/fn/object/get-own-property-names.js"), __esModule: true };
+
+/***/ }),
+
+/***/ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/babel-runtime/core-js/object/get-prototype-of.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(/*! core-js/library/fn/object/get-prototype-of */ "./node_modules/core-js/library/fn/object/get-prototype-of.js"), __esModule: true };
+
+/***/ }),
+
+/***/ "./node_modules/babel-runtime/core-js/object/set-prototype-of.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/babel-runtime/core-js/object/set-prototype-of.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(/*! core-js/library/fn/object/set-prototype-of */ "./node_modules/core-js/library/fn/object/set-prototype-of.js"), __esModule: true };
 
 /***/ }),
 
@@ -9280,6 +9874,64 @@ exports.default = function (fn) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-runtime/helpers/classCallCheck.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/babel-runtime/helpers/classCallCheck.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+exports.default = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+/***/ }),
+
+/***/ "./node_modules/babel-runtime/helpers/createClass.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/babel-runtime/helpers/createClass.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _defineProperty = __webpack_require__(/*! ../core-js/object/define-property */ "./node_modules/babel-runtime/core-js/object/define-property.js");
+
+var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      (0, _defineProperty2.default)(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+/***/ }),
+
 /***/ "./node_modules/babel-runtime/helpers/defineProperty.js":
 /*!**************************************************************!*\
   !*** ./node_modules/babel-runtime/helpers/defineProperty.js ***!
@@ -9345,6 +9997,78 @@ exports.default = _assign2.default || function (target) {
   }
 
   return target;
+};
+
+/***/ }),
+
+/***/ "./node_modules/babel-runtime/helpers/inherits.js":
+/*!********************************************************!*\
+  !*** ./node_modules/babel-runtime/helpers/inherits.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _setPrototypeOf = __webpack_require__(/*! ../core-js/object/set-prototype-of */ "./node_modules/babel-runtime/core-js/object/set-prototype-of.js");
+
+var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
+
+var _create = __webpack_require__(/*! ../core-js/object/create */ "./node_modules/babel-runtime/core-js/object/create.js");
+
+var _create2 = _interopRequireDefault(_create);
+
+var _typeof2 = __webpack_require__(/*! ../helpers/typeof */ "./node_modules/babel-runtime/helpers/typeof.js");
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : (0, _typeof3.default)(superClass)));
+  }
+
+  subClass.prototype = (0, _create2.default)(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf2.default ? (0, _setPrototypeOf2.default)(subClass, superClass) : subClass.__proto__ = superClass;
+};
+
+/***/ }),
+
+/***/ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/babel-runtime/helpers/possibleConstructorReturn.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _typeof2 = __webpack_require__(/*! ../helpers/typeof */ "./node_modules/babel-runtime/helpers/typeof.js");
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && ((typeof call === "undefined" ? "undefined" : (0, _typeof3.default)(call)) === "object" || typeof call === "function") ? call : self;
 };
 
 /***/ }),
@@ -9584,102 +10308,6 @@ function fromByteArray (uint8) {
 
   return parts.join('')
 }
-
-
-/***/ }),
-
-/***/ "./node_modules/base64url/dist/base64url.js":
-/*!**************************************************!*\
-  !*** ./node_modules/base64url/dist/base64url.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(Buffer) {
-var pad_string_1 = __webpack_require__(/*! ./pad-string */ "./node_modules/base64url/dist/pad-string.js");
-function encode(input, encoding) {
-    if (encoding === void 0) { encoding = "utf8"; }
-    if (Buffer.isBuffer(input)) {
-        return fromBase64(input.toString("base64"));
-    }
-    return fromBase64(new Buffer(input, encoding).toString("base64"));
-}
-;
-function decode(base64url, encoding) {
-    if (encoding === void 0) { encoding = "utf8"; }
-    return new Buffer(toBase64(base64url), "base64").toString(encoding);
-}
-function toBase64(base64url) {
-    base64url = base64url.toString();
-    return pad_string_1.default(base64url)
-        .replace(/\-/g, "+")
-        .replace(/_/g, "/");
-}
-function fromBase64(base64) {
-    return base64
-        .replace(/=/g, "")
-        .replace(/\+/g, "-")
-        .replace(/\//g, "_");
-}
-function toBuffer(base64url) {
-    return new Buffer(toBase64(base64url), "base64");
-}
-var base64url = encode;
-base64url.encode = encode;
-base64url.decode = decode;
-base64url.toBase64 = toBase64;
-base64url.fromBase64 = fromBase64;
-base64url.toBuffer = toBuffer;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = base64url;
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
-
-/***/ }),
-
-/***/ "./node_modules/base64url/dist/pad-string.js":
-/*!***************************************************!*\
-  !*** ./node_modules/base64url/dist/pad-string.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(Buffer) {
-function padString(input) {
-    var segmentLength = 4;
-    var stringLength = input.length;
-    var diff = stringLength % segmentLength;
-    if (!diff) {
-        return input;
-    }
-    var position = stringLength;
-    var padLength = segmentLength - diff;
-    var paddedStringLength = stringLength + padLength;
-    var buffer = new Buffer(paddedStringLength);
-    buffer.write(input);
-    while (padLength--) {
-        buffer.write("=", position++);
-    }
-    return buffer.toString();
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = padString;
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
-
-/***/ }),
-
-/***/ "./node_modules/base64url/index.js":
-/*!*****************************************!*\
-  !*** ./node_modules/base64url/index.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./dist/base64url */ "./node_modules/base64url/dist/base64url.js").default;
-module.exports.default = module.exports;
 
 
 /***/ }),
@@ -20513,6 +21141,22 @@ module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/
 
 /***/ }),
 
+/***/ "./node_modules/core-js/library/fn/object/create.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/core-js/library/fn/object/create.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ../../modules/es6.object.create */ "./node_modules/core-js/library/modules/es6.object.create.js");
+var $Object = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object;
+module.exports = function create(P, D) {
+  return $Object.create(P, D);
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/library/fn/object/define-property.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/core-js/library/fn/object/define-property.js ***!
@@ -20525,6 +21169,48 @@ var $Object = __webpack_require__(/*! ../../modules/_core */ "./node_modules/cor
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
 };
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/fn/object/get-own-property-names.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/core-js/library/fn/object/get-own-property-names.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ../../modules/es6.object.get-own-property-names */ "./node_modules/core-js/library/modules/es6.object.get-own-property-names.js");
+var $Object = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object;
+module.exports = function getOwnPropertyNames(it) {
+  return $Object.getOwnPropertyNames(it);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/fn/object/get-prototype-of.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/library/fn/object/get-prototype-of.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ../../modules/es6.object.get-prototype-of */ "./node_modules/core-js/library/modules/es6.object.get-prototype-of.js");
+module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object.getPrototypeOf;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/fn/object/set-prototype-of.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/core-js/library/fn/object/set-prototype-of.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ../../modules/es6.object.set-prototype-of */ "./node_modules/core-js/library/modules/es6.object.set-prototype-of.js");
+module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object.setPrototypeOf;
 
 
 /***/ }),
@@ -21864,6 +22550,27 @@ exports.f = {}.propertyIsEnumerable;
 
 /***/ }),
 
+/***/ "./node_modules/core-js/library/modules/_object-sap.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/_object-sap.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// most Object methods by ES6 should accept primitives
+var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
+var core = __webpack_require__(/*! ./_core */ "./node_modules/core-js/library/modules/_core.js");
+var fails = __webpack_require__(/*! ./_fails */ "./node_modules/core-js/library/modules/_fails.js");
+module.exports = function (KEY, exec) {
+  var fn = (core.Object || {})[KEY] || Object[KEY];
+  var exp = {};
+  exp[KEY] = exec(fn);
+  $export($export.S + $export.F * fails(function () { fn(1); }), 'Object', exp);
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/library/modules/_perform.js":
 /*!**********************************************************!*\
   !*** ./node_modules/core-js/library/modules/_perform.js ***!
@@ -21950,6 +22657,42 @@ module.exports = function (target, src, safe) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! ./_hide */ "./node_modules/core-js/library/modules/_hide.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/modules/_set-proto.js":
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/_set-proto.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Works with __proto__ only. Old v8 can't work with null proto objects.
+/* eslint-disable no-proto */
+var isObject = __webpack_require__(/*! ./_is-object */ "./node_modules/core-js/library/modules/_is-object.js");
+var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/library/modules/_an-object.js");
+var check = function (O, proto) {
+  anObject(O);
+  if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
+};
+module.exports = {
+  set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
+    function (test, buggy, set) {
+      try {
+        set = __webpack_require__(/*! ./_ctx */ "./node_modules/core-js/library/modules/_ctx.js")(Function.call, __webpack_require__(/*! ./_object-gopd */ "./node_modules/core-js/library/modules/_object-gopd.js").f(Object.prototype, '__proto__').set, 2);
+        set(test, []);
+        buggy = !(test instanceof Array);
+      } catch (e) { buggy = true; }
+      return function setPrototypeOf(O, proto) {
+        check(O, proto);
+        if (buggy) O.__proto__ = proto;
+        else set(O, proto);
+        return O;
+      };
+    }({}, false) : undefined),
+  check: check
+};
 
 
 /***/ }),
@@ -22502,6 +23245,20 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(/*! ./_ob
 
 /***/ }),
 
+/***/ "./node_modules/core-js/library/modules/es6.object.create.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/es6.object.create.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
+// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
+$export($export.S, 'Object', { create: __webpack_require__(/*! ./_object-create */ "./node_modules/core-js/library/modules/_object-create.js") });
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/library/modules/es6.object.define-property.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/core-js/library/modules/es6.object.define-property.js ***!
@@ -22512,6 +23269,55 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(/*! ./_ob
 var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
 $export($export.S + $export.F * !__webpack_require__(/*! ./_descriptors */ "./node_modules/core-js/library/modules/_descriptors.js"), 'Object', { defineProperty: __webpack_require__(/*! ./_object-dp */ "./node_modules/core-js/library/modules/_object-dp.js").f });
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/modules/es6.object.get-own-property-names.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/es6.object.get-own-property-names.js ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.7 Object.getOwnPropertyNames(O)
+__webpack_require__(/*! ./_object-sap */ "./node_modules/core-js/library/modules/_object-sap.js")('getOwnPropertyNames', function () {
+  return __webpack_require__(/*! ./_object-gopn-ext */ "./node_modules/core-js/library/modules/_object-gopn-ext.js").f;
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/modules/es6.object.get-prototype-of.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/es6.object.get-prototype-of.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.9 Object.getPrototypeOf(O)
+var toObject = __webpack_require__(/*! ./_to-object */ "./node_modules/core-js/library/modules/_to-object.js");
+var $getPrototypeOf = __webpack_require__(/*! ./_object-gpo */ "./node_modules/core-js/library/modules/_object-gpo.js");
+
+__webpack_require__(/*! ./_object-sap */ "./node_modules/core-js/library/modules/_object-sap.js")('getPrototypeOf', function () {
+  return function getPrototypeOf(it) {
+    return $getPrototypeOf(toObject(it));
+  };
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/modules/es6.object.set-prototype-of.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/es6.object.set-prototype-of.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.3.19 Object.setPrototypeOf(O, proto)
+var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(/*! ./_set-proto */ "./node_modules/core-js/library/modules/_set-proto.js").set });
 
 
 /***/ }),
@@ -83770,245 +84576,6 @@ module.exports = Sha512
 
 /***/ }),
 
-/***/ "./node_modules/solid-auth-client/lib/api.js":
-/*!***************************************************!*\
-  !*** ./node_modules/solid-auth-client/lib/api.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.logout = exports.currentSession = exports.popupLogin = exports.login = exports.fetch = undefined;
-
-var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
-
-var _regenerator2 = _interopRequireDefault(_regenerator);
-
-var _extends2 = __webpack_require__(/*! babel-runtime/helpers/extends */ "./node_modules/babel-runtime/helpers/extends.js");
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "./node_modules/babel-runtime/helpers/asyncToGenerator.js");
-
-var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
-
-var login = exports.login = function () {
-  var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(idp, options) {
-    var webIdOidcLogin;
-    return _regenerator2.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            options = (0, _extends3.default)({}, defaultLoginOptions(), options);
-            _context.next = 3;
-            return WebIdOidc.login(idp, options);
-
-          case 3:
-            webIdOidcLogin = _context.sent;
-            return _context.abrupt('return', webIdOidcLogin);
-
-          case 5:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, this);
-  }));
-
-  return function login(_x, _x2) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-var popupLogin = exports.popupLogin = function () {
-  var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(options) {
-    var childWindow, session;
-    return _regenerator2.default.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            if (options.popupUri) {
-              _context2.next = 2;
-              break;
-            }
-
-            throw new Error('Must provide options.popupUri');
-
-          case 2:
-            if (!options.callbackUri) {
-              options.callbackUri = options.popupUri;
-            }
-            options = (0, _extends3.default)({}, defaultLoginOptions(), options);
-            childWindow = (0, _popup.openIdpSelector)(options);
-            _context2.next = 7;
-            return (0, _popup.startPopupServer)(options.storage, childWindow, options);
-
-          case 7:
-            session = _context2.sent;
-            return _context2.abrupt('return', session);
-
-          case 9:
-          case 'end':
-            return _context2.stop();
-        }
-      }
-    }, _callee2, this);
-  }));
-
-  return function popupLogin(_x3) {
-    return _ref2.apply(this, arguments);
-  };
-}();
-
-var currentSession = exports.currentSession = function () {
-  var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
-    var storage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _storage.defaultStorage)();
-    var session;
-    return _regenerator2.default.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return (0, _session.getSession)(storage);
-
-          case 2:
-            session = _context3.sent;
-
-            if (session) {
-              _context3.next = 16;
-              break;
-            }
-
-            _context3.prev = 4;
-            _context3.next = 7;
-            return WebIdOidc.currentSession(storage);
-
-          case 7:
-            session = _context3.sent;
-            _context3.next = 13;
-            break;
-
-          case 10:
-            _context3.prev = 10;
-            _context3.t0 = _context3['catch'](4);
-
-            console.error(_context3.t0);
-
-          case 13:
-            if (!session) {
-              _context3.next = 16;
-              break;
-            }
-
-            _context3.next = 16;
-            return (0, _session.saveSession)(storage)(session);
-
-          case 16:
-            return _context3.abrupt('return', session);
-
-          case 17:
-          case 'end':
-            return _context3.stop();
-        }
-      }
-    }, _callee3, this, [[4, 10]]);
-  }));
-
-  return function currentSession() {
-    return _ref3.apply(this, arguments);
-  };
-}();
-
-var logout = exports.logout = function () {
-  var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4() {
-    var storage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _storage.defaultStorage)();
-    var session;
-    return _regenerator2.default.wrap(function _callee4$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            _context4.next = 2;
-            return (0, _session.getSession)(storage);
-
-          case 2:
-            session = _context4.sent;
-
-            if (!session) {
-              _context4.next = 15;
-              break;
-            }
-
-            _context4.prev = 4;
-            _context4.next = 7;
-            return WebIdOidc.logout(storage);
-
-          case 7:
-            _context4.next = 13;
-            break;
-
-          case 9:
-            _context4.prev = 9;
-            _context4.t0 = _context4['catch'](4);
-
-            console.warn('Error logging out:');
-            console.error(_context4.t0);
-
-          case 13:
-            _context4.next = 15;
-            return (0, _session.clearSession)(storage);
-
-          case 15:
-          case 'end':
-            return _context4.stop();
-        }
-      }
-    }, _callee4, this, [[4, 9]]);
-  }));
-
-  return function logout() {
-    return _ref4.apply(this, arguments);
-  };
-}();
-
-var _authnFetch = __webpack_require__(/*! ./authn-fetch */ "./node_modules/solid-auth-client/lib/authn-fetch.js");
-
-var _popup = __webpack_require__(/*! ./popup */ "./node_modules/solid-auth-client/lib/popup.js");
-
-var _session = __webpack_require__(/*! ./session */ "./node_modules/solid-auth-client/lib/session.js");
-
-var _storage = __webpack_require__(/*! ./storage */ "./node_modules/solid-auth-client/lib/storage.js");
-
-var _urlUtil = __webpack_require__(/*! ./url-util */ "./node_modules/solid-auth-client/lib/url-util.js");
-
-var _webidOidc = __webpack_require__(/*! ./webid-oidc */ "./node_modules/solid-auth-client/lib/webid-oidc.js");
-
-var WebIdOidc = _interopRequireWildcard(_webidOidc);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* global RequestInfo, Response */
-var defaultLoginOptions = function defaultLoginOptions() {
-  var url = (0, _urlUtil.currentUrlNoParams)();
-  return {
-    callbackUri: url ? url.split('#')[0] : null,
-    popupUri: null,
-    storage: (0, _storage.defaultStorage)()
-  };
-};
-
-var fetch = exports.fetch = function fetch(url, options) {
-  return (0, _authnFetch.authnFetch)((0, _storage.defaultStorage)())(url, options);
-};
-
-/***/ }),
-
 /***/ "./node_modules/solid-auth-client/lib/authn-fetch.js":
 /*!***********************************************************!*\
   !*** ./node_modules/solid-auth-client/lib/authn-fetch.js ***!
@@ -84035,6 +84602,8 @@ exports.authnFetch = authnFetch;
 
 __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
 
+var _urlUtil = __webpack_require__(/*! ./url-util */ "./node_modules/solid-auth-client/lib/url-util.js");
+
 var _host = __webpack_require__(/*! ./host */ "./node_modules/solid-auth-client/lib/host.js");
 
 var _session = __webpack_require__(/*! ./session */ "./node_modules/solid-auth-client/lib/session.js");
@@ -84047,12 +84616,14 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// Store the global fetch, so the user can safely override it
+var globalFetch = fetch;
 /* global fetch, RequestInfo, Response */
 function authnFetch(storage) {
   var _this = this;
 
   return function () {
-    var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(url, options) {
+    var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(input, options) {
       var session, shouldShareCreds, resp, _shouldShareCreds;
 
       return _regenerator2.default.wrap(function _callee$(_context) {
@@ -84066,7 +84637,7 @@ function authnFetch(storage) {
             case 3:
               session = _context.sent;
               _context.next = 6;
-              return shouldShareCredentials(storage)(url);
+              return shouldShareCredentials(storage)(input);
 
             case 6:
               shouldShareCreds = _context.sent;
@@ -84076,11 +84647,11 @@ function authnFetch(storage) {
                 break;
               }
 
-              return _context.abrupt('return', fetchWithCredentials(session, url, options));
+              return _context.abrupt('return', fetchWithCredentials(session, input, options));
 
             case 9:
               _context.next = 11;
-              return fetch(url, options);
+              return globalFetch(input, options);
 
             case 11:
               resp = _context.sent;
@@ -84095,7 +84666,7 @@ function authnFetch(storage) {
 
             case 15:
               _context.next = 17;
-              return shouldShareCredentials(storage)(url);
+              return shouldShareCredentials(storage)(input);
 
             case 17:
               _shouldShareCreds = _context.sent;
@@ -84105,7 +84676,7 @@ function authnFetch(storage) {
                 break;
               }
 
-              return _context.abrupt('return', fetchWithCredentials(session, url, options));
+              return _context.abrupt('return', fetchWithCredentials(session, input, options));
 
             case 20:
               return _context.abrupt('return', resp);
@@ -84128,7 +84699,7 @@ function shouldShareCredentials(storage) {
   var _this2 = this;
 
   return function () {
-    var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(url) {
+    var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(input) {
       var session, requestHost;
       return _regenerator2.default.wrap(function _callee2$(_context2) {
         while (1) {
@@ -84149,7 +84720,7 @@ function shouldShareCredentials(storage) {
 
             case 5:
               _context2.next = 7;
-              return (0, _host.getHost)(storage)(url);
+              return (0, _host.getHost)(storage)((0, _urlUtil.toUrlString)(input));
 
             case 7:
               requestHost = _context2.sent;
@@ -84170,12 +84741,12 @@ function shouldShareCredentials(storage) {
 }
 
 var fetchWithCredentials = function () {
-  var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(session, url, options) {
+  var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(session, input, options) {
     return _regenerator2.default.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            return _context3.abrupt('return', WebIdOidc.fetchWithCredentials(session)(url, options));
+            return _context3.abrupt('return', WebIdOidc.fetchWithCredentials(session)(globalFetch, input, options));
 
           case 1:
           case 'end':
@@ -84205,7 +84776,6 @@ var fetchWithCredentials = function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.hostNameFromRequestInfo = undefined;
 
 var _defineProperty2 = __webpack_require__(/*! babel-runtime/helpers/defineProperty */ "./node_modules/babel-runtime/helpers/defineProperty.js");
 
@@ -84239,55 +84809,41 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var hostNameFromRequestInfo = exports.hostNameFromRequestInfo = function hostNameFromRequestInfo(url) {
-  var _url = url instanceof URL ? url : url instanceof Request ? new URL(url.url) : new URL(url);
-  return _url.host;
-};
-/* global RequestInfo, Request, Response, URL */
 function getHost(storage) {
   var _this = this;
 
   return function () {
     var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(url) {
-      var requestHostName, session, _ref2, hosts;
+      var _ref2, host, session, _ref3, hosts;
 
       return _regenerator2.default.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              requestHostName = hostNameFromRequestInfo(url);
+              _ref2 = new URL(url), host = _ref2.host;
               _context.next = 3;
               return (0, _session.getSession)(storage);
 
             case 3:
               session = _context.sent;
 
-              if (!(session && hostNameFromRequestInfo(session.idp) === requestHostName)) {
+              if (!(session && host === new URL(session.idp).host)) {
                 _context.next = 6;
                 break;
               }
 
-              return _context.abrupt('return', { url: requestHostName, requiresAuth: true });
+              return _context.abrupt('return', { url: host, requiresAuth: true });
 
             case 6:
               _context.next = 8;
               return (0, _storage.getData)(storage);
 
             case 8:
-              _ref2 = _context.sent;
-              hosts = _ref2.hosts;
+              _ref3 = _context.sent;
+              hosts = _ref3.hosts;
+              return _context.abrupt('return', hosts && hosts[host]);
 
-              if (hosts) {
-                _context.next = 12;
-                break;
-              }
-
-              return _context.abrupt('return', null);
-
-            case 12:
-              return _context.abrupt('return', hosts[requestHostName] || null);
-
-            case 13:
+            case 11:
             case 'end':
               return _context.stop();
           }
@@ -84300,14 +84856,14 @@ function getHost(storage) {
     };
   }();
 }
-
+/* globalRequest, Response, URL */
 function saveHost(storage) {
   var _this2 = this;
 
   return function () {
-    var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(_ref3) {
-      var url = _ref3.url,
-          requiresAuth = _ref3.requiresAuth;
+    var _ref5 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(_ref4) {
+      var url = _ref4.url,
+          requiresAuth = _ref4.requiresAuth;
       return _regenerator2.default.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -84328,7 +84884,7 @@ function saveHost(storage) {
     }));
 
     return function (_x2) {
-      return _ref4.apply(this, arguments);
+      return _ref5.apply(this, arguments);
     };
   }();
 }
@@ -84337,8 +84893,9 @@ function updateHostFromResponse(storage) {
   var _this3 = this;
 
   return function () {
-    var _ref5 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(resp) {
-      var hostName;
+    var _ref6 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(resp) {
+      var _ref7, _host;
+
       return _regenerator2.default.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
@@ -84348,9 +84905,9 @@ function updateHostFromResponse(storage) {
                 break;
               }
 
-              hostName = hostNameFromRequestInfo(resp.url);
+              _ref7 = new URL(resp.url), _host = _ref7.host;
               _context3.next = 4;
-              return saveHost(storage)({ url: hostName, requiresAuth: true });
+              return saveHost(storage)({ url: _host, requiresAuth: true });
 
             case 4:
             case 'end':
@@ -84361,7 +84918,7 @@ function updateHostFromResponse(storage) {
     }));
 
     return function (_x3) {
-      return _ref5.apply(this, arguments);
+      return _ref6.apply(this, arguments);
     };
   }();
 }
@@ -84378,42 +84935,47 @@ function updateHostFromResponse(storage) {
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+var _getOwnPropertyNames = __webpack_require__(/*! babel-runtime/core-js/object/get-own-property-names */ "./node_modules/babel-runtime/core-js/object/get-own-property-names.js");
+
+var _getOwnPropertyNames2 = _interopRequireDefault(_getOwnPropertyNames);
+
+var _solidAuthClient = __webpack_require__(/*! ./solid-auth-client */ "./node_modules/solid-auth-client/lib/solid-auth-client.js");
+
+var _solidAuthClient2 = _interopRequireDefault(_solidAuthClient);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Export a singleton instance of SolidAuthClient
+var auth = new _solidAuthClient2.default();
+
+// Bind methods to instance, so they can be invoked as regular functions
+// (e.g., to pass around the fetch function)
+(0, _getOwnPropertyNames2.default)(_solidAuthClient2.default.prototype).forEach(function (property) {
+  var value = auth[property];
+  if (typeof value === 'function') {
+    auth[property] = value.bind(auth);
+  }
 });
 
-var _api = __webpack_require__(/*! ./api */ "./node_modules/solid-auth-client/lib/api.js");
+// Export the instance as an object for backward compatibility
+// (should become a default export of auth)
+module.exports = auth;
 
-Object.defineProperty(exports, 'login', {
-  enumerable: true,
-  get: function get() {
-    return _api.login;
-  }
-});
-Object.defineProperty(exports, 'popupLogin', {
-  enumerable: true,
-  get: function get() {
-    return _api.popupLogin;
-  }
-});
-Object.defineProperty(exports, 'currentSession', {
-  enumerable: true,
-  get: function get() {
-    return _api.currentSession;
-  }
-});
-Object.defineProperty(exports, 'logout', {
-  enumerable: true,
-  get: function get() {
-    return _api.logout;
-  }
-});
-Object.defineProperty(exports, 'fetch', {
-  enumerable: true,
-  get: function get() {
-    return _api.fetch;
-  }
-});
+// Expose window.SolidAuthClient for backward compatibility
+if (typeof window !== 'undefined') {
+  var warned = false;
+  Object.defineProperty(window, 'SolidAuthClient', {
+    enumerable: true,
+    get: function get() {
+      if (!warned) {
+        warned = true;
+        console.warn('window.SolidAuthClient has been deprecated.');
+        console.warn('Please use window.solid.auth instead.');
+      }
+      return auth;
+    }
+  });
+}
 
 /***/ }),
 
@@ -84865,6 +85427,328 @@ function saveSession(storage) {
 
 /***/ }),
 
+/***/ "./node_modules/solid-auth-client/lib/solid-auth-client.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/solid-auth-client/lib/solid-auth-client.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _extends2 = __webpack_require__(/*! babel-runtime/helpers/extends */ "./node_modules/babel-runtime/helpers/extends.js");
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _asyncToGenerator2 = __webpack_require__(/*! babel-runtime/helpers/asyncToGenerator */ "./node_modules/babel-runtime/helpers/asyncToGenerator.js");
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
+var _getPrototypeOf = __webpack_require__(/*! babel-runtime/core-js/object/get-prototype-of */ "./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = __webpack_require__(/*! babel-runtime/helpers/classCallCheck */ "./node_modules/babel-runtime/helpers/classCallCheck.js");
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = __webpack_require__(/*! babel-runtime/helpers/createClass */ "./node_modules/babel-runtime/helpers/createClass.js");
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = __webpack_require__(/*! babel-runtime/helpers/possibleConstructorReturn */ "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js");
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = __webpack_require__(/*! babel-runtime/helpers/inherits */ "./node_modules/babel-runtime/helpers/inherits.js");
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _events = __webpack_require__(/*! events */ "./node_modules/events/events.js");
+
+var _events2 = _interopRequireDefault(_events);
+
+var _authnFetch = __webpack_require__(/*! ./authn-fetch */ "./node_modules/solid-auth-client/lib/authn-fetch.js");
+
+var _popup = __webpack_require__(/*! ./popup */ "./node_modules/solid-auth-client/lib/popup.js");
+
+var _session = __webpack_require__(/*! ./session */ "./node_modules/solid-auth-client/lib/session.js");
+
+var _storage = __webpack_require__(/*! ./storage */ "./node_modules/solid-auth-client/lib/storage.js");
+
+var _urlUtil = __webpack_require__(/*! ./url-util */ "./node_modules/solid-auth-client/lib/url-util.js");
+
+var _webidOidc = __webpack_require__(/*! ./webid-oidc */ "./node_modules/solid-auth-client/lib/webid-oidc.js");
+
+var WebIdOidc = _interopRequireWildcard(_webidOidc);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var defaultLoginOptions = function defaultLoginOptions(url) {
+  return {
+    callbackUri: url ? url.split('#')[0] : '',
+    popupUri: '',
+    storage: (0, _storage.defaultStorage)()
+  };
+};
+/* global RequestInfo, Response */
+
+var SolidAuthClient = function (_EventEmitter) {
+  (0, _inherits3.default)(SolidAuthClient, _EventEmitter);
+
+  function SolidAuthClient() {
+    (0, _classCallCheck3.default)(this, SolidAuthClient);
+    return (0, _possibleConstructorReturn3.default)(this, (SolidAuthClient.__proto__ || (0, _getPrototypeOf2.default)(SolidAuthClient)).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(SolidAuthClient, [{
+    key: 'fetch',
+    value: function fetch(input, options) {
+      return (0, _authnFetch.authnFetch)((0, _storage.defaultStorage)())(input, options);
+    }
+  }, {
+    key: 'login',
+    value: function () {
+      var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(idp, options) {
+        var webIdOidcLogin;
+        return _regenerator2.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                options = (0, _extends3.default)({}, defaultLoginOptions((0, _urlUtil.currentUrlNoParams)()), options);
+                _context.next = 3;
+                return WebIdOidc.login(idp, options);
+
+              case 3:
+                webIdOidcLogin = _context.sent;
+                return _context.abrupt('return', webIdOidcLogin);
+
+              case 5:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function login(_x, _x2) {
+        return _ref.apply(this, arguments);
+      }
+
+      return login;
+    }()
+  }, {
+    key: 'popupLogin',
+    value: function () {
+      var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2(options) {
+        var childWindow, session;
+        return _regenerator2.default.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                options = (0, _extends3.default)({}, defaultLoginOptions(), options);
+                if (!/https?:/.test(options.popupUri)) {
+                  options.popupUri = new URL(options.popupUri || '/.well-known/solid/login', window.location).toString();
+                }
+                if (!options.callbackUri) {
+                  options.callbackUri = options.popupUri;
+                }
+                childWindow = (0, _popup.openIdpSelector)(options);
+                _context2.next = 6;
+                return (0, _popup.startPopupServer)(options.storage, childWindow, options);
+
+              case 6:
+                session = _context2.sent;
+
+                this.emit('login', session);
+                this.emit('session', session);
+                return _context2.abrupt('return', session);
+
+              case 10:
+              case 'end':
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function popupLogin(_x3) {
+        return _ref2.apply(this, arguments);
+      }
+
+      return popupLogin;
+    }()
+  }, {
+    key: 'currentSession',
+    value: function () {
+      var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
+        var storage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _storage.defaultStorage)();
+        var session;
+        return _regenerator2.default.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return (0, _session.getSession)(storage);
+
+              case 2:
+                session = _context3.sent;
+
+                if (session) {
+                  _context3.next = 18;
+                  break;
+                }
+
+                _context3.prev = 4;
+                _context3.next = 7;
+                return WebIdOidc.currentSession(storage);
+
+              case 7:
+                session = _context3.sent;
+                _context3.next = 13;
+                break;
+
+              case 10:
+                _context3.prev = 10;
+                _context3.t0 = _context3['catch'](4);
+
+                console.error(_context3.t0);
+
+              case 13:
+                if (!session) {
+                  _context3.next = 18;
+                  break;
+                }
+
+                this.emit('login', session);
+                this.emit('session', session);
+                _context3.next = 18;
+                return (0, _session.saveSession)(storage)(session);
+
+              case 18:
+                return _context3.abrupt('return', session);
+
+              case 19:
+              case 'end':
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[4, 10]]);
+      }));
+
+      function currentSession() {
+        return _ref3.apply(this, arguments);
+      }
+
+      return currentSession;
+    }()
+  }, {
+    key: 'trackSession',
+    value: function () {
+      var _ref4 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee4(callback) {
+        return _regenerator2.default.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.t0 = callback;
+                _context4.next = 3;
+                return this.currentSession();
+
+              case 3:
+                _context4.t1 = _context4.sent;
+                (0, _context4.t0)(_context4.t1);
+
+                this.on('session', callback);
+
+              case 6:
+              case 'end':
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function trackSession(_x5) {
+        return _ref4.apply(this, arguments);
+      }
+
+      return trackSession;
+    }()
+  }, {
+    key: 'logout',
+    value: function () {
+      var _ref5 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee5() {
+        var storage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _storage.defaultStorage)();
+        var session;
+        return _regenerator2.default.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return (0, _session.getSession)(storage);
+
+              case 2:
+                session = _context5.sent;
+
+                if (!session) {
+                  _context5.next = 17;
+                  break;
+                }
+
+                _context5.prev = 4;
+                _context5.next = 7;
+                return WebIdOidc.logout(storage);
+
+              case 7:
+                this.emit('logout');
+                this.emit('session', null);
+                _context5.next = 15;
+                break;
+
+              case 11:
+                _context5.prev = 11;
+                _context5.t0 = _context5['catch'](4);
+
+                console.warn('Error logging out:');
+                console.error(_context5.t0);
+
+              case 15:
+                _context5.next = 17;
+                return (0, _session.clearSession)(storage);
+
+              case 17:
+              case 'end':
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this, [[4, 11]]);
+      }));
+
+      function logout() {
+        return _ref5.apply(this, arguments);
+      }
+
+      return logout;
+    }()
+  }]);
+  return SolidAuthClient;
+}(_events2.default);
+
+exports.default = SolidAuthClient;
+
+/***/ }),
+
 /***/ "./node_modules/solid-auth-client/lib/storage.js":
 /*!*******************************************************!*\
   !*** ./node_modules/solid-auth-client/lib/storage.js ***!
@@ -85121,6 +86005,13 @@ var originOf = exports.originOf = function originOf(url) {
   return new URL(url).origin;
 };
 
+var toUrlString = exports.toUrlString = function toUrlString(url) {
+  if (typeof url !== 'string') {
+    url = 'url' in url ? url.url : url.toString();
+  }
+  return new URL(url, currentUrl()).toString();
+};
+
 /***/ }),
 
 /***/ "./node_modules/solid-auth-client/lib/webid-oidc.js":
@@ -85217,17 +86108,15 @@ var storeRp = function () {
   };
 }();
 
-__webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
-
 var _authHeader = __webpack_require__(/*! auth-header */ "./node_modules/auth-header/dist/index.js");
 
 var authorization = _interopRequireWildcard(_authHeader);
 
-var _oidcRp = __webpack_require__(/*! @trust/oidc-rp */ "./node_modules/@trust/oidc-rp/src/index.js");
+var _oidcRp = __webpack_require__(/*! @solid/oidc-rp */ "./node_modules/@solid/oidc-rp/src/index.js");
 
 var _oidcRp2 = _interopRequireDefault(_oidcRp);
 
-var _PoPToken = __webpack_require__(/*! @trust/oidc-rp/lib/PoPToken */ "./node_modules/@trust/oidc-rp/lib/PoPToken.js");
+var _PoPToken = __webpack_require__(/*! @solid/oidc-rp/lib/PoPToken */ "./node_modules/@solid/oidc-rp/lib/PoPToken.js");
 
 var _PoPToken2 = _interopRequireDefault(_PoPToken);
 
@@ -85239,7 +86128,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* global fetch, RequestInfo, Response */
 var login = exports.login = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(idp, options) {
     var rp;
@@ -85279,11 +86167,11 @@ var login = exports.login = function () {
     return _ref.apply(this, arguments);
   };
 }();
-
+/* global RequestInfo, Response */
 var currentSession = exports.currentSession = function () {
   var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
     var storage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _storage.defaultStorage)();
-    var rp, url, storeData, resp, idp, idToken, accessToken, clientId, sessionKey;
+    var rp, url, storeData, session;
     return _regenerator2.default.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -85305,7 +86193,7 @@ var currentSession = exports.currentSession = function () {
           case 6:
             url = (0, _urlUtil.currentUrl)();
 
-            if (!(!url || !url.includes('#'))) {
+            if (!(!url || !url.includes('#access_token='))) {
               _context2.next = 9;
               break;
             }
@@ -85322,9 +86210,9 @@ var currentSession = exports.currentSession = function () {
             return rp.validateResponse(url, storeData);
 
           case 14:
-            resp = _context2.sent;
+            session = _context2.sent;
 
-            if (resp) {
+            if (session) {
               _context2.next = 17;
               break;
             }
@@ -85336,30 +86224,25 @@ var currentSession = exports.currentSession = function () {
             return restoreAppHashFragment(storage);
 
           case 19:
-            idp = resp.idp, idToken = resp.idToken, accessToken = resp.accessToken, clientId = resp.clientId, sessionKey = resp.sessionKey;
-            return _context2.abrupt('return', {
-              webId: resp.decoded.payload.sub,
-              idp: idp,
-              idToken: idToken,
-              accessToken: accessToken,
-              clientId: clientId,
-              sessionKey: sessionKey
-            });
+            return _context2.abrupt('return', (0, _extends3.default)({}, session, {
+              webId: session.idClaims.sub,
+              idp: session.issuer
+            }));
 
-          case 23:
-            _context2.prev = 23;
+          case 22:
+            _context2.prev = 22;
             _context2.t0 = _context2['catch'](0);
 
             console.warn('Error finding a WebID-OIDC session');
             console.error(_context2.t0);
             return _context2.abrupt('return', null);
 
-          case 28:
+          case 27:
           case 'end':
             return _context2.stop();
         }
       }
-    }, _callee2, undefined, [[0, 23]]);
+    }, _callee2, undefined, [[0, 22]]);
   }));
 
   return function currentSession() {
@@ -85488,23 +86371,24 @@ var requiresAuth = exports.requiresAuth = function requiresAuth(resp) {
  */
 var fetchWithCredentials = exports.fetchWithCredentials = function fetchWithCredentials(session) {
   return function () {
-    var _ref8 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(url, options) {
+    var _ref8 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee6(fetch, input, options) {
       var popToken, authenticatedOptions;
       return _regenerator2.default.wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
               _context6.next = 2;
-              return _PoPToken2.default.issueFor(url, session);
+              return _PoPToken2.default.issueFor((0, _urlUtil.toUrlString)(input), session);
 
             case 2:
               popToken = _context6.sent;
               authenticatedOptions = (0, _extends3.default)({}, options, {
+                credentials: 'include',
                 headers: (0, _extends3.default)({}, options && options.headers ? options.headers : {}, {
                   authorization: 'Bearer ' + popToken
                 })
               });
-              return _context6.abrupt('return', fetch(url, authenticatedOptions));
+              return _context6.abrupt('return', fetch(input, authenticatedOptions));
 
             case 5:
             case 'end':
@@ -85514,7 +86398,7 @@ var fetchWithCredentials = exports.fetchWithCredentials = function fetchWithCred
       }, _callee6, undefined);
     }));
 
-    return function (_x10, _x11) {
+    return function (_x10, _x11, _x12) {
       return _ref8.apply(this, arguments);
     };
   }();
@@ -113850,6 +114734,115 @@ function indexes(book) {
 })('undefined' !== typeof window ? window : null);
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../buffer/index.js */ "./node_modules/buffer/index.js").Buffer))
+
+/***/ }),
+
+/***/ "./node_modules/standard-error/index.js":
+/*!**********************************************!*\
+  !*** ./node_modules/standard-error/index.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var has = Object.hasOwnProperty
+var proto = Object.getPrototypeOf
+var trace = Error.captureStackTrace
+module.exports = StandardError
+
+function StandardError(msg, props) {
+  // Let all properties be enumerable for easier serialization.
+  if (msg && typeof msg == "object") props = msg, msg = undefined
+  else this.message = msg
+
+  // Name has to be an own property (or on the prototype a single step up) for
+  // the stack to be printed with the correct name.
+  if (props) for (var key in props) this[key] = props[key]
+  if (!has.call(this, "name"))
+    this.name = has.call(proto(this), "name")? this.name : this.constructor.name
+
+  if (trace && !("stack" in this)) trace(this, this.constructor)
+}
+
+StandardError.prototype = Object.create(Error.prototype, {
+  constructor: {value: StandardError, configurable: true, writable: true}
+})
+
+// Set name explicitly for when the code gets minified.
+StandardError.prototype.name = "StandardError"
+
+
+/***/ }),
+
+/***/ "./node_modules/standard-http-error/codes.json":
+/*!*****************************************************!*\
+  !*** ./node_modules/standard-http-error/codes.json ***!
+  \*****************************************************/
+/*! exports provided: 100, 101, 102, 200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 307, 308, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 421, 422, 423, 424, 425, 426, 428, 429, 431, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, default */
+/***/ (function(module) {
+
+module.exports = {"100":"Continue","101":"Switching Protocols","102":"Processing","200":"OK","201":"Created","202":"Accepted","203":"Non-Authoritative Information","204":"No Content","205":"Reset Content","206":"Partial Content","207":"Multi-Status","208":"Already Reported","226":"IM Used","300":"Multiple Choices","301":"Moved Permanently","302":"Found","303":"See Other","304":"Not Modified","305":"Use Proxy","307":"Temporary Redirect","308":"Permanent Redirect","400":"Bad Request","401":"Unauthorized","402":"Payment Required","403":"Forbidden","404":"Not Found","405":"Method Not Allowed","406":"Not Acceptable","407":"Proxy Authentication Required","408":"Request Timeout","409":"Conflict","410":"Gone","411":"Length Required","412":"Precondition Failed","413":"Payload Too Large","414":"URI Too Long","415":"Unsupported Media Type","416":"Range Not Satisfiable","417":"Expectation Failed","418":"I'm a teapot","421":"Misdirected Request","422":"Unprocessable Entity","423":"Locked","424":"Failed Dependency","425":"Unordered Collection","426":"Upgrade Required","428":"Precondition Required","429":"Too Many Requests","431":"Request Header Fields Too Large","500":"Internal Server Error","501":"Not Implemented","502":"Bad Gateway","503":"Service Unavailable","504":"Gateway Timeout","505":"HTTP Version Not Supported","506":"Variant Also Negotiates","507":"Insufficient Storage","508":"Loop Detected","509":"Bandwidth Limit Exceeded","510":"Not Extended","511":"Network Authentication Required"};
+
+/***/ }),
+
+/***/ "./node_modules/standard-http-error/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/standard-http-error/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = HttpError
+var StandardError = __webpack_require__(/*! standard-error */ "./node_modules/standard-error/index.js")
+var STATUS_CODE_TO_NAME = __webpack_require__(/*! ./codes */ "./node_modules/standard-http-error/codes.json")
+var STATUS_NAME_TO_CODE = exports
+
+function HttpError(code, msg, props) {
+  if (typeof code == "string") code = STATUS_NAME_TO_CODE[code]
+  if (typeof code != "number") throw new TypeError("Non-numeric HTTP code")
+  if (typeof msg == "object" && msg != null) { props = msg; msg = null }
+  StandardError.call(this, msg || STATUS_CODE_TO_NAME[code], props)
+  this.code = code
+}
+
+HttpError.prototype = Object.create(StandardError.prototype, {
+  constructor: {value: HttpError, configurable: true, writable: true}
+})
+
+// Set name explicitly for when the code gets minified.
+HttpError.prototype.name = "HttpError"
+
+Object.defineProperties(HttpError.prototype, {
+  statusCode: alias("code"),
+  statusMessage: alias("message"),
+
+  status: {
+    configurable: true,
+    get: function() { return this.code },
+    set: function(value) {
+      Object.defineProperty(this, "status", {
+        value: value, configurable: true, enumerable: true, writable: true
+      })
+    }
+  }
+})
+
+HttpError.prototype.toString = function() {
+  return this.name + ": " + this.code + " " + this.message
+}
+
+for (var code in STATUS_CODE_TO_NAME) {
+  var name = STATUS_CODE_TO_NAME[code]
+  exports[name.replace("'", "").replace(/[- ]/g, "_").toUpperCase()] = +code
+}
+
+function alias(name) {
+  return {
+    configurable: true,
+    get: function() { return this[name] },
+    set: function(value) { return this[name] = value }
+  }
+}
+
 
 /***/ }),
 
