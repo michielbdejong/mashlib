@@ -58542,7 +58542,15 @@ class Client {
     }, this._serverOrigin); // Create a promise that resolves to the request's return value
 
 
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
+      // Listen for responses to the request
+      window.addEventListener('message', responseListener); // Cancel if the response takes too long
+
+      const timeout = setTimeout(() => {
+        reject(new Error('Could not connect to main window.'));
+        window.removeEventListener('message', responseListener);
+      }, 2000); // Processes a possible response to the request
+
       function responseListener({
         data
       }) {
@@ -58550,11 +58558,10 @@ class Client {
 
         if (resp && resp.id === id && resp.hasOwnProperty('ret')) {
           resolve(resp.ret);
+          clearTimeout(timeout);
           window.removeEventListener('message', responseListener);
         }
       }
-
-      window.addEventListener('message', responseListener);
     });
   }
 
@@ -59068,9 +59075,12 @@ async function logout(storage) {
 }
 
 async function getRegisteredRp(idp, options) {
+  // To reuse a possible previous RP,
+  // it be for the same IDP and redirect URI
   let rp = await getStoredRp(options.storage);
 
-  if (!rp || rp.provider.url !== idp) {
+  if (!rp || rp.provider.url !== idp || !rp.registration.redirect_uris.includes(options.callbackUri)) {
+    // Register a new RP
     rp = await registerRp(idp, options);
     await storeRp(options.storage, idp, rp);
   }
